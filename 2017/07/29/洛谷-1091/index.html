@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>「洛谷 1091」 合唱队形 | ChenZ01</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="行走于三途江&lt;br&gt;看穿死亡&lt;br&gt;重回于无缘冢&lt;br&gt;不再迷茫">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="「洛谷 1091」 合唱队形 | ChenZ01">
+    <meta name="twitter:description" content="行走于三途江&lt;br&gt;看穿死亡&lt;br&gt;重回于无缘冢&lt;br&gt;不再迷茫">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="「洛谷 1091」 合唱队形 | ChenZ01">
+    <meta property="og:description" content="行走于三途江&lt;br&gt;看穿死亡&lt;br&gt;重回于无缘冢&lt;br&gt;不再迷茫">
+
+    
+    <meta name="author" content="CZ">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/avatar-small.png">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/07/29/洛谷-1091/"/>
+
+    
+    <link rel="author" href="https://plus.google.com/118347113941084337654"/>
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/"><img src="/images/avatar.jpg" width="80" alt="ChenZ01 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" >ChenZ01</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">残旗飘扬 挽歌轻唱</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">行走于三途江<br>看穿死亡<br>重回于无缘冢<br>不再迷茫</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog"  class="blog-button">Blog</a></li>
+            
+              <li class="navigation__item"><a href="/about">About</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/ChenZ01" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+  <li class="navigation__item">
+    <a href="https://plus.google.com/118347113941084337654" title="Google+" target="_blank">
+      <i class='social fa fa-google-plus-square'></i>
+      <span class="label">Google+</span>
+    </a>
+  </li>
+
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-disabled"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-07-29T13:39:44.000Z" class="post-list__meta--date date">2017-07-29</time> &#8226; <span class="post-meta__tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/DP/">DP</a>, <a class="tag-link" href="/tags/洛谷/">洛谷</a>
+ </span>
+      <span class="page-pv">
+      &nbsp;View&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+      </span> 
+   
+    </div>
+    <h1 class="post-title">「洛谷 1091」 合唱队形</h1>
+  </header>
+
+  <section class="post">
+    <h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p>最近都刷的什么垃圾题目啊……连我自己都不忍直视</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h3><p>给定\(n\)个数，求所有满足<strong>序列中有且只有一个元素与其左边所有元素单调上升，与其右边所有元素单调下降</strong>的子序列中<strong>最少</strong>的<strong>不在</strong>原序列的元素个数。</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>链接：<a href="https://www.luogu.org/problem/show?pid=1091" target="_blank" rel="noopener">洛谷 1091</a></p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>在大意中已经写的很明显了，要求最少的不在原序列的元素个数。虽然读起来有些别扭，但仔细一想，可以转化成求最长符合条件的子序列的长度，再拿\(n\)减去该长度即可。<br>再看题，符合条件的子序列是什么？满足“<strong>有且只有一个元素与其左边所有元素单调上升，与其右边所有元素单调下降</strong>”。明显是最长上升子序列和最长下降子序列的组合！<br>我们可以把前\(i\)个元素变成一个序列并求最长上升子序列的长度，第\(i+1\)~第\(n\)个元素变成一个序列并求最长下降子序列的长度。<br>设\(f(i)\)为取第\(i\)个元素的最长上升/下降子序列长度。<br>得DP方程：\(f(i)=max(f(i),f(j)+1),\;a_i＜(＞)a_j,\,j&lt;i\)</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n, ans;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">1001</span>], f[<span class="number">1001</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ms</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="keyword">sizeof</span>(f));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">judge</span><span class="params">(<span class="keyword">int</span> op, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!op)</span><br><span class="line">		<span class="keyword">return</span> x &gt; y;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> x &lt; y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">longest</span><span class="params">(<span class="keyword">int</span> op, <span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">//若op=0，则求最长上升子序列长度，否则求最长下降子序列长度。</span></span><br><span class="line">	<span class="comment">//C++中语句连起来可以写成 S1, S2, S3;的形式。</span></span><br><span class="line">	<span class="keyword">int</span> st, ed;</span><br><span class="line">	<span class="keyword">if</span> (!op)</span><br><span class="line">		st = <span class="number">1</span>, ed = x;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		st = x, ed = n;</span><br><span class="line">	ms();</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = st; i &lt;= ed; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		f[i] = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = st; j &lt; i; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (judge(op, a[i], a[j]))</span><br><span class="line">				f[i] = max(f[i], f[j] + <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> tmp = <span class="number">-0x7f7f7f7f</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = st; i &lt;= ed; i++)</span><br><span class="line">		tmp = max(tmp, f[i]);</span><br><span class="line">	<span class="keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		ans = max(ans, longest(<span class="number">0</span>, i) + longest(<span class="number">1</span>, i+<span class="number">1</span>));</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; n - ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">最近的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/07/30/洛谷-1308/" title="「洛谷 1308」 统计单词数">「洛谷 1308」 统计单词数</a></h2>
+                <p class="excerpt">
+                
+                题外话这题坑了我好久……谁说分到“简单”字符串的？？？
+题目大意给定一单词（无空格）和一文章（有空格），求该单词在文章中出现的次数（不分大小写）及第一次出现的位置；若无，则输出-1。
+链接链接： 洛谷 1308
+题解本题考点是字符串的操作。两种解法：一是读完文章再操作，二是边读边操作。由于第一种方法
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-07-30T13:09:44.000Z" class="post-list__meta--date date">2017-07-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/字符串/">字符串</a>, <a class="tag-link" href="/tags/洛谷/">洛谷</a>
+</span><a class="btn-border-small" href="/2017/07/30/洛谷-1308/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/07/28/洛谷-3371/" title="「洛谷 3371」 【模板】单源最短路径">「洛谷 3371」 【模板】单源最短路径</a></h2>
+                <p class="excerpt">
+                
+                题目大意给定由\(n\)个点，\(m\)条边组成的有向带权图和源点\(s\)，求从点\(s\)到其它各点的最短路。
+链接链接：洛谷 3371
+题解图的最短路有多种解法，如Dijkstra（贪心）、Floyed（DP），还有我们即将讨论的SPFA（BFS）。说SPFA是BFS也有些牵强。SPFA与BF
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-07-28T10:33:12.000Z" class="post-list__meta--date date">2017-07-28</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/图论/">图论</a>, <a class="tag-link" href="/tags/洛谷/">洛谷</a>
+</span><a class="btn-border-small" href="/2017/07/28/洛谷-3371/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2017
+	<span class="footer__copyright">
+        Original Version by <a href="http://github.com/onevcat/vno ">onevcat</a>， Powered by <a href="https://monniya.com ">Monniya</a>， Posted by <a href="https://github.com/ChenZ01/ChenZ01.github.io">ChenZ01</a>
+    </span>
+    </span>
+  
+         <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    }); 
+    
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+   
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
