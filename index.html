@@ -137,13 +137,59 @@
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/12/04/Visual-Studio-保存文件编码格式/" >Visual Studio 保存文件编码格式</a></h2>
+      <p class="excerpt">
+    
+      题外话Visual Studio确实是最强的IDE，但功能太复杂了啊……每年产品的界面都不一样。2017企业版的默认保存为LINUX格式的，Windows下只能用Notepad++打开，很是苦恼。网上都说安装什么破插件。最后终于找到一篇正常的了……
+正文单击“工具”|“自定义”命令，弹出“自定义”对话框。单击“命令”标签，进入“命令”选项卡。在“菜单栏”下拉列表中，选择“文件”选项。单击“添加命令
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-12-04T13:35:07.000Z" class="post-list__meta--date date">2017-12-04</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Visual-Studio/">Visual Studio</a>
+</span><a class="btn-border-small" href="/2017/12/04/Visual-Studio-保存文件编码格式/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/11/26/Poj-2823/" >「Poj 2823」 Sliding Window</a></h2>
+      <p class="excerpt">
+    
+      题外话这题提交方式很玄学……C++交就TLE，改成G++就AC了……
+题目链接链接：Poj 2823
+题解首先我们想到暴力模拟，妥妥的TLE，加上Poj老掉牙的机器，不知道T成什么样了……既然模拟不可行，那么我们只能考虑一种新的方法。目前我们貌似没有掌握一种算法能快速算区间最大值的，因此我们只能从数据结构入手。堆？你怎么确定元素是否超出窗口边界？用struct？那还怎么用STL的priority_
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-11-26T12:48:31.000Z" class="post-list__meta--date date">2017-11-26</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/Poj/">Poj</a>, <a class="tag-link" href="/tags/单调队列/">单调队列</a>
+</span><a class="btn-border-small" href="/2017/11/26/Poj-2823/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/11/25/NOIP-2017普及组复赛解题报告/" >「NOIP2017」普及组复赛解题报告</a></h2>
+      <p class="excerpt">
+    
+      题目链接NOIP2017普及组：百度网盘
+P1 成绩题解这题是给智商80-的人写的……不过官方好像说有精度问题（题目中明明写着“A、B、C 都是 10 的整数倍”啊）然后重测了。
+代码12345678910111213#include &amp;lt;iostream&amp;gt;#include &amp;lt;cstdio&amp;gt;#include &amp;lt;cmath&amp;gt;using namespace std;d
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-11-24T23:38:32.000Z" class="post-list__meta--date date">2017-11-25</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
+  <a class="tag-link" href="/tags/NOIP/">NOIP</a>
+</span><a class="btn-border-small" href="/2017/11/25/NOIP-2017普及组复赛解题报告/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2017/10/18/NOIP-2016普及组复赛解题报告/" >「NOIP2016」普及组复赛解题报告</a></h2>
       <p class="excerpt">
     
       题目链接NOIP2016普及组：百度网盘
-P1 买铅笔大意给定一个整数\(n\)和三组数\(x_i,y_i\)。设每对\(x_i,y_i\)中\(k_i\)个\(x_i\)的和不小于\(n\)，求\(min(k_iy_i)\)。
-题解这题分外水啊……几个if就可以AC。考试时3分钟敲完……但今年懒得用if写了十几分钟……
-代码123456789101112131415161718192021#in
+P1 买铅笔题解这题分外水啊……几个if就可以AC。考试时3分钟敲完……但今年懒得用if写了十几分钟……
+代码123456789101112131415161718192021#include&amp;lt;iostream&amp;gt;#include&amp;lt;algorithm&amp;gt;using namespace std;int n, ans;int main(in
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2017-10-18T13:20:18.000Z" class="post-list__meta--date date">2017-10-18</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -206,9 +252,8 @@ register变量必须是能被CP
       <p class="excerpt">
     
       题外话这题也坑了我好久……谁说分到“简单”字符串的？？？话说好像字符串的题一碰就死……然而【狡（Wei）黠（Suo）的微笑】，这题可以不用字符串。所以你没看到上面的Tags有一个STL啊？？语言歧视（笑）。欸，你没发现题解几乎和洛谷 1308一毛一样？？？
-题目大意见题面。
-链接链接： 洛谷 1553
-题解本题考点是字符串的操作，如果你聪明的话也可以用stack实现。也是两种解法：一是找出特殊字符
+题目链接链接： 洛谷 1553
+题解本题考点是字符串的操作，如果你聪明的话也可以用stack实现。也是两种解法：一是找出特殊字符位置做相应处理
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2017-07-31T11:15:31.000Z" class="post-list__meta--date date">2017-07-31</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -223,9 +268,9 @@ register变量必须是能被CP
       <p class="excerpt">
     
       题外话这题坑了我好久……谁说分到“简单”字符串的？？？
-题目大意给定一单词（无空格）和一文章（有空格），求该单词在文章中出现的次数（不分大小写）及第一次出现的位置；若无，则输出-1。
-链接链接： 洛谷 1308
-题解本题考点是字符串的操作。两种解法：一是读完文章再操作，二是边读边操作。由于第一种方法用的标准函数较多，就写第一种了（虽然第二种较优），有兴趣的可以尝试第二种（实际上是我懒得写第二种了）
+题目链接链接： 洛谷 1308
+题解本题考点是字符串的操作。两种解法：一是读完文章再操作，二是边读边操作。由于第一种方法用的标准函数较多，就写第一种了（虽然第二种较优），有兴趣的可以尝试第二种（实际上是我懒得写第二种了）。
+细节如果使用algorithm里的transform函数的话要注意函数的意义：第1、2个参数是字符串的起始、结束位置。第
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2017-07-30T13:09:44.000Z" class="post-list__meta--date date">2017-07-30</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -240,9 +285,8 @@ register变量必须是能被CP
       <p class="excerpt">
     
       题外话最近都刷的什么垃圾题目啊……连我自己都不忍直视
-题目大意给定\(n\)个数，求所有满足序列中有且只有一个元素与其左边所有元素单调上升，与其右边所有元素单调下降的子序列中最少的不在原序列的元素个数。
-链接链接：洛谷 1091
-题解在大意中已经写的很明显了，要求最少的不在原序列的元素个数。虽然读起来有些别扭，但仔细一想，可以转化成求最长符合条件的子序列的长度，再拿\(n\)减去该长度即可。再看题
+题目链接链接：洛谷 1091
+题解在大意中已经写的很明显了，要求最少的不在原序列的元素个数。虽然读起来有些别扭，但仔细一想，可以转化成求最长符合条件的子序列的长度，再拿\(n\)减去该长度即可。再看题，符合条件的子序列是什么？满足“有且只有一个元素与其左边所有元素单调上升，与其右边所有元素单调下降”。明显是最长上升子序列和最长下降子序列的组合！
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2017-07-29T13:39:44.000Z" class="post-list__meta--date date">2017-07-29</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
@@ -252,61 +296,16 @@ register变量必须是能被CP
     </li>
   
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/07/28/洛谷-3371/" >「洛谷 3371」 【模板】单源最短路径</a></h2>
-      <p class="excerpt">
-    
-      题目大意给定由\(n\)个点，\(m\)条边组成的有向带权图和源点\(s\)，求从点\(s\)到其它各点的最短路。
-链接链接：洛谷 3371
-题解图的最短路有多种解法，如Dijkstra（贪心）、Floyed（DP），还有我们即将讨论的SPFA（BFS）。说SPFA是BFS也有些牵强。SPFA与BFS最大的区别就在于BFS某个结点只会访问一次，即出队列就不会二次进队，而SPFA则允许二次进队的情况
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-07-28T10:33:12.000Z" class="post-list__meta--date date">2017-07-28</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/图论/">图论</a>, <a class="tag-link" href="/tags/洛谷/">洛谷</a>
-</span><a class="btn-border-small" href="/2017/07/28/洛谷-3371/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/07/24/洛谷-3366/" >「洛谷 3366」 【模板】最小生成树</a></h2>
-      <p class="excerpt">
-    
-      题目大意给定由\(n\)个点，\(m\)条边组成的无向图，求该图的最小生成树。
-链接链接：洛谷 3366
-题解对于图\(G=(V,E)\)，最小生成树有两种较普遍的解法，即Kruskal算法和Prim算法。这里的程序采用Kruskal。接下来讨论Kruskal的操作步骤。
-步骤
-对于边集合\(E\)，按照边权从小到大排序。
-对于\(m\)条边扫一遍。每次判断若加该边是否构成环：
-若不构成，则最小生
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-07-24T01:14:24.000Z" class="post-list__meta--date date">2017-07-24</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/图论/">图论</a>, <a class="tag-link" href="/tags/洛谷/">洛谷</a>
-</span><a class="btn-border-small" href="/2017/07/24/洛谷-3366/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/07/20/洛谷-1020/" >「洛谷 1020」 导弹拦截</a></h2>
-      <p class="excerpt">
-    
-      题目大意给定不大于100个不大于30000的整数，求最长不上升子序列与不上升子序列最少数。
-链接链接： 洛谷 1020
-题解这题分两问，在大意中已很明确地分析出来了。接下来，让我们分问题讨论。
-第一问对于第一问，很显然是DP。设\(f(i)\)表示从\(1\)~\(i\)以\(i\)结尾（取\(i\)）的最长不上升子序列的最长长度\((i≤n)\)。由于是\(1\)~\(i\)这些导弹，所以有必要
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-07-20T10:27:03.000Z" class="post-list__meta--date date">2017-07-20</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;
-  <a class="tag-link" href="/tags/DP/">DP</a>, <a class="tag-link" href="/tags/洛谷/">洛谷</a>, <a class="tag-link" href="/tags/贪心/">贪心</a>
-</span><a class="btn-border-small" href="/2017/07/20/洛谷-1020/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
   </ol>
 
+
+  <nav class="pagination" role="navigation">
+    
+    <span class="pagination__page-number" > 1 / 2 </span>
+    
+      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/page/2/">更早 →</a>
+    
+  </nav>
 
  <script type="text/x-mathjax-config">
     MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
