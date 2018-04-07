@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="ChenZ01">
 <meta property="og:description" content="正文 create a repository clone 到本地 将想要上传的图片push 进入图床repository，找到你刚才push的图片 左键单击查看图片 在图片上右击-在新标签页中打开图片 复制图片url 该url即可直接调用  注意：以“https://github.com/” 开头的并不是你图片的url。正常情况下url应以“https://raw.githubuserconte">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-07T08:18:21.169Z">
+<meta property="og:updated_time" content="2018-04-07T08:50:20.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GitHub 图床">
 <meta name="twitter:description" content="正文 create a repository clone 到本地 将想要上传的图片push 进入图床repository，找到你刚才push的图片 左键单击查看图片 在图片上右击-在新标签页中打开图片 复制图片url 该url即可直接调用  注意：以“https://github.com/” 开头的并不是你图片的url。正常情况下url应以“https://raw.githubuserconte">
@@ -259,26 +259,22 @@
   
     <div class="site-search">
       
-  
-  <div class="algolia-popup popup search-popup">
-    <div class="algolia-search">
-      <div class="algolia-search-input-icon">
-        <i class="fa fa-search"></i>
-      </div>
-      <div class="algolia-search-input" id="algolia-search-input"></div>
-    </div>
-
-    <div class="algolia-results">
-      <div id="algolia-stats"></div>
-      <div id="algolia-hits"></div>
-      <div id="algolia-pagination" class="algolia-pagination"></div>
-    </div>
-
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
     <span class="popup-btn-close">
       <i class="fa fa-times-circle"></i>
     </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
   </div>
-
+  <div id="local-search-result"></div>
+</div>
 
 
 
@@ -429,6 +425,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/04/07/Hexo-添加搜索功能/" rel="prev" title="Hexo 添加搜索功能">
+                Hexo 添加搜索功能 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -504,7 +504,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1068,19 +1068,6 @@
   </script>
 
 
-
-
-  
-  
-  
-  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
-
-  
-  
-  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
-  
-
-  <script src="/js/src/algolia-search.js?v=5.1.2"></script>
 
 
 
