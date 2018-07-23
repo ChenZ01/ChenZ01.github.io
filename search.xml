@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「AtCoder」 ABC 103]]></title>
+    <url>%2F2018%2F07%2F23%2FAtCoder-ABC-103%2F</url>
+    <content type="text"><![CDATA[题外话永远记住日本时间比中国早1个小时！这篇比较水，除了T3 题目链接AtCoder ABC 103 题解T1纯暴力不解释 代码#include &lt;iostream&gt;#include &lt;algorithm&gt;using namespace std;int a, b, c;#define X abs(a-b)#define Y abs(b-c)#define Z abs(a-c)int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin &gt;&gt; a &gt;&gt; b &gt;&gt; c; cout &lt;&lt; min(X + Y, min(X + Z, Y + Z)) &lt;&lt; endl; return 0;&#125; T2纯暴力，字符串的函数需要熟悉一些 代码#include &lt;iostream&gt;using namespace std;string S, T;int main(int argc, char ** argv)&#123; getline(cin, S); getline(cin, T); for (int i = S.length(); i; i--) &#123; char ch = S[S.length() - 1]; S.erase(S.length() - 1, 1); S.insert(S.begin(), ch); if (S == T) &#123; cout &lt;&lt; "Yes\n"; return 0; &#125; &#125; cout &lt;&lt; "No\n"; return 0;&#125; T3这题真的是给Beginner做的？虽然代码比较短小精悍这题就是要我们证明对于序列${a_1,a_2,\dots,a_n}$，存在$x\equiv(a_k-1)(\mathrm{mod}\,a_k),1\leqslant k\leqslant n$当然，稍微想想会会发现$\prod_{k=1}^na_k-1$即为满足上述条件的$x$既然存在$x$，则最大的$f$值就显而易见是$\sum_{k=1}^n(a_k-1)=\sum_{k=1}^na_k-n$那么就可以相当完美地解决这道题 代码#include &lt;iostream&gt;using namespace std;int n, ans, a;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin &gt;&gt; n; for (int i = 1; i &lt;= n; i++) cin &gt;&gt; a, ans += a; cout &lt;&lt; ans - n &lt;&lt; endl; return 0;&#125; T4上来就想到DP，想了一会发现是贪心，然后我就跪在了sort()上……STL的东西最好还是了解怎么回事再用！贪心的思路很好想，具体看代码 代码#include &lt;iostream&gt;#include &lt;algorithm&gt;using namespace std;struct Edge&#123; int st, ed;&#125;;Edge a[100010];int n, m, ans;bool cmp(Edge x, Edge y)&#123; if (x.ed == y.ed) return x.st &lt; y.st; else return x.ed &lt; y.ed;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin &gt;&gt; n &gt;&gt; m; for (int i = 1; i &lt;= m; i++) cin &gt;&gt; a[i].st &gt;&gt; a[i].ed; sort(a + 1, a + m + 1, cmp); int Cur = 0; for (int i = 1; i &lt;= m; i++) &#123; if (a[i].st &gt;= Cur) &#123; ans++; Cur = a[i].ed; &#125; &#125; cout &lt;&lt; ans &lt;&lt; endl; return 0;&#125; 后记本篇博文相当水……当然也不是我故意的为了肝后面一篇重磅的数学博文，OI只能稍稍搁置一下了顺带说一句绝对不要对后面一篇博文抱有什么能看得懂的幻想]]></content>
+      <tags>
+        <tag>AtCoder</tag>
+        <tag>Math</tag>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「洛谷 1281」 书的复制]]></title>
     <url>%2F2018%2F07%2F16%2F%E6%B4%9B%E8%B0%B7-1281%2F</url>
     <content type="text"><![CDATA[题外话写这篇博文的目的有两个，一是好久没有写关于OI的博文，二是某大佬说最好写一下提醒别人别被数据坑了……毕竟我被这题的神奇数据坑了2个多小时 题目链接洛谷 1281话说洛谷换新的url了 题解用一句非常精辟的话概括题意（不是我想出来的）：寻找一种分配方案，使抄写页数最多的最少很明显的二分就出来了不过二分只能找出答案，根据答案推每个人的任务还需要处理鉴于题目中说“尽可能让前面的人少抄写”，故从尾至头贪心，给后面的人分配的越多越好由于是从后往前分配任务的，输出是从前往后，于是采用栈记录输出的数据，当然也可以用递归输出 坑你以为就这样完了？我那3次WA就是这么来的……事实上，对于$m=0,k=0$的情况是不用输出的……真的巨坑啊…… 代码#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;algorithm&gt;#include &lt;stack&gt;using namespace std;int m, k;int Max;int a[100001];stack &lt;int&gt; outl;stack &lt;int&gt; outr;bool judge(int t)&#123; int sum = 0; int pseudo_peo = 1; for (int i = 1; i &lt;= m; i++) &#123; if (a[i]&gt;t) return false; if (sum + a[i] &lt;= t) sum += a[i]; else &#123; sum = a[i]; pseudo_peo++; &#125; &#125; return pseudo_peo &lt;= k;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin &gt;&gt; m &gt;&gt; k; if (!m &amp;&amp; !k) &#123; return 0; &#125; for (int i = 1; i &lt;= m; i++) &#123; cin &gt;&gt; a[i]; Max += a[i]; &#125; int l = 1, r = Max; while (l&lt;r) &#123; int mid = (l + r) / 2; if (judge(mid)) r = mid; else l = mid + 1; &#125; int ans = l; int sum = 0; int cntpeop = k - 1; r = m; for (int i = m; i; i--) &#123; if (sum + a[i] &lt;= ans &amp;&amp; i&gt;cntpeop) &#123; sum += a[i]; l = i; &#125; else &#123; outl.push(l); outr.push(r); l = r = i; sum = a[i]; cntpeop--; &#125; &#125; cout &lt;&lt; l &lt;&lt; " " &lt;&lt; r &lt;&lt; endl; while (!outl.empty()) &#123; cout &lt;&lt; outl.top() &lt;&lt; " " &lt;&lt; outr.top() &lt;&lt; endl; outl.pop(); outr.pop(); &#125; return 0;&#125;]]></content>
       <tags>
-        <tag>洛谷</tag>
         <tag>贪心</tag>
+        <tag>洛谷</tag>
         <tag>二分</tag>
       </tags>
   </entry>
@@ -173,15 +183,15 @@
     <url>%2F2017%2F07%2F20%2F%E6%B4%9B%E8%B0%B7-1020%2F</url>
     <content type="text"><![CDATA[题目链接洛谷 1020 题解这题分两问，在大意中已很明确地分析出来了。接下来，让我们分问题讨论。 第一问对于第一问，很显然是DP。设\(f(i)\)表示从\(1\)~\(i\)以\(i\)结尾（取\(i\)）的最长不上升子序列的最长长度\((i≤n)\)。由于是\(1\)~\(i\)这些导弹，所以有必要再加一层循环，判断第\(j\)发导弹是否能打。得DP方程： \(f(i)=max(f(i),f(j+1)),\;a_i≤a_j,\,j&lt;i\) 第二问第二问可以用贪心解决。一遍循环，将当前\(a_i,\,1≤i≤n\)与在数组\(ar\)中最小的不小于\(a_i\)的编号\(k\)与值记录下来，存入\(ar_k\)中。若无此值，则再加一个元素。最后统计\(ar\)数组元素个数即可。 代码#include&lt;iostream&gt;#include&lt;algorithm&gt;#include&lt;cstring&gt;using namespace std;int cnt = 0, _max, sum;int a[105], f[105], ar[105];int main()&#123; ios::sync_with_stdio(false);//cin、cout优化 while (cin &gt;&gt; a[++cnt]) ; cnt--; //求第一问 for (int i = 1; i &lt;= cnt; i++) &#123; f[i] = 1; for (int j = 1; j &lt; i; j++) &#123; if (a[i] &lt;= a[j]) f[i] = max(f[i], f[j] + 1); &#125; &#125; for (int i = 1; i &lt;= cnt; i++) _max = max(_max, f[i]); cout &lt;&lt; _max &lt;&lt; endl; //求第二问 for (int i = 1; i &lt;= cnt; i++) &#123; int wh = 0; _max = 0x7f7f7f7f; for (int j = 1; j &lt;= sum; j++) &#123; if (ar[j] &gt;= a[i] &amp;&amp; ar[j] &lt; _max) &#123; _max = ar[j]; wh = j; &#125; &#125; if (!wh) ar[++sum] = a[i]; else ar[wh] = a[i]; &#125; cout &lt;&lt; sum &lt;&lt; endl; return 0;&#125;]]></content>
       <tags>
+        <tag>贪心</tag>
         <tag>DP</tag>
         <tag>洛谷</tag>
-        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[About]]></title>
     <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[Blog基于Hexo搭建，使用NexT.Pisces主题，使用GitHub Pages托管网页。 简介个人信息即将初三，赴江苏省丹阳高级中学学习 操作系统Microsoft Windows 10 EnterpriseVMWare + Ubuntu IDEMicrosoft Visual Studio Enterprise 2017 编译器MinGW-GCCVC++Python 3.6 编辑器Notepad++AtomVisual Studio Code Tags月厨东方厨OIer二次元重度依赖症患者and so on…]]></content>
+    <content type="text"><![CDATA[Blog三司同学最可爱啦QAQ 基于Hexo搭建，使用NexT.Pisces主题，使用GitHub Pages托管网页。 简介个人信息即将初三，赴江苏省丹阳高级中学学习 操作系统Microsoft Windows 10 EnterpriseVMWare + Ubuntu IDEMicrosoft Visual Studio Enterprise 2017 编译器MinGW-GCCVC++Python 3.6 编辑器Notepad++AtomVisual Studio Code TagsOIer月厨东方厨柚子厨]]></content>
   </entry>
   <entry>
     <title><![CDATA[tags]]></title>
