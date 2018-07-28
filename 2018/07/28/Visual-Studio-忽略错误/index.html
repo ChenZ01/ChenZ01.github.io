@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Visual Studio," />
 
 
 
@@ -94,17 +94,18 @@
 
 
 
-<meta name="description" content="题外话这个搜索功能坑了我好久…… 正文Step 1$ npm install hexo-generator-searchdb --save Step 2打开站点根目录_config.yml Step 3在文末加上 search:   path: search.xml   field: all   format: htm">
+<meta name="description" content="正文问题用Visual Studio写程序时，OI界选手都知道freopen(&quot;file&quot;,&quot;r&quot;,stdin);freopen(&quot;file&quot;,&quot;w,&quot;stdout); 是比赛时必不可少的然而你用VS编译时会报错，显示freopen不安全，">
+<meta name="keywords" content="Visual Studio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 添加搜索功能">
-<meta property="og:url" content="http://yoursite.com/2018/04/07/Hexo-添加搜索功能/index.html">
+<meta property="og:title" content="Visual Studio 忽略错误">
+<meta property="og:url" content="http://yoursite.com/2018/07/28/Visual-Studio-忽略错误/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="题外话这个搜索功能坑了我好久…… 正文Step 1$ npm install hexo-generator-searchdb --save Step 2打开站点根目录_config.yml Step 3在文末加上 search:   path: search.xml   field: all   format: html   limit: 10000 Step 4打开NexT主题_config.y">
+<meta property="og:description" content="正文问题用Visual Studio写程序时，OI界选手都知道freopen(&quot;file&quot;,&quot;r&quot;,stdin);freopen(&quot;file&quot;,&quot;w,&quot;stdout); 是比赛时必不可少的然而你用VS编译时会报错，显示freopen不安全，要用freopen_s然而不会用怎么办？我们选择手动忽略错误 解决#pragma warning(disable:4996) 这句话用于忽略报freopen错的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-29T01:21:08.468Z">
+<meta property="og:updated_time" content="2018-07-28T09:57:01.735Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo 添加搜索功能">
-<meta name="twitter:description" content="题外话这个搜索功能坑了我好久…… 正文Step 1$ npm install hexo-generator-searchdb --save Step 2打开站点根目录_config.yml Step 3在文末加上 search:   path: search.xml   field: all   format: html   limit: 10000 Step 4打开NexT主题_config.y">
+<meta name="twitter:title" content="Visual Studio 忽略错误">
+<meta name="twitter:description" content="正文问题用Visual Studio写程序时，OI界选手都知道freopen(&quot;file&quot;,&quot;r&quot;,stdin);freopen(&quot;file&quot;,&quot;w,&quot;stdout); 是比赛时必不可少的然而你用VS编译时会报错，显示freopen不安全，要用freopen_s然而不会用怎么办？我们选择手动忽略错误 解决#pragma warning(disable:4996) 这句话用于忽略报freopen错的">
 
 
 
@@ -133,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/07/Hexo-添加搜索功能/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/28/Visual-Studio-忽略错误/"/>
 
 
 
 
 
-  <title>Hexo 添加搜索功能 | ChenZ01</title>
+  <title>Visual Studio 忽略错误 | ChenZ01</title>
   
 
 
@@ -309,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/07/Hexo-添加搜索功能/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/28/Visual-Studio-忽略错误/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ChenZ01">
@@ -326,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hexo 添加搜索功能</h1>
+          <h1 class="post-title" itemprop="name headline">Visual Studio 忽略错误</h1>
         
 
         <div class="post-meta">
@@ -338,8 +339,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-07T16:49:39+08:00">
-                2018-04-07
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-28T17:50:28+08:00">
+                2018-07-28
               </time>
             
 
@@ -376,17 +377,10 @@
       
 
       
-        <h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>这个搜索功能坑了我好久……</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="Step-1"><a href="#Step-1" class="headerlink" title="Step 1"></a>Step 1</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
-<h2 id="Step-2"><a href="#Step-2" class="headerlink" title="Step 2"></a>Step 2</h2><p>打开<strong>站点根目录</strong>_config.yml</p>
-<h2 id="Step-3"><a href="#Step-3" class="headerlink" title="Step 3"></a>Step 3</h2><p>在文末加上</p>
-<pre><code>search:
-  path: search.xml
-  field: all
-  format: html
-  limit: 10000
-</code></pre><h2 id="Step-4"><a href="#Step-4" class="headerlink" title="Step 4"></a>Step 4</h2><p>打开<strong>NexT主题</strong>_config.yml</p>
-<h2 id="Step-5"><a href="#Step-5" class="headerlink" title="Step 5"></a>Step 5</h2><p>找到local_search，将enable改为true</p>
+        <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>用Visual Studio写程序时，OI界选手都知道<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">freopen(<span class="string">"file"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">freopen(<span class="string">"file"</span>,<span class="string">"w,"</span><span class="built_in">stdout</span>);</span><br></pre></td></tr></table></figure></p>
+<p>是比赛时必不可少的<br>然而你用VS编译时会报错，显示freopen不安全，要用freopen_s<br>然而不会用怎么办？我们选择手动忽略错误</p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> <span class="meta-keyword">warning</span>(disable:4996)</span></span><br></pre></td></tr></table></figure>
+<p>这句话用于忽略报freopen错的C4996错误信息<br>其余错误信息同理</p>
 
       
     </div>
@@ -402,6 +396,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Visual-Studio/" rel="tag"># Visual Studio</a>
+          
+        </div>
+      
 
       
       
@@ -411,8 +411,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/07/Windows-任务栏透明优化/" rel="next" title="Windows 任务栏透明优化">
-                <i class="fa fa-chevron-left"></i> Windows 任务栏透明优化
+              <a href="/2018/07/28/编译器的一般食用方法/" rel="next" title="编译器的一般食用方法">
+                <i class="fa fa-chevron-left"></i> 编译器的一般食用方法
               </a>
             
           </div>
@@ -420,10 +420,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/10/数学-等差数列初步/" rel="prev" title="数学 等差数列初步">
-                数学 等差数列初步 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -594,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题外话"><span class="nav-number">1.</span> <span class="nav-text">题外话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1"><span class="nav-number">2.1.</span> <span class="nav-text">Step 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2"><span class="nav-number">2.2.</span> <span class="nav-text">Step 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3"><span class="nav-number">2.3.</span> <span class="nav-text">Step 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4"><span class="nav-number">2.4.</span> <span class="nav-text">Step 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-5"><span class="nav-number">2.5.</span> <span class="nav-text">Step 5</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">1.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题"><span class="nav-number">1.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决"><span class="nav-number">1.2.</span> <span class="nav-text">解决</span></a></li></ol></li></ol></div>
             
 
           </div>
