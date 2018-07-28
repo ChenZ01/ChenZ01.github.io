@@ -100,12 +100,12 @@
 <meta property="og:title" content="「NOIP2016」普及组复赛解题报告">
 <meta property="og:url" content="http://yoursite.com/2017/10/18/NOIP-2016普及组复赛解题报告/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="题目链接百度网盘 P1 买铅笔题解这题分外水啊……几个if就可以AC。考试时3分钟敲完……但今年懒得用if写了十几分钟…… 代码#include&amp;lt;iostream&amp;gt;#include&amp;lt;algorithm&amp;gt;using namespace std;int n, ans;int main(int argc, char ** argv)&amp;#123;	freopen(&quot;pencil.">
+<meta property="og:description" content="题目链接百度网盘 P1 买铅笔题解这题分外水啊……几个if就可以AC。考试时3分钟敲完……但今年懒得用if写了十几分钟…… 代码#include&amp;lt;iostream&amp;gt;#include&amp;lt;algorithm&amp;gt;using namespace std;int n, ans;int main(int argc, char ** argv)&amp;#123;	freopen(&quot;pencil.i">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-04-29T01:20:43.360Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「NOIP2016」普及组复赛解题报告">
-<meta name="twitter:description" content="题目链接百度网盘 P1 买铅笔题解这题分外水啊……几个if就可以AC。考试时3分钟敲完……但今年懒得用if写了十几分钟…… 代码#include&amp;lt;iostream&amp;gt;#include&amp;lt;algorithm&amp;gt;using namespace std;int n, ans;int main(int argc, char ** argv)&amp;#123;	freopen(&quot;pencil.">
+<meta name="twitter:description" content="题目链接百度网盘 P1 买铅笔题解这题分外水啊……几个if就可以AC。考试时3分钟敲完……但今年懒得用if写了十几分钟…… 代码#include&amp;lt;iostream&amp;gt;#include&amp;lt;algorithm&amp;gt;using namespace std;int n, ans;int main(int argc, char ** argv)&amp;#123;	freopen(&quot;pencil.i">
 
 
 
@@ -377,7 +377,7 @@
       
 
       
-        <script src="\assets\js\APlayer.min.js"> </script><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://pan.baidu.com/s/1hs2AdDi" target="_blank" rel="noopener">百度网盘</a></p>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://pan.baidu.com/s/1hs2AdDi" target="_blank" rel="noopener">百度网盘</a></p>
 <h2 id="P1-买铅笔"><a href="#P1-买铅笔" class="headerlink" title="P1 买铅笔"></a>P1 买铅笔</h2><h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>这题分外水啊……几个if就可以AC。考试时3分钟敲完……但今年懒得用if写了十几分钟……</p>
 <h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n, ans;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> ** argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	freopen(<span class="string">"pencil.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">	freopen(<span class="string">"pencil.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</span><br><span class="line">	ans = <span class="number">0x7f7f7f7f</span>;</span><br><span class="line">	<span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">3</span>; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> num, cost;</span><br><span class="line">		<span class="built_in">cin</span> &gt;&gt; num &gt;&gt; cost;</span><br><span class="line">		ans = min(ans, (n / num + ((<span class="keyword">bool</span>)(n - (n / num)*num)))*cost);</span><br><span class="line">		<span class="comment">//(bool)将int类余数强制转换成bool，若n能整除num（即不用再多买），则余数为0（false）。</span></span><br><span class="line">		<span class="comment">//否则表达式的值就是true（非0即真），要多买一盒。</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="P2-回文日期"><a href="#P2-回文日期" class="headerlink" title="P2 回文日期"></a>P2 回文日期</h2><h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><p>考试的时候敲了16KB（是的，你没看错，16KB），搞得监考老师查程序的时候差点叫出来……万幸的是AC了……<br>解此题有两种方法。<br>1、穷举日期（00000000~99999999），加上一堆检查，时间复杂度≈\(O(2×10^8)\)，比较险。<br>2、穷举年份。因为每个年份存在多个日期，但只可能存在一个<strong>回文</strong>的，所以只要穷举年份，构造出回文日期，再判断是否合法即可。</p>
@@ -505,7 +505,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

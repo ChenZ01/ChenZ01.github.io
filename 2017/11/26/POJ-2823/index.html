@@ -100,12 +100,12 @@
 <meta property="og:title" content="「POJ 2823」 Sliding Window">
 <meta property="og:url" content="http://yoursite.com/2017/11/26/POJ-2823/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="题外话这题提交方式很玄学……C++交就TLE，改成G++就AC了…… 题目链接POJ 2823 题解首先我们想到暴力模拟，妥妥的TLE，加上POJ老掉牙的机器，不知道T成什么样了……既然模拟不可行，那么我们只能考虑一种新的方法。目前我们貌似没有掌握一种算法能快速算区间最大值的，因此我们只能从数据结构入手。堆？你怎么确定元素是否超出窗口边界？用struct？那还怎么用STL的priority_qu">
+<meta property="og:description" content="题外话这题提交方式很玄学……C++交就TLE，改成G++就AC了…… 题目链接POJ 2823 题解首先我们想到暴力模拟，妥妥的TLE，加上POJ老掉牙的机器，不知道T成什么样了……既然模拟不可行，那么我们只能考虑一种新的方法。目前我们貌似没有掌握一种算法能快速算区间最大值的，因此我们只能从数据结构入手。堆？你怎么确定元素是否超出窗口边界？用struct？那还怎么用STL的priority_que">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-04-29T01:18:50.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「POJ 2823」 Sliding Window">
-<meta name="twitter:description" content="题外话这题提交方式很玄学……C++交就TLE，改成G++就AC了…… 题目链接POJ 2823 题解首先我们想到暴力模拟，妥妥的TLE，加上POJ老掉牙的机器，不知道T成什么样了……既然模拟不可行，那么我们只能考虑一种新的方法。目前我们貌似没有掌握一种算法能快速算区间最大值的，因此我们只能从数据结构入手。堆？你怎么确定元素是否超出窗口边界？用struct？那还怎么用STL的priority_qu">
+<meta name="twitter:description" content="题外话这题提交方式很玄学……C++交就TLE，改成G++就AC了…… 题目链接POJ 2823 题解首先我们想到暴力模拟，妥妥的TLE，加上POJ老掉牙的机器，不知道T成什么样了……既然模拟不可行，那么我们只能考虑一种新的方法。目前我们貌似没有掌握一种算法能快速算区间最大值的，因此我们只能从数据结构入手。堆？你怎么确定元素是否超出窗口边界？用struct？那还怎么用STL的priority_que">
 
 
 
@@ -377,7 +377,7 @@
       
 
       
-        <script src="\assets\js\APlayer.min.js"> </script><h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>这题提交方式很玄学……C++交就TLE，改成G++就AC了……</p>
+        <h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>这题提交方式很玄学……C++交就TLE，改成G++就AC了……</p>
 <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://poj.org/problem?id=2823" target="_blank" rel="noopener">POJ 2823</a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先我们想到暴力模拟，妥妥的TLE，加上POJ老掉牙的机器，不知道T成什么样了……<br>既然模拟不可行，那么我们只能考虑一种新的方法。目前我们貌似没有掌握一种算法能快速算区间最大值的，因此我们只能从数据结构入手。<br>堆？你怎么确定元素是否超出窗口边界？用struct？那还怎么用STL的priority_queue？<br>线段树？和堆一样的问题（怎么删除超出边界的元素）。<br>我们发现，我们需要的是一种<br>    能支持\(O(1)\)输出队列最大值<br>    具有队列的一切功能（进队、出队）<br>    要实现这两个功能，我们只能请出新的角色——<br><strong>单调队列</strong></p>
 <h3 id="单调队列"><a href="#单调队列" class="headerlink" title="单调队列"></a>单调队列</h3><p>上文已经说明单调队列的作用了，接下来我们要讨论如何实现单调队列。<br>首先队列清空（这里有个坑，留待你发掘）。<br>遇到即将入队的新元素，将它与队尾元素比较，如果大于队尾元素就不断弹出队尾元素，直到队尾元素大于即将入队的元素位置。<br>新元素进队。<br>保证队列元素都在规定范围内：判断队首元素是否超过边界，若超过，就不断弹出队首元素，直到队首元素在规定范围内。<br>规定范围内的最大值就是该队列的队首元素。<br>由于要实现两端都能出队的队列，只能挥泪告别STL，迎接手写queue了……</p>
@@ -502,7 +502,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

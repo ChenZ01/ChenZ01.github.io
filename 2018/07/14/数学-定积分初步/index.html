@@ -100,12 +100,12 @@
 <meta property="og:title" content="数学 定积分初步">
 <meta property="og:url" content="http://yoursite.com/2018/07/14/数学-定积分初步/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="正文引入前两篇数学博文研究了曲边梯形面积和等差数列，各有一个悬而未决的问题。曲边梯形面积探究我们还未深入，等差数列我们未推导出求积公式。此次探究将全部解决！ AttentionAttention!本博客较之前的两篇数学博客，定义要多得多，且较为抽象，请带好纸笔画图！但是理解完本博客，你就完成了数学的伟大跨越！ 导数平均变化率对于一条直线，其斜率可很好的描述其倾斜程度斜率$k=\frac{\Del">
+<meta property="og:description" content="正文引入前两篇数学博文研究了曲边梯形面积和等差数列，各有一个悬而未决的问题。曲边梯形面积探究我们还未深入，等差数列我们未推导出求积公式。此次探究将全部解决！ AttentionAttention!本博客较之前的两篇数学博客，定义要多得多，且较为抽象，请带好纸笔画图！但是理解完本博客，你就完成了数学的伟大跨越！ 导数平均变化率对于一条直线，其斜率可很好的描述其倾斜程度斜率$k=\frac{\Delt">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-07-14T09:10:57.319Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数学 定积分初步">
-<meta name="twitter:description" content="正文引入前两篇数学博文研究了曲边梯形面积和等差数列，各有一个悬而未决的问题。曲边梯形面积探究我们还未深入，等差数列我们未推导出求积公式。此次探究将全部解决！ AttentionAttention!本博客较之前的两篇数学博客，定义要多得多，且较为抽象，请带好纸笔画图！但是理解完本博客，你就完成了数学的伟大跨越！ 导数平均变化率对于一条直线，其斜率可很好的描述其倾斜程度斜率$k=\frac{\Del">
+<meta name="twitter:description" content="正文引入前两篇数学博文研究了曲边梯形面积和等差数列，各有一个悬而未决的问题。曲边梯形面积探究我们还未深入，等差数列我们未推导出求积公式。此次探究将全部解决！ AttentionAttention!本博客较之前的两篇数学博客，定义要多得多，且较为抽象，请带好纸笔画图！但是理解完本博客，你就完成了数学的伟大跨越！ 导数平均变化率对于一条直线，其斜率可很好的描述其倾斜程度斜率$k=\frac{\Delt">
 
 
 
@@ -377,7 +377,7 @@
       
 
       
-        <script src="\assets\js\APlayer.min.js"> </script><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>前两篇数学博文研究了曲边梯形面积和等差数列，各有一个悬而未决的问题。<br>曲边梯形面积探究我们还未深入，等差数列我们未推导出求积公式。<br>此次探究将全部解决！</p>
+        <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>前两篇数学博文研究了曲边梯形面积和等差数列，各有一个悬而未决的问题。<br>曲边梯形面积探究我们还未深入，等差数列我们未推导出求积公式。<br>此次探究将全部解决！</p>
 <h2 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h2><p>Attention!<br>本博客较之前的两篇数学博客，定义要多得多，且较为抽象，请带好纸笔画图！<br>但是理解完本博客，你就完成了数学的伟大跨越！</p>
 <h2 id="导数"><a href="#导数" class="headerlink" title="导数"></a>导数</h2><h3 id="平均变化率"><a href="#平均变化率" class="headerlink" title="平均变化率"></a>平均变化率</h3><p>对于一条直线，其斜率可很好的描述其倾斜程度<br>斜率$k=\frac{\Delta y}{\Delta x}=\tan \theta$<br>相似的，我们也可以用这种方式计算一条曲线的倾斜程度，该比值称为这段曲线的<strong>平均变化率</strong><br>在此给出平均变化率的准确定义：<br>一般地，函数$f(x)$在区间$[x_1,x_2]$上的平均变化率为$$\frac{f(x_2)-f(x_1)}{x_2-x_1}$$<br>平均变化率为负代表曲线图像下降</p>
 <h3 id="割线、切线"><a href="#割线、切线" class="headerlink" title="割线、切线"></a>割线、切线</h3><p>设$P(x,f(x))$为曲线$C$上一点，$Q$为曲线$C$上不同于$P$的一点，这时，<strong>直线$PQ$</strong>称为曲线$C$的<strong>割线</strong><br>可以想象，当点$Q$无限逼近点$P$时，直线$PQ$最终将成为在点$P$处最逼近曲线的直线$l$，这条直线$l$称为曲线<strong>在点$P$处的切线</strong><br>计算割线斜率$$k=\frac{f(x+\Delta x)-f(x)}{(x+\Delta x)-x}=\frac{f(x+\Delta x)-f(x)}{\Delta x}$$<br>当$PQ$逼近$l$时，即$\Delta x\to 0$时，$\frac{f(x+\Delta x)-f(x)}{\Delta x}$无限趋近于点$P$处的切线的斜率</p>
@@ -524,7 +524,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

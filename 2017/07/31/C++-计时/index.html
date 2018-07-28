@@ -100,12 +100,12 @@
 <meta property="og:title" content="「C++技巧」 计时">
 <meta property="og:url" content="http://yoursite.com/2017/07/31/C++-计时/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="说明计时可以在C++里面方便地实现，可以在诸如NOIP、NOI之类的比赛中了解算法最坏运算时间。当然，如果对于自己算法的时间复杂度很有信心的话（\(O(N)\)之类的）请移步……不过如果复杂度到了\(O(N^2)\)或\(O(N \log N)\)的级别的话还是建议测一下，前提是你会敲……毕竟第2、3种方法比较复杂，考试时用的是Dev-C++又不是Visual Studio。 方法1用time(">
+<meta property="og:description" content="说明计时可以在C++里面方便地实现，可以在诸如NOIP、NOI之类的比赛中了解算法最坏运算时间。当然，如果对于自己算法的时间复杂度很有信心的话（\(O(N)\)之类的）请移步……不过如果复杂度到了\(O(N^2)\)或\(O(N \log N)\)的级别的话还是建议测一下，前提是你会敲……毕竟第2、3种方法比较复杂，考试时用的是Dev-C++又不是Visual Studio。 方法1用time()">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-04-29T01:21:25.759Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「C++技巧」 计时">
-<meta name="twitter:description" content="说明计时可以在C++里面方便地实现，可以在诸如NOIP、NOI之类的比赛中了解算法最坏运算时间。当然，如果对于自己算法的时间复杂度很有信心的话（\(O(N)\)之类的）请移步……不过如果复杂度到了\(O(N^2)\)或\(O(N \log N)\)的级别的话还是建议测一下，前提是你会敲……毕竟第2、3种方法比较复杂，考试时用的是Dev-C++又不是Visual Studio。 方法1用time(">
+<meta name="twitter:description" content="说明计时可以在C++里面方便地实现，可以在诸如NOIP、NOI之类的比赛中了解算法最坏运算时间。当然，如果对于自己算法的时间复杂度很有信心的话（\(O(N)\)之类的）请移步……不过如果复杂度到了\(O(N^2)\)或\(O(N \log N)\)的级别的话还是建议测一下，前提是你会敲……毕竟第2、3种方法比较复杂，考试时用的是Dev-C++又不是Visual Studio。 方法1用time()">
 
 
 
@@ -377,7 +377,7 @@
       
 
       
-        <script src="\assets\js\APlayer.min.js"> </script><h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>计时可以在C++里面方便地实现，可以在诸如NOIP、NOI之类的比赛中了解算法最坏运算时间。<br>当然，如果对于自己算法的时间复杂度很有信心的话（\(O(N)\)之类的）请移步……不过如果复杂度到了\(O(N^2)\)或\(O(N \log N)\)的级别的话还是建议测一下，前提是你会敲……毕竟第2、3种方法比较复杂，考试时用的是Dev-C++又不是Visual Studio。</p>
+        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>计时可以在C++里面方便地实现，可以在诸如NOIP、NOI之类的比赛中了解算法最坏运算时间。<br>当然，如果对于自己算法的时间复杂度很有信心的话（\(O(N)\)之类的）请移步……不过如果复杂度到了\(O(N^2)\)或\(O(N \log N)\)的级别的话还是建议测一下，前提是你会敲……毕竟第2、3种方法比较复杂，考试时用的是Dev-C++又不是Visual Studio。</p>
 <h2 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h2><p>用time()函数获取当前系统时间。<br>time()函数返回的是<strong>time_t</strong>类型的数据，返回值是从1970年1月1日（UNIX TIME的纪元时间）到当前时刻的秒数。</p>
 <h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;time.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">time_t</span> st, ed;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">300000000</span>; i++)</span><br><span class="line">		;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	st = time(<span class="literal">NULL</span>);</span><br><span class="line">	work();</span><br><span class="line">	ed = time(<span class="literal">NULL</span>);</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"Use Time : "</span> &lt;&lt; ed - st &lt;&lt; <span class="string">" Sec."</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出：</p>
@@ -514,7 +514,7 @@ End   Time : 2017/8/1 20:55:51:209 Week2
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

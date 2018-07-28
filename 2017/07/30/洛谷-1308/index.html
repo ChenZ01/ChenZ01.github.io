@@ -100,12 +100,12 @@
 <meta property="og:title" content="「洛谷 1308」 统计单词数">
 <meta property="og:url" content="http://yoursite.com/2017/07/30/洛谷-1308/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="题外话这题坑了我好久……谁说分到“简单”字符串的？？？ 题目链接洛谷 1308 题解本题考点是字符串的操作。两种解法：一是读完文章再操作，二是边读边操作。由于第一种方法用的标准函数较多，就写第一种了（虽然第二种较优），有兴趣的可以尝试第二种（实际上是我懒得写第二种了）。 细节如果使用algorithm里的transform函数的话要注意函数的意义：第1、2个参数是字符串的起始、结束位置。第3个参">
+<meta property="og:description" content="题外话这题坑了我好久……谁说分到“简单”字符串的？？？ 题目链接洛谷 1308 题解本题考点是字符串的操作。两种解法：一是读完文章再操作，二是边读边操作。由于第一种方法用的标准函数较多，就写第一种了（虽然第二种较优），有兴趣的可以尝试第二种（实际上是我懒得写第二种了）。 细节如果使用algorithm里的transform函数的话要注意函数的意义：第1、2个参数是字符串的起始、结束位置。第3个参数">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-04-29T01:17:34.818Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「洛谷 1308」 统计单词数">
-<meta name="twitter:description" content="题外话这题坑了我好久……谁说分到“简单”字符串的？？？ 题目链接洛谷 1308 题解本题考点是字符串的操作。两种解法：一是读完文章再操作，二是边读边操作。由于第一种方法用的标准函数较多，就写第一种了（虽然第二种较优），有兴趣的可以尝试第二种（实际上是我懒得写第二种了）。 细节如果使用algorithm里的transform函数的话要注意函数的意义：第1、2个参数是字符串的起始、结束位置。第3个参">
+<meta name="twitter:description" content="题外话这题坑了我好久……谁说分到“简单”字符串的？？？ 题目链接洛谷 1308 题解本题考点是字符串的操作。两种解法：一是读完文章再操作，二是边读边操作。由于第一种方法用的标准函数较多，就写第一种了（虽然第二种较优），有兴趣的可以尝试第二种（实际上是我懒得写第二种了）。 细节如果使用algorithm里的transform函数的话要注意函数的意义：第1、2个参数是字符串的起始、结束位置。第3个参数">
 
 
 
@@ -377,7 +377,7 @@
       
 
       
-        <script src="\assets\js\APlayer.min.js"> </script><h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>这题坑了我好久……<br>谁说分到“简单”字符串的？？？</p>
+        <h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>这题坑了我好久……<br>谁说分到“简单”字符串的？？？</p>
 <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://www.luogu.org/problem/show?pid=1308" target="_blank" rel="noopener">洛谷 1308</a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>本题考点是字符串的操作。两种解法：一是读完文章再操作，二是边读边操作。由于第一种方法用的标准函数较多，就写第一种了（虽然第二种较优），有兴趣的可以尝试第二种（实际上是我懒得写第二种了）。</p>
 <h3 id="细节"><a href="#细节" class="headerlink" title="细节"></a>细节</h3><p>如果使用algorithm里的transform函数的话要注意函数的意义：<br>第1、2个参数是字符串的起始、结束位置。<br>第3个参数是开始应用转换的位置。<br>第4个参数是执行的操作（toupper/tolower）。<br>还有一点，如果直接写成“transform(string.begin(), string.end(), string.begin(), tolower);”这样的话提交至OJ有可能出错：<br>“error: no matching function for call to ‘transform(std::basic_string<char>::iterator, std::basic_string<char>::iterator, std::basic_string<char>::iterator, <unresolved overloaded="" function="" type="">)’”<br>这里就需要将C++的函数强制改为C的（本是同根生，相煎何太急……）：<br>transform(string.begin(), string.end(), string.begin(), <strong>::tolower</strong>);</unresolved></char></char></char></p>
@@ -502,7 +502,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

@@ -100,12 +100,12 @@
 <meta property="og:title" content="「洛谷 1020」 导弹拦截">
 <meta property="og:url" content="http://yoursite.com/2017/07/20/洛谷-1020/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="题目链接洛谷 1020 题解这题分两问，在大意中已很明确地分析出来了。接下来，让我们分问题讨论。 第一问对于第一问，很显然是DP。设\(f(i)\)表示从\(1\)~\(i\)以\(i\)结尾（取\(i\)）的最长不上升子序列的最长长度\((i≤n)\)。由于是\(1\)~\(i\)这些导弹，所以有必要再加一层循环，判断第\(j\)发导弹是否能打。得DP方程： \(f(i)=max(f(i),f">
+<meta property="og:description" content="题目链接洛谷 1020 题解这题分两问，在大意中已很明确地分析出来了。接下来，让我们分问题讨论。 第一问对于第一问，很显然是DP。设\(f(i)\)表示从\(1\)~\(i\)以\(i\)结尾（取\(i\)）的最长不上升子序列的最长长度\((i≤n)\)。由于是\(1\)~\(i\)这些导弹，所以有必要再加一层循环，判断第\(j\)发导弹是否能打。得DP方程： \(f(i)=max(f(i),f(">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-04-29T01:17:50.865Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「洛谷 1020」 导弹拦截">
-<meta name="twitter:description" content="题目链接洛谷 1020 题解这题分两问，在大意中已很明确地分析出来了。接下来，让我们分问题讨论。 第一问对于第一问，很显然是DP。设\(f(i)\)表示从\(1\)~\(i\)以\(i\)结尾（取\(i\)）的最长不上升子序列的最长长度\((i≤n)\)。由于是\(1\)~\(i\)这些导弹，所以有必要再加一层循环，判断第\(j\)发导弹是否能打。得DP方程： \(f(i)=max(f(i),f">
+<meta name="twitter:description" content="题目链接洛谷 1020 题解这题分两问，在大意中已很明确地分析出来了。接下来，让我们分问题讨论。 第一问对于第一问，很显然是DP。设\(f(i)\)表示从\(1\)~\(i\)以\(i\)结尾（取\(i\)）的最长不上升子序列的最长长度\((i≤n)\)。由于是\(1\)~\(i\)这些导弹，所以有必要再加一层循环，判断第\(j\)发导弹是否能打。得DP方程： \(f(i)=max(f(i),f(">
 
 
 
@@ -377,7 +377,7 @@
       
 
       
-        <script src="\assets\js\APlayer.min.js"> </script><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://www.luogu.org/problem/show?pid=1020" target="_blank" rel="noopener">洛谷 1020</a></p>
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://www.luogu.org/problem/show?pid=1020" target="_blank" rel="noopener">洛谷 1020</a></p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这题分两问，在大意中已很明确地分析出来了。接下来，让我们分问题讨论。</p>
 <h3 id="第一问"><a href="#第一问" class="headerlink" title="第一问"></a>第一问</h3><p>对于第一问，很显然是DP。<br>设\(f(i)\)表示从\(1\)~\(i\)以\(i\)结尾（取\(i\)）的最长不上升子序列的最长长度\((i≤n)\)。由于是\(1\)~\(i\)这些导弹，所以有必要再加一层循环，判断第\(j\)发导弹是否能打。<br>得DP方程： \(f(i)=max(f(i),f(j+1)),\;a_i≤a_j,\,j&lt;i\)</p>
 <h3 id="第二问"><a href="#第二问" class="headerlink" title="第二问"></a>第二问</h3><p>第二问可以用贪心解决。一遍循环，将当前\(a_i,\,1≤i≤n\)与在数组\(ar\)中最小的不小于\(a_i\)的编号\(k\)与值记录下来，存入\(ar_k\)中。若无此值，则再加一个元素。最后统计\(ar\)数组元素个数即可。</p>
@@ -500,7 +500,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
