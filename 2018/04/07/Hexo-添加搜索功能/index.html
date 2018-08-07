@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Hexo," />
 
 
 
@@ -95,13 +95,14 @@
 
 
 <meta name="description" content="题外话这个搜索功能坑了我好久…… 正文Step 1$ npm install hexo-generator-searchdb --save Step 2打开站点根目录_config.yml Step 3在文末加上 search:   path: search.xml   field: all   format: htm">
+<meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo 添加搜索功能">
 <meta property="og:url" content="http://yoursite.com/2018/04/07/Hexo-添加搜索功能/index.html">
 <meta property="og:site_name" content="ChenZ01">
 <meta property="og:description" content="题外话这个搜索功能坑了我好久…… 正文Step 1$ npm install hexo-generator-searchdb --save Step 2打开站点根目录_config.yml Step 3在文末加上 search:   path: search.xml   field: all   format: html   limit: 10000 Step 4打开NexT主题_config.y">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-29T01:21:08.468Z">
+<meta property="og:updated_time" content="2018-08-07T09:08:04.332Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo 添加搜索功能">
 <meta name="twitter:description" content="题外话这个搜索功能坑了我好久…… 正文Step 1$ npm install hexo-generator-searchdb --save Step 2打开站点根目录_config.yml Step 3在文末加上 search:   path: search.xml   field: all   format: html   limit: 10000 Step 4打开NexT主题_config.y">
@@ -209,6 +210,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
           </a>
         </li>
       
@@ -349,6 +360,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -401,6 +434,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
+        </div>
       
 
       
@@ -500,12 +539,21 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
           
 
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
           
 
           
@@ -513,7 +561,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
