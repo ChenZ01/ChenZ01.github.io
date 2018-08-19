@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Math," />
+  <meta name="keywords" content="HDU,线段树," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="引用说明本文引用的定义皆出自中文维基百科 正文定义 等差数列（又名算术数列）是数列的一种。在等差数列中，任何相邻两项的差相等。该差值称为公差。  我们设一等差数列为$\lbrace a\rbrace$ 公差公式由于等差数列相邻两项差值为$d$，可知第$a_n$与$a_m(m&amp;lt;n)$之间相差$(n-m)$个">
-<meta name="keywords" content="Math">
+<meta name="description" content="题外话弃用cin（除了读long long的时候），改回scanf 题目链接HDU 1698 题解区间修改+区间求和，果断线段树区间修改注意不能退化成单点修改，需使用lazy-tag（即val数组） 代码#include &amp;lt;iostream&amp;gt;using namespace std;#prag">
+<meta name="keywords" content="HDU,线段树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数学 等差数列初步">
-<meta property="og:url" content="http://yoursite.com/2018/06/10/数学-等差数列初步/index.html">
+<meta property="og:title" content="「HDU 1698」Just a Hook">
+<meta property="og:url" content="http://yoursite.com/2018/08/19/HDU-1698/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="引用说明本文引用的定义皆出自中文维基百科 正文定义 等差数列（又名算术数列）是数列的一种。在等差数列中，任何相邻两项的差相等。该差值称为公差。  我们设一等差数列为$\lbrace a\rbrace$ 公差公式由于等差数列相邻两项差值为$d$，可知第$a_n$与$a_m(m&amp;lt;n)$之间相差$(n-m)$个$d$由此，我们得到：$$d=\frac{a_n-a_m}{n-m}$$ 通项公式由于等">
+<meta property="og:description" content="题外话弃用cin（除了读long long的时候），改回scanf 题目链接HDU 1698 题解区间修改+区间求和，果断线段树区间修改注意不能退化成单点修改，需使用lazy-tag（即val数组） 代码#include &amp;lt;iostream&amp;gt;using namespace std;#pragma warning(disable:4996)int CASE, n, q, x, y, z;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-07T09:02:49.585Z">
+<meta property="og:updated_time" content="2018-08-19T06:16:19.977Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数学 等差数列初步">
-<meta name="twitter:description" content="引用说明本文引用的定义皆出自中文维基百科 正文定义 等差数列（又名算术数列）是数列的一种。在等差数列中，任何相邻两项的差相等。该差值称为公差。  我们设一等差数列为$\lbrace a\rbrace$ 公差公式由于等差数列相邻两项差值为$d$，可知第$a_n$与$a_m(m&amp;lt;n)$之间相差$(n-m)$个$d$由此，我们得到：$$d=\frac{a_n-a_m}{n-m}$$ 通项公式由于等">
+<meta name="twitter:title" content="「HDU 1698」Just a Hook">
+<meta name="twitter:description" content="题外话弃用cin（除了读long long的时候），改回scanf 题目链接HDU 1698 题解区间修改+区间求和，果断线段树区间修改注意不能退化成单点修改，需使用lazy-tag（即val数组） 代码#include &amp;lt;iostream&amp;gt;using namespace std;#pragma warning(disable:4996)int CASE, n, q, x, y, z;">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/10/数学-等差数列初步/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/19/HDU-1698/"/>
 
 
 
 
 
-  <title>数学 等差数列初步 | ChenZ01</title>
+  <title>「HDU 1698」Just a Hook | ChenZ01</title>
   
 
 
@@ -320,7 +320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/10/数学-等差数列初步/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/19/HDU-1698/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ChenZ01">
@@ -337,7 +337,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数学 等差数列初步</h1>
+          <h1 class="post-title" itemprop="name headline">「HDU 1698」Just a Hook</h1>
         
 
         <div class="post-meta">
@@ -349,8 +349,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-10T05:37:57+08:00">
-                2018-06-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-19T14:05:36+08:00">
+                2018-08-19
               </time>
             
 
@@ -372,8 +372,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Math/" itemprop="url" rel="index">
-                    <span itemprop="name">Math</span>
+                  <a href="/categories/OI/" itemprop="url" rel="index">
+                    <span itemprop="name">OI</span>
                   </a>
                 </span>
 
@@ -409,26 +409,10 @@
       
 
       
-        <h1 id="引用说明"><a href="#引用说明" class="headerlink" title="引用说明"></a>引用说明</h1><p>本文引用的定义皆出自<a href="https://zh.wikipedia.org/wiki/%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97" target="_blank" rel="noopener">中文维基百科</a></p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
-<p>等差数列（又名算术数列）是数列的一种。在等差数列中，任何相邻两项的差相等。该差值称为公差。</p>
-</blockquote>
-<p>我们设一等差数列为$\lbrace a\rbrace$</p>
-<h2 id="公差公式"><a href="#公差公式" class="headerlink" title="公差公式"></a>公差公式</h2><p>由于等差数列相邻两项差值为$d$，可知第$a_n$与$a_m(m&lt;n)$之间相差$(n-m)$个$d$<br>由此，我们得到：$$d=\frac{a_n-a_m}{n-m}$$</p>
-<h2 id="通项公式"><a href="#通项公式" class="headerlink" title="通项公式"></a>通项公式</h2><p>由于等差数列相邻两项差值为$d$，可知第$a_n$与$a_m(m&lt;n)$之间相差$(n-m)$个$d$<br>可得：$$a_n=a_m+(n-m)d$$</p>
-<h2 id="等差级数"><a href="#等差级数" class="headerlink" title="等差级数"></a>等差级数</h2><blockquote>
-<p>等差数列的和称为等差级数。</p>
-</blockquote>
-<h3 id="等差级数公式"><a href="#等差级数公式" class="headerlink" title="等差级数公式"></a>等差级数公式</h3><p>$$S_n=\frac{n(a_1+a_n)}{2}$$</p>
-<h4 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h4><h5 id="代数方法"><a href="#代数方法" class="headerlink" title="代数方法"></a>代数方法</h5><p>记等差数列$\lbrace a\rbrace$前$n$项的级数为$S_n$，可得：<br>$S_n=(a_1+0d)+(a_1+1d)+(a_1+2d)+\dots+(a_1+(n-1)d)$<br>$S_n=(a_n-(n-1)d)+(a_n-(n-2)d)+\dots+(a_n-d)+a_n$<br>二式相加，得：<br>$2S_n=na_1+na_n$<br>$\therefore S_n=\frac{n(a_1+a_n)}{2}$</p>
-<h5 id="几何方法"><a href="#几何方法" class="headerlink" title="几何方法"></a>几何方法</h5><p>我们可以这样想象：<br>$a_1$表示一个长为$a_1$、宽为$1$的长方形<br>$a_2$表示一个长为$a_2$、宽为$1$的长方形<br>$\dots$<br>$a_n$表示一个长为$a_n$、宽为$1$的长方形<br>于是$S_n$便相当于这$n$个长方形的面积和<br>把这$n$个长方形拼成一个直角梯形，根据梯形面积公式，得：<br>$S_n=\frac{n(a_1+a_n)}{2}$</p>
-<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><p>所有等差数列的等差级数均可表示为$S_n=pn^2+qn$的形式。</p>
-<h4 id="证明-1"><a href="#证明-1" class="headerlink" title="证明"></a>证明</h4><p>对于等差数列$\lbrace a\rbrace$，我们有：<br>\begin{align}<br>S_n&amp;=\frac{n(a_1+a_n)}{2}\\<br>&amp;=\frac{n(2a_1+(n-1)d)}{2}\\<br>&amp;=\frac{2na_1+n^2d-nd}{2}\\<br>&amp;=na_1+\frac{d}{2}n^2-\frac{d}{2}n\\<br>&amp;=\frac{d}{2}n^2+(a_1-\frac{d}{2})n<br>\end{align}<br>$\therefore p=\frac{d}{2},\,q=a_1-\frac{d}{2}=a_1-p$</p>
-<h2 id="命题"><a href="#命题" class="headerlink" title="命题"></a>命题</h2><h3 id="等差中项"><a href="#等差中项" class="headerlink" title="等差中项"></a>等差中项</h3><p>对于任意的正整数$n&gt;1$，都有$$a_{n-1}+a_{n+1}=2a_n$$</p>
-<h4 id="证明-2"><a href="#证明-2" class="headerlink" title="证明"></a>证明</h4><p>根据等差数列定义，得：<br>$a_{n-1}=a_n-d, a_{n+1}=a_n+d$<br>$\therefore a_{n-1}+a_{n+1}$<br>$=a_n-d+a_n+d$<br>$=2a_n$</p>
-<p>根据这个命题，我们可以推广：<br>若有三个正整数$a, b, c$，满足$a+c=2b$，则$a, b, c$可组成一公差为$b-a$的等差数列</p>
-<h3 id="等差数列的积"><a href="#等差数列的积" class="headerlink" title="等差数列的积"></a>等差数列的积</h3><p>由于太菜不会，这里先略过……</p>
-
+        <h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>弃用<code>cin</code>（除了读<code>long long</code>的时候），改回<code>scanf</code></p>
+<h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=1698" target="_blank" rel="noopener">HDU 1698</a></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>区间修改+区间求和，果断线段树<br>区间修改注意不能退化成单点修改，需使用<code>lazy-tag</code>（即<code>val</code>数组）</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> <span class="meta-keyword">warning</span>(disable:4996)</span></span><br><span class="line"><span class="keyword">int</span> CASE, n, q, x, y, z;</span><br><span class="line"><span class="keyword">int</span> sum[<span class="number">400010</span>];</span><br><span class="line"><span class="keyword">int</span> val[<span class="number">400010</span>];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	sum[root] = sum[root &lt;&lt; <span class="number">1</span>] + sum[root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> root, <span class="keyword">int</span> len)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (val[root])</span><br><span class="line">	&#123;</span><br><span class="line">		val[root &lt;&lt; <span class="number">1</span>] = val[root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>] = val[root];</span><br><span class="line">		sum[root &lt;&lt; <span class="number">1</span>] = val[root] * (len - (len &gt;&gt; <span class="number">1</span>));</span><br><span class="line">		sum[root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>] = val[root] * (len &gt;&gt; <span class="number">1</span>);</span><br><span class="line">		val[root] = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	val[root] = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (l == r)</span><br><span class="line">		sum[root] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		build(l, mid, root &lt;&lt; <span class="number">1</span>);</span><br><span class="line">		build(mid + <span class="number">1</span>, r, root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>);</span><br><span class="line">		pushup(root);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> root)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (l &gt;= x &amp;&amp; r &lt;= y)</span><br><span class="line">		sum[root] = z * (r - l + <span class="number">1</span>), val[root] = z;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		pushdown(root, r - l + <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (x &lt;= mid)</span><br><span class="line">			update(l, mid, root &lt;&lt; <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">if</span> (y &gt; mid)</span><br><span class="line">			update(mid + <span class="number">1</span>, r, root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>);</span><br><span class="line">		pushup(root);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> ** argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;CASE);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= CASE; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;q);</span><br><span class="line">		build(<span class="number">1</span>, n, <span class="number">1</span>);</span><br><span class="line">		<span class="keyword">while</span> (q--)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;z);</span><br><span class="line">			update(<span class="number">1</span>, n, <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"Case %d: The total value of the hook is %d.\n"</span>, i, sum[<span class="number">1</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -445,7 +429,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Math/" rel="tag"># Math</a>
+            <a href="/tags/HDU/" rel="tag"># HDU</a>
+          
+            <a href="/tags/线段树/" rel="tag"># 线段树</a>
           
         </div>
       
@@ -458,8 +444,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/07/Hexo-添加搜索功能/" rel="next" title="Hexo 添加搜索功能">
-                <i class="fa fa-chevron-left"></i> Hexo 添加搜索功能
+              <a href="/2018/08/07/HDU-1166/" rel="next" title="「HDU 1166」 敌兵布阵">
+                <i class="fa fa-chevron-left"></i> 「HDU 1166」 敌兵布阵
               </a>
             
           </div>
@@ -467,10 +453,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/07/11/GitHub-图床/" rel="prev" title="GitHub 图床">
-                GitHub 图床 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -547,7 +529,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">24</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -558,7 +540,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -569,7 +551,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">21</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -631,6 +613,10 @@
                   <a href="https://sherlocc.blog.luogu.org/" title="SherloCc" target="_blank">SherloCc</a>
                 </li>
               
+                <li class="links-of-blogroll-item">
+                  <a href="https://01jiangbingchen.github.io/" title="01jiangbingchen" target="_blank">01jiangbingchen</a>
+                </li>
+              
             </ul>
           </div>
         
@@ -650,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引用说明"><span class="nav-number">1.</span> <span class="nav-text">引用说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公差公式"><span class="nav-number">2.2.</span> <span class="nav-text">公差公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通项公式"><span class="nav-number">2.3.</span> <span class="nav-text">通项公式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#等差级数"><span class="nav-number">2.4.</span> <span class="nav-text">等差级数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#等差级数公式"><span class="nav-number">2.4.1.</span> <span class="nav-text">等差级数公式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#证明"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">证明</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#代数方法"><span class="nav-number">2.4.1.1.1.</span> <span class="nav-text">代数方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#几何方法"><span class="nav-number">2.4.1.1.2.</span> <span class="nav-text">几何方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性质"><span class="nav-number">2.4.2.</span> <span class="nav-text">性质</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#证明-1"><span class="nav-number">2.4.2.1.</span> <span class="nav-text">证明</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命题"><span class="nav-number">2.5.</span> <span class="nav-text">命题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#等差中项"><span class="nav-number">2.5.1.</span> <span class="nav-text">等差中项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#证明-2"><span class="nav-number">2.5.1.1.</span> <span class="nav-text">证明</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#等差数列的积"><span class="nav-number">2.5.2.</span> <span class="nav-text">等差数列的积</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题外话"><span class="nav-number">1.</span> <span class="nav-text">题外话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">2.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">2.1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">2.2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">2.2.1.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
