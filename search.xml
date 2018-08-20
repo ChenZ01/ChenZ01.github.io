@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[数学 生日悖论的证明]]></title>
+    <url>%2F2018%2F08%2F20%2F%E6%95%B0%E5%AD%A6-%E7%94%9F%E6%97%A5%E6%82%96%E8%AE%BA%E7%9A%84%E8%AF%81%E6%98%8E%2F</url>
+    <content type="text"><![CDATA[正文悖论描述若有$23$个人，则至少有两个人生日相同的概率要大于$50\%$从引起逻辑矛盾的角度来说生日悖论并非一种悖论 证明设$P(n)$表示$n$个人中至少有两个人生日相同的概率计算$P(n)$不容易，我们可以通过计算$P(n)=1-\overline{P}(n)$得到，其中$\overline{P}(n)$是该$n$人中，每个人生日都不相同的概率在此声明：不考虑双胞胎、闰年等特殊情况假设$n&gt;365$，则根据鸽巢原理，得：$$\overline{P}(n)=0,P(n)=1$$假设$n\leq 365$，根据生日两两不相等，得：\begin{align}\overline{P}(n)&amp;=\frac{365}{365}\cdot(1-\frac{1}{365})\cdot(1-\frac{2}{365})\dots(1-\frac{n-1}{365})\\&amp;=\frac{365}{365}\cdot\frac{364}{365}\dots\frac{365-n+1}{365}\\&amp;=\frac{365!}{365^n(365-n)!}\end{align}故$$P(n)=1-\overline{P}(n)=1-\frac{365!}{365^n(365-n)!}$$用Maple 2018输出（数据大到爆炸），我们可以看到：$$P(10)=11.69\%,P(23)=50.73\%,P(60)=99.41\%$$ 至此该命题得证]]></content>
+      <tags>
+        <tag>Math</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Ubuntu apt-get错误]]></title>
+    <url>%2F2018%2F08%2F20%2FUbuntu-apt-get%E9%94%99%E8%AF%AF%2F</url>
+    <content type="text"><![CDATA[正文Problem在使用apt-get命令时，我意外的发现了以下错误： E: Could not get lock /var/lib/dpkg/lock - open (11: Resource temporarily unavailable) E: Unable to lock the administration directory (/var/lib/dpkg/), is another process using it? 网上查过很多人的博客，大体思路是找进程并杀之然而我查进程时竟发现没有apt-get进程于是我继续寻找，终于找到了正解： Solutionsudo rm /var/cache/apt/archives/locksudo rm /var/lib/dpkg/locksudo dpkg --configure -asudo apt-get update 问题即顺利解决]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「HDU 1698」Just a Hook]]></title>
     <url>%2F2018%2F08%2F19%2FHDU-1698%2F</url>
     <content type="text"><![CDATA[题外话弃用cin（除了读long long的时候），改回scanf 题目链接HDU 1698 题解区间修改+区间求和，果断线段树区间修改注意不能退化成单点修改，需使用lazy-tag（即val数组） 代码#include &lt;iostream&gt;using namespace std;#pragma warning(disable:4996)int CASE, n, q, x, y, z;int sum[400010];int val[400010];void pushup(int root)&#123; sum[root] = sum[root &lt;&lt; 1] + sum[root &lt;&lt; 1 | 1];&#125;void pushdown(int root, int len)&#123; if (val[root]) &#123; val[root &lt;&lt; 1] = val[root &lt;&lt; 1 | 1] = val[root]; sum[root &lt;&lt; 1] = val[root] * (len - (len &gt;&gt; 1)); sum[root &lt;&lt; 1 | 1] = val[root] * (len &gt;&gt; 1); val[root] = 0; &#125;&#125;void build(int l, int r, int root)&#123; val[root] = 0; if (l == r) sum[root] = 1; else &#123; int mid = (l + r) &gt;&gt; 1; build(l, mid, root &lt;&lt; 1); build(mid + 1, r, root &lt;&lt; 1 | 1); pushup(root); &#125;&#125;void update(int l, int r, int root)&#123; if (l &gt;= x &amp;&amp; r &lt;= y) sum[root] = z * (r - l + 1), val[root] = z; else &#123; pushdown(root, r - l + 1); int mid = (l + r) &gt;&gt; 1; if (x &lt;= mid) update(l, mid, root &lt;&lt; 1); if (y &gt; mid) update(mid + 1, r, root &lt;&lt; 1 | 1); pushup(root); &#125;&#125;int main(int argc, char ** argv)&#123; scanf("%d", &amp;CASE); for (int i = 1; i &lt;= CASE; i++) &#123; scanf("%d%d", &amp;n, &amp;q); build(1, n, 1); while (q--) &#123; scanf("%d%d%d", &amp;x, &amp;y, &amp;z); update(1, n, 1); &#125; printf("Case %d: The total value of the hook is %d.\n", i, sum[1]); &#125; return 0;&#125;]]></content>
