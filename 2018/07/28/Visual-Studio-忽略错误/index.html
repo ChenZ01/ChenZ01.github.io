@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="正文问题用Visual Studio写程序时，OI界选手都知道freopen(&quot;file&quot;,&quot;r&quot;,stdin);freopen(&quot;file&quot;,&quot;w,&quot;stdout); 是比赛时必不可少的然而你用VS编译时会报错，显示freopen不安全，">
+<meta name="description" content="正文问题用Visual Studio写程序时，OI界选手都知道12freopen(&quot;file&quot;,&quot;r&quot;,stdin);freopen(&quot;file&quot;,&quot;w,&quot;stdout); 是比赛时必不可少的然而你用VS编译时会报错，显示freopen不安">
 <meta name="keywords" content="Visual Studio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Visual Studio 忽略错误">
 <meta property="og:url" content="http://yoursite.com/2018/07/28/Visual-Studio-忽略错误/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="正文问题用Visual Studio写程序时，OI界选手都知道freopen(&quot;file&quot;,&quot;r&quot;,stdin);freopen(&quot;file&quot;,&quot;w,&quot;stdout); 是比赛时必不可少的然而你用VS编译时会报错，显示freopen不安全，要用freopen_s然而不会用怎么办？我们选择手动忽略错误 解决#pragma warning(disable:4996) 这句话用于忽略报freopen错的">
+<meta property="og:description" content="正文问题用Visual Studio写程序时，OI界选手都知道12freopen(&quot;file&quot;,&quot;r&quot;,stdin);freopen(&quot;file&quot;,&quot;w,&quot;stdout); 是比赛时必不可少的然而你用VS编译时会报错，显示freopen不安全，要用freopen_s然而不会用怎么办？我们选择手动忽略错误 解决1#pragma warning(disable:4996) 这句话用于忽略报freope">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-08-07T09:03:52.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Visual Studio 忽略错误">
-<meta name="twitter:description" content="正文问题用Visual Studio写程序时，OI界选手都知道freopen(&quot;file&quot;,&quot;r&quot;,stdin);freopen(&quot;file&quot;,&quot;w,&quot;stdout); 是比赛时必不可少的然而你用VS编译时会报错，显示freopen不安全，要用freopen_s然而不会用怎么办？我们选择手动忽略错误 解决#pragma warning(disable:4996) 这句话用于忽略报freopen错的">
+<meta name="twitter:description" content="正文问题用Visual Studio写程序时，OI界选手都知道12freopen(&quot;file&quot;,&quot;r&quot;,stdin);freopen(&quot;file&quot;,&quot;w,&quot;stdout); 是比赛时必不可少的然而你用VS编译时会报错，显示freopen不安全，要用freopen_s然而不会用怎么办？我们选择手动忽略错误 解决1#pragma warning(disable:4996) 这句话用于忽略报freope">
 
 
 
@@ -409,9 +409,9 @@
       
 
       
-        <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>用Visual Studio写程序时，OI界选手都知道<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">freopen(<span class="string">"file"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">freopen(<span class="string">"file"</span>,<span class="string">"w,"</span><span class="built_in">stdout</span>);</span><br></pre></td></tr></table></figure></p>
+        <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>用Visual Studio写程序时，OI界选手都知道<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">freopen(<span class="string">"file"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</span><br><span class="line">freopen(<span class="string">"file"</span>,<span class="string">"w,"</span><span class="built_in">stdout</span>);</span><br></pre></td></tr></table></figure></p>
 <p>是比赛时必不可少的<br>然而你用VS编译时会报错，显示freopen不安全，要用freopen_s<br>然而不会用怎么办？我们选择手动忽略错误</p>
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> <span class="meta-keyword">warning</span>(disable:4996)</span></span><br></pre></td></tr></table></figure>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> <span class="meta-keyword">warning</span>(disable:4996)</span></span><br></pre></td></tr></table></figure>
 <p>这句话用于忽略报freopen错的C4996错误信息<br>其余错误信息同理</p>
 
       
@@ -532,7 +532,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -543,7 +543,7 @@
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/index.html">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -554,7 +554,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
