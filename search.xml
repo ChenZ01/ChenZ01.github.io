@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「洛谷 1306」 斐波那契公约数]]></title>
+    <url>%2F2018%2F08%2F26%2F%E6%B4%9B%E8%B0%B7-1306%2F</url>
+    <content type="text"><![CDATA[题目链接洛谷 1306 题解数据范围是$10^9$，直接暴力显然不可取，因此我们考虑数学方法令$f(i)$表示斐波那契数列第$i$项 引理$$\gcd(f(n),f(n+1))=1$$ 证： \begin{align}\gcd(f(n),f(n+1))&amp;=\gcd(f(n),f(n+1)-f(n))\\&amp;=\gcd(f(n),f(n-1))\\&amp;=\gcd(f(n-2),f(n-1))\\&amp;\dots\\&amp;=\gcd(f(1),f(2))\\&amp;=1\\\end{align} 结论与证明设$n&lt;m, f(n)=a, f(n+1)=b$则 $f(n+2)=a+b,f(n+3)=a+2b,\dots,f(m)=f(m-n-1)a+f(m-n)b$$\because f(n)=a,f(n+1)=b,f(m)=f(m-n-1)a+f(m-n)b$$\therefore f(m)=f(m-n-1)\cdot f(n)+f(m-n)\cdot f(n+1)$$\therefore\gcd(f(n),f(m))=\gcd(f(n),f(m-n-1)\cdot f(n)+f(m-n)\cdot f(n+1))$$\therefore\gcd(f(n),f(m))=\gcd(f(n),f(m-n)\cdot f(n+1))$$\therefore\gcd(f(n),f(m))=\gcd(f(n),f(m-n))$$\therefore\gcd(f(n),f(m))=\gcd(f(n),f(m\,\mathrm{mod}\,n))$令$t=m\,\mathrm{mod}\,n$则$\gcd(f(n),f(m))=\gcd(f(n),f(t))=\gcd(f(t),f(n))$递归下去会发现这就是辗转相除，由此我们得到：$$\gcd(f(n),f(m))=f(\gcd(n,m))$$ 矩阵加速考虑我们需要将列向量\begin{bmatrix}f(1)\\f(0)\end{bmatrix}乘上一个矩阵$A$以转移到\begin{bmatrix}f(2)\\f(1)\end{bmatrix}实际上就是\begin{align}\begin{bmatrix}f(1)\\f(0)\end{bmatrix}\cdot\begin{bmatrix}a_{11}&amp;a_{12}\\a_{21}&amp;a_{22}\end{bmatrix}=\begin{bmatrix}f(0)+f(1)\\f(1)\end{bmatrix}\end{align}易得：$$A=\begin{bmatrix}1&amp;1\\1&amp;0\end{bmatrix}$$所以我们可以得到：\begin{align}\begin{bmatrix}f(n+1)\\f(n)\end{bmatrix}=\begin{bmatrix}1&amp;1\\1&amp;0\end{bmatrix}^n\cdot\begin{bmatrix}f(1)\\f(0)\end{bmatrix}\end{align}化简可知$f(n)$即为乘方后矩阵的$a_{21}$过程采用矩阵快速幂 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263#include &lt;iostream&gt;#include &lt;cstring&gt;using namespace std;struct Mat&#123; long long matrix[2][2]; int r, c;&#125;;Mat mulmat, basmat;int n, m;long long gcd(long long x, long long y)&#123; return y ? gcd(y, x%y) : x;&#125;Mat mul(Mat mat1, Mat mat2)&#123; Mat tmat; memset(tmat.matrix, 0, sizeof tmat.matrix); tmat.r = mat1.r; tmat.c = mat2.c; for (int i = 0; i &lt; mat1.r; i++) for (int j = 0; j &lt; mat2.c; j++) for (int k = 0; k &lt; mat1.c; k++) tmat.matrix[i][j] = (tmat.matrix[i][j] + mat1.matrix[i][k] * mat2.matrix[k][j]) % 100000000; return tmat;&#125;void fastpow(int index)&#123; Mat retmat; retmat.matrix[0][0] = retmat.matrix[1][1] = 1; retmat.matrix[0][1] = retmat.matrix[1][0] = 0; retmat.r = 2; retmat.c = 2; while (index) &#123; if (index &amp; 1) retmat = mul(retmat, basmat); basmat = mul(basmat, basmat); index &gt;&gt;= 1; &#125; cout &lt;&lt; retmat.matrix[1][0] &lt;&lt; endl; return;&#125;void init()&#123; mulmat.matrix[0][0] = 1; mulmat.matrix[1][1] = 1; mulmat.r = 2; mulmat.c = 2; basmat.matrix[0][0] = basmat.matrix[0][1] = basmat.matrix[1][0] = 1; basmat.matrix[1][1] = 0; basmat.r = 2; basmat.c = 2;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); init(); cin &gt;&gt; n &gt;&gt; m; fastpow(gcd(n, m)); return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>洛谷</tag>
+        <tag>矩阵加速</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[至今遇到过的坑]]></title>
     <url>%2F2018%2F08%2F22%2F%E8%87%B3%E4%BB%8A%E9%81%87%E5%88%B0%E8%BF%87%E7%9A%84%E5%9D%91%2F</url>
     <content type="text"><![CDATA[正文持续更新QAQ C++的一些坑以$0$开头永远记住C++从$0$开始分配内存！ sort()函数如果你习惯了以$1$开头，设数组$a$长度为$n$，那么sort()函数的写法如下：1sort(a+1,a+n+1); string先12345678#include &lt;iostream&gt;using namespace std;int main()&#123; string s; cin&gt;&gt;s; return 0;&#125; 用MinGW G++/GCC编译，完全没有问题然而用Visual Studio（MSVC++编译）就会报错你需要加一句：1#include &lt;string&gt; 注意不是string.h或cstring，而是string！ STLvector等，你以为能当数组用？一个未初始化的vector，访问其中的元素会相当漂亮地RE 数据结构的一些坑线段树记住线段树要开$4$倍空间，不然RE]]></content>
@@ -315,13 +327,13 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[categories]]></title>
-    <url>%2Fcategories%2Findex.html</url>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>
-    <title><![CDATA[tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
+    <title><![CDATA[categories]]></title>
+    <url>%2Fcategories%2Findex.html</url>
     <content type="text"></content>
   </entry>
   <entry>

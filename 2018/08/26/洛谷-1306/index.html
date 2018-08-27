@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="洛谷,矩阵加速," />
 
 
 
@@ -94,16 +94,18 @@
 
 
 
-<meta name="description" content="Got to face need to tell youI won&apos;t run cause I&apos;m reticent">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ChenZ01">
-<meta property="og:url" content="http://yoursite.com/tags/单调队列/index.html">
+<meta name="description" content="题目链接洛谷 1306 题解数据范围是$10^9$，直接暴力显然不可取，因此我们考虑数学方法令$f(i)$表示斐波那契数列第$i$项 引理$$\gcd(f(n),f(n+1))=1$$ 证： \begin{align}\gcd(f(n),f(n+1))&amp;amp;=\gcd(f(n),f(n+1)-f(n))\\">
+<meta name="keywords" content="洛谷,矩阵加速">
+<meta property="og:type" content="article">
+<meta property="og:title" content="「洛谷 1306」 斐波那契公约数">
+<meta property="og:url" content="http://yoursite.com/2018/08/26/洛谷-1306/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="Got to face need to tell youI won&apos;t run cause I&apos;m reticent">
+<meta property="og:description" content="题目链接洛谷 1306 题解数据范围是$10^9$，直接暴力显然不可取，因此我们考虑数学方法令$f(i)$表示斐波那契数列第$i$项 引理$$\gcd(f(n),f(n+1))=1$$ 证： \begin{align}\gcd(f(n),f(n+1))&amp;amp;=\gcd(f(n),f(n+1)-f(n))\\&amp;amp;=\gcd(f(n),f(n-1))\\&amp;amp;=\gcd(f(n-2),f">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-27T13:40:35.396Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ChenZ01">
-<meta name="twitter:description" content="Got to face need to tell youI won&apos;t run cause I&apos;m reticent">
+<meta name="twitter:title" content="「洛谷 1306」 斐波那契公约数">
+<meta name="twitter:description" content="题目链接洛谷 1306 题解数据范围是$10^9$，直接暴力显然不可取，因此我们考虑数学方法令$f(i)$表示斐波那契数列第$i$项 引理$$\gcd(f(n),f(n+1))=1$$ 证： \begin{align}\gcd(f(n),f(n+1))&amp;amp;=\gcd(f(n),f(n+1)-f(n))\\&amp;amp;=\gcd(f(n),f(n-1))\\&amp;amp;=\gcd(f(n-2),f">
 
 
 
@@ -132,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/单调队列/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/26/洛谷-1306/"/>
 
 
 
 
 
-  <title>标签: 单调队列 | ChenZ01</title>
+  <title>「洛谷 1306」 斐波那契公约数 | ChenZ01</title>
   
 
 
@@ -166,7 +168,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -304,54 +306,178 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>单调队列<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/26/洛谷-1306/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ChenZ01">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ChenZ01">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/11/26/POJ-2823/" itemprop="url">
-              
-                <span itemprop="name">「POJ 2823」 Sliding Window</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">「洛谷 1306」 斐波那契公约数</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-11-26T20:48:31+08:00"
-              content="2017-11-26" >
-          11-26
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-26T09:12:58+08:00">
+                2018-08-26
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OI/" itemprop="url" rel="index">
+                    <span itemprop="name">OI</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    </div>
+      
 
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://www.luogu.org/problemnew/show/P1306" target="_blank" rel="noopener">洛谷 1306</a></p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>数据范围是$10^9$，直接暴力显然不可取，因此我们考虑数学方法<br>令$f(i)$表示斐波那契数列第$i$项</p>
+<h3 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h3><p>$$\gcd(f(n),f(n+1))=1$$</p>
+<p>证：</p>
+<p>\begin{align}<br>\gcd(f(n),f(n+1))&amp;=\gcd(f(n),f(n+1)-f(n))\\<br>&amp;=\gcd(f(n),f(n-1))\\<br>&amp;=\gcd(f(n-2),f(n-1))\\<br>&amp;\dots\\<br>&amp;=\gcd(f(1),f(2))\\<br>&amp;=1\\<br>\end{align}</p>
+<h3 id="结论与证明"><a href="#结论与证明" class="headerlink" title="结论与证明"></a>结论与证明</h3><p>设$n&lt;m, f(n)=a, f(n+1)=b$<br>则</p>
+<p>$f(n+2)=a+b,f(n+3)=a+2b,\dots,f(m)=f(m-n-1)a+f(m-n)b$<br>$\because f(n)=a,f(n+1)=b,f(m)=f(m-n-1)a+f(m-n)b$<br>$\therefore f(m)=f(m-n-1)\cdot f(n)+f(m-n)\cdot f(n+1)$<br>$\therefore\gcd(f(n),f(m))=\gcd(f(n),f(m-n-1)\cdot f(n)+f(m-n)\cdot f(n+1))$<br>$\therefore\gcd(f(n),f(m))=\gcd(f(n),f(m-n)\cdot f(n+1))$<br>$\therefore\gcd(f(n),f(m))=\gcd(f(n),f(m-n))$<br>$\therefore\gcd(f(n),f(m))=\gcd(f(n),f(m\,\mathrm{mod}\,n))$<br>令$t=m\,\mathrm{mod}\,n$<br>则$\gcd(f(n),f(m))=\gcd(f(n),f(t))=\gcd(f(t),f(n))$<br>递归下去会发现这就是辗转相除，由此我们得到：<br>$$\gcd(f(n),f(m))=f(\gcd(n,m))$$</p>
+<h3 id="矩阵加速"><a href="#矩阵加速" class="headerlink" title="矩阵加速"></a>矩阵加速</h3><p>考虑我们需要将列向量<br>\begin{bmatrix}<br>f(1)\\<br>f(0)<br>\end{bmatrix}<br>乘上一个矩阵$A$以转移到<br>\begin{bmatrix}<br>f(2)\\<br>f(1)<br>\end{bmatrix}<br>实际上就是<br>\begin{align}<br>\begin{bmatrix}<br>f(1)\\<br>f(0)<br>\end{bmatrix}<br>\cdot<br>\begin{bmatrix}<br>a_{11}&amp;a_{12}\\<br>a_{21}&amp;a_{22}<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>f(0)+f(1)\\<br>f(1)<br>\end{bmatrix}<br>\end{align}<br>易得：<br>$$A=\begin{bmatrix}1&amp;1\\1&amp;0\end{bmatrix}$$<br>所以我们可以得到：<br>\begin{align}<br>\begin{bmatrix}<br>f(n+1)\\<br>f(n)<br>\end{bmatrix}<br>=<br>\begin{bmatrix}<br>1&amp;1\\<br>1&amp;0<br>\end{bmatrix}<br>^n\cdot<br>\begin{bmatrix}<br>f(1)\\<br>f(0)<br>\end{bmatrix}<br>\end{align}<br>化简可知$f(n)$即为乘方后矩阵的$a_{21}$<br>过程采用矩阵快速幂</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Mat</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> matrix[<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">int</span> r, c;</span><br><span class="line">&#125;;</span><br><span class="line">Mat mulmat, basmat;</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">gcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x, <span class="keyword">long</span> <span class="keyword">long</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> y ? gcd(y, x%y) : x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">Mat <span class="title">mul</span><span class="params">(Mat mat1, Mat mat2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Mat tmat;</span><br><span class="line">    <span class="built_in">memset</span>(tmat.matrix, <span class="number">0</span>, <span class="keyword">sizeof</span> tmat.matrix);</span><br><span class="line">    tmat.r = mat1.r;</span><br><span class="line">    tmat.c = mat2.c;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; mat1.r; i++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; mat2.c; j++)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; mat1.c; k++)</span><br><span class="line">                tmat.matrix[i][j] = (tmat.matrix[i][j] + mat1.matrix[i][k] * mat2.matrix[k][j]) % <span class="number">100000000</span>;</span><br><span class="line">    <span class="keyword">return</span> tmat;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fastpow</span><span class="params">(<span class="keyword">int</span> index)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Mat retmat;</span><br><span class="line">    retmat.matrix[<span class="number">0</span>][<span class="number">0</span>] = retmat.matrix[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    retmat.matrix[<span class="number">0</span>][<span class="number">1</span>] = retmat.matrix[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    retmat.r = <span class="number">2</span>;</span><br><span class="line">    retmat.c = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span> (index)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (index &amp; <span class="number">1</span>)</span><br><span class="line">            retmat = mul(retmat, basmat);</span><br><span class="line">        basmat = mul(basmat, basmat);</span><br><span class="line">        index &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; retmat.matrix[<span class="number">1</span>][<span class="number">0</span>] &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    mulmat.matrix[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    mulmat.matrix[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    mulmat.r = <span class="number">2</span>;</span><br><span class="line">    mulmat.c = <span class="number">2</span>;</span><br><span class="line">    basmat.matrix[<span class="number">0</span>][<span class="number">0</span>] = basmat.matrix[<span class="number">0</span>][<span class="number">1</span>] = basmat.matrix[<span class="number">1</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    basmat.matrix[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    basmat.r = <span class="number">2</span>;</span><br><span class="line">    basmat.c = <span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> ** argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="literal">false</span>);</span><br><span class="line">    init();</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    fastpow(gcd(n, m));</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/洛谷/" rel="tag"># 洛谷</a>
+          
+            <a href="/tags/矩阵加速/" rel="tag"># 矩阵加速</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/22/至今遇到过的坑/" rel="next" title="至今遇到过的坑">
+                <i class="fa fa-chevron-left"></i> 至今遇到过的坑
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -359,6 +485,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -379,8 +509,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -492,6 +631,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接"><span class="nav-number">1.1.</span> <span class="nav-text">链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引理"><span class="nav-number">1.2.1.</span> <span class="nav-text">引理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论与证明"><span class="nav-number">1.2.2.</span> <span class="nav-text">结论与证明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵加速"><span class="nav-number">1.2.3.</span> <span class="nav-text">矩阵加速</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.2.4.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -619,10 +774,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 

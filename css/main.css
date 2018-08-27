@@ -1528,7 +1528,7 @@ pre .javascript .function {
 .post-button .btn {
   color: #555;
   font-size: 14px;
-  background: #fff;
+  background: transparent;
   border-radius: 2px;
   line-height: 2;
   margin: 0 4px 8px 4px;
@@ -1724,6 +1724,10 @@ pre .javascript .function {
   max-width: 120px;
   height: auto;
   border: 1px solid #eee;
+  border-radius: 80px;
+  -webkit-border-radius: 80px;
+  -moz-border-radius: 80px;
+  box-shadow: inset 0 -1px 0 #333 sf;
 }
 .site-author-name {
   margin: 0;
@@ -1808,7 +1812,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #98ab77;
+  background: #7ecd03;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2662,7 +2666,7 @@ pre .javascript .function {
   box-sizing: border-box;
   padding: 40px;
   width: 700px;
-  background: #fff;
+  background: rgba(255,255,255,0.6);
   min-height: 700px;
   box-shadow: initial;
   border-radius: initial;
