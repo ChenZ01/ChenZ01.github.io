@@ -100,12 +100,12 @@
 <meta property="og:title" content="数学 生日悖论的证明">
 <meta property="og:url" content="http://yoursite.com/2018/08/20/数学-生日悖论的证明/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="正文悖论描述若有$23$个人，则至少有两个人生日相同的概率要大于$50\%$从引起逻辑矛盾的角度来说生日悖论并非一种悖论 证明设$P(n)$表示$n$个人中至少有两个人生日相同的概率计算$P(n)$不容易，我们可以通过计算$P(n)=1-\overline{P}(n)$得到，其中$\overline{P}(n)$是该$n$人中，每个人生日都不相同的概率在此声明：不考虑双胞胎、闰年等特殊情况假设$n">
+<meta property="og:description" content="正文悖论描述若有$23$个人，则至少有两个人生日相同的概率要大于$50\%$从引起逻辑矛盾的角度来说生日悖论并非一种悖论 证明设$P(n)$表示$n$个人中至少有两个人生日相同的概率计算$P(n)$不容易，我们可以通过计算$P(n)=1-\overline{P}(n)$得到，其中$\overline{P}(n)$是该$n$人中，每个人生日都不相同的概率在此声明：不考虑双胞胎、闰年等特殊情况假设$">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-08-22T03:55:02.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数学 生日悖论的证明">
-<meta name="twitter:description" content="正文悖论描述若有$23$个人，则至少有两个人生日相同的概率要大于$50\%$从引起逻辑矛盾的角度来说生日悖论并非一种悖论 证明设$P(n)$表示$n$个人中至少有两个人生日相同的概率计算$P(n)$不容易，我们可以通过计算$P(n)=1-\overline{P}(n)$得到，其中$\overline{P}(n)$是该$n$人中，每个人生日都不相同的概率在此声明：不考虑双胞胎、闰年等特殊情况假设$n">
+<meta name="twitter:description" content="正文悖论描述若有$23$个人，则至少有两个人生日相同的概率要大于$50\%$从引起逻辑矛盾的角度来说生日悖论并非一种悖论 证明设$P(n)$表示$n$个人中至少有两个人生日相同的概率计算$P(n)$不容易，我们可以通过计算$P(n)=1-\overline{P}(n)$得到，其中$\overline{P}(n)$是该$n$人中，每个人生日都不相同的概率在此声明：不考虑双胞胎、闰年等特殊情况假设$">
 
 
 
@@ -419,7 +419,7 @@
       
 
       
-        <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="悖论描述"><a href="#悖论描述" class="headerlink" title="悖论描述"></a>悖论描述</h2><p>若有$23$个人，则至少有两个人生日相同的概率要大于$50\%$<br>从引起逻辑矛盾的角度来说生日悖论并非一种悖论</p>
+        <script src="\assets\js\APlayer.min.js"> </script><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="悖论描述"><a href="#悖论描述" class="headerlink" title="悖论描述"></a>悖论描述</h2><p>若有$23$个人，则至少有两个人生日相同的概率要大于$50\%$<br>从引起逻辑矛盾的角度来说生日悖论并非一种悖论</p>
 <h2 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h2><p>设$P(n)$表示$n$个人中至少有两个人生日相同的概率<br>计算$P(n)$不容易，我们可以通过计算$P(n)=1-\overline{P}(n)$得到，其中$\overline{P}(n)$是该$n$人中，每个人生日都不相同的概率<br>在此声明：不考虑双胞胎、闰年等特殊情况<br>假设$n&gt;365$，则根据鸽巢原理，得：<br>$$\overline{P}(n)=0,P(n)=1$$<br>假设$n\leq 365$，根据生日两两不相等，得：<br>\begin{align}<br>\overline{P}(n)&amp;=\frac{365}{365}\cdot(1-\frac{1}{365})\cdot(1-\frac{2}{365})\dots(1-\frac{n-1}{365})\\<br>&amp;=\frac{365}{365}\cdot\frac{364}{365}\dots\frac{365-n+1}{365}\\<br>&amp;=\frac{365!}{365^n(365-n)!}<br>\end{align}<br>故<br>$$P(n)=1-\overline{P}(n)=1-\frac{365!}{365^n(365-n)!}$$<br>用Maple 2018输出（数据大到爆炸），我们可以看到：<br>$$P(10)=11.69\%,P(23)=50.73\%,P(60)=99.41\%$$</p>
 <p>至此该命题得证</p>
 
@@ -462,8 +462,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/08/22/树状数组修改与查询/" rel="prev" title="树状数组修改与查询">
-                树状数组修改与查询 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/26/洛谷-1306/" rel="prev" title="「洛谷 1306」 斐波那契公约数">
+                「洛谷 1306」 斐波那契公约数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -541,7 +541,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -563,7 +563,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1143,7 +1143,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

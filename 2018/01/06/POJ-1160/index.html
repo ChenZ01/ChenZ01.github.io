@@ -100,12 +100,12 @@
 <meta property="og:title" content="「POJ 1160」 Post Office">
 <meta property="og:url" content="http://yoursite.com/2018/01/06/POJ-1160/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="题外话话说原本mathjax老是出故障的\$\$突然变正常了，开心~ 题目链接POJ 1160 大意在$V$个村庄里选$P$个作为邮局，使得每个村庄到距它最近的邮局的距离和最短。 题解裸典型的区间DP。设$f(i,j)$表示前$i$个村庄内建立$j$个邮局的最小距离和，最终答案即为$f(V,P)$。可以想到，前$i$个村庄内建立$j$个邮局即为前$k$个村庄建立$j-1$个邮局、第$k+1$到第$">
+<meta property="og:description" content="题外话话说原本mathjax老是出故障的\$\$突然变正常了，开心~ 题目链接POJ 1160 大意在$V$个村庄里选$P$个作为邮局，使得每个村庄到距它最近的邮局的距离和最短。 题解裸典型的区间DP。设$f(i,j)$表示前$i$个村庄内建立$j$个邮局的最小距离和，最终答案即为$f(V,P)$。可以想到，前$i$个村庄内建立$j$个邮局即为前$k$个村庄建立$j-1$个邮局、第$k+1$到第">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-08-22T05:10:08.239Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「POJ 1160」 Post Office">
-<meta name="twitter:description" content="题外话话说原本mathjax老是出故障的\$\$突然变正常了，开心~ 题目链接POJ 1160 大意在$V$个村庄里选$P$个作为邮局，使得每个村庄到距它最近的邮局的距离和最短。 题解裸典型的区间DP。设$f(i,j)$表示前$i$个村庄内建立$j$个邮局的最小距离和，最终答案即为$f(V,P)$。可以想到，前$i$个村庄内建立$j$个邮局即为前$k$个村庄建立$j-1$个邮局、第$k+1$到第$">
+<meta name="twitter:description" content="题外话话说原本mathjax老是出故障的\$\$突然变正常了，开心~ 题目链接POJ 1160 大意在$V$个村庄里选$P$个作为邮局，使得每个村庄到距它最近的邮局的距离和最短。 题解裸典型的区间DP。设$f(i,j)$表示前$i$个村庄内建立$j$个邮局的最小距离和，最终答案即为$f(V,P)$。可以想到，前$i$个村庄内建立$j$个邮局即为前$k$个村庄建立$j-1$个邮局、第$k+1$到第">
 
 
 
@@ -419,7 +419,7 @@
       
 
       
-        <h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>话说原本mathjax老是出故障的\$\$突然变正常了，开心~</p>
+        <script src="\assets\js\APlayer.min.js"> </script><h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><p>话说原本mathjax老是出故障的\$\$突然变正常了，开心~</p>
 <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="http://poj.org/problem?id=1160" target="_blank" rel="noopener">POJ 1160</a></p>
 <h2 id="大意"><a href="#大意" class="headerlink" title="大意"></a>大意</h2><p>在$V$个村庄里选$P$个作为邮局，使得每个村庄到距它最近的邮局的距离和最短。</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="裸"><a href="#裸" class="headerlink" title="裸"></a>裸</h3><p>典型的区间DP。<br>设$f(i,j)$表示前$i$个村庄内建立$j$个邮局的最小距离和，最终答案即为$f(V,P)$。<br>可以想到，前$i$个村庄内建立$j$个邮局即为前$k$个村庄建立$j-1$个邮局、第$k+1$到第$i$个村庄建一个邮局。<br>设$w(i,j)$表示在村庄$i$、$j$之间建立一个邮局后，该邮局与村庄$i$、$j$的最短距离和。<br>易得：$w(i,j)=w(i,j-1)+a(j)-a((i+j)/2)$。<br>可能有人会问，如果$i+j$为偶，则位置能确定（$(i+j)/2\in N^*$）；但若$i+j$为偶，是选$\lceil (i+j)/2 \rceil$还是$\lfloor (i+j)/2 \rfloor$呢？<br>我们可以假设共有6个村庄，要在范围$[1..6]$内选择1个做邮局。根据上面疑问，我们分别选取$\lceil (i+j)/2 \rceil$即4与$\lfloor (i+j)/2 \rfloor$即3做比较。<br>设每个村庄位置分别为$a_i$。</p>
@@ -555,7 +555,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -577,7 +577,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1157,7 +1157,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

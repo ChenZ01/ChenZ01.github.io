@@ -100,12 +100,12 @@
 <meta property="og:title" content="「GCJ R1A 2008 C」 numbers">
 <meta property="og:url" content="http://yoursite.com/2018/09/02/GCJ-R1A-2008-C/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="题目链接GCJ R1A 2008 C总觉得Code Jam都需要科学方式访问是不是有些太过了 题解拿到手首先肯定不能暴力，于是我们考虑数学方法 分析对于这个式子：$(3+\sqrt{5})^n$，一眼想到二项式定理，将其展开得：$$(3+\sqrt{5})^n=C_n^03^n\sqrt{5}^0+C_n^13^{n-1}\sqrt{5}^1+\dots+C_n^{n-1}3^1\sqrt{5}^">
+<meta property="og:description" content="题目链接GCJ R1A 2008 C总觉得Code Jam都需要科学方式访问是不是有些太过了 题解拿到手首先肯定不能暴力，于是我们考虑数学方法 分析对于这个式子：$(3+\sqrt{5})^n$，一眼想到二项式定理，将其展开得：$$(3+\sqrt{5})^n=C_n^03^n\sqrt{5}^0+C_n^13^{n-1}\sqrt{5}^1+\dots+C_n^{n-1}3^1\sqrt{5}">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-09-15T05:46:54.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「GCJ R1A 2008 C」 numbers">
-<meta name="twitter:description" content="题目链接GCJ R1A 2008 C总觉得Code Jam都需要科学方式访问是不是有些太过了 题解拿到手首先肯定不能暴力，于是我们考虑数学方法 分析对于这个式子：$(3+\sqrt{5})^n$，一眼想到二项式定理，将其展开得：$$(3+\sqrt{5})^n=C_n^03^n\sqrt{5}^0+C_n^13^{n-1}\sqrt{5}^1+\dots+C_n^{n-1}3^1\sqrt{5}^">
+<meta name="twitter:description" content="题目链接GCJ R1A 2008 C总觉得Code Jam都需要科学方式访问是不是有些太过了 题解拿到手首先肯定不能暴力，于是我们考虑数学方法 分析对于这个式子：$(3+\sqrt{5})^n$，一眼想到二项式定理，将其展开得：$$(3+\sqrt{5})^n=C_n^03^n\sqrt{5}^0+C_n^13^{n-1}\sqrt{5}^1+\dots+C_n^{n-1}3^1\sqrt{5}">
 
 
 
@@ -419,7 +419,7 @@
       
 
       
-        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://code.google.com/codejam/contest/32016/dashboard#s=p2" target="_blank" rel="noopener">GCJ R1A 2008 C</a><br>总觉得Code Jam都需要科学方式访问是不是有些太过了</p>
+        <script src="\assets\js\APlayer.min.js"> </script><h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h1><h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><p><a href="https://code.google.com/codejam/contest/32016/dashboard#s=p2" target="_blank" rel="noopener">GCJ R1A 2008 C</a><br>总觉得Code Jam都需要科学方式访问是不是有些太过了</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>拿到手首先肯定不能暴力，于是我们考虑数学方法</p>
 <h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>对于这个式子：$(3+\sqrt{5})^n$，一眼想到二项式定理，将其展开得：<br>$$(3+\sqrt{5})^n=C_n^03^n\sqrt{5}^0+C_n^13^{n-1}\sqrt{5}^1+\dots+C_n^{n-1}3^1\sqrt{5}^{n-1}+C_n^n3^0\sqrt{5}^n$$<br>不难发现若幂次为偶数，则$\sqrt{5}$也会变成整数，那么我们可以将上面的式子写成如下形式：<br>$$(3+\sqrt{5})^n=f(n)+g(n)\sqrt{5}$$<br>$f(n)$即为展开式种所有运算结果为整数的部分的和<br>仍然没法解决，我们再考虑另一个式子：<br>$$(3-\sqrt{5})^n=C_n^03^n\sqrt{5}^0-C_n^13^{n-1}\sqrt{5}^1+\dots+(-1)^{n-1}C_n^{n-1}3^1\sqrt{5}^{n-1}+(-1)^nC_n^n3^0\sqrt{5}^n$$<br>同理，可写成：<br>$$(3-\sqrt{5})^n=f(n)-g(n)\sqrt{5}$$<br>二式相加，得：<br>$$(3+\sqrt{5})^n+(3-\sqrt{5})^n=2f(n)$$<br>所以<br>$$(3+\sqrt{5})^n=2f(n)-(3-\sqrt{5})^n$$<br>考虑到<br>$$0&lt;(3-\sqrt{5})^n&lt;1$$<br>而我们要求的是整数部分，那么完全可以写成<br>$$\lfloor(3+\sqrt{5})^n\rfloor=2f(n)-1$$</p>
 <h3 id="求解-f"><a href="#求解-f" class="headerlink" title="求解$f$"></a>求解$f$</h3><p>问题是这个$f$怎么求<br>考虑以下递推式：</p>
@@ -547,7 +547,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">32</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -569,7 +569,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1149,7 +1149,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

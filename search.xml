@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「洛谷 1313」 计算系数]]></title>
+    <url>%2F2018%2F09%2F29%2F%E6%B4%9B%E8%B0%B7-1313%2F</url>
+    <content type="text"><![CDATA[前言感谢学长！虽然问了很多智障问题，占用了你宝贵的打游戏的时间由衷的感谢你！ 题目链接洛谷 1313本题亦是NOIP2011提高组D2T1 题解二项式定理展开拿到式子首先变个形（$y$在前太丑了）：$$(ax+by)^k$$二项式定理展开后，得：$$C_k^0(ax)^k(by)^0+C_k^1(ax)^{k-1}(by)^1+\dots+C_n^k(ax)^0(by)^k$$由于$n+m=k$，可得$x^ny^m$项就是$C_k^m(ax)^{k-m}(by)^m$展开并合并，得：$$C_k^m\cdot x^{k-m}y^m\cdot a^{k-m}b^m$$ 分析$a^{k-m}b^m$用快速幂很好处理，我们的主要目标就是对$C_k^m$取模这里毫无疑问可以递推，但是数学题就纯数学！再将$C_k^m$写成定义式的形式：$$C_k^m=\frac{k!}{m!(k-m)!}$$直接算阶乘long long也承受不了，那么继续使用数学方法 引理1$$\frac{a}{b}\,\mathrm{mod}\,p=ab^{-1}\,\mathrm{mod}\,p$$其中$b^{-1}$表示$b$在模$p$（通常情况下$p$为质数，本题为$10007$）意义下关于$a$的乘法逆元且$b|a$ 证明这么简单的结论我竟然折腾了半天才搞出来……\begin{align}\frac{a}{b}b\,\mathrm{mod}\,p&amp;=a\,\mathrm{mod}\,p\\&amp;=ab^{-1}b\,\mathrm{mod}\,p\\\end{align}$\therefore \frac{a}{b}\,\mathrm{mod}\,p=ab^{-1}\,\mathrm{mod}\,p$ 继续分析根据引理1，有：$$C_k^m=\frac{k!}{m!(k-m)!}=k![m!(k-m)!]^{-1}$$很显然我们要求$m!(k-m)!$的逆元，扩欧可以很好的做到这点（求之前先模一下）但是我们想要更有趣一些的做法啊 引理2若$p$为质数，$n\perp p$，则$$n\,\mathrm{mod}\,p,2n\,\mathrm{mod}\,p\dots (p-1)n\,\mathrm{mod}\,p$$生成一个$1\dots p-1$的排列 证明设存在$0&lt;a&lt;b&lt;p$使得$an\,\mathrm{mod}\,p=bn\,\mathrm{mod}\,p$则有$(a-b)n\,\mathrm{mod}\,p=0$\begin{align}&amp;\therefore (a-b)n=kp\\&amp;\because n\perp p\\&amp;\therefore (a-b)\,\mathrm{mod}\,p=0\\&amp;\because 0&lt;a,b&lt;p\\&amp;\therefore a=b\end{align}而这与$a&lt;b$矛盾$\therefore \nexists 0&lt;a&lt;b&lt;p$使得$an\equiv bn(\mathrm{mod}\,p)$因此$n\,\mathrm{mod}\,p,2n\,\mathrm{mod}\,p\dots (p-1)n\,\mathrm{mod}\,p$生成一个$1\dots p-1$的排列 引理3（费马小定理）$$n^{p-1}\equiv 1(\mathrm{mod}\,p),\,n\perp p$$ 证明我为什么吃饱了撑的要来证明这个根据引理2，我们把这$p-1$个数乘起来，可得：\begin{align}\prod_{i=1}^{p-1}in&amp;\equiv\prod_{i=1}^{p-1}(in\,\mathrm{mod}\,p)(\mathrm{mod}\,p)\\&amp;\equiv(p-1)!\end{align}即：$$(p-1)!n^{p-1}\equiv(p-1)!(\mathrm{mod}\,p)$$$p$是质数，因此$\gcd((p-1)!,p)=1$，故可将上式的$(p-1)!$消去，故得：$$n^{p-1}\equiv 1(\mathrm{mod}\,p)$$ 对费马小定理的变形根据费马小定理，有$n^{p-1}\equiv 1(\mathrm{mod}\,p),\,n\perp p$$\therefore n\cdot n^{p-2}\equiv 1(\mathrm{mod}\,p)$$\therefore n^{p-2}\equiv \frac{1}{n}(\mathrm{mod}\,p)$根据引理1，有：$$n^{p-2}\equiv n^{-1}(\mathrm{mod}\,p)$$因此可以通过快速幂求$n^{p-2}$来求$n^{-1}$ 最后一步根据所有前置的分析，我们将式$k![m!(k-m)!]^{-1}$写成$(k![m!(k-m)!])^{p-2}$至此完美解决 总结前面太长了，这里总结一下先将要求的单项式拿出来：$$C_k^ma^{k-m}b^m$$然后对于$a$和$b$的幂次用快速幂解决对于$C_k^m$，写成$\frac{k!}{m!(k-m)!}$后，对分母用快速幂求其逆元，分子直接阶乘求 代码1234567891011121314151617181920212223242526272829303132#include &lt;iostream&gt;#include &lt;cstdio&gt;using namespace std;int a, b, k, n, m;long long ans;long long fastpow(int base, int index)&#123; long long ret = 1; base %= 10007; while (index) &#123; if (index &amp; 1) ret = ret * base % 10007; base = base * base % 10007; index &gt;&gt;= 1; &#125; return ret;&#125;long long frac(int x)&#123; return x ? frac(x - 1) % 10007 * x % 10007 : 1;&#125;long long C(int x, int y)&#123; return frac(x) * fastpow(frac(y) * frac(x - y), 10005) % 10007;&#125;int main(int argc, char ** argv)&#123; cin &gt;&gt; a &gt;&gt; b &gt;&gt; k &gt;&gt; n &gt;&gt; m; cout &lt;&lt; fastpow(a, k - m) % 10007 * fastpow(b, m) % 10007 * C(k, m) % 10007 &lt;&lt; endl; return 0;&#125; 后记两个引理都是学长帮忙证出来的费马小定理的证明参考Concrete Mathematics，生成$p-1$的排列也是学长帮助证明的费马小定理变形参考プログラミングコンテストチャレンジブック]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>洛谷</tag>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[至今遇到过的坑]]></title>
+    <url>%2F2018%2F09%2F23%2F%E8%87%B3%E4%BB%8A%E9%81%87%E5%88%B0%E8%BF%87%E7%9A%84%E5%9D%91%2F</url>
+    <content type="text"><![CDATA[正文持续更新QAQ C++的一些坑以$0$开头永远记住C++从$0$开始分配内存！ sort()函数如果你习惯了以$1$开头，设数组$a$长度为$n$，那么sort()函数的写法如下：1sort(a+1,a+n+1); string先12345678#include &lt;iostream&gt;using namespace std;int main()&#123; string s; cin&gt;&gt;s; return 0;&#125; 用MinGW G++/GCC编译，完全没有问题然而用Visual Studio（MSVC++编译）就会报错你需要加一句：1#include &lt;string&gt; 注意不是string.h或cstring，而是string！ STLvector等，你以为能当数组用？一个未初始化的vector，访问其中的元素会相当漂亮地RE 位运算记住&gt;&gt;和&lt;&lt;的优先级比+-*/要低！ 数据结构的一些坑线段树记住线段树要开$4$倍空间，不然RE极其重要！ 树状数组查询$[l,r]$的时候要查$[1,l)$而非$[1,l]$！]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>杂谈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[树状数组修改与查询]]></title>
+    <url>%2F2018%2F09%2F23%2F%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E4%BF%AE%E6%94%B9%E4%B8%8E%E6%9F%A5%E8%AF%A2%2F</url>
+    <content type="text"><![CDATA[正文我们将修改与查询问题归为四大类 单点修改，单点查询这就不用做了，无脑开数组或map 单点修改，区间查询这里的树状数组用法较基础，模板题目：洛谷 3374 Code1234567891011121314151617181920212223242526272829303132#include &lt;iostream&gt;using namespace std;int n, q, t, x, y;long long s[1000010];inline void update(int pos, int add)&#123; while (pos &lt;= n) s[pos] += add, pos += pos &amp; -pos;&#125;inline long long query(int pos)&#123; long long sum = 0; while (pos) sum += s[pos], pos -= pos &amp; -pos; return sum;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin &gt;&gt; n &gt;&gt; q; for (int i = 1; i &lt;= n; i++) cin &gt;&gt; t , update(i, t); while (q--) &#123; cin &gt;&gt; t &gt;&gt; x &gt;&gt; y; if (t == 1) update(x, y); else cout &lt;&lt; query(y) - query(x - 1) &lt;&lt; endl; &#125; return 0;&#125; 区间修改，单点查询我们学习一个叫做差分的神奇东西简单来说，对于原数组$a,a_0=0$，定义差分数组$d$，其构造法则为：$$d_i=a_i-a_{i-1}$$可以发现：$$a_i=\sum_{j=1}^id_j$$假设我们给区间$[l,r]$加上$k$，那么我们会发现$d_l$变大了$k$，$d_{r+1}$变小了$k$，其余的不变因此我们只需维护$d$数组的前缀和即可，树状数组可以很方便的维护依然送上模板题目：洛谷 3368 Code实现时要注意我们维护的是差分数组，因此在对树状数组的初始化时要注意update的元素1234567891011121314151617181920212223242526272829303132#include &lt;iostream&gt;using namespace std;int n, q, t, l, r, x, lst;long long s[1000010];void update(int pos, int add)&#123; while (pos &lt;= n) s[pos] += add, pos += pos &amp; -pos;&#125;long long query(int pos)&#123; long long sum = 0; while (pos) sum += s[pos], pos -= pos &amp; -pos; return sum;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin &gt;&gt; n &gt;&gt; q; for (int i = 1; i &lt;= n; i++) cin &gt;&gt; t, update(i, t - lst), lst = t; while (q--) &#123; cin &gt;&gt; t; if (t == 1) cin &gt;&gt; l &gt;&gt; r &gt;&gt; x, update(l, x), update(r + 1, -x); else cin &gt;&gt; x, cout &lt;&lt; query(x) &lt;&lt; endl; &#125; return 0;&#125; 区间修改，区间查询我们依然要用到差分，定义与上面的相同当我们查询区间$[l,r]$时，前缀和思想是非常清晰的：$$\sum_{i=l}^ra_i=\sum_{i=1}^ra_i-\sum_{i=1}^{l-1}a_i$$对于一个单独的$\sum_{i=1}^xa_i$，我们有：$$\sum_{i=1}^xa_i=\sum_{i=1}^x\sum_{j=1}^id_j=\sum_{i=1}^x(x-i+1)d_i$$再将其进行一个神奇的转换：$$\sum_{i=1}^x(x-i+1)d_i=\sum_{i=1}^x(x+1)d_i-\sum_{i=1}^xid_i=(x+1)\sum_{i=1}^xd_i-\sum_{i=1}^xid_i$$所以我们可以维护两个树状数组，分别维护$d_i$和$id_i$即可每个询问区间的答案即是：$$\sum_{i=1}^ra_i-\sum_{i=1}^{l-1}a_i=(r+1)\sum_{i=1}^rd_i-\sum_{i=1}^rid_i-l\sum_{i=1}^{l-1}d_i+\sum_{i=1}^{l-1}id_i$$ Code维护时注意，第二个树状数组维护的是$id_i$，这意味着第一个树状数组update操作变化的值是$k$，那么第二个树状数组update操作变化的值是$ki$模板：POJ 3468千万注意数据规模可能超int，因此我选择整数运算和long long无异但范围比long long大的long double（其实没必要） 123456789101112131415161718192021222324252627282930313233343536#include &lt;iostream&gt;using namespace std;#pragma warning(disable:4996)int n, q, t, a, b, c, lst;char ch;long double s1[100010];long double s2[100010];void update(int pos, long long add)&#123; int tpos = pos; while (pos &lt;= n) s1[pos] += add, s2[pos] += tpos * add, pos += pos &amp; -pos;&#125;long long query(int pos)&#123; long long sum = 0, tpos = pos; while (pos) sum += (tpos + 1)*s1[pos] - s2[pos], pos -= pos &amp; -pos; return sum;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin &gt;&gt; n &gt;&gt; q; for (int i = 1; i &lt;= n; i++) cin &gt;&gt; t, update(i, t - lst), lst = t; for (int i = 1; i &lt;= q; i++) &#123; cin &gt;&gt; ch; if (ch == 'C') cin &gt;&gt; a &gt;&gt; b &gt;&gt; c, update(a, c), update(b + 1, -c); else cin &gt;&gt; a &gt;&gt; b, cout &lt;&lt; query(b) - query(a - 1) &lt;&lt; endl; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>树状数组</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「SPOJ 2713」 GSS4]]></title>
     <url>%2F2018%2F09%2F16%2FSPOJ-2713%2F</url>
     <content type="text"><![CDATA[题目链接源地址：SPOJ GSS4洛谷搬运：SP2713 题解又是一道假的紫题又是一道系列毒瘤题 分析显然开方操作不能打lazy-tag，对于每个修改我们只能直接单点或区间修改既然只能这么做，我们必须考虑开方操作的优化由于开方后再开方相当于四次根号，那么开了$n$次方的数所得结果就是$2^n$次根号，这个数一定不会大到哪里去事实上，$\lfloor^{64}\sqrt{10^{18}}\rfloor=1$，因此超过$6$次开方的区间所有的数一定为$1$根据这个性质，我们有如下思想：对于将修改的区间$[L,R]$，若每个数都等于$1$（亦即区间和$=R-L+1$），这个区间无需操作，否则修改到点由于一个点最多被修改$6$次，复杂度可以接受 代码123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687#include &lt;iostream&gt;#include &lt;algorithm&gt;#include &lt;cmath&gt;#include &lt;cstring&gt;using namespace std;long long s[500010];long long n, q, tmp, op, ans;int x, y, cnt;void init()&#123; memset(s, 0, sizeof s);&#125;void pushup(int root)&#123; s[root] = s[root &lt;&lt; 1] + s[root &lt;&lt; 1 | 1];&#125;void build(int l, int r, int root)&#123; if (l == r) cin &gt;&gt; tmp, s[root] = tmp; else &#123; int mid = l + r &gt;&gt; 1; build(l, mid, root &lt;&lt; 1); build(mid + 1, r, root &lt;&lt; 1 | 1); pushup(root); &#125;&#125;void update(int l, int r, int root)&#123; if (s[root] &lt;= r - l + 1) return; if (l == r) s[root] = (long long)floor(sqrt(s[root])); else &#123; int mid = l + r &gt;&gt; 1; if (x &lt;= mid) update(l, mid, root &lt;&lt; 1); if (y &gt; mid) update(mid + 1, r, root &lt;&lt; 1 | 1); pushup(root); &#125;&#125;void query(int l, int r, int root)&#123; if (l &gt;= x &amp;&amp; r &lt;= y) ans += s[root]; else &#123; int mid = l + r &gt;&gt; 1; if (x &lt;= mid) query(l, mid, root &lt;&lt; 1); if (y &gt; mid) query(mid + 1, r, root &lt;&lt; 1 | 1); &#125;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin.tie(0); while (cin &gt;&gt; n) &#123; cout &lt;&lt; "Case #" &lt;&lt; ++cnt &lt;&lt; ":" &lt;&lt; endl; init(); build(1, n, 1); cin &gt;&gt; q; while (q--) &#123; cin &gt;&gt; op &gt;&gt; x &gt;&gt; y; if (x &gt; y) swap(x, y); if (op) &#123; ans = 0; query(1, n, 1); cout &lt;&lt; ans &lt;&lt; endl; &#125; else &#123; update(1, n, 1); &#125; &#125; cout &lt;&lt; endl; &#125; return 0;&#125;]]></content>
@@ -38,28 +72,6 @@
       <tags>
         <tag>矩阵</tag>
         <tag>洛谷</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[至今遇到过的坑]]></title>
-    <url>%2F2018%2F08%2F22%2F%E8%87%B3%E4%BB%8A%E9%81%87%E5%88%B0%E8%BF%87%E7%9A%84%E5%9D%91%2F</url>
-    <content type="text"><![CDATA[正文持续更新QAQ C++的一些坑以$0$开头永远记住C++从$0$开始分配内存！ sort()函数如果你习惯了以$1$开头，设数组$a$长度为$n$，那么sort()函数的写法如下：1sort(a+1,a+n+1); string先12345678#include &lt;iostream&gt;using namespace std;int main()&#123; string s; cin&gt;&gt;s; return 0;&#125; 用MinGW G++/GCC编译，完全没有问题然而用Visual Studio（MSVC++编译）就会报错你需要加一句：1#include &lt;string&gt; 注意不是string.h或cstring，而是string！ STLvector等，你以为能当数组用？一个未初始化的vector，访问其中的元素会相当漂亮地RE 位运算记住&gt;&gt;和&lt;&lt;的优先级比+-*/要低！ 数据结构的一些坑线段树记住线段树要开$4$倍空间，不然RE极其重要！]]></content>
-      <categories>
-        <category>OI</category>
-      </categories>
-      <tags>
-        <tag>杂谈</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[树状数组修改与查询]]></title>
-    <url>%2F2018%2F08%2F22%2F%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E4%BF%AE%E6%94%B9%E4%B8%8E%E6%9F%A5%E8%AF%A2%2F</url>
-    <content type="text"><![CDATA[正文我们将修改与查询问题归为四大类 单点修改，单点查询这就不用做了，无脑开数组或map 单点修改，区间查询两种想法 线段树维护 树状数组维护 这里的树状数组用法较基础，模板题目：洛谷 3374 Code1234567891011121314151617181920212223242526272829303132#include &lt;iostream&gt;using namespace std;int n, q, t, x, y;long long s[1000010];inline void update(int pos, int add)&#123; while (pos &lt;= n) s[pos] += add, pos += pos &amp; -pos;&#125;inline long long query(int pos)&#123; long long sum = 0; while (pos) sum += s[pos], pos -= pos &amp; -pos; return sum;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin &gt;&gt; n &gt;&gt; q; for (int i = 1; i &lt;= n; i++) cin &gt;&gt; t , update(i, t); while (q--) &#123; cin &gt;&gt; t &gt;&gt; x &gt;&gt; y; if (t == 1) update(x, y); else cout &lt;&lt; query(y) - query(x - 1) &lt;&lt; endl; &#125; return 0;&#125; 区间修改，单点查询我们学习一个叫做差分的神奇东西简单来说，对于原数组$a,a_0=0$，定义差分数组$d$，其构造法则为：$$d_i=a_i-a_{i-1}$$可以发现：$$a_i=\sum_{j=1}^id_j$$假设我们给区间$[l,r]$加上$k$，那么我们会发现$d_l$变大了$k$，$d_{r+1}$变小了$k$，其余的不变因此我们只需维护$d$数组的前缀和即可，树状数组可以很方便的维护依然送上模板题目：洛谷 3368 Code实现时要注意我们维护的是差分数组，因此在对树状数组的初始化时要注意update的元素1234567891011121314151617181920212223242526272829303132#include &lt;iostream&gt;using namespace std;int n, q, t, l, r, x, lst;long long s[1000010];void update(int pos, int add)&#123; while (pos &lt;= n) s[pos] += add, pos += pos &amp; -pos;&#125;long long query(int pos)&#123; long long sum = 0; while (pos) sum += s[pos], pos -= pos &amp; -pos; return sum;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin &gt;&gt; n &gt;&gt; q; for (int i = 1; i &lt;= n; i++) cin &gt;&gt; t, update(i, t - lst), lst = t; while (q--) &#123; cin &gt;&gt; t; if (t == 1) cin &gt;&gt; l &gt;&gt; r &gt;&gt; x, update(l, x), update(r + 1, -x); else cin &gt;&gt; x, cout &lt;&lt; query(x) &lt;&lt; endl; &#125; return 0;&#125; 区间修改，区间查询我们依然要用到差分，定义与上面的相同当我们查询区间$[l,r]$时，前缀和思想是非常清晰的：$$\sum_{i=l}^ra_i=\sum_{i=1}^ra_i-\sum_{i=1}^{l-1}a_i$$对于一个单独的$\sum_{i=1}^xa_i$，我们有：$$\sum_{i=1}^xa_i=\sum_{i=1}^x\sum_{j=1}^id_j=\sum_{i=1}^x(x-i+1)d_i$$再将其进行一个神奇的转换：$$\sum_{i=1}^x(x-i+1)d_i=\sum_{i=1}^x(x+1)d_i-\sum_{i=1}^xid_i=(x+1)\sum_{i=1}^xd_i-\sum_{i=1}^xid_i$$所以我们可以维护两个树状数组，分别维护$d_i$和$id_i$即可每个询问区间的答案即是：$$\sum_{i=1}^ra_i-\sum_{i=1}^{l-1}a_i=(r+1)\sum_{i=1}^rd_i-\sum_{i=1}^rid_i-l\sum_{i=1}^{l-1}d_i+\sum_{i=1}^{l-1}id_i$$ Code维护时注意，第二个树状数组维护的是$id_i$，这意味着第一个树状数组update操作变化的值是$k$，那么第二个树状数组update操作变化的值是$ki$模板：POJ 3468千万注意数据规模可能超int，因此我选择整数运算和long long无异但范围比long long大的long double（其实没必要） 123456789101112131415161718192021222324252627282930313233343536#include &lt;iostream&gt;using namespace std;#pragma warning(disable:4996)int n, q, t, a, b, c, lst;char ch;long double s1[100010];long double s2[100010];void update(int pos, long long add)&#123; int tpos = pos; while (pos &lt;= n) s1[pos] += add, s2[pos] += tpos * add, pos += pos &amp; -pos;&#125;long long query(int pos)&#123; long long sum = 0, tpos = pos; while (pos) sum += (tpos + 1)*s1[pos] - s2[pos], pos -= pos &amp; -pos; return sum;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin &gt;&gt; n &gt;&gt; q; for (int i = 1; i &lt;= n; i++) cin &gt;&gt; t, update(i, t - lst), lst = t; for (int i = 1; i &lt;= q; i++) &#123; cin &gt;&gt; ch; if (ch == 'C') cin &gt;&gt; a &gt;&gt; b &gt;&gt; c, update(a, c), update(b + 1, -c); else cin &gt;&gt; a &gt;&gt; b, cout &lt;&lt; query(b) - query(a - 1) &lt;&lt; endl; &#125; return 0;&#125;]]></content>
-      <categories>
-        <category>OI</category>
-      </categories>
-      <tags>
-        <tag>树状数组</tag>
       </tags>
   </entry>
   <entry>
@@ -313,8 +325,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>洛谷</tag>
         <tag>DP</tag>
+        <tag>洛谷</tag>
       </tags>
   </entry>
   <entry>
@@ -350,28 +362,28 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>洛谷</tag>
         <tag>DP</tag>
+        <tag>洛谷</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[About]]></title>
     <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[Blog致敬向所有程序员致敬！本站音乐播放器：APlayer，由DIYgod基于MIT License发布当时我听着目前的背景音乐，看到MIT License的全文，真的差点哭出来向所有开源工作者致敬！ 简介基于Hexo搭建，使用NexT.Pisces主题，使用GitHub Pages托管网页。 个人信息初三，于江苏省丹阳高级中学学习 操作系统Microsoft Windows 10 Enterprise IDEMicrosoft Visual Studio Enterprise 2017 编译器MinGW-W64VC++ 编辑器Notepad++Visual Studio Code]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[Blog致敬本站音乐播放器：APlayer，由DIYgod基于MIT License发布当时我听着目前的背景音乐，看到MIT License的全文，真的差点哭出来向所有开源工作者致敬！ 简介基于Hexo搭建，使用NexT.Pisces主题，使用GitHub Pages托管网页。 个人信息初三，于江苏省丹阳高级中学学习 操作系统Microsoft Windows 10 Enterprise IDEMicrosoft Visual Studio Enterprise 2017 编译器MinGW-W64VC++python 3.7.0 编辑器Notepad++Visual Studio Code]]></content>
   </entry>
   <entry>
     <title><![CDATA[categories]]></title>
     <url>%2Fcategories%2Findex.html</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
     <title><![CDATA[Friends]]></title>
     <url>%2Ffriends%2Findex.html</url>
-    <content type="text"><![CDATA[Name Info SherloCc 江苏省丹阳高级中学 skyofwar 江苏省丹阳高级中学 Logey 临沂一中 redbag LG管理]]></content>
+    <content type="text"><![CDATA[Name Info SherloCc 江苏省丹阳高级中学 skyofwar 江苏省丹阳高级中学 Logey 临沂一中 SiriusRen 北京邮电大学 Yirannn 吉林大学附属中学 redbag LG管理]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
+    <content type="text"><![CDATA[]]></content>
   </entry>
 </search>
