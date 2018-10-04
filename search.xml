@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「洛谷 2485」 计算器]]></title>
+    <url>%2F2018%2F10%2F04%2F%E6%B4%9B%E8%B0%B7-2485%2F</url>
+    <content type="text"><![CDATA[Link洛谷 2485本题亦是SDOI2011题目 Solution1裸的快速幂取模 2令$d=\gcd(a,b)$ 一个推论当且仅当$d|b$时，方程$ax\equiv b(\mathrm{mod}\,n)$对于未知量$x$有解 一个定理假设对某些整数$x’$和$y’$，有$d=ax’+ny’$。若$d|b$，则方程$ax\equiv b(\mathrm{mod}\,n)$的有一个解的值为$x_0$，这里$$x_0=x’(b/d)\,\mathrm{mod}\,n$$ 证明根据$x’$的性质，即：$$ax\equiv d(\mathrm{mod}\,n)$$可得：\begin{align}ax_0&amp;\equiv ax’(b/d)(\mathrm{mod}\,n)\\&amp;\equiv d(b/d)(\mathrm{mod}\,n)\\&amp;\equiv b(\mathrm{mod}\,n)\end{align}因此$x_0$是方程$ax\equiv b(\mathrm{mod}\,n)$的一个解 解决那么对于询问2，用扩欧求方程$ax’+ny’=d$即可注意根据上面的一个推论，当$d$不整除$b$时该方程无解 3我们引入一个概念—— 离散对数若$g$是$\mathrm{Z}_n^*$的一个原根且$a$是$\mathrm{Z}_n^*$中的任意元素，则存在一个$z$，使得$g^z\equiv a(\mathrm{mod}\,n)$，则将$z$称为对模$n$到基$g$上的$a$的一个离散对数或指数说人话，也就是对于给定的$a,b,p$，存在一个$x$，使得$$a^x\equiv b(\mathrm{mod}\,p)$$则称$x$为$b$在模$p$意义下以$a$为底的离散对数 很显然本题就是让我们求$y$的离散对数，常用方法叫做BSGS——Baby Step-Giant Step BSGS拿出我们要解的关于$x$的方程：$$a^x\equiv b(\mathrm{mod}\,p)$$令$m=\lceil \sqrt{p}\rceil$。根据费马小定理，有$a^{p-1}\equiv 1(\mathrm{mod}\,p)$故若方程有解，则必存在一个$0\leq x&lt;p-1$根据除法的定义，令$x=im+j$，方程可化为： \begin{align}a^x&amp;\equiv b(\mathrm{mod}\,p)\\a^{im+j}&amp;\equiv b(\mathrm{mod}\,p)\\a^j&amp;\equiv b\cdot a^{-im}(\mathrm{mod}\,p)\\a^j&amp;\equiv b\cdot (a^{-m})^i(\mathrm{mod}\,p)\end{align}得到这玩意，我们就只需找到一组$i,j$使得最后一个式子成立即可那么我们先枚举$j$，递推出左边$a^j\,\mathrm{mod}\,p$的所有取值，并将其按照$(a^j\,\mathrm{mod}\,p)\mapsto j$的映射关系插入到哈希表中之后求出$a^m\,\mathrm{mod}\,p$的乘法逆元，枚举$i$，递推出所有的$b\cdot(a^{-m})^i$，每得到一个值后在哈希表内查找该值。若存在，取出对应的$j$，$x=im+j$即为一个解 Extra注意取模的时候可能有负数，并且应该先模$p$，具体见代码注释的那一行，卡了我35分 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384#include &lt;iostream&gt;#include &lt;cmath&gt;#include &lt;map&gt;using namespace std;long long T, K, y, z, p, gcd, X, Y;map &lt;long long, long long&gt; mp;inline long long fastpow(long long base, long long index)&#123; long long ret = 1; while (index) &#123; if (index &amp; 1) ret = ret * base % p; base = base * base % p; index &gt;&gt;= 1; &#125; return ret;&#125;inline void exgcd(long long a, long long b, long long &amp;d, long long &amp;x, long long &amp;y)&#123; if (!b) d = a, x = 1, y = 0; else exgcd(b, a % b, d, y, x), y -= a / b * x;&#125;inline long long inv(long long x)&#123; return fastpow(x, p - 2);&#125;inline long long bsgs(long long a, long long b)&#123; if (!a) return b ? -1 : 1; mp.clear(); long long m = ceil(sqrt(p)), t = 1; for (long long i = 0; i &lt; m; i++) &#123; if (!mp.count(t)) mp[t] = i; t = t * a % p; &#125; long long k = inv(t), w = b; for (long long i = 0; i &lt; m; i++) &#123; if (mp.count(w)) return i * m + mp[w]; w = w * k % p; &#125; return -1;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(0); cin.tie(0), cout.tie(0); cin &gt;&gt; T &gt;&gt; K; while (T--) &#123; cin &gt;&gt; y &gt;&gt; z &gt;&gt; p; if (K == 1) &#123; cout &lt;&lt; fastpow(y, z) &lt;&lt; endl; &#125; else if (K == 2) &#123; exgcd(y, p, gcd, X, Y); if (z % gcd) cout &lt;&lt; "Orz, I cannot find x!" &lt;&lt; endl; else &#123; cout &lt;&lt; (X * z / gcd % p + p) % p &lt;&lt; endl;//Important &#125; &#125; else &#123; long long ans = bsgs(y % p, z % p); if (ans == -1) cout &lt;&lt; "Orz, I cannot find x!" &lt;&lt; endl; else cout &lt;&lt; ans &lt;&lt; endl; &#125; &#125; return 0;&#125; 后记BSGS部分参考Menci的博客]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>洛谷</tag>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「洛谷 1313」 计算系数]]></title>
     <url>%2F2018%2F09%2F29%2F%E6%B4%9B%E8%B0%B7-1313%2F</url>
     <content type="text"><![CDATA[前言感谢学长！虽然问了很多智障问题，占用了你宝贵的打游戏的时间由衷的感谢你！ 题目链接洛谷 1313本题亦是NOIP2011提高组D2T1 题解二项式定理展开拿到式子首先变个形（$y$在前太丑了）：$$(ax+by)^k$$二项式定理展开后，得：$$C_k^0(ax)^k(by)^0+C_k^1(ax)^{k-1}(by)^1+\dots+C_n^k(ax)^0(by)^k$$由于$n+m=k$，可得$x^ny^m$项就是$C_k^m(ax)^{k-m}(by)^m$展开并合并，得：$$C_k^m\cdot x^{k-m}y^m\cdot a^{k-m}b^m$$ 分析$a^{k-m}b^m$用快速幂很好处理，我们的主要目标就是对$C_k^m$取模这里毫无疑问可以递推，但是数学题就纯数学！再将$C_k^m$写成定义式的形式：$$C_k^m=\frac{k!}{m!(k-m)!}$$直接算阶乘long long也承受不了，那么继续使用数学方法 引理1$$\frac{a}{b}\,\mathrm{mod}\,p=ab^{-1}\,\mathrm{mod}\,p$$其中$b^{-1}$表示$b$在模$p$（通常情况下$p$为质数，本题为$10007$）意义下关于$a$的乘法逆元且$b|a$ 证明这么简单的结论我竟然折腾了半天才搞出来……\begin{align}\frac{a}{b}b\,\mathrm{mod}\,p&amp;=a\,\mathrm{mod}\,p\\&amp;=ab^{-1}b\,\mathrm{mod}\,p\\\end{align}$\therefore \frac{a}{b}\,\mathrm{mod}\,p=ab^{-1}\,\mathrm{mod}\,p$ 继续分析根据引理1，有：$$C_k^m=\frac{k!}{m!(k-m)!}=k![m!(k-m)!]^{-1}$$很显然我们要求$m!(k-m)!$的逆元，扩欧可以很好的做到这点（求之前先模一下）但是我们想要更有趣一些的做法啊 引理2若$p$为质数，$n\perp p$，则$$n\,\mathrm{mod}\,p,2n\,\mathrm{mod}\,p\dots (p-1)n\,\mathrm{mod}\,p$$生成一个$1\dots p-1$的排列 证明设存在$0&lt;a&lt;b&lt;p$使得$an\,\mathrm{mod}\,p=bn\,\mathrm{mod}\,p$则有$(a-b)n\,\mathrm{mod}\,p=0$\begin{align}&amp;\therefore (a-b)n=kp\\&amp;\because n\perp p\\&amp;\therefore (a-b)\,\mathrm{mod}\,p=0\\&amp;\because 0&lt;a,b&lt;p\\&amp;\therefore a=b\end{align}而这与$a&lt;b$矛盾$\therefore \nexists 0&lt;a&lt;b&lt;p$使得$an\equiv bn(\mathrm{mod}\,p)$因此$n\,\mathrm{mod}\,p,2n\,\mathrm{mod}\,p\dots (p-1)n\,\mathrm{mod}\,p$生成一个$1\dots p-1$的排列 引理3（费马小定理）$$n^{p-1}\equiv 1(\mathrm{mod}\,p),\,n\perp p$$ 证明我为什么吃饱了撑的要来证明这个根据引理2，我们把这$p-1$个数乘起来，可得：\begin{align}\prod_{i=1}^{p-1}in&amp;\equiv\prod_{i=1}^{p-1}(in\,\mathrm{mod}\,p)(\mathrm{mod}\,p)\\&amp;\equiv(p-1)!\end{align}即：$$(p-1)!n^{p-1}\equiv(p-1)!(\mathrm{mod}\,p)$$$p$是质数，因此$\gcd((p-1)!,p)=1$，故可将上式的$(p-1)!$消去，故得：$$n^{p-1}\equiv 1(\mathrm{mod}\,p)$$ 对费马小定理的变形根据费马小定理，有$n^{p-1}\equiv 1(\mathrm{mod}\,p),\,n\perp p$$\therefore n\cdot n^{p-2}\equiv 1(\mathrm{mod}\,p)$$\therefore n^{p-2}\equiv \frac{1}{n}(\mathrm{mod}\,p)$根据引理1，有：$$n^{p-2}\equiv n^{-1}(\mathrm{mod}\,p)$$因此可以通过快速幂求$n^{p-2}$来求$n^{-1}$ 最后一步根据所有前置的分析，我们将式$k![m!(k-m)!]^{-1}$写成$(k![m!(k-m)!])^{p-2}$至此完美解决 总结前面太长了，这里总结一下先将要求的单项式拿出来：$$C_k^ma^{k-m}b^m$$然后对于$a$和$b$的幂次用快速幂解决对于$C_k^m$，写成$\frac{k!}{m!(k-m)!}$后，对分母用快速幂求其逆元，分子直接阶乘求 代码1234567891011121314151617181920212223242526272829303132#include &lt;iostream&gt;#include &lt;cstdio&gt;using namespace std;int a, b, k, n, m;long long ans;long long fastpow(int base, int index)&#123; long long ret = 1; base %= 10007; while (index) &#123; if (index &amp; 1) ret = ret * base % 10007; base = base * base % 10007; index &gt;&gt;= 1; &#125; return ret;&#125;long long frac(int x)&#123; return x ? frac(x - 1) % 10007 * x % 10007 : 1;&#125;long long C(int x, int y)&#123; return frac(x) * fastpow(frac(y) * frac(x - y), 10005) % 10007;&#125;int main(int argc, char ** argv)&#123; cin &gt;&gt; a &gt;&gt; b &gt;&gt; k &gt;&gt; n &gt;&gt; m; cout &lt;&lt; fastpow(a, k - m) % 10007 * fastpow(b, m) % 10007 * C(k, m) % 10007 &lt;&lt; endl; return 0;&#125; 后记两个引理都是学长帮忙证出来的费马小定理的证明参考Concrete Mathematics，生成$p-1$的排列也是学长帮助证明的费马小定理变形参考プログラミングコンテストチャレンジブック]]></content>
@@ -9,7 +21,7 @@
       </categories>
       <tags>
         <tag>洛谷</tag>
-        <tag>数学</tag>
+        <tag>数论</tag>
       </tags>
   </entry>
   <entry>
@@ -151,8 +163,8 @@
       </categories>
       <tags>
         <tag>AtCoder</tag>
-        <tag>Math</tag>
         <tag>贪心</tag>
+        <tag>数论</tag>
       </tags>
   </entry>
   <entry>
@@ -367,9 +379,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[About]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[Blog致敬本站音乐播放器：APlayer，由DIYgod基于MIT License发布当时我听着目前的背景音乐，看到MIT License的全文，真的差点哭出来向所有开源工作者致敬！ 简介基于Hexo搭建，使用NexT.Pisces主题，使用GitHub Pages托管网页。 个人信息初三，于江苏省丹阳高级中学学习 操作系统Microsoft Windows 10 Enterprise IDEMicrosoft Visual Studio Enterprise 2017 编译器MinGW-W64VC++python 3.7.0 编辑器Notepad++Visual Studio Code]]></content>
+    <title><![CDATA[Friends]]></title>
+    <url>%2Ffriends%2Findex.html</url>
+    <content type="text"><![CDATA[Name Info SherloCc 江苏省丹阳高级中学 skyofwar 江苏省丹阳高级中学 Logey 临沂一中 SiriusRen 北京邮电大学 Yirannn 吉林大学附属中学 redbag LG管理]]></content>
   </entry>
   <entry>
     <title><![CDATA[categories]]></title>
@@ -377,13 +389,13 @@
     <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
-    <title><![CDATA[Friends]]></title>
-    <url>%2Ffriends%2Findex.html</url>
-    <content type="text"><![CDATA[Name Info SherloCc 江苏省丹阳高级中学 skyofwar 江苏省丹阳高级中学 Logey 临沂一中 SiriusRen 北京邮电大学 Yirannn 吉林大学附属中学 redbag LG管理]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[tags]]></title>
     <url>%2Ftags%2Findex.html</url>
     <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[About]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"><![CDATA[站点基于Hexo搭建，使用NexT.Pisces主题，使用GitHub Pages托管网页本站音乐播放器：APlayer，由DIYgod基于MIT License发布 个人初三，于江苏省丹阳高级中学学习 操作系统Microsoft Windows 10 EnterpriseUbuntu 18.04.1 LTS IDEMicrosoft Visual Studio Enterprise 2017 编译器MinGW-W64VC++python 3.7.0 编辑器Notepad++Visual Studio Code]]></content>
   </entry>
 </search>
