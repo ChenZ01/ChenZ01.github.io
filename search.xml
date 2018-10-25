@@ -1,6 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「Codeforces 767C」 Garland]]></title>
+    <url>%2F2018%2F10%2F25%2FCodeforces-767C-Garland%2F</url>
+    <content type="text"><![CDATA[LinkCF767C Solution很显然，权值总和不为$3$倍数的话无解那么对于可将权值分成三份相等的情况，我们的工作就是分三棵子树使得每棵子树的权值和等于总和的三分之一我们可以自叶节点向根节点方向累加权值，遇到目前累加和符合条件的就记录一下重点来了：满足权值和条件的子树个数不一定等于3，因为有负权的存在假设有$4$棵子树的权值和都等于$w=W/3$，那么树上必定存在一部分其权值和等于$-w$由于我们是从下往上统计的，这部分一定处在最上面两棵子树之间。那么我们把这一部分与两个权值为$w$的子树合并，必然能得到3棵符合要求的子树因此最后的判断条件就是$cnt&gt;=3$ Code12345678910111213141516171819202122232425262728293031323334353637383940#include &lt;iostream&gt;#include &lt;vector&gt;using namespace std;int n, u, w, W, Root;int s[1000010];vector &lt;int&gt; tree[1000010];vector &lt;int&gt; cut;void dfs(int cur, int fr)&#123; for (int i = 0; i &lt; tree[cur].size(); ++i) if (tree[cur][i] != fr) dfs(tree[cur][i], cur), s[cur]+= s[tree[cur][i]]; if (s[cur] == W) cut.push_back(cur), s[cur] = 0;&#125;int main()&#123; ios::sync_with_stdio(0); cin.tie(0), cout.tie(0); cin &gt;&gt; n; for (int i = 1; i &lt;= n; ++i) &#123; cin &gt;&gt; u &gt;&gt; w, s[i] = w, W += w; if (u) tree[u].push_back(i), tree[i].push_back(u); else Root = i; &#125; if (W % 3) &#123; cout &lt;&lt; -1 &lt;&lt; endl; return 0; &#125; W /= 3, dfs(Root, Root); if (cut.size() &gt;= 3) cout &lt;&lt; cut[0] &lt;&lt; " " &lt;&lt; cut[1] &lt;&lt; endl; else cout &lt;&lt; -1 &lt;&lt; endl; return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>乱搞</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「HEOI2015」 兔子与樱花]]></title>
+    <url>%2F2018%2F10%2F23%2FHEOI2015-%E5%85%94%E5%AD%90%E4%B8%8E%E6%A8%B1%E8%8A%B1%2F</url>
+    <content type="text"><![CDATA[Link洛谷 4107 Solution假设当前节点为$i$，则其某个子节点$j$被删除且不违背最大载重的话一定满足$$c_i+c_j-1\leq m$$而且只需满足这个条件即可那么我们为了删除尽可能多的点，易想到贪心解决 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647#include &lt;iostream&gt;#include &lt;algorithm&gt;#include &lt;vector&gt;using namespace std;int n, m, tmp, son, ans;int c[2000010], k[2000010];vector &lt;int&gt; tree[2000010];bool cmp(const int &amp;x, const int &amp;y)&#123; return c[x] &lt; c[y];&#125;void dfs(int root)&#123; int sze = tree[root].size(); if (!sze) return; for (int i = 0; i &lt; sze; ++i) dfs(tree[root][i]); sort(tree[root].begin(), tree[root].end(), cmp); for (register int i = 0; i &lt; sze; ++i) &#123; if (c[root] + c[tree[root][i]] - 1 &lt;= m) c[root] += c[tree[root][i]] - 1, ++ans; else break; &#125;&#125;int main()&#123; ios::sync_with_stdio(0); cin.tie(0), cout.tie(0); cin &gt;&gt; n &gt;&gt; m; for (int i = 0; i &lt; n; ++i) cin &gt;&gt; c[i]; for (int i = 0; i &lt; n; ++i) &#123; cin &gt;&gt; tmp; c[i] += tmp; while (tmp--) cin &gt;&gt; son, tree[i].push_back(son); &#125; dfs(0); cout &lt;&lt; ans &lt;&lt; endl; return 0;&#125; Extra洛谷提交时记得开O2]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「洛谷 2485」 计算器]]></title>
     <url>%2F2018%2F10%2F04%2F%E6%B4%9B%E8%B0%B7-2485%2F</url>
     <content type="text"><![CDATA[Link洛谷 2485本题亦是SDOI2011题目 Solution1裸的快速幂取模 2令$d=\gcd(a,b)$ 一个推论当且仅当$d|b$时，方程$ax\equiv b(\mathrm{mod}\,n)$对于未知量$x$有解 一个定理假设对某些整数$x’$和$y’$，有$d=ax’+ny’$。若$d|b$，则方程$ax\equiv b(\mathrm{mod}\,n)$的有一个解的值为$x_0$，这里$$x_0=x’(b/d)\,\mathrm{mod}\,n$$ 证明根据$x’$的性质，即：$$ax\equiv d(\mathrm{mod}\,n)$$可得：\begin{align}ax_0&amp;\equiv ax’(b/d)(\mathrm{mod}\,n)\\&amp;\equiv d(b/d)(\mathrm{mod}\,n)\\&amp;\equiv b(\mathrm{mod}\,n)\end{align}因此$x_0$是方程$ax\equiv b(\mathrm{mod}\,n)$的一个解 解决那么对于询问2，用扩欧求方程$ax’+ny’=d$即可注意根据上面的一个推论，当$d$不整除$b$时该方程无解 3我们引入一个概念—— 离散对数若$g$是$\mathrm{Z}_n^*$的一个原根且$a$是$\mathrm{Z}_n^*$中的任意元素，则存在一个$z$，使得$g^z\equiv a(\mathrm{mod}\,n)$，则将$z$称为对模$n$到基$g$上的$a$的一个离散对数或指数说人话，也就是对于给定的$a,b,p$，存在一个$x$，使得$$a^x\equiv b(\mathrm{mod}\,p)$$则称$x$为$b$在模$p$意义下以$a$为底的离散对数 很显然本题就是让我们求$y$的离散对数，常用方法叫做BSGS——Baby Step-Giant Step BSGS拿出我们要解的关于$x$的方程：$$a^x\equiv b(\mathrm{mod}\,p)$$令$m=\lceil \sqrt{p}\rceil$。根据费马小定理，有$a^{p-1}\equiv 1(\mathrm{mod}\,p)$故若方程有解，则必存在一个$0\leq x&lt;p-1$根据除法的定义，令$x=im+j$，方程可化为： \begin{align}a^x&amp;\equiv b(\mathrm{mod}\,p)\\a^{im+j}&amp;\equiv b(\mathrm{mod}\,p)\\a^j&amp;\equiv b\cdot a^{-im}(\mathrm{mod}\,p)\\a^j&amp;\equiv b\cdot (a^{-m})^i(\mathrm{mod}\,p)\end{align}得到这玩意，我们就只需找到一组$i,j$使得最后一个式子成立即可那么我们先枚举$j$，递推出左边$a^j\,\mathrm{mod}\,p$的所有取值，并将其按照$(a^j\,\mathrm{mod}\,p)\mapsto j$的映射关系插入到哈希表中之后求出$a^m\,\mathrm{mod}\,p$的乘法逆元，枚举$i$，递推出所有的$b\cdot(a^{-m})^i$，每得到一个值后在哈希表内查找该值。若存在，取出对应的$j$，$x=im+j$即为一个解 Extra注意取模的时候可能有负数，并且应该先模$p$，具体见代码注释的那一行，卡了我35分 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384#include &lt;iostream&gt;#include &lt;cmath&gt;#include &lt;map&gt;using namespace std;long long T, K, y, z, p, gcd, X, Y;map &lt;long long, long long&gt; mp;inline long long fastpow(long long base, long long index)&#123; long long ret = 1; while (index) &#123; if (index &amp; 1) ret = ret * base % p; base = base * base % p; index &gt;&gt;= 1; &#125; return ret;&#125;inline void exgcd(long long a, long long b, long long &amp;d, long long &amp;x, long long &amp;y)&#123; if (!b) d = a, x = 1, y = 0; else exgcd(b, a % b, d, y, x), y -= a / b * x;&#125;inline long long inv(long long x)&#123; return fastpow(x, p - 2);&#125;inline long long bsgs(long long a, long long b)&#123; if (!a) return b ? -1 : 1; mp.clear(); long long m = ceil(sqrt(p)), t = 1; for (long long i = 0; i &lt; m; i++) &#123; if (!mp.count(t)) mp[t] = i; t = t * a % p; &#125; long long k = inv(t), w = b; for (long long i = 0; i &lt; m; i++) &#123; if (mp.count(w)) return i * m + mp[w]; w = w * k % p; &#125; return -1;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(0); cin.tie(0), cout.tie(0); cin &gt;&gt; T &gt;&gt; K; while (T--) &#123; cin &gt;&gt; y &gt;&gt; z &gt;&gt; p; if (K == 1) &#123; cout &lt;&lt; fastpow(y, z) &lt;&lt; endl; &#125; else if (K == 2) &#123; exgcd(y, p, gcd, X, Y); if (z % gcd) cout &lt;&lt; "Orz, I cannot find x!" &lt;&lt; endl; else &#123; cout &lt;&lt; (X * z / gcd % p + p) % p &lt;&lt; endl;//Important &#125; &#125; else &#123; long long ans = bsgs(y % p, z % p); if (ans == -1) cout &lt;&lt; "Orz, I cannot find x!" &lt;&lt; endl; else cout &lt;&lt; ans &lt;&lt; endl; &#125; &#125; return 0;&#125; 后记BSGS部分参考Menci的博客]]></content>
@@ -8,8 +30,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>洛谷</tag>
         <tag>数论</tag>
+        <tag>洛谷</tag>
       </tags>
   </entry>
   <entry>
@@ -20,8 +42,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>洛谷</tag>
         <tag>数论</tag>
+        <tag>洛谷</tag>
       </tags>
   </entry>
   <entry>
@@ -57,7 +79,7 @@
   <entry>
     <title><![CDATA[「SPOJ 1043」 GSS1]]></title>
     <url>%2F2018%2F09%2F15%2FSPOJ-1043%2F</url>
-    <content type="text"><![CDATA[题目链接源地址：SPOJ GSS1洛谷搬运：SP1043源地址访问太慢了啦！ 题解查询区间最大子段和，经典的模型~（可是我今天才会）~ 分析很显然，一个长度大于$2$的区间的最大子段和只有可能是三种情况： 左区间的最大子段和 右区间的最大子段和 左区间的右区间的最大子段和+右区间的左区间的最大子段和 对于线段树表示区间$[L,R]$的第$i$个区间，我们定义 $S(i)$表示该区间的区间和 $L(i)$表示该区间前缀最大和 $R(i)$表示该区间后缀最大和 $M(i)$表示该区间最大子段和 $left_i$表示左区间 $right_i$表示右区间 由此我们显然有： $S(i)=S(left_i)+S(right_i)$ $L(i)=\max(L(left_i)),S(left_i))+L(right_i))$ $R(i)=\max(R(right_i),S(right_i)+R(left_i))$ $M(i)=\max(M(left_i),M(right_i),R(left_i)+L(right_i))$ queryquery()函数比较特别，在此感谢Logey提供思路设当前即将查询的第$i$个区间为$[L,R]$，令$ans$表示该区间查询的结果，$rans$表示上一个访问过的区间的后缀最大和考虑到线段树是从左子树递归的，$rans$也可以理解为以$L-1$结尾的后缀最大和，即若当前区间完全被询问区间包含，那么修改$rans$的值，否则遍历左右子树，而右子树的$rans$完全可以从左子树的$rans$继承所以对于完全被询问区间包含的区间，我们有$ans=\max(M(i),rans+L(i))$随后修改以便继续遍历：$rans=\max(R(i),rans+S(i))$ 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include &lt;iostream&gt;#include &lt;algorithm&gt;using namespace std;int n, m, x, y, ans, rans;int a[50010];int L[200010], R[200010], M[200010], S[200010];void pushup(int root)&#123; S[root] = S[root &lt;&lt; 1] + S[root &lt;&lt; 1 | 1]; L[root] = max(L[root &lt;&lt; 1], S[root &lt;&lt; 1] + L[root &lt;&lt; 1 | 1]); R[root] = max(R[root &lt;&lt; 1 | 1], S[root &lt;&lt; 1 | 1] + R[root &lt;&lt; 1]); M[root] = max(M[root &lt;&lt; 1], max(M[root &lt;&lt; 1 | 1], R[root &lt;&lt; 1] + L[root &lt;&lt; 1 | 1]));&#125;void build(int l, int r, int root)&#123; if (l == r) L[root] = R[root] = M[root] = S[root] = a[l]; else &#123; int mid = (l + r) &gt;&gt; 1; build(l, mid, root &lt;&lt; 1); build(mid + 1, r, root &lt;&lt; 1 | 1); pushup(root); &#125;&#125;void query(int l, int r, int root)&#123; if (l &gt;= x &amp;&amp; r &lt;= y) &#123; ans = max(ans, max(M[root], rans + L[root])); rans = max(R[root], rans + S[root]); &#125; else &#123; int mid = (l + r) &gt;&gt; 1; if (x &lt;= mid) query(l, mid, root &lt;&lt; 1); if (y &gt; mid) query(mid + 1, r, root &lt;&lt; 1 | 1); &#125;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin.tie(0); cin &gt;&gt; n; for (int i = 1; i &lt;= n; i++) cin &gt;&gt; a[i]; build(1, n, 1); cin &gt;&gt; m; while (m--) &#123; cin &gt;&gt; x &gt;&gt; y; ans = rans = -0x7f7f7f7f; query(1, n, 1); cout &lt;&lt; ans &lt;&lt; endl; &#125; return 0;&#125;]]></content>
+    <content type="text"><![CDATA[题目链接源地址：SPOJ GSS1洛谷搬运：SP1043源地址访问太慢了啦！ 题解查询区间最大子段和，经典的模型（可是我今天才会） 分析很显然，一个长度大于$2$的区间的最大子段和只有可能是三种情况： 左区间的最大子段和 右区间的最大子段和 左区间的右区间的最大子段和+右区间的左区间的最大子段和 对于线段树表示区间$[L,R]$的第$i$个区间，我们定义 $S(i)$表示该区间的区间和 $L(i)$表示该区间前缀最大和 $R(i)$表示该区间后缀最大和 $M(i)$表示该区间最大子段和 $left_i$表示左区间 $right_i$表示右区间 由此我们显然有： $S(i)=S(left_i)+S(right_i)$ $L(i)=\max(L(left_i)),S(left_i))+L(right_i))$ $R(i)=\max(R(right_i),S(right_i)+R(left_i))$ $M(i)=\max(M(left_i),M(right_i),R(left_i)+L(right_i))$ queryquery()函数比较特别，在此感谢Logey提供思路设当前即将查询的第$i$个区间为$[L,R]$，令$ans$表示该区间查询的结果，$rans$表示上一个访问过的区间的后缀最大和考虑到线段树是从左子树递归的，$rans$也可以理解为以$L-1$结尾的后缀最大和，即若当前区间完全被询问区间包含，那么修改$rans$的值，否则遍历左右子树，而右子树的$rans$完全可以从左子树的$rans$继承所以对于完全被询问区间包含的区间，我们有$ans=\max(M(i),rans+L(i))$随后修改以便继续遍历：$rans=\max(R(i),rans+S(i))$ 代码1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include &lt;iostream&gt;#include &lt;algorithm&gt;using namespace std;int n, m, x, y, ans, rans;int a[50010];int L[200010], R[200010], M[200010], S[200010];void pushup(int root)&#123; S[root] = S[root &lt;&lt; 1] + S[root &lt;&lt; 1 | 1]; L[root] = max(L[root &lt;&lt; 1], S[root &lt;&lt; 1] + L[root &lt;&lt; 1 | 1]); R[root] = max(R[root &lt;&lt; 1 | 1], S[root &lt;&lt; 1 | 1] + R[root &lt;&lt; 1]); M[root] = max(M[root &lt;&lt; 1], max(M[root &lt;&lt; 1 | 1], R[root &lt;&lt; 1] + L[root &lt;&lt; 1 | 1]));&#125;void build(int l, int r, int root)&#123; if (l == r) L[root] = R[root] = M[root] = S[root] = a[l]; else &#123; int mid = (l + r) &gt;&gt; 1; build(l, mid, root &lt;&lt; 1); build(mid + 1, r, root &lt;&lt; 1 | 1); pushup(root); &#125;&#125;void query(int l, int r, int root)&#123; if (l &gt;= x &amp;&amp; r &lt;= y) &#123; ans = max(ans, max(M[root], rans + L[root])); rans = max(R[root], rans + S[root]); &#125; else &#123; int mid = (l + r) &gt;&gt; 1; if (x &lt;= mid) query(l, mid, root &lt;&lt; 1); if (y &gt; mid) query(mid + 1, r, root &lt;&lt; 1 | 1); &#125;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin.tie(0); cin &gt;&gt; n; for (int i = 1; i &lt;= n; i++) cin &gt;&gt; a[i]; build(1, n, 1); cin &gt;&gt; m; while (m--) &#123; cin &gt;&gt; x &gt;&gt; y; ans = rans = -0x7f7f7f7f; query(1, n, 1); cout &lt;&lt; ans &lt;&lt; endl; &#125; return 0;&#125;]]></content>
       <tags>
         <tag>线段树</tag>
       </tags>
@@ -87,14 +109,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[数学 生日悖论的证明]]></title>
-    <url>%2F2018%2F08%2F20%2F%E6%95%B0%E5%AD%A6-%E7%94%9F%E6%97%A5%E6%82%96%E8%AE%BA%E7%9A%84%E8%AF%81%E6%98%8E%2F</url>
+    <title><![CDATA[生日悖论的证明]]></title>
+    <url>%2F2018%2F08%2F20%2F%E7%94%9F%E6%97%A5%E6%82%96%E8%AE%BA%E7%9A%84%E8%AF%81%E6%98%8E%2F</url>
     <content type="text"><![CDATA[正文悖论描述若有$23$个人，则至少有两个人生日相同的概率要大于$50\%$从引起逻辑矛盾的角度来说生日悖论并非一种悖论 证明设$P(n)$表示$n$个人中至少有两个人生日相同的概率计算$P(n)$不容易，我们可以通过计算$P(n)=1-\overline{P}(n)$得到，其中$\overline{P}(n)$是该$n$人中，每个人生日都不相同的概率在此声明：不考虑双胞胎、闰年等特殊情况假设$n&gt;365$，则根据鸽巢原理，得：$$\overline{P}(n)=0,P(n)=1$$假设$n\leq 365$，根据生日两两不相等，得：\begin{align}\overline{P}(n)&amp;=\frac{365}{365}\cdot(1-\frac{1}{365})\cdot(1-\frac{2}{365})\dots(1-\frac{n-1}{365})\\&amp;=\frac{365}{365}\cdot\frac{364}{365}\dots\frac{365-n+1}{365}\\&amp;=\frac{365!}{365^n(365-n)!}\end{align}故$$P(n)=1-\overline{P}(n)=1-\frac{365!}{365^n(365-n)!}$$用Maple 2018输出（数据大到爆炸），我们可以看到：$$P(10)=11.69\%,P(23)=50.73\%,P(60)=99.41\%$$ 至此该命题得证]]></content>
       <categories>
         <category>Math</category>
       </categories>
       <tags>
-        <tag>Math</tag>
+        <tag>概率</tag>
       </tags>
   </entry>
   <entry>
@@ -162,8 +184,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>AtCoder</tag>
         <tag>贪心</tag>
+        <tag>AtCoder</tag>
         <tag>数论</tag>
       </tags>
   </entry>
@@ -379,14 +401,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Friends]]></title>
-    <url>%2Ffriends%2Findex.html</url>
-    <content type="text"><![CDATA[Name Info SherloCc 江苏省丹阳高级中学 skyofwar 江苏省丹阳高级中学 Logey 临沂一中 SiriusRen 北京邮电大学 Yirannn 吉林大学附属中学 redbag LG管理]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[categories]]></title>
     <url>%2Fcategories%2Findex.html</url>
     <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Friends]]></title>
+    <url>%2Ffriends%2Findex.html</url>
+    <content type="text"><![CDATA[Name Info FlyInTheSky 广东北江中学 Logey 临沂一中 redbag LG管理 SherloCc 江苏省丹阳高级中学 skyofwar 江苏省丹阳高级中学 SiriusRen 北京邮电大学 Yirannn 吉林大学附属中学]]></content>
   </entry>
   <entry>
     <title><![CDATA[tags]]></title>
