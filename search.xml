@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「TJOI2009」 猜数字]]></title>
+    <url>%2F2018%2F11%2F16%2FTJOI2009-%E7%8C%9C%E6%95%B0%E5%AD%97%2F</url>
+    <content type="text"><![CDATA[Link洛谷 3868 Solution经典的Chinese Remainder Theorem例题然而我并不是被CRT卡的，细节较多考虑将方程组变形\begin{cases}x\equiv a_1(\mathrm{mod}\,b_1)\\x\equiv a_2(\mathrm{mod}\,b_2)\\\dots\\x\equiv a_k(\mathrm{mod}\,b_k)\end{cases}直接用CRT实现即可 Detail 1乘法会爆long long，须用快速龟速乘 Detail 2快读注意判负数 Detail 2$a_i$可能为负，为了方便实现，在使用时转为模$b_i$等价类的最小正元素 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include &lt;iostream&gt;#include &lt;cstdio&gt;using namespace std;inline void Read(long long &amp;x)&#123; x = 0; register char ch = getchar(); register int flag = 0; while (!isdigit(ch)) flag = (ch == '-'), ch = getchar(); while (isdigit(ch)) x = x * 10 + (ch ^ 48), ch = getchar(); if (flag) x = -x;&#125;long long mul(long long a, long long b, long long MOD)&#123; long long ret = 0; while (a) &#123; if (a &amp; 1) (ret += b) %= MOD; (b += b) %= MOD; a &gt;&gt;= 1; &#125; return ret;&#125;long long k, s = 1, n;long long a[110], b[110];void exgcd(long long a, long long b, long long &amp;x, long long &amp;y)&#123; if (!b) x = 1, y = 0; else exgcd(b, a % b, y, x), y -= a / b * x;&#125;int main()&#123; Read(k); for (int i = 1; i &lt;= k; ++i) Read(a[i]); for (int i = 1; i &lt;= k; ++i) Read(b[i]), s *= b[i]; for (int i = 1; i &lt;= k; ++i) &#123; register long long m = s / b[i], x, y; exgcd(m, b[i], x, y); (n += mul(mul((a[i] % b[i] + b[i]) % b[i], m, s), x, s)) %= s; &#125; cout &lt;&lt; (n + s) % s &lt;&lt; endl; return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「AHOI2017初中组」 alter]]></title>
+    <url>%2F2018%2F10%2F27%2FAHOI2017%E5%88%9D%E4%B8%AD%E7%BB%84-alter%2F</url>
+    <content type="text"><![CDATA[Link洛谷 3718 Solution由于对于一个答案我们很容易验证是否可行，考虑二分 Codecpp #include #include #include #include using namespace std;int n, k, t;string st;int check(int x){ int len = 1, cnt = 0; for (int i = 1; i &lt; st.length(); ++i) { if (st[i] == st[i - 1]) ++len; else len = 1; if (len &gt; x) { ++cnt, len = 0; if (x &lt; 2) st[i] = st[i] == ‘N’ ? ‘F’ : ‘N’, ++len; } } if (cnt &lt;= k) return 1; else return 0;}int main(){ ios::sync_with_stdio(0); cin &gt;&gt; n &gt;&gt; k; cin &gt;&gt; st; int l = 1, r = n; while (l &lt; r) { int mid = l + r &gt;&gt; 1; if (check(mid)) r = mid; else l = mid + 1; } cout &lt;&lt; l &lt;&lt; endl; return 0;}`]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>二分</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「SDOI2006」 保安站岗]]></title>
+    <url>%2F2018%2F10%2F26%2FSDOI2006-%E4%BF%9D%E5%AE%89%E7%AB%99%E5%B2%97%2F</url>
+    <content type="text"><![CDATA[Link洛谷 2458 Solution对于某个节点，其被覆盖的情况有三种： 被其父节点覆盖 被自己覆盖 被其子节点覆盖 那么我们可按以下方式转移：设$f(0/1/2,i)$表示节点$i$被父节点/本身/子节点覆盖且其子树全被覆盖的最小代价，设$j$为其子节点，易得方程$$f(0,i)=\sum\min\lbrace f(1,j),f(2,j)\rbrace$$$$f(1,i)=\sum\min\lbrace f(0,j),f(1,j),f(2,j)\rbrace$$$$f(2,i)=f(1,k)+\sum_{j\neq k}\min\lbrace f(1,j),f(2,j)\rbrace,f(1,k)=\min\lbrace f(1,j)\rbrace$$ $f(2,i)$转移的细节依然令$j$为$i$的一个子节点思路即取一个最优的子节点强制性的使用它的$f(1,j)$来转移，其余的取最优方案有个细节千万注意：并非$f(1,j)$最小的$j$为最优，反例即为该点的$f(2,j)$远小于该点的$f(1,j)$值也就是我们强制选择的点就是$f(1,j)-f(2,j)$最小的点以$x$记录上述值，$y$记录是否选过$f(1,j)&lt;f(2,j)$的点（$j$本身覆盖优于$j$的子节点覆盖）若$y=0$，那么我们必须加上一个最小的$f(1,j)-f(2,j)$，否则代表我们已经选过最优的这种点了，不作改动 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344#include &lt;iostream&gt;#include &lt;vector&gt;#include &lt;algorithm&gt;using namespace std;int n, numi, ordi, soni;int w[1510], f[3][1510];vector &lt;int&gt; tree[1510];void dfs(int cur, int fr)&#123; int x = 0x7f7f7f7f, y = 0; f[1][cur] = w[cur]; for (int i = 0; i &lt; tree[cur].size(); ++i) &#123; int to = tree[cur][i]; if (to != fr) &#123; dfs(to, cur), f[0][cur] += min(f[1][to], f[2][to]), f[1][cur] += min(f[0][to], min(f[1][to], f[2][to])); if (f[1][to] &lt; f[2][to]) ++y; else x = min(x, f[1][to] - f[2][to]); f[2][cur] += min(f[1][to], f[2][to]); &#125; &#125; if (!y) f[2][cur] += x;&#125;int main()&#123; ios::sync_with_stdio(0); cin.tie(0), cout.tie(0); cin &gt;&gt; n; for (int i = 1; i &lt;= n; ++i) &#123; cin &gt;&gt; ordi &gt;&gt; w[ordi] &gt;&gt; numi; for (; numi; --numi) cin &gt;&gt; soni, tree[ordi].push_back(soni), tree[soni].push_back(ordi); &#125; dfs(1, 0); cout &lt;&lt; min(f[1][1], f[2][1]) &lt;&lt; endl; return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>DP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「Codeforces 767C」 Garland]]></title>
     <url>%2F2018%2F10%2F25%2FCodeforces-767C-Garland%2F</url>
     <content type="text"><![CDATA[LinkCF767C Solution很显然，权值总和不为$3$倍数的话无解那么对于可将权值分成三份相等的情况，我们的工作就是分三棵子树使得每棵子树的权值和等于总和的三分之一我们可以自叶节点向根节点方向累加权值，遇到目前累加和符合条件的就记录一下重点来了：满足权值和条件的子树个数不一定等于3，因为有负权的存在假设有$4$棵子树的权值和都等于$w=W/3$，那么树上必定存在一部分其权值和等于$-w$由于我们是从下往上统计的，这部分一定处在最上面两棵子树之间。那么我们把这一部分与两个权值为$w$的子树合并，必然能得到3棵符合要求的子树因此最后的判断条件就是$cnt&gt;=3$ Code12345678910111213141516171819202122232425262728293031323334353637383940#include &lt;iostream&gt;#include &lt;vector&gt;using namespace std;int n, u, w, W, Root;int s[1000010];vector &lt;int&gt; tree[1000010];vector &lt;int&gt; cut;void dfs(int cur, int fr)&#123; for (int i = 0; i &lt; tree[cur].size(); ++i) if (tree[cur][i] != fr) dfs(tree[cur][i], cur), s[cur]+= s[tree[cur][i]]; if (s[cur] == W) cut.push_back(cur), s[cur] = 0;&#125;int main()&#123; ios::sync_with_stdio(0); cin.tie(0), cout.tie(0); cin &gt;&gt; n; for (int i = 1; i &lt;= n; ++i) &#123; cin &gt;&gt; u &gt;&gt; w, s[i] = w, W += w; if (u) tree[u].push_back(i), tree[i].push_back(u); else Root = i; &#125; if (W % 3) &#123; cout &lt;&lt; -1 &lt;&lt; endl; return 0; &#125; W /= 3, dfs(Root, Root); if (cut.size() &gt;= 3) cout &lt;&lt; cut[0] &lt;&lt; " " &lt;&lt; cut[1] &lt;&lt; endl; else cout &lt;&lt; -1 &lt;&lt; endl; return 0;&#125;]]></content>
@@ -198,8 +231,8 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>洛谷</tag>
         <tag>二分</tag>
+        <tag>洛谷</tag>
       </tags>
   </entry>
   <entry>
@@ -243,8 +276,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>POJ</tag>
         <tag>DP</tag>
+        <tag>POJ</tag>
         <tag>四边形不等式</tag>
       </tags>
   </entry>
@@ -401,14 +434,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[categories]]></title>
-    <url>%2Fcategories%2Findex.html</url>
-    <content type="text"><![CDATA[]]></content>
+    <title><![CDATA[About]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"><![CDATA[站点基于Hexo搭建，使用NexT.Pisces主题，使用GitHub Pages托管网页本站音乐播放器：APlayer，由DIYgod基于MIT License发布 个人初三，江苏省丹阳高级中学 永远感谢[Yirannn](https://yirannn.com/退役前的一番话语 AFO = Always Firmly in OI]]></content>
   </entry>
   <entry>
     <title><![CDATA[Friends]]></title>
     <url>%2Ffriends%2Findex.html</url>
-    <content type="text"><![CDATA[Name Info FlyInTheSky 广东北江中学 Logey 临沂一中 redbag LG管理 SherloCc 江苏省丹阳高级中学 skyofwar 江苏省丹阳高级中学 SiriusRen 北京邮电大学 Yirannn 吉林大学附属中学]]></content>
+    <content type="text"><![CDATA[Name Info FlyInTheSky 广东北江中学 Logey 临沂一中 redbag LG管理 skyofwar 江苏省丹阳高级中学 SiriusRen 北京邮电大学 Yirannn 吉林大学附属中学 多多良假伞 聊城一中]]></content>
   </entry>
   <entry>
     <title><![CDATA[tags]]></title>
@@ -416,8 +449,8 @@
     <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
-    <title><![CDATA[About]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[站点基于Hexo搭建，使用NexT.Pisces主题，使用GitHub Pages托管网页本站音乐播放器：APlayer，由DIYgod基于MIT License发布 个人初三，于江苏省丹阳高级中学学习 操作系统Microsoft Windows 10 EnterpriseUbuntu 18.04.1 LTS IDEMicrosoft Visual Studio Enterprise 2017 编译器MinGW-W64VC++python 3.7.0 编辑器Notepad++Visual Studio Code]]></content>
+    <title><![CDATA[categories]]></title>
+    <url>%2Fcategories%2Findex.html</url>
+    <content type="text"><![CDATA[]]></content>
   </entry>
 </search>
