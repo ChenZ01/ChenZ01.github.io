@@ -1,9 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「SDOI2010」 古代猪文 - CRT + Lucas]]></title>
+    <url>%2F2018%2F12%2F04%2FSDOI2010-%E5%8F%A4%E4%BB%A3%E7%8C%AA%E6%96%87%2F</url>
+    <content type="text"><![CDATA[Link洛谷 2480 Solution题意即求$$G ^ {\sum_{d | n}C_n^d}\,\mathrm{mod}\,999911659$$ Step 1推广费马小定理可得$$G^{\sum_{d | n}C_n^d\,\mathrm{mod}\,999911659} = G^{\sum_{d | n}C_n^d\,\mathrm{mod}\,999911658}\,\mathrm{mod}\,999911659$$ Step 2快速幂很好办，那么唯一的难点就是指数——模数不为质数，不能直接用Lucas Theorem再看一眼我们要求的指数$$\sum_{d | n}C_n^d\,\mathrm{mod}\,999911658$$对于$d$我们采用$O(\sqrt{n})$的方式暴力枚举，然后呢……似乎我们已经走入穷途末路了…… Step 3方便起见令$s = \sum_{d | n}C_n^d, x = s \,\mathrm{mod}\,999911659$分解$999911658 = 2 \cdot 3 \cdot 4679 \cdot 35617$令$a_1 = s\,\mathrm{mod}\, 2, a_2 = s\,\mathrm{mod}\, 3, a_3 = s\,\mathrm{mod}\, 4679, a_4 = s\,\mathrm{mod}\, 35617$我们可以得到\begin{cases}x \equiv a_1 (\mathrm{mod}\, 2)\\x \equiv a_2 (\mathrm{mod}\, 3)\\x \equiv a_3 (\mathrm{mod}\, 4679)\\x \equiv a_3 (\mathrm{mod}\, 35617)\end{cases}求解出$x$即为指数 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#include &lt;cmath&gt;using namespace std;#define MOD 999911659template &lt;class T&gt;void Read(T &amp;x)&#123; x = 0; register char ch = getchar(); for (; !isdigit(ch); ch = getchar()); for (; isdigit(ch); x = x * 10 + (ch ^ 48), ch = getchar());&#125;long long n, g;long long frac[50010];void init(long long p)&#123; frac[0] = 1; for (register long long i = 1; i &lt;= p; ++i) frac[i] = frac[i - 1] * i % p;&#125;inline long long fastpow(long long base, long long index, long long p)&#123; register long long ret = 1; while (index) &#123; if (index &amp; 1) ret = ret * base % p; base = base * base % p; index &gt;&gt;= 1; &#125; return ret;&#125;inline long long inv(long long x, long long p)&#123; return fastpow(x, p - 2, p);&#125;inline long long C(long long x, long long y, long long p)&#123; if (x &lt; y) return 0; else return frac[x] * inv(frac[y], p) * inv(frac[x - y], p) % p;&#125;inline long long Lucas(long long x, long long y, long long p)&#123; if (x &lt; y) return 0; else if (x &lt; p &amp;&amp; y &lt; p) return C(x, y, p); else return Lucas(x % p, y % p, p) * Lucas(x / p, y / p, p) % p;&#125;inline long long CRT(vector &lt;long long&gt; &amp;a, vector &lt;long long&gt; &amp;b)&#123; register long long ret = 0, m = MOD - 1; for (register int i = 0; i &lt; 4; ++i) ret = (ret + a[i] * (m / b[i]) % m * inv(m / b[i], b[i]) % m) % m; return (ret % m + m) % m;&#125;inline long long sum(long long p)&#123; vector &lt;long long&gt; a(4), b(4); b[0] = 2, b[1] = 3, b[2] = 4679, b[3] = 35617; for (register int j = 0; j &lt; 4; ++j) &#123; init(b[j]); for (register int i = 1; i * i &lt;= n; ++i) &#123; if (!(n % i)) &#123; a[j] = (a[j] + Lucas(n, i, b[j])) % b[j]; if (i * i != n) a[j] = (a[j] + Lucas(n, n / i, b[j])) % b[j]; &#125; &#125; &#125; return CRT(a, b) % p;&#125;int main()&#123; Read(n), Read(g); if (!(g % MOD)) cout &lt;&lt; 0 &lt;&lt; endl; else cout &lt;&lt; fastpow(g, sum(MOD), MOD)&lt;&lt; endl;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「SDOI2013」 随机数生成器 - BSGS]]></title>
+    <url>%2F2018%2F12%2F04%2FSDOI2013-%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%94%9F%E6%88%90%E5%99%A8%2F</url>
+    <content type="text"><![CDATA[Link洛谷 3306 Solution大力推式子 \begin{align}X_{i + 1} &amp;\equiv aX_i + b(\mathrm{mod}\,p)\\X_{i + 1} + \frac{b}{a} &amp;\equiv aX_i + b + \frac{b}{a}(\mathrm{mod}\,p)\\aX_{i + 1} + b &amp;\equiv a^2X_i + ab + b(\mathrm{mod}\,p)\\X_{i + 2} &amp;\equiv a^2X_i + ab + b(\mathrm{mod}\,p)\\\end{align} 那么我们得到 \begin{align}X_2 &amp;\equiv aX_1 + b(\mathrm{mod}\,p)\\X_3 &amp;\equiv a ^ 2X_1 + ab + b(\mathrm{mod}\,p)\\X_4 &amp;\equiv a ^ 3X_1 + a ^ 2b + ab + b(\mathrm{mod}\,p)\\\dots\\X_i &amp;\equiv a ^ {i - 1}X_1 + b\sum_{j = 0} ^ {i - 2}a ^ j(\mathrm{mod}\,p)\\\end{align} 也就是我们要判断如下方程是否有整数解，若有则求解 $$t \equiv a ^ {i - 1}X_1 + b\sum_{j = 0} ^ {i - 2}a ^ j(\mathrm{mod}\,p)$$ 继续化化化 \begin{align}t &amp;\equiv a ^ {i - 1}X_1 + b\sum_{j = 0} ^ {i - 2}a ^ j(\mathrm{mod}\,p)\\t &amp;\equiv a ^ {i - 1}X_1 + b\frac{1 - a ^ {i - 1}}{1 - a}(\mathrm{mod}\,p)\\t &amp;\equiv a ^ {i - 1}X_1 + \frac{b}{1 - a} - \frac{b}{1 - a} \cdot a^{i - 1}(\mathrm{mod}\,p)\\t &amp;\equiv a ^ {i - 1}(X_1 - \frac{b}{1 - a}) + \frac{b}{1 - a}(\mathrm{mod}\,p)\\a ^ {i - 1} &amp;\equiv \frac{t - \frac{b}{1 - a}}{X_1 - \frac{b}{1 - a}}(\mathrm{mod}\,p)\\\end{align} 大功告成，用BSGS求解出$i - 1$的值，由于$t$是第$i$项，答案加一即可 Detail 1对于$X_1 = t$时，直接输出$1$ Detail 2对于$a = 0$时，$X_i = b$ Detail 3对于$a = 1$时，有$X_i \equiv X_1 + b(i - 1)(\mathrm{mod}\,p)$那么求解$t - X_1 \equiv b(i - 1)(\mathrm{mod}\,p)$的系数$i - 1$即可注意当答案就是$p$的时候不要再模$p$了 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cmath&gt;#include &lt;map&gt;using namespace std;template &lt;class I&gt;inline void Read(I &amp;x)&#123; register char ch = getchar(); for (; !isdigit(ch); ch = getchar()); for (x = 0; isdigit(ch); x = x * 10 + (ch ^ 48), ch = getchar());&#125;long long NUMOFCASES, a, b, p, x, t, X, Y;long long fastpow(long long base, int index, int MOD)&#123; register long long ret = 1; while (index) &#123; if (index &amp; 1) ret = ret * base % MOD; base = base * base % MOD; index &gt;&gt;= 1; &#125; return ret;&#125;long long gcd(long long a, long long b)&#123; return b ? gcd(b, a % b) : a;&#125;long long inv(long long x, int MOD)&#123; return fastpow(x, MOD - 2, MOD);&#125;long long bsgs(long long a, long long b, int MOD)&#123; a %= MOD, b %= MOD; std::map&lt;long long, long long&gt; map; register long long m = ceil(sqrt(MOD)), t = 1; for (register int i = 0; i &lt; m; ++i) &#123; if (!map.count(t)) map[t] = i; t = t * a % MOD; &#125; register long long k = inv(t, MOD), w = b; for (int i = 0; i &lt; m; ++i) &#123; if (map.count(w)) return i * m + map[w]; w = w * k % MOD; &#125; return -1;&#125;int main()&#123; Read(NUMOFCASES); for (; NUMOFCASES; --NUMOFCASES) &#123; Read(p), Read(a), Read(b), Read(x), Read(t); if (x == t) cout &lt;&lt; 1 &lt;&lt; endl; else if (a == 1) &#123; t = (t - x + p) % p; if (t % gcd(b, p)) cout &lt;&lt; -1 &lt;&lt; endl; else cout &lt;&lt; (t * inv(b, p) + 1 == p ? t * inv(b, p) + 1 : (t * inv(b, p) + 1) % p) &lt;&lt; endl; &#125; else if (a == 0) &#123; if (b == t) cout &lt;&lt; 2 &lt;&lt; endl; else cout &lt;&lt; -1 &lt;&lt; endl; &#125; else &#123; long long ans = bsgs(a, ((t - b * inv(1 - a, p)) % p + p) % p * inv(((x - b * inv(1 - a, p)) % p + p) % p , p), p) % p; if (ans == -1) cout &lt;&lt; -1 &lt;&lt; endl; else cout &lt;&lt; ans + 1 &lt;&lt; endl; &#125; &#125;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「BZOJ 1441」 Min - 裴蜀定理]]></title>
+    <url>%2F2018%2F11%2F21%2FBZOJ-1441%2F</url>
+    <content type="text"><![CDATA[LinkBZOJ 1441 Solution第一发BZOJ题解，顺便改一下post标题格式 Analysis我们先不管$a_3\dots a_n$，单看$a_1, a_2$方便起见我们令$a = a_1, b = a_2$那么很显然$a$与$b$的线性组合集中最小正元素即为$\gcd(a, b)$现在我们考虑加入$c = a_3$，则它与$a, b$构造的最小解即为$\gcd(c, \gcd(a, b))$上面我们先考虑线性组合$a, b$，即我们按顺序构造解，正确性显然 裴蜀定理对于任意整数$a, b$，定有$\gcd(a, b) | (ax + by)$ Proof有了该定理，我们更理性地看一下我们的做法首先对于两个整数$a, b$，其能构造出的最小正值为$\gcd(a, b)$，且对于$a, b$线性组合集中的任意元素$k$，都有$\gcd(a, b) | k$那么加入第三个数$c$，则肯定有$\gcd(c, k) \geq \gcd(c, \gcd(a, b))$推广至一般形式，对于已经处理出的最小解$s=\gcd(a_1, a_2, \dots, a_k)$以及另一个解$s’$，加入$a_{k + 1}$，则定有$$\gcd(s’, a_{k + 1}) \geq \gcd(s, a_{k + 1})$$因此本题的$s$即为$\gcd(a_1, a_2, \dots, a_n)$ Code123456789101112131415161718192021222324252627282930313233343536373839#include &lt;iostream&gt;#include &lt;cstdio&gt;using namespace std;inline void Read(int &amp;x)&#123; x = 0; char ch = getchar(); int minu = 0; while (!isdigit(ch)) ch = getchar(), minu = ch == '-'; while (isdigit(ch)) x = x * 10 + (ch ^ 48), ch = getchar(); if (minu) x = -x;&#125;int gcd(int x, int y)&#123; return y ? gcd(y, x % y) : x;&#125;int n, a, b, ans;int main()&#123; freopen("1441.in", "r", stdin); freopen("1441.out", "w", stdout); Read(n); Read(a); for (int i = 2; i &lt;= n; ++i) &#123; Read(b); ans = (a = gcd(a, b)); &#125; cout &lt;&lt; ans &lt;&lt; endl; return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「TJOI2009」 猜数字]]></title>
     <url>%2F2018%2F11%2F16%2FTJOI2009-%E7%8C%9C%E6%95%B0%E5%AD%97%2F</url>
-    <content type="text"><![CDATA[Link洛谷 3868 Solution经典的Chinese Remainder Theorem例题然而我并不是被CRT卡的，细节较多考虑将方程组变形\begin{cases}x\equiv a_1(\mathrm{mod}\,b_1)\\x\equiv a_2(\mathrm{mod}\,b_2)\\\dots\\x\equiv a_k(\mathrm{mod}\,b_k)\end{cases}直接用CRT实现即可 Detail 1乘法会爆long long，须用快速龟速乘 Detail 2快读注意判负数 Detail 2$a_i$可能为负，为了方便实现，在使用时转为模$b_i$等价类的最小正元素 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include &lt;iostream&gt;#include &lt;cstdio&gt;using namespace std;inline void Read(long long &amp;x)&#123; x = 0; register char ch = getchar(); register int flag = 0; while (!isdigit(ch)) flag = (ch == '-'), ch = getchar(); while (isdigit(ch)) x = x * 10 + (ch ^ 48), ch = getchar(); if (flag) x = -x;&#125;long long mul(long long a, long long b, long long MOD)&#123; long long ret = 0; while (a) &#123; if (a &amp; 1) (ret += b) %= MOD; (b += b) %= MOD; a &gt;&gt;= 1; &#125; return ret;&#125;long long k, s = 1, n;long long a[110], b[110];void exgcd(long long a, long long b, long long &amp;x, long long &amp;y)&#123; if (!b) x = 1, y = 0; else exgcd(b, a % b, y, x), y -= a / b * x;&#125;int main()&#123; Read(k); for (int i = 1; i &lt;= k; ++i) Read(a[i]); for (int i = 1; i &lt;= k; ++i) Read(b[i]), s *= b[i]; for (int i = 1; i &lt;= k; ++i) &#123; register long long m = s / b[i], x, y; exgcd(m, b[i], x, y); (n += mul(mul((a[i] % b[i] + b[i]) % b[i], m, s), x, s)) %= s; &#125; cout &lt;&lt; (n + s) % s &lt;&lt; endl; return 0;&#125;]]></content>
+    <content type="text"><![CDATA[Link洛谷 3868 Solution经典的Chinese Remainder Theorem例题然而我并不是被CRT卡的，细节较多考虑将方程组变形\begin{cases}x\equiv a_1(\mathrm{mod}\,b_1)\\x\equiv a_2(\mathrm{mod}\,b_2)\\\dots\\x\equiv a_k(\mathrm{mod}\,b_k)\end{cases}直接用CRT实现即可 Detail 1乘法会爆long long，须用快速龟速乘 Detail 2快读注意判负数 Detail 3$a_i$可能为负，为了方便实现，在使用时转为模$b_i$等价类的最小正元素 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include &lt;iostream&gt;#include &lt;cstdio&gt;using namespace std;inline void Read(long long &amp;x)&#123; x = 0; register char ch = getchar(); register int flag = 0; while (!isdigit(ch)) flag = (ch == '-'), ch = getchar(); while (isdigit(ch)) x = x * 10 + (ch ^ 48), ch = getchar(); if (flag) x = -x;&#125;long long mul(long long a, long long b, long long MOD)&#123; long long ret = 0; while (a) &#123; if (a &amp; 1) (ret += b) %= MOD; (b += b) %= MOD; a &gt;&gt;= 1; &#125; return ret;&#125;long long k, s = 1, n;long long a[110], b[110];void exgcd(long long a, long long b, long long &amp;x, long long &amp;y)&#123; if (!b) x = 1, y = 0; else exgcd(b, a % b, y, x), y -= a / b * x;&#125;int main()&#123; Read(k); for (int i = 1; i &lt;= k; ++i) Read(a[i]); for (int i = 1; i &lt;= k; ++i) Read(b[i]), s *= b[i]; for (int i = 1; i &lt;= k; ++i) &#123; register long long m = s / b[i], x, y; exgcd(m, b[i], x, y); (n += mul(mul((a[i] % b[i] + b[i]) % b[i], m, s), x, s)) %= s; &#125; cout &lt;&lt; (n + s) % s &lt;&lt; endl; return 0;&#125;]]></content>
       <categories>
         <category>OI</category>
       </categories>
@@ -14,7 +47,7 @@
   <entry>
     <title><![CDATA[「AHOI2017初中组」 alter]]></title>
     <url>%2F2018%2F10%2F27%2FAHOI2017%E5%88%9D%E4%B8%AD%E7%BB%84-alter%2F</url>
-    <content type="text"><![CDATA[Link洛谷 3718 Solution由于对于一个答案我们很容易验证是否可行，考虑二分 Codecpp #include #include #include #include using namespace std;int n, k, t;string st;int check(int x){ int len = 1, cnt = 0; for (int i = 1; i &lt; st.length(); ++i) { if (st[i] == st[i - 1]) ++len; else len = 1; if (len &gt; x) { ++cnt, len = 0; if (x &lt; 2) st[i] = st[i] == ‘N’ ? ‘F’ : ‘N’, ++len; } } if (cnt &lt;= k) return 1; else return 0;}int main(){ ios::sync_with_stdio(0); cin &gt;&gt; n &gt;&gt; k; cin &gt;&gt; st; int l = 1, r = n; while (l &lt; r) { int mid = l + r &gt;&gt; 1; if (check(mid)) r = mid; else l = mid + 1; } cout &lt;&lt; l &lt;&lt; endl; return 0;}`]]></content>
+    <content type="text"><![CDATA[Link洛谷 3718 Solution由于对于一个答案我们很容易验证是否可行，考虑二分 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;string&gt;#include &lt;algorithm&gt;using namespace std;int n, k, t;string st;int check(int x)&#123; int len = 1, cnt = 0; for (int i = 1; i &lt; st.length(); ++i) &#123; if (st[i] == st[i - 1]) ++len; else len = 1; if (len &gt; x) &#123; ++cnt, len = 0; if (x &lt; 2) st[i] = st[i] == 'N' ? 'F' : 'N', ++len; &#125; &#125; if (cnt &lt;= k) return 1; else return 0;&#125;int main()&#123; ios::sync_with_stdio(0); cin &gt;&gt; n &gt;&gt; k; cin &gt;&gt; st; int l = 1, r = n; while (l &lt; r) &#123; int mid = l + r &gt;&gt; 1; if (check(mid)) r = mid; else l = mid + 1; &#125; cout &lt;&lt; l &lt;&lt; endl; return 0;&#125;]]></content>
       <categories>
         <category>OI</category>
       </categories>
@@ -56,15 +89,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[「洛谷 2485」 计算器]]></title>
-    <url>%2F2018%2F10%2F04%2F%E6%B4%9B%E8%B0%B7-2485%2F</url>
-    <content type="text"><![CDATA[Link洛谷 2485本题亦是SDOI2011题目 Solution1裸的快速幂取模 2令$d=\gcd(a,b)$ 一个推论当且仅当$d|b$时，方程$ax\equiv b(\mathrm{mod}\,n)$对于未知量$x$有解 一个定理假设对某些整数$x’$和$y’$，有$d=ax’+ny’$。若$d|b$，则方程$ax\equiv b(\mathrm{mod}\,n)$的有一个解的值为$x_0$，这里$$x_0=x’(b/d)\,\mathrm{mod}\,n$$ 证明根据$x’$的性质，即：$$ax\equiv d(\mathrm{mod}\,n)$$可得：\begin{align}ax_0&amp;\equiv ax’(b/d)(\mathrm{mod}\,n)\\&amp;\equiv d(b/d)(\mathrm{mod}\,n)\\&amp;\equiv b(\mathrm{mod}\,n)\end{align}因此$x_0$是方程$ax\equiv b(\mathrm{mod}\,n)$的一个解 解决那么对于询问2，用扩欧求方程$ax’+ny’=d$即可注意根据上面的一个推论，当$d$不整除$b$时该方程无解 3我们引入一个概念—— 离散对数若$g$是$\mathrm{Z}_n^*$的一个原根且$a$是$\mathrm{Z}_n^*$中的任意元素，则存在一个$z$，使得$g^z\equiv a(\mathrm{mod}\,n)$，则将$z$称为对模$n$到基$g$上的$a$的一个离散对数或指数说人话，也就是对于给定的$a,b,p$，存在一个$x$，使得$$a^x\equiv b(\mathrm{mod}\,p)$$则称$x$为$b$在模$p$意义下以$a$为底的离散对数 很显然本题就是让我们求$y$的离散对数，常用方法叫做BSGS——Baby Step-Giant Step BSGS拿出我们要解的关于$x$的方程：$$a^x\equiv b(\mathrm{mod}\,p)$$令$m=\lceil \sqrt{p}\rceil$。根据费马小定理，有$a^{p-1}\equiv 1(\mathrm{mod}\,p)$故若方程有解，则必存在一个$0\leq x&lt;p-1$根据除法的定义，令$x=im+j$，方程可化为： \begin{align}a^x&amp;\equiv b(\mathrm{mod}\,p)\\a^{im+j}&amp;\equiv b(\mathrm{mod}\,p)\\a^j&amp;\equiv b\cdot a^{-im}(\mathrm{mod}\,p)\\a^j&amp;\equiv b\cdot (a^{-m})^i(\mathrm{mod}\,p)\end{align}得到这玩意，我们就只需找到一组$i,j$使得最后一个式子成立即可那么我们先枚举$j$，递推出左边$a^j\,\mathrm{mod}\,p$的所有取值，并将其按照$(a^j\,\mathrm{mod}\,p)\mapsto j$的映射关系插入到哈希表中之后求出$a^m\,\mathrm{mod}\,p$的乘法逆元，枚举$i$，递推出所有的$b\cdot(a^{-m})^i$，每得到一个值后在哈希表内查找该值。若存在，取出对应的$j$，$x=im+j$即为一个解 Extra注意取模的时候可能有负数，并且应该先模$p$，具体见代码注释的那一行，卡了我35分 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384#include &lt;iostream&gt;#include &lt;cmath&gt;#include &lt;map&gt;using namespace std;long long T, K, y, z, p, gcd, X, Y;map &lt;long long, long long&gt; mp;inline long long fastpow(long long base, long long index)&#123; long long ret = 1; while (index) &#123; if (index &amp; 1) ret = ret * base % p; base = base * base % p; index &gt;&gt;= 1; &#125; return ret;&#125;inline void exgcd(long long a, long long b, long long &amp;d, long long &amp;x, long long &amp;y)&#123; if (!b) d = a, x = 1, y = 0; else exgcd(b, a % b, d, y, x), y -= a / b * x;&#125;inline long long inv(long long x)&#123; return fastpow(x, p - 2);&#125;inline long long bsgs(long long a, long long b)&#123; if (!a) return b ? -1 : 1; mp.clear(); long long m = ceil(sqrt(p)), t = 1; for (long long i = 0; i &lt; m; i++) &#123; if (!mp.count(t)) mp[t] = i; t = t * a % p; &#125; long long k = inv(t), w = b; for (long long i = 0; i &lt; m; i++) &#123; if (mp.count(w)) return i * m + mp[w]; w = w * k % p; &#125; return -1;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(0); cin.tie(0), cout.tie(0); cin &gt;&gt; T &gt;&gt; K; while (T--) &#123; cin &gt;&gt; y &gt;&gt; z &gt;&gt; p; if (K == 1) &#123; cout &lt;&lt; fastpow(y, z) &lt;&lt; endl; &#125; else if (K == 2) &#123; exgcd(y, p, gcd, X, Y); if (z % gcd) cout &lt;&lt; "Orz, I cannot find x!" &lt;&lt; endl; else &#123; cout &lt;&lt; (X * z / gcd % p + p) % p &lt;&lt; endl;//Important &#125; &#125; else &#123; long long ans = bsgs(y % p, z % p); if (ans == -1) cout &lt;&lt; "Orz, I cannot find x!" &lt;&lt; endl; else cout &lt;&lt; ans &lt;&lt; endl; &#125; &#125; return 0;&#125; 后记BSGS部分参考Menci的博客]]></content>
+    <title><![CDATA[「SDOI2011」 计算器]]></title>
+    <url>%2F2018%2F10%2F04%2FSDOI2011-%E8%AE%A1%E7%AE%97%E5%99%A8%2F</url>
+    <content type="text"><![CDATA[Link洛谷 2485 Solution1裸的快速幂取模 2令$d=\gcd(a,n)$ 一个推论当且仅当$d|b$时，方程$ax\equiv b(\mathrm{mod}\,n)$对于未知量$x$有解 一个定理假设对某些整数$x’$和$y’$，有$d=ax’+ny’$。若$d|b$，则方程$ax\equiv b(\mathrm{mod}\,n)$的有一个解的值为$x_0$，这里$$x_0=x’(b/d)\,\mathrm{mod}\,n$$ 证明根据$x’$的性质，即：$$ax\equiv d(\mathrm{mod}\,n)$$可得：\begin{align}ax_0&amp;\equiv ax’(b/d)(\mathrm{mod}\,n)\\&amp;\equiv d(b/d)(\mathrm{mod}\,n)\\&amp;\equiv b(\mathrm{mod}\,n)\end{align}因此$x_0$是方程$ax\equiv b(\mathrm{mod}\,n)$的一个解 解决那么对于询问2，用扩欧求方程$ax’+ny’=d$即可注意根据上面的一个推论，当$d$不整除$b$时该方程无解 3我们引入一个概念—— 离散对数若$g$是$\mathrm{Z}_n^*$的一个原根且$a$是$\mathrm{Z}_n^*$中的任意元素，则存在一个$z$，使得$g^z\equiv a(\mathrm{mod}\,n)$，则将$z$称为对模$n$到基$g$上的$a$的一个离散对数或指数说人话，也就是对于给定的$a,b,p$，存在一个$x$，使得$$a^x\equiv b(\mathrm{mod}\,p)$$则称$x$为$b$在模$p$意义下以$a$为底的离散对数 很显然本题就是让我们求$y$的离散对数，常用方法叫做BSGS——Baby Step-Giant Step BSGS拿出我们要解的关于$x$的方程：$$a^x\equiv b(\mathrm{mod}\,p)$$令$m=\lceil \sqrt{p}\rceil$。根据费马小定理，有$a^{p-1}\equiv 1(\mathrm{mod}\,p)$故若方程有解，则必存在一个$0\leq x&lt;p-1$根据除法的定义，令$x=im+j$，方程可化为： \begin{align}a^x&amp;\equiv b(\mathrm{mod}\,p)\\a^{im+j}&amp;\equiv b(\mathrm{mod}\,p)\\a^j&amp;\equiv b\cdot a^{-im}(\mathrm{mod}\,p)\\a^j&amp;\equiv b\cdot (a^{-m})^i(\mathrm{mod}\,p)\end{align}得到这玩意，我们就只需找到一组$i,j$使得最后一个式子成立即可那么我们先枚举$j$，递推出左边$a^j\,\mathrm{mod}\,p$的所有取值，并将其按照$(a^j\,\mathrm{mod}\,p)\mapsto j$的映射关系插入到哈希表中之后求出$a^m\,\mathrm{mod}\,p$的乘法逆元，枚举$i$，递推出所有的$b\cdot(a^{-m})^i$，每得到一个值后在哈希表内查找该值。若存在，取出对应的$j$，$x=im+j$即为一个解 Extra注意取模的时候可能有负数，并且应该先模$p$，具体见代码注释的那一行，卡了我35分 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384#include &lt;iostream&gt;#include &lt;cmath&gt;#include &lt;map&gt;using namespace std;long long T, K, y, z, p, gcd, X, Y;map &lt;long long, long long&gt; mp;inline long long fastpow(long long base, long long index)&#123; long long ret = 1; while (index) &#123; if (index &amp; 1) ret = ret * base % p; base = base * base % p; index &gt;&gt;= 1; &#125; return ret;&#125;inline void exgcd(long long a, long long b, long long &amp;d, long long &amp;x, long long &amp;y)&#123; if (!b) d = a, x = 1, y = 0; else exgcd(b, a % b, d, y, x), y -= a / b * x;&#125;inline long long inv(long long x)&#123; return fastpow(x, p - 2);&#125;inline long long bsgs(long long a, long long b)&#123; if (!a) return b ? -1 : 1; mp.clear(); long long m = ceil(sqrt(p)), t = 1; for (long long i = 0; i &lt; m; i++) &#123; if (!mp.count(t)) mp[t] = i; t = t * a % p; &#125; long long k = inv(t), w = b; for (long long i = 0; i &lt; m; i++) &#123; if (mp.count(w)) return i * m + mp[w]; w = w * k % p; &#125; return -1;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(0); cin.tie(0), cout.tie(0); cin &gt;&gt; T &gt;&gt; K; while (T--) &#123; cin &gt;&gt; y &gt;&gt; z &gt;&gt; p; if (K == 1) &#123; cout &lt;&lt; fastpow(y, z) &lt;&lt; endl; &#125; else if (K == 2) &#123; exgcd(y, p, gcd, X, Y); if (z % gcd) cout &lt;&lt; "Orz, I cannot find x!" &lt;&lt; endl; else &#123; cout &lt;&lt; (X * z / gcd % p + p) % p &lt;&lt; endl;//Important &#125; &#125; else &#123; long long ans = bsgs(y % p, z % p); if (ans == -1) cout &lt;&lt; "Orz, I cannot find x!" &lt;&lt; endl; else cout &lt;&lt; ans &lt;&lt; endl; &#125; &#125; return 0;&#125; 后记BSGS部分参考Menci的博客]]></content>
       <categories>
         <category>OI</category>
       </categories>
       <tags>
         <tag>数论</tag>
-        <tag>洛谷</tag>
       </tags>
   </entry>
   <entry>
@@ -217,9 +249,9 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
-        <tag>AtCoder</tag>
         <tag>数论</tag>
+        <tag>AtCoder</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -230,8 +262,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>二分</tag>
+        <tag>贪心</tag>
         <tag>洛谷</tag>
       </tags>
   </entry>
@@ -276,8 +308,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>POJ</tag>
+        <tag>DP</tag>
         <tag>四边形不等式</tag>
       </tags>
   </entry>
@@ -434,9 +466,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[About]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[站点基于Hexo搭建，使用NexT.Pisces主题，使用GitHub Pages托管网页本站音乐播放器：APlayer，由DIYgod基于MIT License发布 个人初三，江苏省丹阳高级中学 永远感谢[Yirannn](https://yirannn.com/退役前的一番话语 AFO = Always Firmly in OI]]></content>
+    <title><![CDATA[categories]]></title>
+    <url>%2Fcategories%2Findex.html</url>
+    <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
     <title><![CDATA[Friends]]></title>
@@ -449,8 +481,8 @@
     <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
-    <title><![CDATA[categories]]></title>
-    <url>%2Fcategories%2Findex.html</url>
-    <content type="text"><![CDATA[]]></content>
+    <title><![CDATA[About]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"><![CDATA[站点基于Hexo搭建，使用NexT.Pisces主题，使用GitHub Pages托管网页本站音乐播放器：APlayer，由DIYgod基于MIT License发布 个人初三，江苏省丹阳高级中学永远感谢Yirannn退役前的一番话语AFO = Always Firmly in OI]]></content>
   </entry>
 </search>

@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="Link洛谷 3718 Solution由于对于一个答案我们很容易验证是否可行，考虑二分 Codecpp #include  #include  #include  #include using namespace std;int n, k, t;string st;int check(int x){    int l">
+<meta name="description" content="Link洛谷 3718 Solution由于对于一个答案我们很容易验证是否可行，考虑二分 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445#include &amp;lt;iostream&amp;">
 <meta name="keywords" content="二分">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「AHOI2017初中组」 alter">
 <meta property="og:url" content="http://yoursite.com/2018/10/27/AHOI2017初中组-alter/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="Link洛谷 3718 Solution由于对于一个答案我们很容易验证是否可行，考虑二分 Codecpp #include  #include  #include  #include using namespace std;int n, k, t;string st;int check(int x){    int len = 1, cnt = 0;    for (int i = 1; i &amp;">
+<meta property="og:description" content="Link洛谷 3718 Solution由于对于一个答案我们很容易验证是否可行，考虑二分 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445#include &amp;lt;iostream&amp;gt;#include &amp;lt;cstring&amp;gt;#include &amp;lt;string&amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-26T22:25:37.841Z">
+<meta property="og:updated_time" content="2018-11-16T10:25:28.150Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「AHOI2017初中组」 alter">
-<meta name="twitter:description" content="Link洛谷 3718 Solution由于对于一个答案我们很容易验证是否可行，考虑二分 Codecpp #include  #include  #include  #include using namespace std;int n, k, t;string st;int check(int x){    int len = 1, cnt = 0;    for (int i = 1; i &amp;">
+<meta name="twitter:description" content="Link洛谷 3718 Solution由于对于一个答案我们很容易验证是否可行，考虑二分 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445#include &amp;lt;iostream&amp;gt;#include &amp;lt;cstring&amp;gt;#include &amp;lt;string&amp;">
 
 
 
@@ -184,7 +184,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">千般荒凉，以此为梦<br>万里躞蹀，以此为归</p>
+        <p class="site-subtitle">戦えない無力なエゴ<br>砂になる栄光</p>
       
   </div>
 
@@ -421,12 +421,7 @@
       
         <script src="\assets\js\APlayer.min.js"> </script><h2 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h2><p><a href="https://www.luogu.org/problemnew/show/P3718" target="_blank" rel="noopener">洛谷 3718</a></p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>由于对于一个答案我们很容易验证是否可行，考虑二分</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><code></code>cpp</p>
-<p>#include <iostream></iostream></p>
-<p>#include <cstring></cstring></p>
-<p>#include <string></string></p>
-<p>#include <algorithm><br>using namespace std;<br>int n, k, t;<br>string st;<br>int check(int x)<br>{<br>    int len = 1, cnt = 0;<br>    for (int i = 1; i &lt; st.length(); ++i)<br>    {<br>        if (st[i] == st[i - 1])<br>            ++len;<br>        else<br>            len = 1;<br>        if (len &gt; x)<br>        {<br>            ++cnt, len = 0;<br>            if (x &lt; 2)<br>                st[i] = st[i] == ‘N’ ? ‘F’ : ‘N’, ++len;<br>        }<br>    }<br>    if (cnt &lt;= k)<br>        return 1;<br>    else<br>        return 0;<br>}<br>int main()<br>{<br>    ios::sync_with_stdio(0);<br>    cin &gt;&gt; n &gt;&gt; k;<br>    cin &gt;&gt; st;<br>    int l = 1, r = n;<br>    while (l &lt; r)<br>    {<br>        int mid = l + r &gt;&gt; 1;<br>        if (check(mid))<br>            r = mid;<br>        else<br>            l = mid + 1;<br>    }<br>    cout &lt;&lt; l &lt;&lt; endl;<br>    return 0;<br>}<br><code>`</code></algorithm></p>
-
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n, k, t;</span><br><span class="line"><span class="built_in">string</span> st;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="number">1</span>, cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; st.length(); ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (st[i] == st[i - <span class="number">1</span>])</span><br><span class="line">            ++len;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            len = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (len &gt; x)</span><br><span class="line">        &#123;</span><br><span class="line">            ++cnt, len = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">if</span> (x &lt; <span class="number">2</span>)</span><br><span class="line">                st[i] = st[i] == <span class="string">'N'</span> ? <span class="string">'F'</span> : <span class="string">'N'</span>, ++len;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (cnt &lt;= k)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; k;</span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; st;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">1</span>, r = n;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (check(mid))</span><br><span class="line">            r = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            l = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; l &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -545,7 +540,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">41</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
