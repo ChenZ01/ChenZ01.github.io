@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Hello, 2019!]]></title>
+    <url>%2F2019%2F01%2F01%2FHello-2019%2F</url>
+    <content type="text"><![CDATA[Goodbye, 2018! Hello, 2019! 20186月，第一次买了Office 3659月，进入江苏省丹阳高级中学拔尖创新人才预备班10月，第一次月考达到巅峰11月，胆大无比地向年纪主任要停课的时间11月，第一次NOIP提高组11月，NOIP后一天，期中考试爆炸12月，自己与一等奖的线只差了5分12月，某OIer的退役感想令我愣了半天12月，数学第一次没有涂答题卡12月，压抑不住自己对日本文学的好奇，偷偷地去买了本《罗生门》12月，第一次去看DC的电影Amber Heard小姐姐真好看12月，抛弃了Visual Studio，正式加入Visual Studio Code大军12月，可爱的老同学给我买了一份Cytus II 2019?三句话，继往开来 人生不如一行波德莱尔艺术至上？学术至上？我希望做一个学术至上的人，但在2018，很显然并不是 人生悲剧的第一幕始于成为父母子女。遗传、境遇、偶然，掌握我们命运的，终究还是这三种东西18年提高组，真是苦涩啊这是我第一次被“偶然”击败，月考的没涂答题卡是第二次震惊于自己的不佳状态，对不起，让你们失望了看到高二学长AFO，自己呢？声嘶力竭地吼着”Always Firmly in OI”，你有实力吗？ 人生就像一部缺了很多页的书，实在难以称之为书，但总算勉成一部缺憾终究会有，2019，希望能少一些吧 Goodbye, 2018! Hello, 2019!2019，A new ChenZ01]]></content>
+      <categories>
+        <category>Life</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[ChenZ01's Code Style]]></title>
+    <url>%2F2018%2F12%2F31%2FChenZ01-s-Code-Style%2F</url>
+    <content type="text"><![CDATA[ForewordVSCode的奇怪问题最后检查下来是自己Code Style的锅痛改前非，决定规范一下自己的代码 头文件预编译指令所有预编译指令不缩进 前置声明除非必要，不使用前置声明 内联函数只有当函数只有10行甚至更少时才将其定义为内联函数 include所有#include必须置于程序开头 作用域命名空间不使用using语句命名空间中用到的全部变量必须声明于命名空间内在命名空间最后注释出命名空间的名字 局部变量应使用初始化的方式替代声明再赋值 代码美观缩进必须使用4个空格缩进 大括号大括号必须换行，括号内代码块遵循缩进原则 if - else遵循以下写法12345678if ()&#123;&#125;else&#123;&#125; 和12345678if ()&#123;&#125;else if ()&#123;&#125; 空格除下述符号外，任何符号两侧必须有空格++、--、.、::、-&gt;两侧不得有空格 空行相对独立的代码块之间应有空行 逗号一个独立且没有关键字的代码块中语句可以使用,隔开 明明变量、函数、结构体应遵循小驼峰命名法命名空间应遵循大驼峰命名法]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[VSCode 配置 C++]]></title>
+    <url>%2F2018%2F12%2F30%2FVSCode-%E9%85%8D%E7%BD%AE-C%2B%2B%2F</url>
+    <content type="text"><![CDATA[Foreword由于网上乱七八糟的VSCode配置没几个能用的，故萌生了这个想法 MethodStep 1下载MinGW G++或其他版本的C++编译器，配置环境变量 Step 2VSCode工作区内新建.vscode文件夹，在该文件夹内部新建launch.json和tasks.json launch.json内容如下，相应路径更改即可12345678910111213141516171819&#123; "version": "0.2.0", "configurations": [ &#123; "name": "C++ Launch (GDB)", "type": "cppdbg", "request": "launch", "targetArchitecture": "x64", "program": "$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.exe", "miDebuggerPath": "S:\\mingw64\\bin\\gdb.exe", "args": [], "stopAtEntry": false, "cwd": "$&#123;workspaceRoot&#125;", "externalConsole": true, "preLaunchTask": "g++" &#125; ]&#125; tasks.json1234567891011121314151617181920&#123; "version": "2.0.0", "label": "build", "command": "g++", "args": ["-g", "$&#123;file&#125;", "-o", "$&#123;fileDirname&#125;/$&#123;fileBasenameNoExtension&#125;.exe"], "problemMatcher": &#123; "owner": "cpp", "fileLocation": ["relative", "$&#123;workspaceFolder&#125;"], "pattern": &#123; "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$", "file": 1, "line": 2, "column": 3, "severity": 4, "message": 5 &#125; &#125;&#125; Step 3完毕，接下来就是F5 Debug之类的了 c_cpp_properties.json#include时说没有iostream，发现includePath未配置12345678910111213141516171819202122&#123; "configurations": [ &#123; "name": "Win32", "includePath": [ "$&#123;workspaceFolder&#125;/**", "S:\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\8.1.0\\include\\c++", "S:\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\8.1.0\\include\\c++\\x86_64-w64-mingw32", "S:\\mingw64\\lib\\gcc\\x86_64-w64-mingw32\\8.1.0\\include\\c++\\tr1", "S:\\mingw64\\x86_64-w64-mingw32\\include" ], "defines": [ "_DEBUG", "UNICODE", "_UNICODE" ], "intelliSenseMode": "msvc-x64" &#125; ], "version": 4&#125;]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>VSCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「SDOI2010」 古代猪文 - CRT + Lucas]]></title>
     <url>%2F2018%2F12%2F04%2FSDOI2010-%E5%8F%A4%E4%BB%A3%E7%8C%AA%E6%96%87%2F</url>
     <content type="text"><![CDATA[Link洛谷 2480 Solution题意即求$$G ^ {\sum_{d | n}C_n^d}\,\mathrm{mod}\,999911659$$ Step 1推广费马小定理可得$$G^{\sum_{d | n}C_n^d\,\mathrm{mod}\,999911659} = G^{\sum_{d | n}C_n^d\,\mathrm{mod}\,999911658}\,\mathrm{mod}\,999911659$$ Step 2快速幂很好办，那么唯一的难点就是指数——模数不为质数，不能直接用Lucas Theorem再看一眼我们要求的指数$$\sum_{d | n}C_n^d\,\mathrm{mod}\,999911658$$对于$d$我们采用$O(\sqrt{n})$的方式暴力枚举，然后呢……似乎我们已经走入穷途末路了…… Step 3方便起见令$s = \sum_{d | n}C_n^d, x = s \,\mathrm{mod}\,999911659$分解$999911658 = 2 \cdot 3 \cdot 4679 \cdot 35617$令$a_1 = s\,\mathrm{mod}\, 2, a_2 = s\,\mathrm{mod}\, 3, a_3 = s\,\mathrm{mod}\, 4679, a_4 = s\,\mathrm{mod}\, 35617$我们可以得到\begin{cases}x \equiv a_1 (\mathrm{mod}\, 2)\\x \equiv a_2 (\mathrm{mod}\, 3)\\x \equiv a_3 (\mathrm{mod}\, 4679)\\x \equiv a_3 (\mathrm{mod}\, 35617)\end{cases}求解出$x$即为指数 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#include &lt;cmath&gt;using namespace std;#define MOD 999911659template &lt;class T&gt;void Read(T &amp;x)&#123; x = 0; register char ch = getchar(); for (; !isdigit(ch); ch = getchar()); for (; isdigit(ch); x = x * 10 + (ch ^ 48), ch = getchar());&#125;long long n, g;long long frac[50010];void init(long long p)&#123; frac[0] = 1; for (register long long i = 1; i &lt;= p; ++i) frac[i] = frac[i - 1] * i % p;&#125;inline long long fastpow(long long base, long long index, long long p)&#123; register long long ret = 1; while (index) &#123; if (index &amp; 1) ret = ret * base % p; base = base * base % p; index &gt;&gt;= 1; &#125; return ret;&#125;inline long long inv(long long x, long long p)&#123; return fastpow(x, p - 2, p);&#125;inline long long C(long long x, long long y, long long p)&#123; if (x &lt; y) return 0; else return frac[x] * inv(frac[y], p) * inv(frac[x - y], p) % p;&#125;inline long long Lucas(long long x, long long y, long long p)&#123; if (x &lt; y) return 0; else if (x &lt; p &amp;&amp; y &lt; p) return C(x, y, p); else return Lucas(x % p, y % p, p) * Lucas(x / p, y / p, p) % p;&#125;inline long long CRT(vector &lt;long long&gt; &amp;a, vector &lt;long long&gt; &amp;b)&#123; register long long ret = 0, m = MOD - 1; for (register int i = 0; i &lt; 4; ++i) ret = (ret + a[i] * (m / b[i]) % m * inv(m / b[i], b[i]) % m) % m; return (ret % m + m) % m;&#125;inline long long sum(long long p)&#123; vector &lt;long long&gt; a(4), b(4); b[0] = 2, b[1] = 3, b[2] = 4679, b[3] = 35617; for (register int j = 0; j &lt; 4; ++j) &#123; init(b[j]); for (register int i = 1; i * i &lt;= n; ++i) &#123; if (!(n % i)) &#123; a[j] = (a[j] + Lucas(n, i, b[j])) % b[j]; if (i * i != n) a[j] = (a[j] + Lucas(n, n / i, b[j])) % b[j]; &#125; &#125; &#125; return CRT(a, b) % p;&#125;int main()&#123; Read(n), Read(g); if (!(g % MOD)) cout &lt;&lt; 0 &lt;&lt; endl; else cout &lt;&lt; fastpow(g, sum(MOD), MOD)&lt;&lt; endl;&#125;]]></content>
@@ -466,6 +493,11 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[About]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"><![CDATA[站点基于Hexo搭建，使用NexT.Pisces主题，使用GitHub Pages托管网页本站音乐播放器：APlayer，由DIYgod基于MIT License发布 个人初三，江苏省丹阳高级中学永远感谢Yirannn退役前的一番话语AFO = Always Firmly in OI]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[categories]]></title>
     <url>%2Fcategories%2Findex.html</url>
     <content type="text"><![CDATA[]]></content>
@@ -479,10 +511,5 @@
     <title><![CDATA[tags]]></title>
     <url>%2Ftags%2Findex.html</url>
     <content type="text"><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[About]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[站点基于Hexo搭建，使用NexT.Pisces主题，使用GitHub Pages托管网页本站音乐播放器：APlayer，由DIYgod基于MIT License发布 个人初三，江苏省丹阳高级中学永远感谢Yirannn退役前的一番话语AFO = Always Firmly in OI]]></content>
   </entry>
 </search>

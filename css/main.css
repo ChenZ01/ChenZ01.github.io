@@ -1817,7 +1817,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fb65e8;
+  background: #cdbf03;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2671,7 +2671,7 @@ pre .javascript .function {
   box-sizing: border-box;
   padding: 40px;
   width: 700px;
-  background: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.9);
   min-height: 700px;
   box-shadow: initial;
   border-radius: initial;
@@ -2753,12 +2753,12 @@ pre .javascript .function {
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .site-meta {
-    box-shadow: 0 0 16px rgba(0,0,0,0.5);
+    box-shadow: 0 0 16px rgba(0,0,0,0.6);
   }
 }
 @media (max-width: 767px) {
   .site-meta {
-    box-shadow: 0 0 16px rgba(0,0,0,0.5);
+    box-shadow: 0 0 16px rgba(0,0,0,0.6);
   }
 }
 .brand {
@@ -2980,7 +2980,7 @@ pre .javascript .function {
 }
 @media screen and (min-width: 767px) {
   body {
-    background-image: url("https://i.loli.net/2018/12/05/5c07df28ceb4d.jpg");
+    background-image: url("https://i.loli.net/2018/12/31/5c29e3a343047.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100%;
