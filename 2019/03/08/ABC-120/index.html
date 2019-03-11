@@ -92,25 +92,25 @@
 
 
 
-  <meta name="description" content="Link洛谷 3306 Solution大力推式子 \begin{align}X_{i + 1} &amp;amp;\equiv aX_i + b(\mathrm{mod}\,p)\\X_{i + 1} + \frac{b}{a} &amp;amp;\equiv aX_i + b + \frac{b}{a}(\math">
-<meta name="keywords" content="数论">
+  <meta name="description" content="Tasks我估计以后ABC的A和B都会被我省掉 C - UnificationAnalysis考虑到如果一个序列存在$0$和$1$，怎么搞都能消掉它们那么答案就是$0$和$1$的个数取最小值即可">
+<meta name="keywords" content="并查集">
 <meta property="og:type" content="article">
-<meta property="og:title" content="「SDOI2013」 随机数生成器 - BSGS">
-<meta property="og:url" content="https://chenz01.github.io/2018/12/04/SDOI2013-随机数生成器/index.html">
+<meta property="og:title" content="「AtCoder Beginner Contest 120」">
+<meta property="og:url" content="https://chenz01.github.io/2019/03/08/ABC-120/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="Link洛谷 3306 Solution大力推式子 \begin{align}X_{i + 1} &amp;amp;\equiv aX_i + b(\mathrm{mod}\,p)\\X_{i + 1} + \frac{b}{a} &amp;amp;\equiv aX_i + b + \frac{b}{a}(\mathrm{mod}\,p)\\aX_{i + 1} + b &amp;amp;\equiv a^2X_i +">
+<meta property="og:description" content="Tasks我估计以后ABC的A和B都会被我省掉 C - UnificationAnalysis考虑到如果一个序列存在$0$和$1$，怎么搞都能消掉它们那么答案就是$0$和$1$的个数取最小值即可">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-02-04T04:57:40.012Z">
+<meta property="og:updated_time" content="2019-03-11T14:40:36.081Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="「SDOI2013」 随机数生成器 - BSGS">
-<meta name="twitter:description" content="Link洛谷 3306 Solution大力推式子 \begin{align}X_{i + 1} &amp;amp;\equiv aX_i + b(\mathrm{mod}\,p)\\X_{i + 1} + \frac{b}{a} &amp;amp;\equiv aX_i + b + \frac{b}{a}(\mathrm{mod}\,p)\\aX_{i + 1} + b &amp;amp;\equiv a^2X_i +">
+<meta name="twitter:title" content="「AtCoder Beginner Contest 120」">
+<meta name="twitter:description" content="Tasks我估计以后ABC的A和B都会被我省掉 C - UnificationAnalysis考虑到如果一个序列存在$0$和$1$，怎么搞都能消掉它们那么答案就是$0$和$1$的个数取最小值即可">
 
 
 
 
 
 
-  <link rel="canonical" href="https://chenz01.github.io/2018/12/04/SDOI2013-随机数生成器/"/>
+  <link rel="canonical" href="https://chenz01.github.io/2019/03/08/ABC-120/"/>
 
 
 
@@ -120,7 +120,7 @@
   };
 </script>
 
-  <title>「SDOI2013」 随机数生成器 - BSGS | ChenZ01</title>
+  <title>「AtCoder Beginner Contest 120」 | ChenZ01</title>
   
 
 
@@ -388,7 +388,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://chenz01.github.io/2018/12/04/SDOI2013-随机数生成器/"/>
+    <link itemprop="mainEntityOfPage" href="https://chenz01.github.io/2019/03/08/ABC-120/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ChenZ01"/>
@@ -405,7 +405,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">「SDOI2013」 随机数生成器 - BSGS
+          <h1 class="post-title" itemprop="name headline">「AtCoder Beginner Contest 120」
 
               
             
@@ -431,7 +431,7 @@
                 
               
 
-              <time title="Created: 2018-12-04 22:34:25" itemprop="dateCreated datePublished" datetime="2018-12-04T22:34:25+08:00">2018-12-04</time>
+              <time title="Created: 2019-03-08 22:00:12" itemprop="dateCreated datePublished" datetime="2019-03-08T22:00:12+08:00">2019-03-08</time>
             
 
             
@@ -448,7 +448,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-04 12:57:40" itemprop="dateModified" datetime="2019-02-04T12:57:40+08:00">2019-02-04</time>
+                <time title="Modified: 2019-03-11 22:40:36" itemprop="dateModified" datetime="2019-03-11T22:40:36+08:00">2019-03-11</time>
               
             
           </span>
@@ -500,20 +500,16 @@
       
 
       
-        <script src="\assets\js\APlayer.min.js"> </script><h2 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h2><p><a href="https://www.luogu.org/problemnew/show/P3306" target="_blank" rel="noopener">洛谷 3306</a></p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>大力推式子</p>
-<p>\begin{align}<br>X_{i + 1} &amp;\equiv aX_i + b(\mathrm{mod}\,p)\\<br>X_{i + 1} + \frac{b}{a} &amp;\equiv aX_i + b + \frac{b}{a}(\mathrm{mod}\,p)\\<br>aX_{i + 1} + b &amp;\equiv a^2X_i + ab + b(\mathrm{mod}\,p)\\<br>X_{i + 2} &amp;\equiv a^2X_i + ab + b(\mathrm{mod}\,p)\\<br>\end{align}<br><a id="more"></a> </p>
-<p>那么我们得到</p>
-<p>\begin{align}<br>X_2 &amp;\equiv aX_1 + b(\mathrm{mod}\,p)\\<br>X_3 &amp;\equiv a ^ 2X_1 + ab + b(\mathrm{mod}\,p)\\<br>X_4 &amp;\equiv a ^ 3X_1 + a ^ 2b + ab + b(\mathrm{mod}\,p)\\<br>\dots\\<br>X_i &amp;\equiv a ^ {i - 1}X_1 + b\sum_{j = 0} ^ {i - 2}a ^ j(\mathrm{mod}\,p)\\<br>\end{align}</p>
-<p>也就是我们要判断如下方程是否有整数解，若有则求解</p>
-<p>$$t \equiv a ^ {i - 1}X_1 + b\sum_{j = 0} ^ {i - 2}a ^ j(\mathrm{mod}\,p)$$</p>
-<p>继续化化化</p>
-<p>\begin{align}<br>t &amp;\equiv a ^ {i - 1}X_1 + b\sum_{j = 0} ^ {i - 2}a ^ j(\mathrm{mod}\,p)\\<br>t &amp;\equiv a ^ {i - 1}X_1 + b\frac{1 - a ^ {i - 1}}{1 - a}(\mathrm{mod}\,p)\\<br>t &amp;\equiv a ^ {i - 1}X_1 + \frac{b}{1 - a} - \frac{b}{1 - a} \cdot a^{i - 1}(\mathrm{mod}\,p)\\<br>t &amp;\equiv a ^ {i - 1}(X_1 - \frac{b}{1 - a}) + \frac{b}{1 - a}(\mathrm{mod}\,p)\\<br>a ^ {i - 1} &amp;\equiv \frac{t - \frac{b}{1 - a}}{X_1 - \frac{b}{1 - a}}(\mathrm{mod}\,p)\\<br>\end{align}</p>
-<p>大功告成，用BSGS求解出$i - 1$的值，由于$t$是第$i$项，答案加一即可</p>
-<h3 id="Detail-1"><a href="#Detail-1" class="headerlink" title="Detail 1"></a>Detail 1</h3><p>对于$X_1 = t$时，直接输出$1$</p>
-<h3 id="Detail-2"><a href="#Detail-2" class="headerlink" title="Detail 2"></a>Detail 2</h3><p>对于$a = 0$时，$X_i = b$</p>
-<h3 id="Detail-3"><a href="#Detail-3" class="headerlink" title="Detail 3"></a>Detail 3</h3><p>对于$a = 1$时，有$X_i \equiv X_1 + b(i - 1)(\mathrm{mod}\,p)$<br>那么求解$t - X_1 \equiv b(i - 1)(\mathrm{mod}\,p)$的系数$i - 1$即可<br>注意当答案就是$p$的时候不要再模$p$了</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">I</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">inline</span> <span class="title">void</span> <span class="title">Read</span>(<span class="title">I</span> &amp;<span class="title">x</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">register</span> <span class="keyword">char</span> ch = getchar();</span><br><span class="line">	<span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(ch); ch = getchar());</span><br><span class="line">	<span class="keyword">for</span> (x = <span class="number">0</span>; <span class="built_in">isdigit</span>(ch); x = x * <span class="number">10</span> + (ch ^ <span class="number">48</span>), ch = getchar());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> NUMOFCASES, a, b, p, x, t, X, Y;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">fastpow</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> base, <span class="keyword">int</span> index, <span class="keyword">int</span> MOD)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">register</span> <span class="keyword">long</span> <span class="keyword">long</span> ret = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">while</span> (index)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (index &amp; <span class="number">1</span>)</span><br><span class="line">			ret = ret * base % MOD;</span><br><span class="line">		base = base * base % MOD;</span><br><span class="line">		index &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">gcd</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a, <span class="keyword">long</span> <span class="keyword">long</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> b ? gcd(b, a % b) : a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">inv</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x, <span class="keyword">int</span> MOD)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> fastpow(x, MOD - <span class="number">2</span>, MOD);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">bsgs</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a, <span class="keyword">long</span> <span class="keyword">long</span> b, <span class="keyword">int</span> MOD)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	a %= MOD, b %= MOD;</span><br><span class="line">	<span class="built_in">std</span>::<span class="built_in">map</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>, <span class="keyword">long</span> <span class="keyword">long</span>&gt; <span class="built_in">map</span>;</span><br><span class="line">	<span class="keyword">register</span> <span class="keyword">long</span> <span class="keyword">long</span> m = <span class="built_in">ceil</span>(<span class="built_in">sqrt</span>(MOD)), t = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">register</span> <span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (!<span class="built_in">map</span>.count(t))</span><br><span class="line">			<span class="built_in">map</span>[t] = i;</span><br><span class="line">		t = t * a % MOD;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">register</span> <span class="keyword">long</span> <span class="keyword">long</span> k = inv(t, MOD), w = b;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">map</span>.count(w))</span><br><span class="line">			<span class="keyword">return</span> i * m + <span class="built_in">map</span>[w];</span><br><span class="line">		w = w * k % MOD;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	Read(NUMOFCASES);</span><br><span class="line">	<span class="keyword">for</span> (; NUMOFCASES; --NUMOFCASES)</span><br><span class="line">	&#123;</span><br><span class="line">		Read(p), Read(a), Read(b), Read(x), Read(t);</span><br><span class="line">		<span class="keyword">if</span> (x == t)</span><br><span class="line">			<span class="built_in">cout</span> &lt;&lt; <span class="number">1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (a == <span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			t = (t - x + p) % p;</span><br><span class="line">			<span class="keyword">if</span> (t % gcd(b, p))</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; (t * inv(b, p) + <span class="number">1</span> == p ? t * inv(b, p) + <span class="number">1</span> : (t * inv(b, p) + <span class="number">1</span>) % p) &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (a == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">if</span> (b == t)</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="number">2</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">long</span> <span class="keyword">long</span> ans = bsgs(a, ((t - b * inv(<span class="number">1</span> - a, p)) % p + p) % p * inv(((x - b * inv(<span class="number">1</span> - a, p)) % p + p) % p , p), p) % p;</span><br><span class="line">			<span class="keyword">if</span> (ans == <span class="number">-1</span>)</span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; <span class="number">-1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">				<span class="built_in">cout</span> &lt;&lt; ans + <span class="number">1</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <script src="\assets\js\APlayer.min.js"> </script><h2 id="Tasks"><a href="#Tasks" class="headerlink" title="Tasks"></a>Tasks</h2><p>我估计以后ABC的A和B都会被我省掉</p>
+<h3 id="C-Unification"><a href="#C-Unification" class="headerlink" title="C - Unification"></a>C - Unification</h3><h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h4><p>考虑到如果一个序列存在$0$和$1$，怎么搞都能消掉它们<br>那么答案就是$0$和$1$的个数取最小值即可<br><a id="more"></a> </p>
+<h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="built_in">isdigit</span>(ch = getchar()))</span><br><span class="line">    a[++n] = ch ^ <span class="number">48</span>, cntZero += a[n] == <span class="number">0</span>, cntOne += a[n];</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::min(cntOne, cntZero) * <span class="number">2</span> &lt;&lt; <span class="string">"\n"</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="D-Decayed-Bridges"><a href="#D-Decayed-Bridges" class="headerlink" title="D - Decayed Bridges"></a>D - Decayed Bridges</h3><h4 id="Analysis-1"><a href="#Analysis-1" class="headerlink" title="Analysis"></a>Analysis</h4><p>考虑离线倒着做<br>令第$i$个bridge collapses后的答案为$f(i)$，显然有$f(m) = \frac{n(n - 1)}{2}$<br>倒着考虑，假设一开始bridge全没了，我们一个个加上，则$f(i)$即为加了$i$到$m$这么多边后的答案<br>接下来加bridge $e_i = (a_i, b_i)$，存在两种情况</p>
+<ol>
+<li>本来这两个就连通，$f(i) = f(i + 1)$</li>
+<li>这两个不连通，$f(i) = f(i + 1) - N_1 \cdot N_2$，其中$N_1, N_2$分别表示两个island所处连通块的大小</li>
+</ol>
+<p>Union-Find Set实现，注意<code>long long</code></p>
+<h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getRoot</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x == root[x] ? x : root[x] = getRoot(root[x]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::ios::sync_with_stdio(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span>.tie(<span class="number">0</span>), <span class="built_in">std</span>::<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; ++i)</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; a[i] &gt;&gt; b[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        root[i] = i, size[i] = <span class="number">1</span>;</span><br><span class="line">    ans[m + <span class="number">1</span>] = n * (n - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = m; i &gt; <span class="number">1</span>; --i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> x = getRoot(a[i]), y = getRoot(b[i]);</span><br><span class="line">        <span class="keyword">if</span> (x == y)</span><br><span class="line">            ans[i] = ans[i + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            ans[i] = ans[i + <span class="number">1</span>] - size[x] * size[y];</span><br><span class="line">            size[x] += size[y];</span><br><span class="line">            size[y] = <span class="number">0</span>;</span><br><span class="line">            root[y] = x;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m + <span class="number">1</span>; ++i)</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; ans[i] &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -536,7 +532,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/数论/" rel="tag"># 数论</a>
+            <a href="/tags/并查集/" rel="tag"># 并查集</a>
           
         </div>
       
@@ -549,8 +545,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/16/TJOI2009-猜数字/" rel="next" title="「TJOI2009」 猜数字">
-                <i class="fa fa-chevron-left"></i> 「TJOI2009」 猜数字
+              <a href="/2019/03/02/网络流24题-最长递增子序列/" rel="next" title="「网络流 24 题」 最长递增子序列">
+                <i class="fa fa-chevron-left"></i> 「网络流 24 题」 最长递增子序列
               </a>
             
           </div>
@@ -559,8 +555,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/12/04/SDOI2010-古代猪文/" rel="prev" title="「SDOI2010」 古代猪文 - CRT + Lucas">
-                「SDOI2010」 古代猪文 - CRT + Lucas <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/11/ABC-121/" rel="prev" title="「AtCoder Beginner Contest 121」 D">
+                「AtCoder Beginner Contest 121」 D <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -723,7 +719,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Link"><span class="nav-number">1.</span> <span class="nav-text">Link</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Detail-1"><span class="nav-number">2.1.</span> <span class="nav-text">Detail 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Detail-2"><span class="nav-number">2.2.</span> <span class="nav-text">Detail 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Detail-3"><span class="nav-number">2.3.</span> <span class="nav-text">Detail 3</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tasks"><span class="nav-number">1.</span> <span class="nav-text">Tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#C-Unification"><span class="nav-number">1.1.</span> <span class="nav-text">C - Unification</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis"><span class="nav-number">1.1.1.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code"><span class="nav-number">1.1.2.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#D-Decayed-Bridges"><span class="nav-number">1.2.</span> <span class="nav-text">D - Decayed Bridges</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
