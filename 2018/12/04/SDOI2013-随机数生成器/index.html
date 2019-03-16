@@ -92,18 +92,18 @@
 
 
 
-  <meta name="description" content="Link洛谷 3306 Solution大力推式子 \begin{align}X_{i + 1} &amp;amp;\equiv aX_i + b(\mathrm{mod}\,p)\\X_{i + 1} + \frac{b}{a} &amp;amp;\equiv aX_i + b + \frac{b}{a}(\math">
+  <meta name="description" content="Link洛谷 3306 Solution大力推式子 \begin{align}X_{i + 1} &amp;amp;\equiv aX_i + b(\mathrm{mod}\,p)\notag\\X_{i + 1} + \frac{b}{a} &amp;amp;\equiv aX_i + b + \frac{b}{a}">
 <meta name="keywords" content="数论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="「SDOI2013」 随机数生成器 - BSGS">
 <meta property="og:url" content="https://chenz01.github.io/2018/12/04/SDOI2013-随机数生成器/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="Link洛谷 3306 Solution大力推式子 \begin{align}X_{i + 1} &amp;amp;\equiv aX_i + b(\mathrm{mod}\,p)\\X_{i + 1} + \frac{b}{a} &amp;amp;\equiv aX_i + b + \frac{b}{a}(\mathrm{mod}\,p)\\aX_{i + 1} + b &amp;amp;\equiv a^2X_i +">
+<meta property="og:description" content="Link洛谷 3306 Solution大力推式子 \begin{align}X_{i + 1} &amp;amp;\equiv aX_i + b(\mathrm{mod}\,p)\notag\\X_{i + 1} + \frac{b}{a} &amp;amp;\equiv aX_i + b + \frac{b}{a}(\mathrm{mod}\,p)\notag\\aX_{i + 1} + b &amp;amp;\eq">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-02-04T04:57:40.012Z">
+<meta property="og:updated_time" content="2019-03-16T10:21:35.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「SDOI2013」 随机数生成器 - BSGS">
-<meta name="twitter:description" content="Link洛谷 3306 Solution大力推式子 \begin{align}X_{i + 1} &amp;amp;\equiv aX_i + b(\mathrm{mod}\,p)\\X_{i + 1} + \frac{b}{a} &amp;amp;\equiv aX_i + b + \frac{b}{a}(\mathrm{mod}\,p)\\aX_{i + 1} + b &amp;amp;\equiv a^2X_i +">
+<meta name="twitter:description" content="Link洛谷 3306 Solution大力推式子 \begin{align}X_{i + 1} &amp;amp;\equiv aX_i + b(\mathrm{mod}\,p)\notag\\X_{i + 1} + \frac{b}{a} &amp;amp;\equiv aX_i + b + \frac{b}{a}(\mathrm{mod}\,p)\notag\\aX_{i + 1} + b &amp;amp;\eq">
 
 
 
@@ -185,7 +185,7 @@
     </div>
     
       
-        <p class="site-subtitle">戦えない無力なエゴ<br>砂になる栄光</p>
+        <p class="site-subtitle">Afar, We Stand</p>
       
     
     
@@ -448,7 +448,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-04 12:57:40" itemprop="dateModified" datetime="2019-02-04T12:57:40+08:00">2019-02-04</time>
+                <time title="Modified: 2019-03-16 18:21:35" itemprop="dateModified" datetime="2019-03-16T18:21:35+08:00">2019-03-16</time>
               
             
           </span>
@@ -502,13 +502,13 @@
       
         <script src="\assets\js\APlayer.min.js"> </script><h2 id="Link"><a href="#Link" class="headerlink" title="Link"></a>Link</h2><p><a href="https://www.luogu.org/problemnew/show/P3306" target="_blank" rel="noopener">洛谷 3306</a></p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>大力推式子</p>
-<p>\begin{align}<br>X_{i + 1} &amp;\equiv aX_i + b(\mathrm{mod}\,p)\\<br>X_{i + 1} + \frac{b}{a} &amp;\equiv aX_i + b + \frac{b}{a}(\mathrm{mod}\,p)\\<br>aX_{i + 1} + b &amp;\equiv a^2X_i + ab + b(\mathrm{mod}\,p)\\<br>X_{i + 2} &amp;\equiv a^2X_i + ab + b(\mathrm{mod}\,p)\\<br>\end{align}<br><a id="more"></a> </p>
+<p>\begin{align}<br>X_{i + 1} &amp;\equiv aX_i + b(\mathrm{mod}\,p)\notag\\<br>X_{i + 1} + \frac{b}{a} &amp;\equiv aX_i + b + \frac{b}{a}(\mathrm{mod}\,p)\notag\\<br>aX_{i + 1} + b &amp;\equiv a^2X_i + ab + b(\mathrm{mod}\,p)\notag\\<br>X_{i + 2} &amp;\equiv a^2X_i + ab + b(\mathrm{mod}\,p)\notag\\<br>\end{align}<br><a id="more"></a> </p>
 <p>那么我们得到</p>
-<p>\begin{align}<br>X_2 &amp;\equiv aX_1 + b(\mathrm{mod}\,p)\\<br>X_3 &amp;\equiv a ^ 2X_1 + ab + b(\mathrm{mod}\,p)\\<br>X_4 &amp;\equiv a ^ 3X_1 + a ^ 2b + ab + b(\mathrm{mod}\,p)\\<br>\dots\\<br>X_i &amp;\equiv a ^ {i - 1}X_1 + b\sum_{j = 0} ^ {i - 2}a ^ j(\mathrm{mod}\,p)\\<br>\end{align}</p>
+<p>\begin{align}<br>X_2 &amp;\equiv aX_1 + b(\mathrm{mod}\,p)\notag\\<br>X_3 &amp;\equiv a ^ 2X_1 + ab + b(\mathrm{mod}\,p)\notag\\<br>X_4 &amp;\equiv a ^ 3X_1 + a ^ 2b + ab + b(\mathrm{mod}\,p)\notag\\<br>\dots\notag\\<br>X_i &amp;\equiv a ^ {i - 1}X_1 + b\sum_{j = 0} ^ {i - 2}a ^ j(\mathrm{mod}\,p)\notag\\<br>\end{align}</p>
 <p>也就是我们要判断如下方程是否有整数解，若有则求解</p>
 <p>$$t \equiv a ^ {i - 1}X_1 + b\sum_{j = 0} ^ {i - 2}a ^ j(\mathrm{mod}\,p)$$</p>
 <p>继续化化化</p>
-<p>\begin{align}<br>t &amp;\equiv a ^ {i - 1}X_1 + b\sum_{j = 0} ^ {i - 2}a ^ j(\mathrm{mod}\,p)\\<br>t &amp;\equiv a ^ {i - 1}X_1 + b\frac{1 - a ^ {i - 1}}{1 - a}(\mathrm{mod}\,p)\\<br>t &amp;\equiv a ^ {i - 1}X_1 + \frac{b}{1 - a} - \frac{b}{1 - a} \cdot a^{i - 1}(\mathrm{mod}\,p)\\<br>t &amp;\equiv a ^ {i - 1}(X_1 - \frac{b}{1 - a}) + \frac{b}{1 - a}(\mathrm{mod}\,p)\\<br>a ^ {i - 1} &amp;\equiv \frac{t - \frac{b}{1 - a}}{X_1 - \frac{b}{1 - a}}(\mathrm{mod}\,p)\\<br>\end{align}</p>
+<p>\begin{align}<br>t &amp;\equiv a ^ {i - 1}X_1 + b\sum_{j = 0} ^ {i - 2}a ^ j(\mathrm{mod}\,p)\notag\\<br>t &amp;\equiv a ^ {i - 1}X_1 + b\frac{1 - a ^ {i - 1}}{1 - a}(\mathrm{mod}\,p)\notag\\<br>t &amp;\equiv a ^ {i - 1}X_1 + \frac{b}{1 - a} - \frac{b}{1 - a} \cdot a^{i - 1}(\mathrm{mod}\,p)\notag\\<br>t &amp;\equiv a ^ {i - 1}(X_1 - \frac{b}{1 - a}) + \frac{b}{1 - a}(\mathrm{mod}\,p)\notag\\<br>a ^ {i - 1} &amp;\equiv \frac{t - \frac{b}{1 - a}}{X_1 - \frac{b}{1 - a}}(\mathrm{mod}\,p)\notag\\<br>\end{align}</p>
 <p>大功告成，用BSGS求解出$i - 1$的值，由于$t$是第$i$项，答案加一即可</p>
 <h3 id="Detail-1"><a href="#Detail-1" class="headerlink" title="Detail 1"></a>Detail 1</h3><p>对于$X_1 = t$时，直接输出$1$</p>
 <h3 id="Detail-2"><a href="#Detail-2" class="headerlink" title="Detail 2"></a>Detail 2</h3><p>对于$a = 0$时，$X_i = b$</p>
@@ -635,7 +635,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -687,7 +687,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
