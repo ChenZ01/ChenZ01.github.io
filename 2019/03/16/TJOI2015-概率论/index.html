@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="ChenZ01">
 <meta property="og:description" content="Solution令$g(i)$表示有$i$个节点的不同形态的树的个数令$f(i)$表示有$i$个节点的不同形态的树的叶子节点的总个数那么答案即为$f(i) / g(i)$">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-03-16T14:44:39.458Z">
+<meta property="og:updated_time" content="2019-04-14T14:09:19.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「TJOI2015」 概率论">
 <meta name="twitter:description" content="Solution令$g(i)$表示有$i$个节点的不同形态的树的个数令$f(i)$表示有$i$个节点的不同形态的树的叶子节点的总个数那么答案即为$f(i) / g(i)$">
@@ -431,12 +431,24 @@
                 
               
 
-              <time title="Created: 2019-03-16 16:35:57 / Modified: 22:44:39" itemprop="dateCreated datePublished" datetime="2019-03-16T16:35:57+08:00">2019-03-16</time>
+              <time title="Created: 2019-03-16 16:35:57" itemprop="dateCreated datePublished" datetime="2019-03-16T16:35:57+08:00">2019-03-16</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-14 22:09:19" itemprop="dateModified" datetime="2019-04-14T22:09:19+08:00">2019-04-14</time>
               
             
           </span>
@@ -489,7 +501,7 @@
 
       
         <script src="\assets\js\APlayer.min.js"> </script><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>令$g(i)$表示有$i$个节点的不同形态的树的个数<br>令$f(i)$表示有$i$个节点的不同形态的树的叶子节点的总个数<br>那么答案即为$f(i) / g(i)$<a id="more"></a></p>
-<h3 id="g"><a href="#g" class="headerlink" title="$g$"></a>$g$</h3><p>不难想到，有<br>$$g(n) = \sum_{i}g(i)g(n - i - 1) + [n = 0]$$<br>看出来这玩意是个卷积哇<br>令$G(z)$为$g$的OGF，两边同时乘上$z ^ n$，有<br>\begin{align}<br>G(z) &amp;= \sum_{n}g(n)z ^ n \notag \\<br>&amp;= \sum_{i, n}g(i)g(n - i - 1)z ^ n + \sum_{n = 0}z ^ n \notag \\<br>&amp;= \sum_ig(i)z ^ i\sum_ng(n - i - 1)z ^ {n - i} + 1 \notag \\<br>&amp;= G(z) \cdot zG(z) + 1 \notag<br>\end{align}<br>解得<br>$$G(z) = \frac{1\pm\sqrt{1 - 4z}}{2z}$$<br>因为$G(0) = 1$，对两式分别求极限<br>\begin{align}<br>\lim_{z\to 0^+}\frac{1+\sqrt{1 - 4z}}{2z} = +\infty \notag \\<br>\lim_{z\to 0^+}\frac{1-\sqrt{1 - 4z}}{2z} = 0\notag<br>\end{align}<br>故取$G(z) = \frac{1-\sqrt{1 - 4z}}{2z}$<br>由二项式定理，得<br>\begin{align}<br>\sqrt{1 - 4z} &amp;= \sum_{i \ge 0}\tbinom{1 / 2}{i}(-4z) ^ i\notag\\<br>&amp;= 1 + \sum_{i \ge 1}\frac{1}{2i}\tbinom{-1 / 2}{i - 1}(-4z) ^ i\notag<br>\end{align}<br>由于<br>$$\tbinom{-1/2}{n} = \tbinom{-1}{4} ^ n\tbinom{2n}{n}$$<br>故<br>\begin{align}<br>\frac{1 - \sqrt{1 - 4z}}{2z} &amp;= \sum_{i \ge 1}\frac{1}{i}\tbinom{-1 / 2}{i - 1}(-4z) ^ {i - 1}\notag \\<br>&amp;=\sum_{n \ge 0}\tbinom{-1 / 2}{n}\frac{(-4z) ^ n}{n + 1}\notag \\<br>&amp;=\sum_{n \ge 0}\tbinom{2n}{n}\frac{z ^ n}{n + 1}\notag<br>\end{align}<br>故<br>$$g(n) = [z ^ n]G(z) = \tbinom{2n}{n}\frac{1}{n + 1}$$</p>
+<h3 id="g"><a href="#g" class="headerlink" title="$g$"></a>$g$</h3><p>不难想到，有<br>$$g(n) = \sum_{i}g(i)g(n - i - 1) + [n = 0]$$<br>看出来这玩意是个卷积哇<br>令$G(z)$为$g$的OGF，两边同时乘上$z ^ n$，有<br>\begin{align}<br>G(z) &amp;= \sum_{n}g(n)z ^ n \notag \\<br>&amp;= \sum_{i, n}g(i)g(n - i - 1)z ^ n + \sum_{n = 0}z ^ n \notag \\<br>&amp;= \sum_ig(i)z ^ i\sum_ng(n - i - 1)z ^ {n - i} + 1 \notag \\<br>&amp;= G(z) \cdot zG(z) + 1 \notag<br>\end{align}<br>解得<br>$$G(z) = \frac{1\pm\sqrt{1 - 4z}}{2z}$$<br>因为$G(0) = 1$，对两式分别求极限<br>\begin{align}<br>\lim_{z\to 0^+}\frac{1+\sqrt{1 - 4z}}{2z} = +\infty \notag \\<br>\lim_{z\to 0^+}\frac{1-\sqrt{1 - 4z}}{2z} = 1\notag<br>\end{align}<br>故取$G(z) = \frac{1-\sqrt{1 - 4z}}{2z}$<br>由二项式定理，得<br>\begin{align}<br>\sqrt{1 - 4z} &amp;= \sum_{i \ge 0}\tbinom{1 / 2}{i}(-4z) ^ i\notag\\<br>&amp;= 1 + \sum_{i \ge 1}\frac{1}{2i}\tbinom{-1 / 2}{i - 1}(-4z) ^ i\notag<br>\end{align}<br>由于<br>$$\tbinom{-1/2}{n} = \tbinom{-1}{4} ^ n\tbinom{2n}{n}$$<br>故<br>\begin{align}<br>\frac{1 - \sqrt{1 - 4z}}{2z} &amp;= \sum_{i \ge 1}\frac{1}{i}\tbinom{-1 / 2}{i - 1}(-4z) ^ {i - 1}\notag \\<br>&amp;=\sum_{n \ge 0}\tbinom{-1 / 2}{n}\frac{(-4z) ^ n}{n + 1}\notag \\<br>&amp;=\sum_{n \ge 0}\tbinom{2n}{n}\frac{z ^ n}{n + 1}\notag<br>\end{align}<br>故<br>$$g(n) = [z ^ n]G(z) = \tbinom{2n}{n}\frac{1}{n + 1}$$</p>
 <h3 id="f"><a href="#f" class="headerlink" title="$f$"></a>$f$</h3><p>搞完$g$来搞$f$哇<br>依然不难想到<br>$$f(n) = 2\sum_{i = 0}^{n - 1}f(i)g(n - i - 1)$$<br>令$F(z)$为$f$的OGF，推导略，得<br>$$F(z) = 2zF(z)G(z) + z = z(1 - 4z) ^ {- 1 / 2}$$<br>观察到<br>$$(zG(z))’ = \frac{1}{\sqrt{1 - 4z}} = \frac{F(z)}{z}$$<br>故<br>$$f(n) = ng(n - 1)$$</p>
 
       
@@ -527,8 +539,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/03/11/ABC-121/" rel="next" title="「AtCoder Beginner Contest 121」 D">
-                <i class="fa fa-chevron-left"></i> 「AtCoder Beginner Contest 121」 D
+              <a href="/2019/03/11/ABC-121-D/" rel="next" title="「AtCoder Beginner Contest 121」 D - XOR World">
+                <i class="fa fa-chevron-left"></i> 「AtCoder Beginner Contest 121」 D - XOR World
               </a>
             
           </div>
@@ -536,6 +548,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/04/Codeforces-570-D/" rel="prev" title="「Codeforces 570」 D - Tree Requests">
+                「Codeforces 570」 D - Tree Requests <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -609,7 +625,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -663,7 +679,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

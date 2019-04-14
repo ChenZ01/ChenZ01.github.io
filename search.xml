@@ -1,9 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「IOI2011」 Race]]></title>
+    <url>%2F2019%2F04%2F14%2FIOI2011-Race%2F</url>
+    <content type="text"><![CDATA[Solution考虑DSU on Tree维护一个std::map，保存每个长度对应的最小深度，每个节点查询答案 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293#include &lt;algorithm&gt;#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#include &lt;map&gt;constexpr static int ___maxN = 200010;char ch;template &lt;typename T&gt;void read(T&amp; x)&#123; for (ch = getchar(); !isdigit(ch); ch = getchar()); for (x = 0; isdigit(ch); x = x * 10 + (ch ^ 48), ch = getchar());&#125;int n, k, u, v, w, dfn, ans = 0x7f7f7f7f;int hS[___maxN], sze[___maxN], id[___maxN], nid[___maxN], depth[___maxN];long long dis[___maxN];std::vector &lt;int&gt; to[___maxN], wei[___maxN];std::map &lt;long long, int&gt; map;void getHS(int x, int fr)&#123; sze[x] = 1, id[x] = ++dfn, nid[dfn] = x, depth[x] = depth[fr] + 1; int __max = 0, __size = to[x].size(); for (int i = 0; i &lt; __size; ++i) &#123; int tmp = to[x][i]; if (tmp != fr) &#123; dis[tmp] = dis[x] + wei[x][i]; getHS(tmp, x); sze[x] += sze[tmp]; if (sze[tmp] &gt; __max) __max = sze[tmp], hS[x] = tmp; &#125; &#125;&#125;void update(int x, int y)&#123; int z = dis[x]; if (y == -1) map[z] = 0; else &#123; if (!map[z]) map[z] = depth[x]; else map[z] = std::min(map[z], depth[x]); &#125;&#125;void dfs(int x, int fr, int keep)&#123; for (auto i : to[x]) if (i != fr &amp;&amp; i != hS[x]) dfs(i, x, 0); if (hS[x]) dfs(hS[x], x, 1); for (auto i : to[x]) if (i != fr &amp;&amp; i != hS[x]) &#123; for (int j = 0; j &lt; sze[i]; ++j) &#123; int nxt = nid[id[i] + j], req = k + 2 * dis[x] - dis[nxt]; if (map.count(req) &amp;&amp; map[req]) ans = std::min(ans, map[req] + depth[nxt] - 2 * depth[x]); &#125; for (int j = 0; j &lt; sze[i]; ++j) update(nid[id[i] + j], 1); &#125; update(x, 1); if (map.count(dis[x] + k) &amp;&amp; map[dis[x] + k]) ans = std::min(ans, map[dis[x] + k] - depth[x]); if (!keep) for (int i = 0; i &lt; sze[x]; ++i) update(nid[id[x] + i], -1);&#125;int main()&#123; read(n), read(k); for (int i = 1; i &lt; n; ++i) read(u), read(v), read(w), to[u].push_back(v), to[v].push_back(u), wei[u].push_back(w), wei[v].push_back(w); getHS(0, 0); dfs(0, 0, 0); std::cout &lt;&lt; (ans == 0x7f7f7f7f ? -1 : ans) &lt;&lt; std::endl; return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>DSU on Tree</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「Codeforces 1009」 F - Dominant Indices]]></title>
+    <url>%2F2019%2F04%2F04%2FCodeforces-1009-F%2F</url>
+    <content type="text"><![CDATA[132个点真TM好评 Solution题意即为找到每个子树含有最多节点的那一层的深度，若有则输出第一个这玩意还是裸的吧 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;constexpr static int ___maxN = 1000010;char ch;template &lt;typename T&gt;void read(T&amp; x)&#123; for (x = 0, ch = getchar(); !isdigit(ch); ch = getchar()); for (; isdigit(ch); x = x * 10 + (ch ^ 48), ch = getchar());&#125;int n, maxD, cHS, u, v;int ans[___maxN], sze[___maxN], depth[___maxN], hS[___maxN], cnt[___maxN];std::vector &lt;int&gt; t[___maxN];void getHS(int x, int fr)&#123; sze[x] = 1, depth[x] = depth[fr] + 1; for (auto i : t[x]) if (i != fr) &#123; getHS(i, x), sze[x] += sze[i]; if (sze[hS[x]] &lt; sze[i]) hS[x] = i; &#125;&#125;void add(int x, int fr, int y)&#123; cnt[depth[x]] += y; if (cnt[depth[x]] &gt; cnt[maxD] || cnt[depth[x]] == cnt[maxD] &amp;&amp; depth[x] &lt; maxD) maxD = depth[x]; for (auto i : t[x]) if (i != fr &amp;&amp; i != cHS) add(i, x, y);&#125;void dfs(int x, int fr, int keep)&#123; for (auto i : t[x]) if (i != fr &amp;&amp; i != hS[x]) dfs(i, x, 0); if (hS[x]) dfs(hS[x], x, 1), cHS = hS[x]; add(x, fr, 1); ans[x] = maxD - depth[x], cHS = 0; if (!keep) add(x, fr, -1), maxD = 0;&#125;int main()&#123; read(n); for (int i = 1; i &lt; n; ++i) read(u), read(v), t[v].push_back(u), t[u].push_back(v); getHS(1, 0), dfs(1, 0, 1); for (int i = 1; i &lt;= n; ++i) printf("%d\n", ans[i]); return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>DSU on Tree</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「Codeforces 570」 D - Tree Requests]]></title>
+    <url>%2F2019%2F04%2F04%2FCodeforces-570-D%2F</url>
+    <content type="text"><![CDATA[Solution判断重排后是否回文有个显而易见的方式：若该串中的任意两种或以上字符存在奇数个则不回文由于只有26个字母，考虑用二进制来压缩信息，用异或$\oplus$更新信息显然，若每个二进制位被更新偶数次则为$0$，被更新奇数次则为$1$那么只需判断状态是否是$2$的次幂或$0$即可，注意$1$也是可行的，可用!(x &amp; (x - 1))判断 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;int n, m, u, v, curChild;int sze[500010], bigChild[500010], depth[500010], letter[500010], cnt[500010], ans[500010];char ch;std::vector &lt;int&gt; g[500010];std::vector &lt;std::pair &lt;int, int&gt; &gt; query[500010];template &lt;typename T&gt;void read(T&amp; x)&#123; for (x = 0, ch = getchar(); !isdigit(ch); ch = getchar()); for (; isdigit(ch); x = x * 10 + (ch ^ 48), ch = getchar());&#125;void getBigChild(int x, int fr = 0)&#123; sze[x] = 1, depth[x] = depth[fr] + 1; for (auto i : g[x]) getBigChild(i, x), sze[x] += sze[i], bigChild[x] = sze[i] &gt; sze[bigChild[x]] ? i : bigChild[x];&#125;void add(int x)&#123; cnt[depth[x]] ^= (1 &lt;&lt; letter[x]); for (auto i : g[x]) if (i != curChild) add(i);&#125;void dfs(int x, int keep = 0)&#123; for (auto i : g[x]) if (i != bigChild[x]) dfs(i, 0); if (bigChild[x]) dfs(bigChild[x], 1), curChild = bigChild[x]; add(x), curChild = 0; for (auto i : query[x]) ans[i.second] = !(cnt[i.first] &amp; (cnt[i.first] - 1)); if (!keep) add(x);&#125;int main()&#123; read(n), read(m); for (int i = 2; i &lt;= n; ++i) read(u), g[u].push_back(i); for (ch = getchar(); !isalpha(ch); ch = getchar()); for (int i = 1; i &lt;= n; ++i) letter[i] = ch - 'a', ch = getchar(); for (int i = 1; i &lt;= m; ++i) read(u), read(v), query[u].push_back(std::make_pair(v, i)); depth[1] = 1; getBigChild(1); dfs(1); for (int i = 1; i &lt;= m; ++i) printf(ans[i] ? "Yes\n" : "No\n"); return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>DSU on Tree</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「TJOI2015」 概率论]]></title>
     <url>%2F2019%2F03%2F16%2FTJOI2015-%E6%A6%82%E7%8E%87%E8%AE%BA%2F</url>
-    <content type="text"><![CDATA[Solution令$g(i)$表示有$i$个节点的不同形态的树的个数令$f(i)$表示有$i$个节点的不同形态的树的叶子节点的总个数那么答案即为$f(i) / g(i)$ $g$不难想到，有$$g(n) = \sum_{i}g(i)g(n - i - 1) + [n = 0]$$看出来这玩意是个卷积哇令$G(z)$为$g$的OGF，两边同时乘上$z ^ n$，有\begin{align}G(z) &amp;= \sum_{n}g(n)z ^ n \notag \\&amp;= \sum_{i, n}g(i)g(n - i - 1)z ^ n + \sum_{n = 0}z ^ n \notag \\&amp;= \sum_ig(i)z ^ i\sum_ng(n - i - 1)z ^ {n - i} + 1 \notag \\&amp;= G(z) \cdot zG(z) + 1 \notag\end{align}解得$$G(z) = \frac{1\pm\sqrt{1 - 4z}}{2z}$$因为$G(0) = 1$，对两式分别求极限\begin{align}\lim_{z\to 0^+}\frac{1+\sqrt{1 - 4z}}{2z} = +\infty \notag \\\lim_{z\to 0^+}\frac{1-\sqrt{1 - 4z}}{2z} = 0\notag\end{align}故取$G(z) = \frac{1-\sqrt{1 - 4z}}{2z}$由二项式定理，得\begin{align}\sqrt{1 - 4z} &amp;= \sum_{i \ge 0}\tbinom{1 / 2}{i}(-4z) ^ i\notag\\&amp;= 1 + \sum_{i \ge 1}\frac{1}{2i}\tbinom{-1 / 2}{i - 1}(-4z) ^ i\notag\end{align}由于$$\tbinom{-1/2}{n} = \tbinom{-1}{4} ^ n\tbinom{2n}{n}$$故\begin{align}\frac{1 - \sqrt{1 - 4z}}{2z} &amp;= \sum_{i \ge 1}\frac{1}{i}\tbinom{-1 / 2}{i - 1}(-4z) ^ {i - 1}\notag \\&amp;=\sum_{n \ge 0}\tbinom{-1 / 2}{n}\frac{(-4z) ^ n}{n + 1}\notag \\&amp;=\sum_{n \ge 0}\tbinom{2n}{n}\frac{z ^ n}{n + 1}\notag\end{align}故$$g(n) = [z ^ n]G(z) = \tbinom{2n}{n}\frac{1}{n + 1}$$ $f$搞完$g$来搞$f$哇依然不难想到$$f(n) = 2\sum_{i = 0}^{n - 1}f(i)g(n - i - 1)$$令$F(z)$为$f$的OGF，推导略，得$$F(z) = 2zF(z)G(z) + z = z(1 - 4z) ^ {- 1 / 2}$$观察到$$(zG(z))’ = \frac{1}{\sqrt{1 - 4z}} = \frac{F(z)}{z}$$故$$f(n) = ng(n - 1)$$]]></content>
+    <content type="text"><![CDATA[Solution令$g(i)$表示有$i$个节点的不同形态的树的个数令$f(i)$表示有$i$个节点的不同形态的树的叶子节点的总个数那么答案即为$f(i) / g(i)$ $g$不难想到，有$$g(n) = \sum_{i}g(i)g(n - i - 1) + [n = 0]$$看出来这玩意是个卷积哇令$G(z)$为$g$的OGF，两边同时乘上$z ^ n$，有\begin{align}G(z) &amp;= \sum_{n}g(n)z ^ n \notag \\&amp;= \sum_{i, n}g(i)g(n - i - 1)z ^ n + \sum_{n = 0}z ^ n \notag \\&amp;= \sum_ig(i)z ^ i\sum_ng(n - i - 1)z ^ {n - i} + 1 \notag \\&amp;= G(z) \cdot zG(z) + 1 \notag\end{align}解得$$G(z) = \frac{1\pm\sqrt{1 - 4z}}{2z}$$因为$G(0) = 1$，对两式分别求极限\begin{align}\lim_{z\to 0^+}\frac{1+\sqrt{1 - 4z}}{2z} = +\infty \notag \\\lim_{z\to 0^+}\frac{1-\sqrt{1 - 4z}}{2z} = 1\notag\end{align}故取$G(z) = \frac{1-\sqrt{1 - 4z}}{2z}$由二项式定理，得\begin{align}\sqrt{1 - 4z} &amp;= \sum_{i \ge 0}\tbinom{1 / 2}{i}(-4z) ^ i\notag\\&amp;= 1 + \sum_{i \ge 1}\frac{1}{2i}\tbinom{-1 / 2}{i - 1}(-4z) ^ i\notag\end{align}由于$$\tbinom{-1/2}{n} = \tbinom{-1}{4} ^ n\tbinom{2n}{n}$$故\begin{align}\frac{1 - \sqrt{1 - 4z}}{2z} &amp;= \sum_{i \ge 1}\frac{1}{i}\tbinom{-1 / 2}{i - 1}(-4z) ^ {i - 1}\notag \\&amp;=\sum_{n \ge 0}\tbinom{-1 / 2}{n}\frac{(-4z) ^ n}{n + 1}\notag \\&amp;=\sum_{n \ge 0}\tbinom{2n}{n}\frac{z ^ n}{n + 1}\notag\end{align}故$$g(n) = [z ^ n]G(z) = \tbinom{2n}{n}\frac{1}{n + 1}$$ $f$搞完$g$来搞$f$哇依然不难想到$$f(n) = 2\sum_{i = 0}^{n - 1}f(i)g(n - i - 1)$$令$F(z)$为$f$的OGF，推导略，得$$F(z) = 2zF(z)G(z) + z = z(1 - 4z) ^ {- 1 / 2}$$观察到$$(zG(z))’ = \frac{1}{\sqrt{1 - 4z}} = \frac{F(z)}{z}$$故$$f(n) = ng(n - 1)$$]]></content>
       <categories>
         <category>OI</category>
       </categories>
@@ -12,8 +45,8 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[「AtCoder Beginner Contest 121」 D]]></title>
-    <url>%2F2019%2F03%2F11%2FABC-121%2F</url>
+    <title><![CDATA[「AtCoder Beginner Contest 121」 D - XOR World]]></title>
+    <url>%2F2019%2F03%2F11%2FABC-121-D%2F</url>
     <content type="text"><![CDATA[这回连C都省掉了 Analysis观察异或运算$\oplus$的性质 $\forall n = 2k, k\in \mathbb{N}, n \oplus (n + 1) = 1$ $\forall n \in \mathbb{N}, n \oplus n = 0$ 因此有$F(A, B) = F(0, A - 1) \oplus F(0, B)$将$F(0, n)$写成如下形式\begin{align}F(0, n) &amp;= 0 \oplus 1\oplus 2\oplus 3\dots (n - 1)\oplus n \notag \\&amp;= (0 \oplus 1) \oplus (2 \oplus 3)\dots \notag \\\end{align}判断$n$的奇偶计算即可 Code12345678910111213141516171819#include &lt;iostream&gt;#include &lt;cstdio&gt;long long a, b;long long f(long long x)&#123; if (x &amp; 1) return (x + 1) / 2 % 2; else return (x / 2 % 2) ^ x;&#125;int main()&#123; std::cin &gt;&gt; a &gt;&gt; b; std::cout &lt;&lt; (f(a - 1) ^ f(b)) &lt;&lt; "\n"; return 0;&#125;]]></content>
       <categories>
         <category>OI</category>
@@ -189,7 +222,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[「GCJ R1A 2008 C」 numbers]]></title>
+    <title><![CDATA[「GCJ R1A 2008」 C - numbers]]></title>
     <url>%2F2018%2F09%2F02%2FGCJ-R1A-2008-C%2F</url>
     <content type="text"><![CDATA[题目链接GCJ R1A 2008 C总觉得Code Jam都需要科学方式访问是不是有些太过了 题解拿到手首先肯定不能暴力，于是我们考虑数学方法 分析对于这个式子：$(3+\sqrt{5})^n$，一眼想到二项式定理，将其展开得：$$(3+\sqrt{5})^n=C_n^03^n\sqrt{5}^0+C_n^13^{n-1}\sqrt{5}^1+\dots+C_n^{n-1}3^1\sqrt{5}^{n-1}+C_n^n3^0\sqrt{5}^n$$不难发现若幂次为偶数，则$\sqrt{5}$也会变成整数，那么我们可以将上面的式子写成如下形式：$$(3+\sqrt{5})^n=f(n)+g(n)\sqrt{5}$$$f(n)$即为展开式中所有运算结果为整数的部分的和仍然没法解决，我们再考虑另一个式子：$$(3-\sqrt{5})^n=C_n^03^n\sqrt{5}^0-C_n^13^{n-1}\sqrt{5}^1+\dots+(-1)^{n-1}C_n^{n-1}3^1\sqrt{5}^{n-1}+(-1)^nC_n^n3^0\sqrt{5}^n$$同理，可写成：$$(3-\sqrt{5})^n=f(n)-g(n)\sqrt{5}$$二式相加，得：$$(3+\sqrt{5})^n+(3-\sqrt{5})^n=2f(n)$$所以$$(3+\sqrt{5})^n=2f(n)-(3-\sqrt{5})^n$$考虑到$$0&lt;(3-\sqrt{5})^n&lt;1$$而我们要求的是整数部分，那么完全可以写成$$\lfloor(3+\sqrt{5})^n\rfloor=2f(n)-1$$ 求解$f$问题是这个$f$怎么求考虑以下递推式： \begin{align}(3+\sqrt{5})^{n+1}&amp;=(3+\sqrt{5})(3+\sqrt{5})^n\notag\\&amp;=(3+\sqrt{5})(f(n)+g(n)\sqrt{5})\notag\\&amp;=3f(n)+3\sqrt{5}g(n)+\sqrt{5}f(n)+5g(n)\notag\end{align}所以\begin{align}f(n+1)=3f(n)+5g(n)\notag\\g(n+1)=f(n)+3g(n)\notag\end{align}由此我们可以用矩阵快速幂解决 矩阵原始矩阵：\begin{align}\begin{bmatrix}f(0)\\g(0)\notag\end{bmatrix}=\begin{bmatrix}1\\0\end{bmatrix}\end{align}递推的矩阵：\begin{bmatrix}3&amp;5\\1&amp;3\end{bmatrix}至此问题解决 代码printf()格式化真心强大1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;cstring&gt;#pragma warning(disable:4996)using namespace std;int T, n;struct Mat&#123; int r, c; int matrix[10][10];&#125;;Mat basmat;void init()&#123; basmat.c = basmat.r = 2; basmat.matrix[0][0] = 3, basmat.matrix[0][1] = 5; basmat.matrix[1][0] = 1, basmat.matrix[1][1] = 3;&#125;Mat mul(Mat mat1, Mat mat2)&#123; Mat tmat; memset(tmat.matrix, 0, sizeof tmat.matrix); tmat.r = mat1.r; tmat.c = mat2.c; for (int i = 0; i &lt; mat1.r; i++) for (int j = 0; j &lt; mat2.c; j++) for (int k = 0; k &lt; mat1.c; k++) tmat.matrix[i][j] = (tmat.matrix[i][j] + mat1.matrix[i][k] * mat2.matrix[k][j]) % 1000; return tmat;&#125;void fastpow(int index)&#123; Mat retmat; retmat.r = retmat.c = 2; retmat.matrix[0][0] = retmat.matrix[1][1] = 1; retmat.matrix[0][1] = retmat.matrix[1][0] = 0; while (index) &#123; if (index &amp; 1) retmat = mul(retmat, basmat); basmat = mul(basmat, basmat); index &gt;&gt;= 1; &#125; printf("%03d\n", ((retmat.matrix[0][0] &lt;&lt; 1) - 1) % 1000);&#125;int main(int argc, char ** argv)&#123; freopen("C-large-practice.in", "r", stdin); freopen("C-large-practice.out", "w", stdout); scanf("%d", &amp;T); for (int TT = 1; TT &lt;= T; TT++) &#123; scanf("%d", &amp;n); init(); printf("Case #%d: ", TT); fastpow(n); &#125; return 0;&#125;]]></content>
       <categories>
@@ -202,12 +235,12 @@
   <entry>
     <title><![CDATA[About]]></title>
     <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[The Cruel World Grade 9 永远感谢Yirannn]]></content>
+    <content type="text"><![CDATA[The Cruel World Grade 9 永远感谢Yirannn 我们所可以自慰的，想来想去，也还是所谓对于将来的希望。 希望是附丽于存在的，有存在，便有希望，有希望，便是光明。]]></content>
   </entry>
   <entry>
-    <title><![CDATA[Friends]]></title>
-    <url>%2Ffriends%2Findex.html</url>
-    <content type="text"><![CDATA[Name Info FFjet 江苏省丹阳高级中学 FlyInTheSky 广东北江中学 LJC00118 Logey 临沂一中 memset0 LG管理 redbag LG管理 SiriusRen 北京邮电大学 Yirannn 吉林大学附属中学]]></content>
+    <title><![CDATA[Tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
+    <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
     <title><![CDATA[Categories]]></title>
@@ -215,8 +248,8 @@
     <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
-    <title><![CDATA[Tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
-    <content type="text"><![CDATA[]]></content>
+    <title><![CDATA[Friends]]></title>
+    <url>%2Ffriends%2Findex.html</url>
+    <content type="text"><![CDATA[Name Info FFjet 江苏省丹阳高级中学 FlyInTheSky 广东北江中学 LJC00118 Logey 临沂一中 memset0 LG管理 redbag LG管理 SiriusRen 北京邮电大学 Yirannn 吉林大学附属中学]]></content>
   </entry>
 </search>
