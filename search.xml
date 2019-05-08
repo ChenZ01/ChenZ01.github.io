@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「HAOI2016」 找相同字符]]></title>
+    <url>%2F2019%2F05%2F07%2FHAOI2016-%E6%89%BE%E7%9B%B8%E5%90%8C%E5%AD%97%E7%AC%A6%2F</url>
+    <content type="text"><![CDATA[Solution考虑容斥将两个串用分隔符拼在一起，则求该串的相同子串个数减去两个串各自相同的子串个数 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;cstdio&gt;#include &lt;string&gt;#include &lt;stack&gt;struct SuffixArray&#123; std::string st = ""; int len = 0, size = 0; int bucket[1000010], pos[1000010], sa[1000010], rank[1000010], height[1000010]; // Each array starts from 1 void radixSort() &#123; for (int i = 1; i &lt;= size; ++i) bucket[i] = 0; for (int i = 1; i &lt;= len; ++i) ++bucket[rank[i]]; for (int i = 1; i &lt;= size; ++i) bucket[i] += bucket[i - 1]; for (int i = len; i; --i) sa[bucket[rank[pos[i]]]--] = pos[i]; &#125; void getSA() &#123; for (int i = 1; i &lt;= len; ++i) rank[i] = st[i], pos[i] = i; radixSort(); for (int w = 1, p = 0; p &lt; len &amp;&amp; w &lt;= len; size = p, w &lt;&lt;= 1) &#123; p = 0; for (int i = len - w + 1; i &lt;= len; ++i) pos[++p] = i; for (int i = 1; i &lt;= len; ++i) if (sa[i] &gt; w) pos[++p] = sa[i] - w; radixSort(); std::swap(rank, pos); rank[sa[1]] = p = 1; for (int i = 2; i &lt;= len; ++i) rank[sa[i]] = pos[sa[i]] == pos[sa[i - 1]] &amp;&amp; pos[sa[i] + w] == pos[sa[i - 1] + w] ? p : ++p; &#125; &#125; void getHeight() &#123; int j = 0, k = 0; for (int i = 1; i &lt;= len; ++i) &#123; if (k) --k; j = sa[rank[i] - 1]; while (st[i + k] == st[j + k]) ++k; height[rank[i]] = k; &#125; &#125; void main(std::string __st, int __size = 127) &#123; memset(sa, 0, sizeof sa); memset(height, 0, sizeof height); memset(bucket, 0, sizeof bucket); memset(pos, 0, sizeof pos); memset(rank, 0, sizeof rank); st = __st, len = st.length() - 1, size = __size; getSA(), getHeight(); &#125;&#125;;std::string a, b;SuffixArray SA;long long ans;long long f[2000010];void solve(int op, std::string st)&#123; SA.main(' ' + st); std::stack &lt;long long&gt; stack; memset(f, 0, sizeof f); int n = st.length(); for (int i = 1; i &lt;= n; ++i) &#123; while (stack.size() &amp;&amp; SA.height[stack.top()] &gt;= SA.height[i]) stack.pop(); if (!stack.size()) f[i] = SA.height[i] * (i - 1); else f[i] = f[stack.top()] + SA.height[i] * (i - stack.top()); stack.push(i); ans += 1ll * op * f[i]; &#125;&#125;int main()&#123; std::cin &gt;&gt; a &gt;&gt; b; solve(1, a + '!' + b); solve(-1, a); solve(-1, b); std::cout &lt;&lt; ans &lt;&lt; std::endl; return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>SA</tag>
+        <tag>单调栈</tag>
+        <tag>容斥</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「AHOI2013」 差异]]></title>
+    <url>%2F2019%2F05%2F07%2FAHOI2013-%E5%B7%AE%E5%BC%82%2F</url>
+    <content type="text"><![CDATA[Solution显然$\sum_{1\le i&lt;j\le n}\mathrm{len}(T_i) + \mathrm{len}(T_j) = (n - 1)n(n + 1) / 2$，故我们只需求每对后缀的$\mathrm{lcp}$即可观察到$\mathrm{lcp}$的前缀和具有单调性，故单调栈维护即可 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;cstdio&gt;#include &lt;string&gt;#include &lt;stack&gt;struct SuffixArray&#123; std::string st = ""; int len = 0, size = 0; int bucket[1000010], pos[1000010], sa[1000010], rank[1000010], height[1000010]; // Each array starts from 1 void radixSort() &#123; for (int i = 1; i &lt;= size; ++i) bucket[i] = 0; for (int i = 1; i &lt;= len; ++i) ++bucket[rank[i]]; for (int i = 1; i &lt;= size; ++i) bucket[i] += bucket[i - 1]; for (int i = len; i; --i) sa[bucket[rank[pos[i]]]--] = pos[i]; &#125; void getSA() &#123; for (int i = 1; i &lt;= len; ++i) rank[i] = st[i], pos[i] = i; radixSort(); for (int w = 1, p = 0; p &lt; len &amp;&amp; w &lt;= len; size = p, w &lt;&lt;= 1) &#123; p = 0; for (int i = len - w + 1; i &lt;= len; ++i) pos[++p] = i; for (int i = 1; i &lt;= len; ++i) if (sa[i] &gt; w) pos[++p] = sa[i] - w; radixSort(); std::swap(rank, pos); rank[sa[1]] = p = 1; for (int i = 2; i &lt;= len; ++i) rank[sa[i]] = pos[sa[i]] == pos[sa[i - 1]] &amp;&amp; pos[sa[i] + w] == pos[sa[i - 1] + w] ? p : ++p; &#125; &#125; void getHeight() &#123; int j = 0, k = 0; for (int i = 1; i &lt;= len; ++i) &#123; if (k) --k; j = sa[rank[i] - 1]; while (st[i + k] == st[j + k]) ++k; height[rank[i]] = k; &#125; &#125; void main(std::string __st, int __size = 127) &#123; st = __st, len = st.length() - 1, size = __size; getSA(), getHeight(); &#125;&#125;;struct Data&#123; int val, pos; Data(int val = 0, int pos = 0) : val(val), pos(pos) &#123;&#125;&#125;;std::string st;SuffixArray SA;long long f[1000010];int main()&#123; std::cin &gt;&gt; st; int n = st.length(), del = 0; st = ' ' + st; SA.main(st); long long ans = (long long)(n + 1) * n * (n - 1) / 2; std::stack &lt;Data&gt; stack; for (int i = 1; i &lt;= n; ++i) &#123; while (stack.size() &amp;&amp; stack.top().val &gt;= SA.height[i]) stack.pop(); if (stack.size()) f[i] = f[stack.top().pos] + (i - stack.top().pos) * SA.height[i]; else f[i] = i * SA.height[i]; stack.push(Data(SA.height[i], i)); &#125; for (int i = 1; i &lt;= n; ++i) ans -= 2 * f[i]; std::cout &lt;&lt; ans &lt;&lt; std::endl; return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>SA</tag>
+        <tag>单调栈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「JSOI2019」 骗分过样例]]></title>
+    <url>%2F2019%2F05%2F07%2FJSOI2019-%E9%AA%97%E5%88%86%E8%BF%87%E6%A0%B7%E4%BE%8B%2F</url>
+    <content type="text"><![CDATA[Overview本题的题意即为给定所有输入输出文件，让选手猜测每个点要实现的目的与方法经观察，Case 1-7与$19$的幂次有关，Case 8-16与区间内的数和函数有关同时经提示、联想与对数据的观察，不难得出：?表示某数未知，wa表示溢出，p表示质数（prime number），u表示Möbius函数（$\mu$），g表示原根（primitive root，常记为$g$）初步的观察对于解题有着极大的帮助。观察过后，我们开始对每个Case进行分析 SolutionCase 1-3经观察可发现要求输出$19$的幂次对$998244353$取模的结果 Method 1使用高精度乘法 Method 2使用欧拉定理$$a^{\varphi(n)}\equiv 1(\mathrm{mod}\,n)\quad \text{if}\,\gcd(a, n) = 1$$在使用快读的时候将输入数据对$\varphi(998244353) = 998244352$取模即可 Case 4经观察可发现要求输出$19$的幂次对某一质数$p$取模的结果观察下发的software4.ans可得到大致范围$p\in(1.1\times10^6, 1.2\times10^6)$，故枚举得到$p = 1145141$ Case 5要求同Case 4一样，经观察可得出大致范围$p\in(5.2\times10^{18}, 5.3\times10^{18})$，故需要更优的解法设输入数据中某两个数为$x_1, x_2$，其对应的值为$y_1, y_2$，则在模$p$意义下有$19^{x_1}\equiv y_1, 19^{x_2}\equiv y_2$。稍作变形可得到$$y_1\cdot19^{x_2 - x_1}\equiv y_2(\mathrm{mod}\,p)$$故$p | y_1\cdot19^{x_2 - x_1} - y_2$。根据software5.in和software5.ans中的两组指数相近的情况再经简单枚举可得出$p = 5211600617818708273$ Case 6-7经观察可发现要求输出$19$的幂次对$p = 998244353$取模的结果，但中间运算溢出导致出现错误结果考虑19的某次方对$p$取模且溢出的结果可看做在区间$(-p, p)$内随机选择了一个数。根据生日悖论，存在多个指数对应相同的结果的概率是相当大的。故我们断定：必然会存在$1 &lt; x_1 &lt; x_2$使得输出的结果相同。即从$x_1$开始每$x_2 - x_1$个数构成相同的循环节预处理后$\mathcal{O}(1)$解决一个询问 Case 8-10经观察可发现要求判断指定区间内每个数为质数还是合数 Method 1由于区间长度不大于1000000，考虑直接对每个数Miller-Rabin测试 Method 2考虑筛法对于Case 8，直接线性筛对于Case 9，考虑到任意合数$a\in[10^6, 10^{12}]$必有质因子$p\in(1, 10^6)$，故先筛出$10^6$以内的质数，再用这些质数筛出所求区间内的合数对于Case 10，类似Case 9 + 打表解决 Case 11-13经观察可发现要求输出指定区间内每个数的Möbius函数考虑先筛出$10^6$以内所有质数及所有数的Möbius函数。对于小于等于$10^6$的询问$\mu(x)$直接输出否则先将$x$的所有小于等于$10^6$的质因子全部除去并同时统计$\mu(x)$，设最后我们得到了$x_0$。显然$x_0$要么等于1，要么由最多两个大于$10^6$的质数组成。设当前统计到的$\mu(x)$为$\mu_P(x)$对于$x_0$， 判断其是否为质数 若是，则输出$-\mu_P(x)$ 否则继续第2步 判断其是否为完全平方数 若是，则输出$0$ 否则其一定有两个与之前筛出的不同的质因子，则输出$\mu_P(x)\times(-1)\times(-1) = \mu_P(x)$ 实现时注意Miller-Rabin的基选取问题，经尝试仅需选取24251 Case 14-15经观察可发现要求判断指定区间内每个数是否是指定质数$p$的原根对于$p = 998244353$，由欧拉定理可知，若$x^t\equiv1(\mathrm{mod}\,p), t &lt; \varphi(p)$，则定有$t|\varphi(p)$。故若对于$p$的任意质因子$p_i$，都有$x^{p_i}\not\equiv1(\mathrm{mod}\,p)$，则$x$是$p$的一个原根。每个数验证即可对于$p = 13123111$，由于$\varphi(p)$的质因子较多，故不能按以上方法实现考虑先求出某一原根$g$。令$x = g^k\,\mathrm{mod}\,p$，则若$x$为原根，就有$$g^{k\varphi(p)}\equiv1(\mathrm{mod}\,p)$$且$\varphi(p)$是最小的使$g^{kt}\equiv1(\mathrm{mod}\,p)$的正整数$t$。而$g^{\varphi(p)}\equiv1(\mathrm{mod}\,p)$，故$k\perp\varphi(p)$预处理出每个$x$的$k$与每个数是否与$\varphi(p)$互质即可 Case 16已知$p\in[10^9, 2\times10^9]$，要求判断指定区间内每个数是否是质数$p$的原根由于不同质数在同一区间内原根的分布情况是混乱的，故不是解的$p$一定会很快被排除。故只需筛出所有可能的质数代入求解即可 Code过长，还是不放了]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「IOI2011」 Race]]></title>
     <url>%2F2019%2F04%2F14%2FIOI2011-Race%2F</url>
     <content type="text"><![CDATA[Solution考虑DSU on Tree维护一个std::map，保存每个长度对应的最小深度，每个节点查询答案 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293#include &lt;algorithm&gt;#include &lt;iostream&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;#include &lt;map&gt;constexpr static int ___maxN = 200010;char ch;template &lt;typename T&gt;void read(T&amp; x)&#123; for (ch = getchar(); !isdigit(ch); ch = getchar()); for (x = 0; isdigit(ch); x = x * 10 + (ch ^ 48), ch = getchar());&#125;int n, k, u, v, w, dfn, ans = 0x7f7f7f7f;int hS[___maxN], sze[___maxN], id[___maxN], nid[___maxN], depth[___maxN];long long dis[___maxN];std::vector &lt;int&gt; to[___maxN], wei[___maxN];std::map &lt;long long, int&gt; map;void getHS(int x, int fr)&#123; sze[x] = 1, id[x] = ++dfn, nid[dfn] = x, depth[x] = depth[fr] + 1; int __max = 0, __size = to[x].size(); for (int i = 0; i &lt; __size; ++i) &#123; int tmp = to[x][i]; if (tmp != fr) &#123; dis[tmp] = dis[x] + wei[x][i]; getHS(tmp, x); sze[x] += sze[tmp]; if (sze[tmp] &gt; __max) __max = sze[tmp], hS[x] = tmp; &#125; &#125;&#125;void update(int x, int y)&#123; int z = dis[x]; if (y == -1) map[z] = 0; else &#123; if (!map[z]) map[z] = depth[x]; else map[z] = std::min(map[z], depth[x]); &#125;&#125;void dfs(int x, int fr, int keep)&#123; for (auto i : to[x]) if (i != fr &amp;&amp; i != hS[x]) dfs(i, x, 0); if (hS[x]) dfs(hS[x], x, 1); for (auto i : to[x]) if (i != fr &amp;&amp; i != hS[x]) &#123; for (int j = 0; j &lt; sze[i]; ++j) &#123; int nxt = nid[id[i] + j], req = k + 2 * dis[x] - dis[nxt]; if (map.count(req) &amp;&amp; map[req]) ans = std::min(ans, map[req] + depth[nxt] - 2 * depth[x]); &#125; for (int j = 0; j &lt; sze[i]; ++j) update(nid[id[i] + j], 1); &#125; update(x, 1); if (map.count(dis[x] + k) &amp;&amp; map[dis[x] + k]) ans = std::min(ans, map[dis[x] + k] - depth[x]); if (!keep) for (int i = 0; i &lt; sze[x]; ++i) update(nid[id[x] + i], -1);&#125;int main()&#123; read(n), read(k); for (int i = 1; i &lt; n; ++i) read(u), read(v), read(w), to[u].push_back(v), to[v].push_back(u), wei[u].push_back(w), wei[v].push_back(w); getHS(0, 0); dfs(0, 0, 0); std::cout &lt;&lt; (ans == 0x7f7f7f7f ? -1 : ans) &lt;&lt; std::endl; return 0;&#125;]]></content>
@@ -238,18 +274,18 @@
     <content type="text"><![CDATA[The Cruel World Grade 9 永远感谢Yirannn 我们所可以自慰的，想来想去，也还是所谓对于将来的希望。 希望是附丽于存在的，有存在，便有希望，有希望，便是光明。]]></content>
   </entry>
   <entry>
-    <title><![CDATA[Tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
-    <content type="text"><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[Categories]]></title>
     <url>%2Fcategories%2Findex.html</url>
     <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
+    <title><![CDATA[Tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Friends]]></title>
     <url>%2Ffriends%2Findex.html</url>
-    <content type="text"><![CDATA[Name Info FFjet 江苏省丹阳高级中学 FlyInTheSky 广东北江中学 LJC00118 Logey 临沂一中 memset0 LG管理 redbag LG管理 SiriusRen 北京邮电大学 Yirannn 吉林大学附属中学]]></content>
+    <content type="text"><![CDATA[Name Info FFjet 江苏省丹阳高级中学 FlyInTheSky 广东北江中学 LJC00118 Logey 临沂一中 memset0 LG管理 redbag LG管理 SiriusRen 北京邮电大学 Studying Father Yirannn 吉林大学附属中学]]></content>
   </entry>
 </search>
