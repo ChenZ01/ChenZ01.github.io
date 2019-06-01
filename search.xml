@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「POJ 2406 & 1961」 Power Strings & Period]]></title>
+    <url>%2F2019%2F05%2F29%2FPOJ-2406-1961%2F</url>
+    <content type="text"><![CDATA[双倍经验 Solution2406再回顾一遍$\pi$函数的定义显然，若一个串是由循环节构成的，为模式串真后缀 (停顿) 且为模式串前缀的串 (停顿) 的最长长度 (停顿) 即为模式串长减去循环节长那么做完了哇 1961把上文中 “模式串真后缀” 改为 “模式串某前缀的真后缀”，每个位置求一遍即可 Code虽然依然只跟$\pi$函数有关但还是挂个KMP的名字吧 2406123456789void KMP(std::string s)&#123; prefixFunction(s); int m = s.length() - 1; if (m % (m - pi[m]) == 0) std::cout &lt;&lt; m / (m - pi[m]) &lt;&lt; std::endl; else std::cout &lt;&lt; 1 &lt;&lt; std::endl;&#125; 1961123456789101112void KMP(std::string s)&#123; prefixFunction(s); int m = s.length() - 1; std::cout &lt;&lt; "Test case #" &lt;&lt; ++testCase &lt;&lt; std::endl; for (int i = 2; i &lt;= m; ++i) &#123; if (pi[i] &amp;&amp; i % (i - pi[i]) == 0) std::cout &lt;&lt; i &lt;&lt; " " &lt;&lt; i / (i - pi[i]) &lt;&lt; std::endl; &#125; std::cout &lt;&lt; std::endl;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>KMP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「POJ 2752」 Seek the Name, Seek the Fame]]></title>
+    <url>%2F2019%2F05%2F29%2FPOJ-2752%2F</url>
+    <content type="text"><![CDATA[这名字好中二啊 Solution考虑到前缀函数$\pi$的定义：$\pi_q$等于 (停顿) 是模式串前缀$P_q$的真后缀 (停顿) 且是模式串$P$的最长前缀的串 (停顿) 的长度显然$\pi_{P.length}$符合题意，接下来根据$\pi$迭代即可 Code虽然只跟$\pi$函数有关但还是挂个KMP的名字吧 1234567891011121314151617181920212223242526272829303132333435int pi[400010];void prefixFunction(std::string s)&#123; memset(pi, 0, sizeof pi); int m = s.length() - 1, k = 0; for (int q = 2; q &lt;= m; ++q) &#123; while (k &amp;&amp; s[k + 1] != s[q]) k = pi[k]; if (s[k + 1] == s[q]) ++k; pi[q] = k; &#125;&#125;void KMP(std::string s)&#123; prefixFunction(s); int x = s.length() - 1; std::priority_queue &lt;int, std::vector &lt;int&gt; , std::greater &lt;int&gt; &gt; q; while (pi[x]) q.push(pi[x]), x = pi[x]; while (q.size()) std::cout &lt;&lt; q.top() &lt;&lt; " ", q.pop(); std::cout &lt;&lt; s.length() - 1&lt;&lt; std::endl;&#125;int main()&#123; std::string s = ""; while (std::cin &gt;&gt; s) s = ' ' + s, KMP(s); return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>KMP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「APIO2009」 抢掠计划]]></title>
+    <url>%2F2019%2F05%2F29%2FAPIO2009-%E6%8A%A2%E6%8E%A0%E8%AE%A1%E5%88%92%2F</url>
+    <content type="text"><![CDATA[弃Tarjan拥抱Kosaraju Solution强连通分量缩点，标记一下缩点后的哪些点有酒吧，跑最长路由于Kosaraju算法处理后的图顶点编号就是拓扑序 (好评！)，直接DP即可 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071constexpr static int ___maxN = 500010;int n, m, u, v, top, cntSCC, s, p;int vis[___maxN], stack[___maxN], belong[___maxN], moneyCross[___maxN], tagCross[___maxN], tag[___maxN], money[___maxN], f[___maxN];std::vector &lt;int&gt; g[___maxN], rG[___maxN];std::map &lt;int, int&gt; connected[___maxN];void dfs(int x)&#123; vis[x] = 1; for (auto i : g[x]) if (!vis[i]) dfs(i); stack[++top] = x;&#125;void rDFS(int x)&#123; vis[x] = 1, belong[x] = cntSCC; for (auto i : rG[x]) if (!vis[i]) rDFS(i);&#125;void SCC()&#123; for (int i = 1; i &lt;= n; ++i) if (!vis[i]) dfs(i); memset(vis, 0, sizeof vis); for (int i = n; i; --i) if (!vis[stack[i]]) ++cntSCC, rDFS(stack[i]);&#125;int main()&#123; read(n, m); for (int i = 1; i &lt;= m; ++i) read(u, v), g[u].push_back(v), rG[v].push_back(u); for (int i = 1; i &lt;= n; ++i) read(moneyCross[i]); read(s, p); for (int i = 1; i &lt;= p; ++i) read(u), tagCross[u] = 1; SCC(); for (int i = 1; i &lt;= n; ++i) &#123; if (!belong[i]) continue; money[belong[i]] += moneyCross[i], tag[belong[i]] |= tagCross[i]; for (auto j : g[i]) if (belong[i] != belong[j] &amp;&amp; belong[j]) connected[belong[i]][belong[j]] = 1; &#125; f[belong[s]] = money[belong[s]]; for (int i = belong[s]; i &lt;= cntSCC; ++i) &#123; for (auto j : connected[i]) &#123; u = j.first; f[u] = std::max(f[u], f[i] + money[u]); &#125; &#125; int ans = 0; for (int i = belong[s]; i &lt;= cntSCC; ++i) if (tag[i]) ans = std::max(ans, f[i]); std::cout &lt;&lt; ans &lt;&lt; std::endl; return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>DP</tag>
+        <tag>SCC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「BZOJ 2140」 稳定婚姻]]></title>
+    <url>%2F2019%2F05%2F29%2FBZOJ-2140-%E7%A8%B3%E5%AE%9A%E5%A9%9A%E5%A7%BB%2F</url>
+    <content type="text"><![CDATA[大型NTR现场 Solution人物之间瞎连一通，判断二人是否在同一SCC里即可 Code12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364constexpr static int ___maxN = 100010;int n, m, cntNode, cntSCC, top;int stack[___maxN], belong[___maxN], vis[___maxN];std::string gi, bo;std::vector &lt;int&gt; g[___maxN], rG[___maxN];std::map &lt;std::string, int&gt; map;void dfs(int x)&#123; vis[x] = 1; for (int i : g[x]) if (!vis[i]) dfs(i); stack[++top] = x;&#125;void rDFS(int x)&#123; vis[x] = 1, belong[x] = cntSCC; for (int i : rG[x]) if (!vis[i]) rDFS(i);&#125;void SCC()&#123; memset(vis, 0, sizeof vis); for (int i = 1; i &lt;= cntNode; ++i) if (!vis[i]) dfs(i); memset(vis, 0, sizeof vis); cntSCC = 0; for (int i = cntNode; i; --i) if (!vis[stack[i]]) ++cntSCC, rDFS(stack[i]);&#125;int main()&#123; std::ios::sync_with_stdio(0), std::cin.tie(0), std::cout.tie(0); std::cin &gt;&gt; n; for (int i = 1; i &lt;= n; ++i) &#123; std::cin &gt;&gt; gi &gt;&gt; bo; map[gi] = ++cntNode, map[bo] = ++cntNode; g[cntNode - 1].push_back(cntNode); rG[cntNode].push_back(cntNode - 1); &#125; std::cin &gt;&gt; m; for (int i = 1; i &lt;= m; ++i) &#123; std::cin &gt;&gt; gi &gt;&gt; bo; g[map[bo]].push_back(map[gi]); rG[map[gi]].push_back(map[bo]); &#125; SCC(); for (int i = 1; i &lt;= cntNode; i += 2) if (belong[i] != belong[i + 1]) std::cout &lt;&lt; "Safe" &lt;&lt; std::endl; else std::cout &lt;&lt; "Unsafe" &lt;&lt; std::endl; return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>SCC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「NOI2015」 品酒大会]]></title>
+    <url>%2F2019%2F05%2F29%2FNOI2015-%E5%93%81%E9%85%92%E5%A4%A7%E4%BC%9A%2F</url>
+    <content type="text"><![CDATA[Solution显然答案具有后缀和性质考虑按$\mathrm{height}$从大到小顺序处理，每次将两个后缀所在集合合并，计算$\mathrm{hight}_t$相似的答案注意两个极小负数乘积也会极大 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109constexpr static int ___maxN = 300010;struct SuffixArray&#123; std::string st = ""; int len = 0, size = 0; int bucket[1000010], pos[1000010], sa[1000010], rank[1000010], height[1000010]; // Each array starts from 1 void radixSort() &#123; for (int i = 1; i &lt;= size; ++i) bucket[i] = 0; for (int i = 1; i &lt;= len; ++i) ++bucket[rank[i]]; for (int i = 1; i &lt;= size; ++i) bucket[i] += bucket[i - 1]; for (int i = len; i; --i) sa[bucket[rank[pos[i]]]--] = pos[i]; &#125; void getSA() &#123; for (int i = 1; i &lt;= len; ++i) rank[i] = st[i], pos[i] = i; radixSort(); for (int w = 1, p = 0; p &lt; len &amp;&amp; w &lt;= len; size = p, w &lt;&lt;= 1) &#123; p = 0; for (int i = len - w + 1; i &lt;= len; ++i) pos[++p] = i; for (int i = 1; i &lt;= len; ++i) if (sa[i] &gt; w) pos[++p] = sa[i] - w; radixSort(); std::swap(rank, pos); rank[sa[1]] = p = 1; for (int i = 2; i &lt;= len; ++i) rank[sa[i]] = pos[sa[i]] == pos[sa[i - 1]] &amp;&amp; pos[sa[i] + w] == pos[sa[i - 1] + w] ? p : ++p; &#125; &#125; void getHeight() &#123; int j = 0, k = 0; for (int i = 1; i &lt;= len; ++i) &#123; if (k) --k; j = sa[rank[i] - 1]; while (st[i + k] == st[j + k]) ++k; height[rank[i]] = k; &#125; &#125; void main(std::string __st, int __size = 127) &#123; st = __st, len = st.length() - 1, size = __size; getSA(), getHeight(); &#125;&#125;;int n;int a[___maxN], rt[___maxN], id[___maxN], size[___maxN];long long max[___maxN], min[___maxN], setMax[___maxN], ans[___maxN], sum[___maxN];std::string st;SuffixArray SA;int cmp(const int&amp; x, const int&amp; y)&#123; return SA.height[x] &gt; SA.height[y];&#125;int getRt(int x)&#123; return rt[x] == x ? x : rt[x] = getRt(rt[x]);&#125;void unite(int x, int y, int len)&#123; x = getRt(x), y = getRt(y); rt[y] = x; sum[len] += 1ll * size[x] * size[y]; size[x] += size[y]; setMax[x] = std::max(setMax[x], std::max(setMax[y], std::max(1ll * max[x] * max[y], 1ll * min[x] * min[y]))); max[x] = std::max(max[x], max[y]); min[x] = std::min(min[x], min[y]); ans[len] = std::max(ans[len], setMax[x]);&#125;int main()&#123; std::ios::sync_with_stdio(0), std::cin.tie(0), std::cout.tie(0); std::cin &gt;&gt; n &gt;&gt; st, st = ' ' + st; for (int i = 1; i &lt;= n; ++i) std::cin &gt;&gt; a[i]; SA.main(st); for (int i = 1; i &lt;= n; ++i) max[i] = min[i] = a[i], ans[i] = setMax[i] = -1e18, id[i] = rt[i] = i, size[i] = 1; ans[n + 1] = ans[0] = -1e18; std::sort(id + 2, id + n + 1, cmp); for (int i = 2; i &lt;= n; ++i) unite(SA.sa[id[i]], SA.sa[id[i] - 1], SA.height[id[i]]); for (int i = n; ~i; --i) sum[i] += sum[i + 1], ans[i] = std::max(ans[i], ans[i + 1]); for (int i = 0; i &lt; n; ++i) std::cout &lt;&lt; sum[i] &lt;&lt; " " &lt;&lt; (!sum[i] ? 0 : ans[i]) &lt;&lt; std::endl; return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>并查集</tag>
+        <tag>SA</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[「POJ 2348」 Euclid's Game]]></title>
+    <url>%2F2019%2F05%2F24%2FPOJ-2348%2F</url>
+    <content type="text"><![CDATA[还是第一次写博弈论的题目呐虽然完全口胡做法 Solution考虑到一方输一定是被迫输的，也就是只有可能这么选我们用$(a, b)$表示当前两个数 ($a &gt; b$)，令$c$为最大的使$bc &lt; a$的整数 $b = 1$。这就没得其它方法选了，继续往下做吧 $b &gt; 1$。若我们这一轮将状态变为$(a - (c - 1)b, b)$，此时变成对方无法选择，下一步对方只可能将其变成$(b, a - bc)$。然而我们可以直接在这一轮将状态变为$(b, a - bc)$。也就是说我们既可以自己将状态变成$(b, a - bc)$，也可以通过对方之手变换，故这种状态是必胜的 那么就结束啦，细节自己判去（ Code1234567891011121314151617181920212223242526272829303132333435template &lt;typename Num&gt;void read(Num&amp; x)&#123; char ch = 0; for (ch = getchar(); !isdigit(ch); ch = getchar()); for (x = 0; isdigit(ch); x = x * 10 + (ch ^ 48), ch = getchar());&#125;template &lt;typename Num, typename ...List&gt;void read(Num&amp; x, List&amp; ...y)&#123; read(x), read(y...);&#125;int solve(int x, int y)&#123; int f = 1; for (; ; ) &#123; if (x &lt; y) std::swap(x, y); if (x % y == 0 || x - y &gt; y) return f; x -= y; f = !f; &#125;&#125;int main()&#123; int a = 0, b = 0; for (read(a, b); a &amp;&amp; b; read(a, b)) std::cout &lt;&lt; (solve(a, b) ? "Stan" : "Ollie") &lt;&lt; " wins" &lt;&lt; std::endl; return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>博弈论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「AtCoder Beginner Contest 126」]]></title>
     <url>%2F2019%2F05%2F20%2FABC-126%2F</url>
     <content type="text"><![CDATA[ABC的题量突然增多了……向ARC看齐了？ TasksC - Dice and CoinAnalysis从来没有做过概率题的ChenZ01表示很慌……仔细一想这不跟GCJ 2008 APAC C几乎一样么……注意一下概率均要乘上$1 / n$首先考虑点数为$d \ge K$的情况，这就不用掷第二遍了，$P(d) = 1$然后我们考虑$d &lt; K$的情况，不难发现$d\ge\lceil k / 2\rceil$时概率为$1 / 2$，其余情况$P(d) = 1 / 2 * P(2d)$ Code123456789101112131415161718192021int n, k;long double f[3000010]; int main()&#123; std::ios::sync_with_stdio(0), std::cin.tie(0), std::cout.tie(0); std::cin &gt;&gt; n &gt;&gt; k; for (int i = k / 2 + k % 2; i &lt; k; ++i) f[i] = 0.5; for (int i = k; i &lt;= n; ++i) f[i] = 1; for (int i = k / 2 + k % 2 - 1; i; --i) &#123; f[i] = 0.5 * f[i * 2]; &#125; long double ans = 0; for (int i = 1; i &lt;= n; ++i) ans += f[i]; printf("%.12Lf\n", ans / (long double)n); return 0;&#125; D - Even RelationAnalysis令$1$为root，直接将其染黑/白，根据边奇偶对子节点染色即可容易验证这样构造出来的一定没问题 Code1234567891011121314151617181920212223242526272829303132333435363738394041struct Edge&#123; int v, w; Edge(int v = 0, int w = 0) : v(v), w(w) &#123;&#125;&#125;; int n;int c[100010];std::vector &lt;Edge&gt; t[100010]; void dfs(int x, int fr, int col)&#123; c[x] = col; for (auto i : t[x]) &#123; int v = i.v; if (v == fr) continue; if (i.w % 2) // Odd dfs(v, x, !col); else dfs(v, x, col); &#125;&#125; int main()&#123; std::ios::sync_with_stdio(0), std::cin.tie(0), std::cout.tie(0); std::cin &gt;&gt; n; for (int i = 1; i &lt; n; ++i) &#123; int u = 0, v = 0, w = 0; std::cin &gt;&gt; u &gt;&gt; v &gt;&gt; w; t[u].push_back(Edge(v, w)); t[v].push_back(Edge(u, w)); &#125; dfs(1, 0, 0); // Black for (int i = 1; i &lt;= n; ++i) std::cout &lt;&lt; c[i] &lt;&lt; std::endl; return 0;&#125; E - 1 or 2Analysis考虑若$A_x$与$A_y$被直接或间接的fact涉及，则我们知道$A_x$则一定能知道$A_y$并查集处理即可比赛时思路比较乱就写了个连边求连通块个数的，实质就是并查集 Code这是比赛脑抽连边的版本1234567891011121314151617181920212223242526272829303132333435363738int n, m, cnt;int vis[100010];std::vector &lt;int&gt; rela[100010]; void dfs(int x)&#123; vis[x] = 1; for (auto i : rela[x]) &#123; if (!vis[i]) dfs(i); &#125;&#125; int main()&#123; std::ios::sync_with_stdio(0), std::cin.tie(0), std::cout.tie(0); std::cin &gt;&gt; n &gt;&gt; m; for (int i = 1; i &lt;= m; ++i) &#123; int x = 0, y = 0, z = 0; std::cin &gt;&gt; x &gt;&gt; y &gt;&gt; z; rela[x].push_back(y), rela[y].push_back(x); &#125; int ans = 0; for (int i = 1; i &lt;= n; ++i) &#123; if (!vis[i]) &#123; if (rela[i].size()) ++ans, dfs(i); else ++ans; &#125; &#125; std::cout &lt;&lt; ans &lt;&lt; std::endl; return 0;&#125; F - XOR MatchingAnalysis感谢FlyInTheSky聚聚的Construction，其实本题不止一种构造方法判断完后构造即可存在性只需判断除$k$以外全部数的异或和是否为$0$ Code1234567891011121314151617181920212223242526272829// Construct [k, 0, 1, ..., k - 1, k + 1, ..., 2 ^ m, k, 2 ^ m, ..., k + 1, k - 1, ..., 2, 1, 0]int m, k; int main()&#123; std::ios::sync_with_stdio(0), std::cin.tie(0), std::cout.tie(0); std::cin &gt;&gt; m &gt;&gt; k; if (k == 0) &#123; for (int i = 0; i &lt; (1 &lt;&lt; m); ++i) std::cout &lt;&lt; i &lt;&lt; " " &lt;&lt; i &lt;&lt; " "; return 0; &#125; int s = 0; for (int i = 0; i &lt; (1 &lt;&lt; m); ++i) if (i != k) s ^= i; if (s != k) return (std::cout &lt;&lt; -1 &lt;&lt; std::endl), 0; std::cout &lt;&lt; k &lt;&lt; " "; for (int i = 0; i &lt; (1 &lt;&lt; m); ++i) if (i != k) std::cout &lt;&lt; i &lt;&lt; " "; std::cout &lt;&lt; k &lt;&lt; " "; for (int i = (1 &lt;&lt; m) - 1; ~i; --i) if (i != k) std::cout &lt;&lt; i &lt;&lt; " "; return 0;&#125;]]></content>
@@ -312,9 +380,9 @@
     <content type="text"><![CDATA[The Cruel World Grade 9 永远感谢Yirannn 我们所可以自慰的，想来想去，也还是所谓对于将来的希望。 希望是附丽于存在的，有存在，便有希望，有希望，便是光明。]]></content>
   </entry>
   <entry>
-    <title><![CDATA[Tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
-    <content type="text"><![CDATA[]]></content>
+    <title><![CDATA[Friends]]></title>
+    <url>%2Ffriends%2Findex.html</url>
+    <content type="text"><![CDATA[按照字典序排序 Name M_sea Chhokmah FFjet FlyInTheSky LJC00118 Logey memset0 redbag SiriusRen Studying Father Yirannn]]></content>
   </entry>
   <entry>
     <title><![CDATA[Categories]]></title>
@@ -322,8 +390,8 @@
     <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
-    <title><![CDATA[Friends]]></title>
-    <url>%2Ffriends%2Findex.html</url>
-    <content type="text"><![CDATA[按照字典序排序 Name Info Chhokmah FFjet 江苏省丹阳高级中学 FlyInTheSky 广东北江中学 LJC00118 Logey 临沂一中 memset0 LG管理 redbag LG管理 SiriusRen 北京邮电大学 Studying Father Yirannn 吉林大学附属中学]]></content>
+    <title><![CDATA[Tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
+    <content type="text"><![CDATA[]]></content>
   </entry>
 </search>
