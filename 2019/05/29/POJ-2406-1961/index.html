@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="ChenZ01">
 <meta property="og:description" content="双倍经验">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-30T13:54:56.110Z">
+<meta property="og:updated_time" content="2019-06-20T08:13:22.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="「POJ 2406 &amp; 1961」 Power Strings &amp; Period">
 <meta name="twitter:description" content="双倍经验">
@@ -393,7 +393,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ChenZ01"/>
       <meta itemprop="description" content="Vogel im Käfig"/>
-      <meta itemprop="image" content="https://i.loli.net/2019/02/02/5c555c2a628aa.jpg"/>
+      <meta itemprop="image" content="https://i.loli.net/2019/06/20/5d0b3fc9b438825804.png"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -448,7 +448,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-30 21:54:56" itemprop="dateModified" datetime="2019-05-30T21:54:56+08:00">2019-05-30</time>
+                <time title="Modified: 2019-06-20 16:13:22" itemprop="dateModified" datetime="2019-06-20T16:13:22+08:00">2019-06-20</time>
               
             
           </span>
@@ -504,7 +504,7 @@
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="2406"><a href="#2406" class="headerlink" title="2406"></a>2406</h3><p><del>再回顾一遍$\pi$函数的定义</del>显然，若一个串是由循环节构成的，为模式串真后缀 (停顿) 且为模式串前缀的串 (停顿) 的最长长度 (停顿) 即为模式串长减去循环节长<br>那么做完了哇</p>
 <h3 id="1961"><a href="#1961" class="headerlink" title="1961"></a>1961</h3><p>把上文中 “模式串真后缀” 改为 “模式串某前缀的真后缀”，每个位置求一遍即可</p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><del>虽然依然只跟$\pi$函数有关但还是挂个KMP的名字吧</del></p>
-<h3 id="2406-1"><a href="#2406-1" class="headerlink" title="2406"></a>2406</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void KMP(std::string s)</span><br><span class="line">&#123;</span><br><span class="line">    prefixFunction(s);</span><br><span class="line">    int m = s.length() - 1;</span><br><span class="line">    if (m % (m - pi[m]) == 0)</span><br><span class="line">        std::cout &lt;&lt; m / (m - pi[m]) &lt;&lt; std::endl;</span><br><span class="line">    else</span><br><span class="line">        std::cout &lt;&lt; 1 &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2406-1"><a href="#2406-1" class="headerlink" title="2406"></a>2406</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">KMP</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span> s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    prefixFunction(s);</span><br><span class="line">    <span class="keyword">int</span> m = s.length() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (m % (m - pi[m]) == <span class="number">0</span>)</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; m / (m - pi[m]) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="number">1</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="1961-1"><a href="#1961-1" class="headerlink" title="1961"></a>1961</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">KMP</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">string</span> s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    prefixFunction(s);</span><br><span class="line">    <span class="keyword">int</span> m = s.length() - <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Test case #"</span> &lt;&lt; ++testCase &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= m; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (pi[i] &amp;&amp; i % (i - pi[i]) == <span class="number">0</span>)</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">" "</span> &lt;&lt; i / (i - pi[i]) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -550,6 +550,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/05/JSOISC-Day1/" rel="prev" title="JSOISC Day1">
+                JSOISC Day1 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -609,7 +613,7 @@
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
               <img class="site-author-image" itemprop="image"
-                src="https://i.loli.net/2019/02/02/5c555c2a628aa.jpg"
+                src="https://i.loli.net/2019/06/20/5d0b3fc9b438825804.png"
                 alt="ChenZ01"/>
             
               <p class="site-author-name" itemprop="name">ChenZ01</p>
@@ -623,7 +627,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -695,7 +699,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

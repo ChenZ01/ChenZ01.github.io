@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[JSOISC Day1]]></title>
+    <url>%2F2019%2F07%2F05%2FJSOISC-Day1%2F</url>
+    <content type="text"><![CDATA[T1 - lemonAnalysisMethod 1打表易发现当且仅当$n = 2 ^ k, k\in \mathbb{N}$时能成功. Method 2首先考虑$n$为非$1$奇数的情况. 可以发现$(\sum_{i =1} ^ ki)\,\mathrm{mod}\,n$构成一个长度为$n$的循环节. 故对于所有整数$k\in[1, n]$若$(\sum_{i =1} ^ ki)\,\mathrm{mod}\,n$重复出现则失败. 由于$(\sum_{i =1} ^ ni)\,\mathrm{mod}\,n = (\sum_{i =1} ^ {n - 1}i)\,\mathrm{mod}\,n$, 除$1$以外的奇数均失败. 故奇数的倍数也失败. 故只有仅拥有非奇数因子的数能成功. 即$$n = 2 ^ k$$ Code12345678910111213141516171819int n, cases;int main()&#123; for (read(cases); cases; --cases) &#123; int flag = 1; read(n); for (; n &gt; 1; n &gt;&gt;= 1) if (n &amp; 1) &#123; flag = 0; break; &#125; printf(flag ? "Yes\n" : "No\n"); &#125; return 0;&#125; T2 - helpersAnalysis令$p_i$表示一个人拥有$i$积分时不被淘汰的概率, $\Sigma$表示$\sum a_i$. 有$p_i = \frac{1}{2}p_{i - 1} + \frac{1}{2}p_{i + 1}$其中$p_0 = 0, p_\Sigma = 1$由于$p_i = 1 / 2 p_{i - 1} + 1 / 2 p_{i + 1}, \, p_0 = 0$, 可知$p_1 = 1 / 2p_{2}$故$p_2 = 2p_1 = 1 / 2p_{1} + 1 / 2p_{3}$故$1 / 2p_3 = 3 / 2p_1 \Rightarrow p_3 = 3p_1$我们得到$p_i = ip_1$由于$p_\Sigma = \Sigma \times p_1 = 1$, 我们有$p_1 = 1 / \Sigma$最后得到$p_i = i / \Sigma$ Code12345678910111213141516171819202122232425262728293031323334template &lt;typename T&gt;void write(T x)&#123; if (x &lt; 10) putchar(x ^ 48); else write(x / 10), putchar((x % 10) ^ 48);&#125;long long fastExp(long long base, int index = 998244351)&#123; long long res = 1; for (; index; base = base * base % 998244353, index &gt;&gt;= 1) if (index &amp; 1) res = res * base % 998244353; return res;&#125;int n;int a[10000010];long long sigma;int main()&#123; read(n); for (int i = 1; i &lt;= n; ++i) read(a[i]), sigma += a[i]; long long inv = fastExp(sigma); for (int i = 1; i &lt;= n; ++i) a[i] = (long long)a[i] * inv % 998244353; for (int i = 1; i &lt;= n; ++i) write(a[i]), putchar(' '); return 0;&#125; T3 - hackAnalysis考虑模拟. 将当前最大权置为$0$. 按输入顺序扫每一条边. 对于当前边 若属于MST, 则直接将其权赋为当前最大权 $+ 1$. 若不属于MST, 则其一定与某几条属于MST的边构成环. 将其权赋为当前最大权 $+$ 所在环内没有被赋值过的边的个数 $+ 1$, 并且对环内未被赋值的边按输入顺序从当前最大权 (不算刚刚赋值的非MST边) 开始赋值. 由于遍历到环中某个点就会遍历环中所有点, 对于遍历过的环进行缩点即可. Code施工中…]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+        <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「POJ 2406 & 1961」 Power Strings & Period]]></title>
     <url>%2F2019%2F05%2F29%2FPOJ-2406-1961%2F</url>
     <content type="text"><![CDATA[双倍经验 Solution2406再回顾一遍$\pi$函数的定义显然，若一个串是由循环节构成的，为模式串真后缀 (停顿) 且为模式串前缀的串 (停顿) 的最长长度 (停顿) 即为模式串长减去循环节长那么做完了哇 1961把上文中 “模式串真后缀” 改为 “模式串某前缀的真后缀”，每个位置求一遍即可 Code虽然依然只跟$\pi$函数有关但还是挂个KMP的名字吧 2406123456789void KMP(std::string s)&#123; prefixFunction(s); int m = s.length() - 1; if (m % (m - pi[m]) == 0) std::cout &lt;&lt; m / (m - pi[m]) &lt;&lt; std::endl; else std::cout &lt;&lt; 1 &lt;&lt; std::endl;&#125; 1961123456789101112void KMP(std::string s)&#123; prefixFunction(s); int m = s.length() - 1; std::cout &lt;&lt; "Test case #" &lt;&lt; ++testCase &lt;&lt; std::endl; for (int i = 2; i &lt;= m; ++i) &#123; if (pi[i] &amp;&amp; i % (i - pi[i]) == 0) std::cout &lt;&lt; i &lt;&lt; " " &lt;&lt; i / (i - pi[i]) &lt;&lt; std::endl; &#125; std::cout &lt;&lt; std::endl;&#125;]]></content>
@@ -30,8 +42,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>DP</tag>
         <tag>SCC</tag>
+        <tag>DP</tag>
       </tags>
   </entry>
   <entry>
@@ -88,8 +100,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>数论</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -100,8 +112,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>数论</tag>
+        <tag>贪心</tag>
         <tag>二分</tag>
         <tag>不等式</tag>
       </tags>
@@ -375,14 +387,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[About]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[The Cruel World Grade 9 永远感谢Yirannn 我们所可以自慰的，想来想去，也还是所谓对于将来的希望。 希望是附丽于存在的，有存在，便有希望，有希望，便是光明。]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Friends]]></title>
-    <url>%2Ffriends%2Findex.html</url>
-    <content type="text"><![CDATA[按照字典序排序 Name M_sea Chhokmah FFjet FlyInTheSky LJC00118 Logey memset0 redbag SiriusRen Studying Father Yirannn]]></content>
+    <title><![CDATA[Tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
+    <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
     <title><![CDATA[Categories]]></title>
@@ -390,8 +397,13 @@
     <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
-    <title><![CDATA[Tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
-    <content type="text"><![CDATA[]]></content>
+    <title><![CDATA[Friends]]></title>
+    <url>%2Ffriends%2Findex.html</url>
+    <content type="text"><![CDATA[按照字典序排序 Name M_sea Chhokmah FFjet FlyInTheSky LJC00118 Logey memset0 redbag SiriusRen Studying Father Yirannn]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[About]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"><![CDATA[The Cruel World Grade 9 永远感谢Yirannn 我们所可以自慰的，想来想去，也还是所谓对于将来的希望。 希望是附丽于存在的，有存在，便有希望，有希望，便是光明。]]></content>
   </entry>
 </search>
