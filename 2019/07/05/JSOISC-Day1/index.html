@@ -92,18 +92,18 @@
 
 
 
-  <meta name="description" content="T1 - lemonAnalysisMethod 1打表易发现当且仅当$n = 2 ^ k, k\in \mathbb{N}$时能成功.">
+  <meta name="description" content="T1 - lemonAnalysisMethod 1打表易发现当且仅当$n = 2 ^ k, k\in \mathbb{N}$时能成功">
 <meta name="keywords" content="数学,模拟">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JSOISC Day1">
 <meta property="og:url" content="https://chenz01.github.io/2019/07/05/JSOISC-Day1/index.html">
 <meta property="og:site_name" content="ChenZ01">
-<meta property="og:description" content="T1 - lemonAnalysisMethod 1打表易发现当且仅当$n = 2 ^ k, k\in \mathbb{N}$时能成功.">
+<meta property="og:description" content="T1 - lemonAnalysisMethod 1打表易发现当且仅当$n = 2 ^ k, k\in \mathbb{N}$时能成功">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-05T06:53:12.720Z">
+<meta property="og:updated_time" content="2019-07-05T06:58:18.898Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JSOISC Day1">
-<meta name="twitter:description" content="T1 - lemonAnalysisMethod 1打表易发现当且仅当$n = 2 ^ k, k\in \mathbb{N}$时能成功.">
+<meta name="twitter:description" content="T1 - lemonAnalysisMethod 1打表易发现当且仅当$n = 2 ^ k, k\in \mathbb{N}$时能成功">
 
 
 
@@ -431,7 +431,7 @@
                 
               
 
-              <time title="Created: 2019-07-05 14:48:54 / Modified: 14:53:12" itemprop="dateCreated datePublished" datetime="2019-07-05T14:48:54+08:00">2019-07-05</time>
+              <time title="Created: 2019-07-05 14:48:54 / Modified: 14:58:18" itemprop="dateCreated datePublished" datetime="2019-07-05T14:48:54+08:00">2019-07-05</time>
             
 
             
@@ -488,20 +488,20 @@
       
 
       
-        <script src="\assets\js\APlayer.min.js"> </script><h2 id="T1-lemon"><a href="#T1-lemon" class="headerlink" title="T1 - lemon"></a>T1 - lemon</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Method-1"><a href="#Method-1" class="headerlink" title="Method 1"></a>Method 1</h4><p>打表易发现当且仅当$n = 2 ^ k, k\in \mathbb{N}$时能成功.<a id="more"></a> </p>
-<h4 id="Method-2"><a href="#Method-2" class="headerlink" title="Method 2"></a>Method 2</h4><p>首先考虑$n$为非$1$奇数的情况. 可以发现$(\sum_{i =1} ^ ki)\,\mathrm{mod}\,n$构成一个长度为$n$的循环节. 故对于所有整数$k\in[1, n]$若$(\sum_{i =1} ^ ki)\,\mathrm{mod}\,n$重复出现则失败.</p>
-<p>由于$(\sum_{i =1} ^ ni)\,\mathrm{mod}\,n = (\sum_{i =1} ^ {n - 1}i)\,\mathrm{mod}\,n$, 除$1$以外的奇数均失败. 故奇数的倍数也失败. 故只有仅拥有非奇数因子的数能成功. 即<br>$$<br>n = 2 ^ k<br>$$</p>
+        <script src="\assets\js\APlayer.min.js"> </script><h2 id="T1-lemon"><a href="#T1-lemon" class="headerlink" title="T1 - lemon"></a>T1 - lemon</h2><h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Method-1"><a href="#Method-1" class="headerlink" title="Method 1"></a>Method 1</h4><p>打表易发现当且仅当$n = 2 ^ k, k\in \mathbb{N}$时能成功<a id="more"></a> </p>
+<h4 id="Method-2"><a href="#Method-2" class="headerlink" title="Method 2"></a>Method 2</h4><p>首先考虑$n$为非$1$奇数的情况 可以发现$(\sum_{i =1} ^ ki)\,\mathrm{mod}\,n$构成一个长度为$n$的循环节 故对于所有整数$k\in[1, n]$若$(\sum_{i =1} ^ ki)\,\mathrm{mod}\,n$重复出现则失败</p>
+<p>由于$(\sum_{i =1} ^ ni)\,\mathrm{mod}\,n = (\sum_{i =1} ^ {n - 1}i)\,\mathrm{mod}\,n$, 除$1$以外的奇数均失败 故奇数的倍数也失败 故只有仅拥有非奇数因子的数能成功 即<br>$$<br>n = 2 ^ k<br>$$</p>
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, cases;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (read(cases); cases; --cases)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> flag = <span class="number">1</span>;</span><br><span class="line">        read(n);</span><br><span class="line">        <span class="keyword">for</span> (; n &gt; <span class="number">1</span>; n &gt;&gt;= <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">if</span> (n &amp; <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                flag = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="built_in">printf</span>(flag ? <span class="string">"Yes\n"</span> : <span class="string">"No\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="T2-helpers"><a href="#T2-helpers" class="headerlink" title="T2 - helpers"></a>T2 - helpers</h2><h3 id="Analysis-1"><a href="#Analysis-1" class="headerlink" title="Analysis"></a>Analysis</h3><p>令$p_i$表示一个人拥有$i$积分时不被淘汰的概率, $\Sigma$表示$\sum a_i$. 有<br>$p_i = \frac{1}{2}p_{i - 1} + \frac{1}{2}p_{i + 1}$<br>其中$p_0 = 0, p_\Sigma = 1$<br>由于$p_i = 1 / 2 p_{i - 1} + 1 / 2 p_{i + 1}, \, p_0 = 0$, 可知$p_1 = 1 / 2p_{2}$<br>故$p_2 = 2p_1 = 1 / 2p_{1} + 1 / 2p_{3}$<br>故$1 / 2p_3 = 3 / 2p_1 \Rightarrow p_3 = 3p_1$<br>我们得到$p_i = ip_1$<br>由于$p_\Sigma = \Sigma \times p_1 = 1$, 我们有$p_1 = 1 / \Sigma$<br>最后得到$p_i = i / \Sigma$</p>
+<h2 id="T2-helpers"><a href="#T2-helpers" class="headerlink" title="T2 - helpers"></a>T2 - helpers</h2><h3 id="Analysis-1"><a href="#Analysis-1" class="headerlink" title="Analysis"></a>Analysis</h3><p>令$p_i$表示一个人拥有$i$积分时不被淘汰的概率, $\Sigma$表示$\sum a_i$ 有<br>$p_i = \frac{1}{2}p_{i - 1} + \frac{1}{2}p_{i + 1}$<br>其中$p_0 = 0, p_\Sigma = 1$<br>由于$p_i = 1 / 2 p_{i - 1} + 1 / 2 p_{i + 1}, \, p_0 = 0$, 可知$p_1 = 1 / 2p_{2}$<br>故$p_2 = 2p_1 = 1 / 2p_{1} + 1 / 2p_{3}$<br>故$1 / 2p_3 = 3 / 2p_1 \Rightarrow p_3 = 3p_1$<br>我们得到$p_i = ip_1$<br>由于$p_\Sigma = \Sigma \times p_1 = 1$, 我们有$p_1 = 1 / \Sigma$<br>最后得到$p_i = i / \Sigma$</p>
 <h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(T x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">10</span>)</span><br><span class="line">        <span class="built_in">putchar</span>(x ^ <span class="number">48</span>);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        write(x / <span class="number">10</span>), <span class="built_in">putchar</span>((x % <span class="number">10</span>) ^ <span class="number">48</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">fastExp</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> base, <span class="keyword">int</span> index = <span class="number">998244351</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; index; base = base * base % <span class="number">998244353</span>, index &gt;&gt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> (index &amp; <span class="number">1</span>)</span><br><span class="line">            res = res * base % <span class="number">998244353</span>;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> a[<span class="number">10000010</span>];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> sigma;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    read(n);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        read(a[i]), sigma += a[i];</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> inv = fastExp(sigma);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        a[i] = (<span class="keyword">long</span> <span class="keyword">long</span>)a[i] * inv % <span class="number">998244353</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</span><br><span class="line">        write(a[i]), <span class="built_in">putchar</span>(<span class="string">' '</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="T3-hack"><a href="#T3-hack" class="headerlink" title="T3 - hack"></a>T3 - hack</h2><h3 id="Analysis-2"><a href="#Analysis-2" class="headerlink" title="Analysis"></a>Analysis</h3><p>考虑模拟.</p>
-<p>将当前最大权置为$0$. 按输入顺序扫每一条边. 对于当前边</p>
+<h2 id="T3-hack"><a href="#T3-hack" class="headerlink" title="T3 - hack"></a>T3 - hack</h2><h3 id="Analysis-2"><a href="#Analysis-2" class="headerlink" title="Analysis"></a>Analysis</h3><p>考虑模拟</p>
+<p>将当前最大权置为$0$ 按输入顺序扫每一条边 对于当前边</p>
 <ul>
-<li>若属于MST, 则直接将其权赋为当前最大权 $+ 1$.</li>
-<li>若不属于MST, 则其一定与某几条属于MST的边构成环. 将其权赋为当前最大权 $+$ 所在环内<strong>没有被赋值过</strong>的边的个数 $+ 1$, 并且对环内未被赋值的边按输入顺序从当前最大权 (不算刚刚赋值的非MST边) 开始赋值.</li>
+<li>若属于MST, 则直接将其权赋为当前最大权 $+ 1$</li>
+<li>若不属于MST, 则其一定与某几条属于MST的边构成环 将其权赋为当前最大权 $+$ 所在环内<strong>没有被赋值过</strong>的边的个数 $+ 1$, 并且对环内未被赋值的边按输入顺序从当前最大权 (不算刚刚赋值的非MST边) 开始赋值</li>
 </ul>
-<p>由于遍历到环中某个点就会遍历环中所有点, 对于遍历过的环进行缩点即可.</p>
-<h4 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h4><p>施工中…</p>
+<p>由于遍历到环中某个点就会遍历环中所有点, 对于遍历过的环进行缩点即可</p>
+<h4 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h4><p>施工中</p>
 
       
     </div>
@@ -549,6 +549,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/08/ABC-133/" rel="prev" title="「AtCoder Beginner Contest 133」">
+                「AtCoder Beginner Contest 133」 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -622,7 +626,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">34</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -698,7 +702,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
