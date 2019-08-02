@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[「ZJOI2013」 K大数查询]]></title>
+    <url>%2F2019%2F08%2F02%2FZJOI2013-K%E5%A4%A7%E6%95%B0%E6%9F%A5%E8%AF%A2%2F</url>
+    <content type="text"><![CDATA[整体二分裸题 Solution所谓整体二分，需要数据结构题满足一下性质 询问的答案具有可二分性 修改对判定答案的贡献互相独立，修改之间互不影响效果 修改如果对判定答案有贡献，则贡献为一确定的与判定标准无关的值 贡献满足交换律、结合律，具有可加性 题目允许离线算法 论文中还提到我们在处理的过程中，复杂度绝对不能和序列总长$n$线性相关，只能和当前处理序列区间的长度相关一个显然的推论就是我们清空辅助的数据结构 (如BIT等) 不能直接清空而要逆向地加 / 减回去 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114#include &lt;algorithm&gt;#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;template &lt;typename T&gt;void read(T&amp; x)&#123; char c = getchar(); int minus = 0; for (x = 0; !isdigit(c); minus |= (c == '-'), c = getchar()); for (; isdigit(c); x = x * 10 + (c ^ 48), c = getchar()); if (minus) x = -x;&#125; // void read()template &lt;typename Cur, typename ...List&gt;void read(Cur&amp; x, List&amp; ...y)&#123; read(x), read(y...);&#125; // void read()struct Operation&#123; long long op, l, r, x, id; Operation(long long op = 0, long long l = 0, long long r = 0, long long x = 0, int id = 0) : op(op), l(l), r(r), x(x), id(id) &#123;&#125;&#125;; // struct Operationint n, m, queryNum;long long ans[50010], cur[50010];class BIT&#123;private: long long b1[50010], b2[50010];public: void update(long long pos, long long val) &#123; for (int i = pos; i &lt;= n; i += i &amp; -i) b1[i] += val, b2[i] += val * pos; &#125; long long query(long long pos) &#123; long long res = 0; for (int i = pos; i; i -= i &amp; -i) res += (pos + 1) * b1[i] - b2[i]; return res; &#125;&#125;; // class BIT::BIT bit;::Operation o[50010], o1[50010], o2[50010];void solve(long long rL, long long rR, int qL, int qR)&#123; if (rL &gt; rR || qL &gt; qR) return; if (rL == rR) &#123; for (int i = qL; i &lt;= qR; ++i) ans[o[i].id] = rL; return; &#125; long long mid = rL + rR &gt;&gt; 1; for (int i = qL; i &lt;= qR; ++i) if (o[i].op == 1 &amp;&amp; o[i].x &gt; mid) bit.update(o[i].l, 1), bit.update(o[i].r + 1, -1); else if (o[i].op == 2) cur[i] = bit.query(o[i].r) - bit.query(o[i].l - 1); for (int i = qL; i &lt;= qR; ++i) if (o[i].op == 1 &amp;&amp; o[i].x &gt; mid) bit.update(o[i].l, -1), bit.update(o[i].r + 1, 1); int t1 = 0, t2 = 0; for (int i = qL; i &lt;= qR; ++i) if (o[i].op == 2) &#123; if (cur[i] &gt;= o[i].x) o2[++t2] = o[i]; else o[i].x -= cur[i], o1[++t1] = o[i]; &#125; else &#123; if (o[i].x &lt;= mid) o1[++t1] = o[i]; else o2[++t2] = o[i]; &#125; for (int i = 1; i &lt;= t1; ++i) o[qL + i - 1] = o1[i]; for (int i = 1; i &lt;= t2; ++i) o[qL + t1 + i - 1] = o2[i]; solve(rL, mid, qL, qL + t1 - 1); solve(mid + 1, rR, qL + t1, qR);&#125; // void solve()int main()&#123; std::ios::sync_with_stdio(0); std::cout.tie(0); read(n, m); for (int i = 1; i &lt;= m; ++i) &#123; int op = 0, a = 0, b = 0, c = 0; read(op, a, b, c); o[i] = Operation(op, a, b, c, op == 2 ? ++queryNum : 0); &#125; solve(-n, n, 1, m); for (int i = 1; i &lt;= queryNum; ++i) std::cout &lt;&lt; ans[i] &lt;&lt; std::endl; return 0;&#125; Reference 2013年信息学奥林匹克中国国家队候选队员论文《浅谈数据结构题的几个非经典解法》，许昊然，南京外国语学校]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>BIT</tag>
+        <tag>整体二分</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「AtCoder Beginner Contest 133」]]></title>
     <url>%2F2019%2F07%2F08%2FABC-133%2F</url>
     <content type="text"><![CDATA[神FFjet带窝上分 TasksB - Good DistanceAnalysis按题意模拟 Code12345678910111213141516171819202122232425int n, d, ans;long long a[20][20];int main()&#123; std::ios::sync_with_stdio(0), std::cin.tie(0), std::cout.tie(0); std::cin &gt;&gt; n &gt;&gt; d; for (int i = 1; i &lt;= n; ++i) for (int j = 1; j &lt;= d; ++j) std::cin &gt;&gt; a[i][j]; for (int i = 1; i &lt; n; ++i) &#123; for (int j = i + 1; j &lt;= n; ++j) &#123; long long s = 0; for (int k = 1; k &lt;= d; ++k) s += (a[i][k] - a[j][k]) * (a[i][k] - a[j][k]); if ((int)std::sqrt(s) * (int)std::sqrt(s) == s) ++ans; &#125; &#125; std::cout &lt;&lt; ans &lt;&lt; std::endl; return 0;&#125; C - Remainder Minimization 2019Analysis首先有$2019 = 3 \times 673$考虑到如果$[l, r]$中有$673$的倍数与$3$的倍数答案就为$0$，若区间长度$r - l + 1 \ge 673$我们可以直接输出$0$. 否则区间长度很小，直接暴力求解 Code思路混乱的考场上区间长度搞不清 12345678910111213141516171819202122int l, r;long long ans = 0x7f7f7f7f;int main()&#123; std::ios::sync_with_stdio(0), std::cin.tie(0), std::cout.tie(0); std::cin &gt;&gt; l &gt;&gt; r; if (r - l &gt;= 673) std::cout &lt;&lt; 0 &lt;&lt; std::endl; else &#123; for (int i = l; i &lt; r; ++i) &#123; for (int j = i + 1; j &lt;= r; ++j) &#123; ans = std::min(1ll * i * 1ll * j % 2019, ans); &#125; &#125; std::cout &lt;&lt; ans &lt;&lt; std::endl; &#125; return 0;&#125; D - Rain Flows into DamsAnalysis列方程$$\begin{cases} (a_1 + a_2) / 2 = A_1 &amp;(1)\\ (a_2 + a_3) / 2 = A_2 &amp;(2)\\ \cdots \\ (a_n + a_1) / 2 = A_n &amp;(n)\end{cases}$$将偶数编号方程乘上$-1$，将前$n - 1$个方程相加得到$$(a_1 - a_n) / 2 = \sum_{i = 1} ^ {n - 1}A_i$$与第$n$个方程相加得到$a_1$, 依次带入方程消元 Code1234567891011121314151617181920212223242526int n;long long a[1000010], A[1000010];int main()&#123; std::ios::sync_with_stdio(0), std::cin.tie(0), std::cout.tie(0); std::cin &gt;&gt; n; for (int i = 1; i &lt;= n; ++i) &#123; std::cin &gt;&gt; a[i]; &#125; long long s = 0; for (long long i = 1, minus = 1; i &lt; n; ++i) &#123; s += minus * a[i]; minus = -minus; &#125; A[1] = a[n] + s; for (int i = 2; i &lt;= n; ++i) &#123; A[i] = 2 * a[i - 1] - A[i - 1]; &#125; for (int i = 1; i &lt;= n; ++i) std::cout &lt;&lt; A[i] &lt;&lt; " "; return 0;&#125; E - Virus Tree 2Analysis记节点$i$放置的方案数为$\binom{c_i}{1}$我们先考虑对根节点$1$染色, 显然有$c_1 = k$接着考虑$1$的子节点. 不难发现其第一个子节点有$c= k - 1$, 其第二个子节点有$c = k - 2$, 以此类推得到$1$的所有子节点的$c$值接下来考虑$1$的子节点的子节点. 显然对于$1$的某个子节点的第一个子节点有$c = k - 2$, 第二个有$c = k - 3$. 且我们注意到$1$的任意两个子节点的任意两个子节点不会互相影响故有结论: 对于深度大于$2$的 (根节点深度为$1$) 节点, 有最左边的节点$c$值为$k - 2$, 其兄弟节点 (父节点相同) 的$c$值递减. 不为兄弟节点的深度相同的节点由于互不影响, 再从$c = k - 2$重新对新的一部分进行求值答案即为$$\prod_i \binom{c_i}{1}$$ Code123456789101112131415161718192021222324252627282930313233int n, k, u, v;int c[100010];std::vector &lt;int&gt; g[100010];void dfs(int x, int fr)&#123; int cnt = 0; for (auto i : g[x]) if (i != fr) &#123; c[i] = k - 2 - (cnt++); dfs(i, x); &#125;&#125;int main()&#123; std::ios::sync_with_stdio(0), std::cin.tie(0), std::cout.tie(0); std::cin &gt;&gt; n &gt;&gt; k; for (int i = 1; i &lt; n; ++i) std::cin &gt;&gt; u &gt;&gt; v, g[u].push_back(v), g[v].push_back(u); c[1] = k; for (int i = 0, lim = g[1].size(); i &lt; lim; ++i) c[g[1][i]] = k - (i + 1), dfs(g[1][i], 1); long long ans = 1; for (int i = 1; i &lt;= n; ++i) &#123; (ans *= 1ll * c[i]) %= 1000000007; &#125; std::cout &lt;&lt; ans &lt;&lt; std::endl; return 0;&#125; F - Colorful Tree咕咕咕, 等FFjet巨巨教窝QwQ]]></content>
@@ -8,21 +20,9 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>数学</tag>
         <tag>模拟</tag>
+        <tag>数学</tag>
         <tag>计数</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[JSOISC Day1]]></title>
-    <url>%2F2019%2F07%2F05%2FJSOISC-Day1%2F</url>
-    <content type="text"><![CDATA[T1 - lemonAnalysisMethod 1打表易发现当且仅当$n = 2 ^ k, k\in \mathbb{N}$时能成功 Method 2首先考虑$n$为非$1$奇数的情况 可以发现$(\sum_{i =1} ^ ki)\,\mathrm{mod}\,n$构成一个长度为$n$的循环节 故对于所有整数$k\in[1, n]$若$(\sum_{i =1} ^ ki)\,\mathrm{mod}\,n$重复出现则失败 由于$(\sum_{i =1} ^ ni)\,\mathrm{mod}\,n = (\sum_{i =1} ^ {n - 1}i)\,\mathrm{mod}\,n$, 除$1$以外的奇数均失败 故奇数的倍数也失败 故只有仅拥有非奇数因子的数能成功 即$$n = 2 ^ k$$ Code12345678910111213141516171819int n, cases;int main()&#123; for (read(cases); cases; --cases) &#123; int flag = 1; read(n); for (; n &gt; 1; n &gt;&gt;= 1) if (n &amp; 1) &#123; flag = 0; break; &#125; printf(flag ? "Yes\n" : "No\n"); &#125; return 0;&#125; T2 - helpersAnalysis令$p_i$表示一个人拥有$i$积分时不被淘汰的概率, $\Sigma$表示$\sum a_i$ 有$p_i = \frac{1}{2}p_{i - 1} + \frac{1}{2}p_{i + 1}$其中$p_0 = 0, p_\Sigma = 1$由于$p_i = 1 / 2 p_{i - 1} + 1 / 2 p_{i + 1}, \, p_0 = 0$, 可知$p_1 = 1 / 2p_{2}$故$p_2 = 2p_1 = 1 / 2p_{1} + 1 / 2p_{3}$故$1 / 2p_3 = 3 / 2p_1 \Rightarrow p_3 = 3p_1$我们得到$p_i = ip_1$由于$p_\Sigma = \Sigma \times p_1 = 1$, 我们有$p_1 = 1 / \Sigma$最后得到$p_i = i / \Sigma$ Code12345678910111213141516171819202122232425262728293031323334template &lt;typename T&gt;void write(T x)&#123; if (x &lt; 10) putchar(x ^ 48); else write(x / 10), putchar((x % 10) ^ 48);&#125;long long fastExp(long long base, int index = 998244351)&#123; long long res = 1; for (; index; base = base * base % 998244353, index &gt;&gt;= 1) if (index &amp; 1) res = res * base % 998244353; return res;&#125;int n;int a[10000010];long long sigma;int main()&#123; read(n); for (int i = 1; i &lt;= n; ++i) read(a[i]), sigma += a[i]; long long inv = fastExp(sigma); for (int i = 1; i &lt;= n; ++i) a[i] = (long long)a[i] * inv % 998244353; for (int i = 1; i &lt;= n; ++i) write(a[i]), putchar(' '); return 0;&#125; T3 - hackAnalysis考虑模拟 将当前最大权置为$0$ 按输入顺序扫每一条边 对于当前边 若属于MST, 则直接将其权赋为当前最大权 $+ 1$ 若不属于MST, 则其一定与某几条属于MST的边构成环 将其权赋为当前最大权 $+$ 所在环内没有被赋值过的边的个数 $+ 1$, 并且对环内未被赋值的边按输入顺序从当前最大权 (不算刚刚赋值的非MST边) 开始赋值 由于遍历到环中某个点就会遍历环中所有点, 对于遍历过的环进行缩点即可 Code施工中]]></content>
-      <categories>
-        <category>OI</category>
-      </categories>
-      <tags>
-        <tag>数学</tag>
-        <tag>模拟</tag>
       </tags>
   </entry>
   <entry>
@@ -101,8 +101,8 @@
         <category>OI</category>
       </categories>
       <tags>
-        <tag>概率</tag>
         <tag>并查集</tag>
+        <tag>概率</tag>
       </tags>
   </entry>
   <entry>
@@ -126,8 +126,8 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>数论</tag>
         <tag>二分</tag>
+        <tag>数论</tag>
         <tag>不等式</tag>
       </tags>
   </entry>
@@ -378,14 +378,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[树状数组修改与查询]]></title>
-    <url>%2F2018%2F09%2F23%2F%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84%E4%BF%AE%E6%94%B9%E4%B8%8E%E6%9F%A5%E8%AF%A2%2F</url>
+    <title><![CDATA[BIT修改与查询]]></title>
+    <url>%2F2018%2F09%2F23%2FBIT%E4%BF%AE%E6%94%B9%E4%B8%8E%E6%9F%A5%E8%AF%A2%2F</url>
     <content type="text"><![CDATA[我们将修改与查询问题归为四大类 单点修改，单点查询这就不用做了，无脑开数组或map 单点修改，区间查询这里的树状数组用法较基础，模板题目：洛谷 3374 Code1234567891011121314151617181920212223242526272829303132#include &lt;iostream&gt;using namespace std;int n, q, t, x, y;long long s[1000010];inline void update(int pos, int add)&#123; while (pos &lt;= n) s[pos] += add, pos += pos &amp; -pos;&#125;inline long long query(int pos)&#123; long long sum = 0; while (pos) sum += s[pos], pos -= pos &amp; -pos; return sum;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin &gt;&gt; n &gt;&gt; q; for (int i = 1; i &lt;= n; i++) cin &gt;&gt; t , update(i, t); while (q--) &#123; cin &gt;&gt; t &gt;&gt; x &gt;&gt; y; if (t == 1) update(x, y); else cout &lt;&lt; query(y) - query(x - 1) &lt;&lt; endl; &#125; return 0;&#125; 区间修改，单点查询我们学习一个叫做差分的神奇东西简单来说，对于原数组$a,a_0=0$，定义差分数组$d$，其构造法则为：$$d_i=a_i-a_{i-1}$$可以发现：$$a_i=\sum_{j=1}^id_j$$假设我们给区间$[l,r]$加上$k$，那么我们会发现$d_l$变大了$k$，$d_{r+1}$变小了$k$，其余的不变因此我们只需维护$d$数组的前缀和即可，树状数组可以很方便的维护依然送上模板题目：洛谷 3368 Code实现时要注意我们维护的是差分数组，因此在对树状数组的初始化时要注意update的元素1234567891011121314151617181920212223242526272829303132#include &lt;iostream&gt;using namespace std;int n, q, t, l, r, x, lst;long long s[1000010];void update(int pos, int add)&#123; while (pos &lt;= n) s[pos] += add, pos += pos &amp; -pos;&#125;long long query(int pos)&#123; long long sum = 0; while (pos) sum += s[pos], pos -= pos &amp; -pos; return sum;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin &gt;&gt; n &gt;&gt; q; for (int i = 1; i &lt;= n; i++) cin &gt;&gt; t, update(i, t - lst), lst = t; while (q--) &#123; cin &gt;&gt; t; if (t == 1) cin &gt;&gt; l &gt;&gt; r &gt;&gt; x, update(l, x), update(r + 1, -x); else cin &gt;&gt; x, cout &lt;&lt; query(x) &lt;&lt; endl; &#125; return 0;&#125; 区间修改，区间查询我们依然要用到差分，定义与上面的相同当我们查询区间$[l,r]$时，前缀和思想是非常清晰的：$$\sum_{i=l}^ra_i=\sum_{i=1}^ra_i-\sum_{i=1}^{l-1}a_i$$对于一个单独的$\sum_{i=1}^xa_i$，我们有：$$\sum_{i=1}^xa_i=\sum_{i=1}^x\sum_{j=1}^id_j=\sum_{i=1}^x(x-i+1)d_i$$再将其进行一个神奇的转换：$$\sum_{i=1}^x(x-i+1)d_i=\sum_{i=1}^x(x+1)d_i-\sum_{i=1}^xid_i=(x+1)\sum_{i=1}^xd_i-\sum_{i=1}^xid_i$$所以我们可以维护两个树状数组，分别维护$d_i$和$id_i$即可每个询问区间的答案即是：$$\sum_{i=1}^ra_i-\sum_{i=1}^{l-1}a_i=(r+1)\sum_{i=1}^rd_i-\sum_{i=1}^rid_i-l\sum_{i=1}^{l-1}d_i+\sum_{i=1}^{l-1}id_i$$ Code维护时注意，第二个树状数组维护的是$id_i$，这意味着第一个树状数组update操作变化的值是$k$，那么第二个树状数组update操作变化的值是$ki$模板：POJ 3468千万注意数据规模可能超int，因此我选择整数运算和long long无异但范围比long long大的long double（其实没必要） 123456789101112131415161718192021222324252627282930313233343536#include &lt;iostream&gt;using namespace std;#pragma warning(disable:4996)int n, q, t, a, b, c, lst;char ch;long double s1[100010];long double s2[100010];void update(int pos, long long add)&#123; int tpos = pos; while (pos &lt;= n) s1[pos] += add, s2[pos] += tpos * add, pos += pos &amp; -pos;&#125;long long query(int pos)&#123; long long sum = 0, tpos = pos; while (pos) sum += (tpos + 1)*s1[pos] - s2[pos], pos -= pos &amp; -pos; return sum;&#125;int main(int argc, char ** argv)&#123; ios::sync_with_stdio(false); cin &gt;&gt; n &gt;&gt; q; for (int i = 1; i &lt;= n; i++) cin &gt;&gt; t, update(i, t - lst), lst = t; for (int i = 1; i &lt;= q; i++) &#123; cin &gt;&gt; ch; if (ch == 'C') cin &gt;&gt; a &gt;&gt; b &gt;&gt; c, update(a, c), update(b + 1, -c); else cin &gt;&gt; a &gt;&gt; b, cout &lt;&lt; query(b) - query(a - 1) &lt;&lt; endl; &#125; return 0;&#125;]]></content>
       <categories>
         <category>OI</category>
       </categories>
       <tags>
-        <tag>树状数组</tag>
+        <tag>BIT</tag>
       </tags>
   </entry>
   <entry>
@@ -405,9 +405,9 @@
     <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
-    <title><![CDATA[About]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[The Cruel World High School Grade 1 永远感谢Yirannn 我们所可以自慰的，想来想去，也还是所谓对于将来的希望。 希望是附丽于存在的，有存在，便有希望，有希望，便是光明。 所以我时常害怕，愿中国青年都摆脱冷气，只是向上走，不必听自暴自弃者流的话。能做事的做事，能发声的发声。有一分热，发一分光，就令萤火一般，也可以在黑暗里发一点光，不必等候炬火。]]></content>
+    <title><![CDATA[Tags]]></title>
+    <url>%2Ftags%2Findex.html</url>
+    <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
     <title><![CDATA[Friends]]></title>
@@ -415,8 +415,8 @@
     <content type="text"><![CDATA[按照字典序排序 Name M_sea Chhokmah FFjet FlyInTheSky LJC00118 Logey memset0 redbag SiriusRen Studying Father Yirannn]]></content>
   </entry>
   <entry>
-    <title><![CDATA[Tags]]></title>
-    <url>%2Ftags%2Findex.html</url>
-    <content type="text"><![CDATA[]]></content>
+    <title><![CDATA[About]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"><![CDATA[The Cruel World TOUHOU、Arknights、Portal玩家 High School Grade 1 永远感谢Yirannn 我们所可以自慰的，想来想去，也还是所谓对于将来的希望。 希望是附丽于存在的，有存在，便有希望，有希望，便是光明。 所以我时常害怕，愿中国青年都摆脱冷气，只是向上走，不必听自暴自弃者流的话。能做事的做事，能发声的发声。有一分热，发一分光，就令萤火一般，也可以在黑暗里发一点光，不必等候炬火。]]></content>
   </entry>
 </search>
