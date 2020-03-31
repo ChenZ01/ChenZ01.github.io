@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[扑棱蛾子 CG 提取]]></title>
+    <url>%2F2020%2F03%2F31%2F%E6%89%91%E6%A3%B1%E8%9B%BE%E5%AD%90-CG-%E6%8F%90%E5%8F%96%2F</url>
+    <content type="text"><![CDATA[又开始不务正业了 Preface柚子厨一只，没了 Preparation crass expimg KrkrExtract MainStep 1把 KrkrExtract.exe 和 KrkrExtract.dll 丢到游戏根目录里面，把游戏可执行文件拖到 KrkrExtract.exe 上打开 然后点击 !!Dump!!，等待之后把目录下的 KrkrExtract_Output 文件夹拖出来 Step 2KrkrExtract_Output 里面有相当多的东西，比方说场景在 bgimage 里面等等，但是我们需要的是立绘，在 evimage 里面 里面 png 文件是萌版的， pimg 文件是立绘。把 pimg 文件弄出来之后，写个程序搜集目录下所有文件名以便批处理 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#include&lt;iostream&gt;#include&lt;cstdio&gt;#include&lt;vector&gt;#include&lt;io.h&gt;using namespace std;#define MAX_PATH 80void getFiles( string path, vector&lt;string&gt;&amp; files ) &#123; //文件句柄 long hFile = 0; //文件信息 struct _finddata_t fileinfo; string p; if((hFile = _findfirst(p.assign(path).append("\\*").c_str(),&amp;fileinfo)) != -1) &#123; do &#123; //如果是目录,迭代之 //如果不是,加入列表 if((fileinfo.attrib &amp; _A_SUBDIR)) &#123; if(strcmp(fileinfo.name,".") != 0 &amp;&amp; strcmp(fileinfo.name,"..") != 0) getFiles( p.assign(path).append("\\").append(fileinfo.name), files ); &#125; else &#123; files.push_back(p.assign(path).append("\\").append(fileinfo.name) ); &#125; &#125;while(_findnext(hFile, &amp;fileinfo) == 0); _findclose(hFile); &#125; &#125;int main()&#123; freopen("filenames_pimg.txt", "w", stdout); vector&lt;string&gt; files; char * filePath = "U:\\pimg"; ////获取该路径下的所有文件 getFiles(filePath, files); char str[30]; int size = files.size(); for (int i = 0;i &lt; size;i++) &#123; cout&lt;&lt;files[i].c_str()&lt;&lt;endl; &#125; return 0;&#125; 其中 char * filePath = 后面是存放 pimg 文件的目录，注意斜杠要双的 这个程序写的相当丑（网上复制的），而且似乎会把子文件夹和父文件夹以及自身给读取了，所以 filenames_pimg.txt 需要人工处理一下 Step 3其实 2 3 两步可以合起来，不过网上抄的就懒得改了 修改 filenames_pimg.txt 做成批处理 12345678910111213141516#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;cstdio&gt;#include &lt;string&gt;int main()&#123; freopen("filenames_pimg.txt", "r", stdin); freopen("commands.bat", "w", stdout); std::string s = ""; for (; std::cin &gt;&gt; s; ) &#123; std::cout &lt;&lt; "D:\\tools\\expimg\\expimg.exe" &lt;&lt; " " &lt;&lt; s &lt;&lt; std::endl; &#125; return 0;&#125; 这才是我的码风，比上面的不知道高到哪里去了 std::cout 后面是 expimg.exe 工具所在的位置，依然是双斜杠 处理完之后运行批处理，然后进入 expimg 工具所在目录，把解包出来的 tlg 文件全部弄出来 Step 4接下来就是用 crass 解 tlg 了 神奇的是不知道为什么，控制台用 crage.exe 一直有问题，因此选择 GUI 版的 Step 53500+文件，里面有一大半都是表情图层，可以自行合并也可以全删了 留下来 469 张就是 CG 了 Postscript一开始试图用 xp3tools 解包，但似乎 16 进制文件头被改了，于是作罢。这种套路之前见过，当时放弃了，现在发现也不是没有解决的方法 柚子社 CG 确实耐看。柚子社天下第一！ SM.MS 不让上传 5M 以上的图，用 waifu2x 1.0x 转成 png 竟然就成了 2.8M 的……顺便吐槽一下 SM.MS 变得慢的要命]]></content>
+      <categories>
+        <category>Games</category>
+      </categories>
+      <tags>
+        <tag>Gal</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Cassini's Identity]]></title>
+    <url>%2F2020%2F01%2F29%2FCassini-s-Identity%2F</url>
+    <content type="text"><![CDATA[令 ${F_i}$ 为 Fibonacci 数列$$F_0 = F_1 = 1, F_{n + 1} = F_n + F_{n - 1}$$那么对于 $n\ge 1$，有$$F_{n + 1}F_{n - 1} - F_n^2 = (-1)^{n + 1}$$ Proof 1使用归纳法 首先对于 $n = 1$ 成立：$2\times 1 - 1^2 = 1 = 1^{1 + 1}$ 假设对于 $n = k$ 成立，即 $F_{k + 1}F_{k - 1} - F_k^2 = (-1)^{k + 1}$，我们需要证明 $F_{k + 2}F_k - F_{k + 1}^2 = (-1)^{k + 2}$。为此我们要证明$$F_{k + 2}F_k - F_{k + 1}^2 = F_k^2 - F_{k + 1}F_{k - 1}$$直接化式子$$\begin{aligned}F_{k}^{2} - F_{k+1}F_{k-1} &amp;= F_{k}^{2} + F_{k}F_{k-1}- F_{k}F_{k-1} - F_{k+1}F_{k-1}\\&amp;= F_{k+1}F_{k} - F_{k}F_{k-1} - F_{k+1}F_{k-1}\\&amp;= F_{k+1}F_{k} - 2F_{k}F_{k-1} - F_{k-1}^{2}\\&amp;= (F_{k+1} + F_{k})F_{k} - (F_{k}+F_{k-1})^2\\&amp;= F_{k+2}F_{k}-F_{k+1}^{2}\end{aligned}$$ Proof 1’仍使用归纳法，归纳假设同上 将 $F_{n - 1} = F_{n + 1} - F_n$ 代入，即$$F_{k + 1}^2 - F_{k + 1}F_k - F_k^2 = (-1)^{k + 1}$$这与下式相同$$F_{k + 1}^2 - F_k(F_{k + 1} + F_k) = (-1)^{k + 1}$$进一步$$F_{k + 1}^2 - F_kF_{k + 2} = (-1)^{k + 1}$$这正是 $n = k + 1$ 的情况，故证毕 Proof 2根据 Fibonacci 数列通项公式$$F_n = \dfrac{1}{\sqrt{5}}(\phi^n - \tau^n)$$其中 $\phi = \dfrac{1 + \sqrt{5}}{2}, \tau = \dfrac{1 - \sqrt{5}}{2}$故有$$\begin{aligned}F_{n+1}F_{n-1}-F_{n}^{2} &amp;= \frac{1}{5}[(\phi^{n+1} - \tau^{n+1})(\phi^{n-1} - \tau^{n-1}) - (\phi^{n} - \tau^{n})^2]\\&amp;= \frac{1}{5}[\phi^{n+1}\tau^{n-1}-\phi^{n-1}\tau^{n+1}+2\phi^{n}\tau^{n}]\\&amp;= \frac{1}{5}(\phi\tau)^{n-1}(\phi^{2} - 2\phi\tau +\tau^{2})\\&amp;= \frac{1}{5}(-1)^{n-1}(\phi-\tau)^{2}\\&amp;= (-1)^{n+1}\end{aligned}$$ Proof 3有过 OI 基础的应该知道递推 Fibonacci 的矩阵是$$A =\begin{bmatrix} 0 &amp; 1\\ 1 &amp; 1\end{bmatrix}$$ 有$$A^{n + 1} =\begin{bmatrix} F_{n - 1} &amp; F_n\\ F_n &amp; F_{n + 1}\end{bmatrix}$$故 $\det A^{n + 1} = F_{n - 1}F_{n + 1} - F_n^2$由方阵的性质 $\det AB = \det A\det B$ 有$$\det A^{n + 1} = (\det A)^{n + 1} = (-1)^{n + 1}$$证毕]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[解析入门 笔记]]></title>
+    <url>%2F2019%2F12%2F16%2F%E8%A7%A3%E6%9E%90%E5%85%A5%E9%97%A8-%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[又译《微积分入门》 实数序在直线 $l$ 上取二不同点 $O, E$，则对 $l$ 上任意一点 $A$，可以用 $OA$ 表示以 $OE$ 长度为单位长度测量的 $A$ 与 $O$ 的距离 给直线 $l$ 上每个点 $A$ 分别对应一个实数 $\alpha$，则称 $l$ 为 数轴，$O$ 为原点，$E$ 为单位点. 与 $A$ 对应的实数 $\alpha$ 称为 $A$ 的 坐标 当 $A$ 的坐标为 $\alpha$ 时，记作 $A(\alpha)$，并把点 $A$ 记作点 $\alpha$，或简记为 $\alpha$. 即实数与数轴各点视为等同 有理数的集合在数轴上处处稠密 不是有理数的实数称为 无理数，简单作和可得： 无理数的集合在数轴上处处稠密 从某一位开始，相同的几位数字无限循环排列的数叫作 循环小数. 例如 $$\begin{aligned} 1.121\,621\,621\,6\cdots &amp;= 1.1 + 0.0216 + 0.000\,0216\cdots\\ &amp;= 1.1 + 0.0216\times \left( 1 + \dfrac{1}{10 ^ 3} + \dfrac{1}{10 ^ 6} + \dfrac{1}{10 ^ 9} + \cdots\right)\end{aligned}$$ 除去 $1.1$，剩下部分是以 $0.0216$ 为首项、以 $\dfrac{1}{10 ^ 3}$ 为公比的无穷等比级数. 故 $$\begin{aligned} 1.121\,621\,621\,6\cdots &amp;= 1.1 + \dfrac{0.0216}{1 - \dfrac{1}{10 ^ 3}}\\ &amp;= 1.1 + \dfrac{21.6}{10 ^ 3 - 1}\\ &amp;= \dfrac{11}{10} + \dfrac{216}{9990}\\ &amp;= \dfrac{11\,205}{9990} = \dfrac{83}{74}\end{aligned}$$ 一般地，从某位开始的 $n$ 个数字组成相同排列的无限循环小数，是由有限小数和以有限小数作为首项并以 $1 / 10 ^ n$ 作为公比的无穷等比级数的和组成的，因此 循环小数都是有理数. 反之，既不是整数也不是有限小数的有理数必能用循环小数表示 实数全体有理数集合用 $\mathbb Q$ 来表示. $\mathbb Q$ 关于加减乘除的运算构成域，所以又把 $\mathbb Q$ 叫作 有理数域]]></content>
+      <categories>
+        <category>Mathematics</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[「BZOJ 1455」 罗马游戏]]></title>
+    <url>%2F2019%2F12%2F08%2FBZOJ-1455-%E7%BD%97%E9%A9%AC%E6%B8%B8%E6%88%8F%2F</url>
+    <content type="text"><![CDATA[左偏树裸题 Solution考虑使用并查集维护堆顶kill 一个人之后其本人的祖先也需要修改 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125#include &lt;iostream&gt;#include &lt;cstdio&gt;using std::cin;using std::cout;using std::endl;template &lt;typename T&gt;void read(T&amp; x)&#123; x = 0; char c = getchar(); for (; !isdigit(c); c = getchar()); for (; isdigit(c); x = x * 10 + (c ^ 48), c = getchar());&#125;struct Node&#123; int val, d, fa; int ch[2]; Node(int v = 0, int f = 0) &#123; val = v; fa = f; ch[0] = ch[1] = d = 0; &#125;&#125;;class LeftistTree&#123;private: int&amp; rS(int x) &#123; return tr[x].ch[tr[tr[x].ch[1]].d &lt; tr[tr[x].ch[0]].d]; &#125;public: Node tr[1000010]; void pushUp(int x) &#123; if (!x) return; if (tr[x].d != tr[rS(x)].d + 1) &#123; tr[x].d = tr[rS(x)].d + 1; pushUp(tr[x].fa); &#125; &#125; int merge(int x, int y) &#123; if (!x || !y) return x | y; if (tr[x].val &gt; tr[y].val) std::swap(x, y); tr[rS(x) = merge(rS(x), y)].fa = x; pushUp(x); return x; &#125;&#125;;class DisjointSet&#123;public: int f[1000010]; void init(int n) &#123; for (int i = 1; i &lt;= n; ++i) f[i] = i; &#125; int getF(int x) &#123; return x == f[x] ? x : f[x] = getF(f[x]); &#125;&#125;;int n, m;int killed[1000010];LeftistTree t;DisjointSet s;int main()&#123; read(n); s.init(n); for (int i = 1; i &lt;= n; ++i) &#123; int x = 0; read(x); t.tr[i] = Node(x, i); &#125; for (read(m); m; --m) &#123; char c = ' '; cin &gt;&gt; c; if (c == 'M') // Merge &#123; int x = 0, y = 0; read(x); read(y); int fX = s.getF(x), fY = s.getF(y); if (fX == fY || killed[x] || killed[y]) continue; s.f[fX] = s.f[fY] = t.merge(fX, fY); &#125; else // Kill &#123; int x = 0; read(x); if (killed[x]) &#123; printf("0\n"); continue; &#125; int f = s.getF(x); s.f[f] = s.f[t.tr[f].ch[0]] = s.f[t.tr[f].ch[1]] = t.merge(t.tr[f].ch[0], t.tr[f].ch[1]); killed[f] = 1; printf("%d\n", t.tr[f].val); &#125; &#125; return 0;&#125;]]></content>
+      <categories>
+        <category>OI</category>
+      </categories>
+      <tags>
+        <tag>Leftist Tree</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Windows WSL 折腾记]]></title>
+    <url>%2F2019%2F08%2F11%2FWindows-WSL-%E6%8A%98%E8%85%BE%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[安装Win + X，管理员模式进入Powershell后1Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux 输入用户名时，注意首字母小写等，否则会有如下错误信息123adduser: Please enter a username matching the regular expression configuredvia the NAME_REGEX[_SYSTEM] configuration variable. Use the `--force-badname&apos;option to relax this check or reconfigure NAME_REGEX. 乱搞获取root权限进入系统后，如果直接1$ su 会出现1su: Authentication failure 别问我为啥，更新一遍密码就行（可以相同）12$ sudo passwd root$ su 这样就有root权限了（过于鬼畜 切换软件源先做个备份1234# cd ..# cd ..# cd etc/apt# vim sources.list Vim添加如下内容至sources.list12345678deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiversedeb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiversedeb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiversedeb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse# deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse 之后保存退出12# apt-get update# apt-get upgrade 重启Win + R，services.msc进入服务后找到LxssManager项重启 重装在Powershell里输入1wslconfig /unregister Ubuntu 即可]]></content>
+      <categories>
+        <category>Technology</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[「ZJOI2013」 K大数查询]]></title>
     <url>%2F2019%2F08%2F02%2FZJOI2013-K%E5%A4%A7%E6%95%B0%E6%9F%A5%E8%AF%A2%2F</url>
     <content type="text"><![CDATA[整体二分裸题 Solution所谓整体二分，需要数据结构题满足一下性质 询问的答案具有可二分性 修改对判定答案的贡献互相独立，修改之间互不影响效果 修改如果对判定答案有贡献，则贡献为一确定的与判定标准无关的值 贡献满足交换律、结合律，具有可加性 题目允许离线算法 论文中还提到我们在处理的过程中，复杂度绝对不能和序列总长$n$线性相关，只能和当前处理序列区间的长度相关一个显然的推论就是我们清空辅助的数据结构 (如BIT等) 不能直接清空而要逆向地加 / 减回去 Code123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114#include &lt;algorithm&gt;#include &lt;iostream&gt;#include &lt;cstring&gt;#include &lt;cstdio&gt;#include &lt;vector&gt;template &lt;typename T&gt;void read(T&amp; x)&#123; char c = getchar(); int minus = 0; for (x = 0; !isdigit(c); minus |= (c == '-'), c = getchar()); for (; isdigit(c); x = x * 10 + (c ^ 48), c = getchar()); if (minus) x = -x;&#125; // void read()template &lt;typename Cur, typename ...List&gt;void read(Cur&amp; x, List&amp; ...y)&#123; read(x), read(y...);&#125; // void read()struct Operation&#123; long long op, l, r, x, id; Operation(long long op = 0, long long l = 0, long long r = 0, long long x = 0, int id = 0) : op(op), l(l), r(r), x(x), id(id) &#123;&#125;&#125;; // struct Operationint n, m, queryNum;long long ans[50010], cur[50010];class BIT&#123;private: long long b1[50010], b2[50010];public: void update(long long pos, long long val) &#123; for (int i = pos; i &lt;= n; i += i &amp; -i) b1[i] += val, b2[i] += val * pos; &#125; long long query(long long pos) &#123; long long res = 0; for (int i = pos; i; i -= i &amp; -i) res += (pos + 1) * b1[i] - b2[i]; return res; &#125;&#125;; // class BIT::BIT bit;::Operation o[50010], o1[50010], o2[50010];void solve(long long rL, long long rR, int qL, int qR)&#123; if (rL &gt; rR || qL &gt; qR) return; if (rL == rR) &#123; for (int i = qL; i &lt;= qR; ++i) ans[o[i].id] = rL; return; &#125; long long mid = rL + rR &gt;&gt; 1; for (int i = qL; i &lt;= qR; ++i) if (o[i].op == 1 &amp;&amp; o[i].x &gt; mid) bit.update(o[i].l, 1), bit.update(o[i].r + 1, -1); else if (o[i].op == 2) cur[i] = bit.query(o[i].r) - bit.query(o[i].l - 1); for (int i = qL; i &lt;= qR; ++i) if (o[i].op == 1 &amp;&amp; o[i].x &gt; mid) bit.update(o[i].l, -1), bit.update(o[i].r + 1, 1); int t1 = 0, t2 = 0; for (int i = qL; i &lt;= qR; ++i) if (o[i].op == 2) &#123; if (cur[i] &gt;= o[i].x) o2[++t2] = o[i]; else o[i].x -= cur[i], o1[++t1] = o[i]; &#125; else &#123; if (o[i].x &lt;= mid) o1[++t1] = o[i]; else o2[++t2] = o[i]; &#125; for (int i = 1; i &lt;= t1; ++i) o[qL + i - 1] = o1[i]; for (int i = 1; i &lt;= t2; ++i) o[qL + t1 + i - 1] = o2[i]; solve(rL, mid, qL, qL + t1 - 1); solve(mid + 1, rR, qL + t1, qR);&#125; // void solve()int main()&#123; std::ios::sync_with_stdio(0); std::cout.tie(0); read(n, m); for (int i = 1; i &lt;= m; ++i) &#123; int op = 0, a = 0, b = 0, c = 0; read(op, a, b, c); o[i] = Operation(op, a, b, c, op == 2 ? ++queryNum : 0); &#125; solve(-n, n, 1, m); for (int i = 1; i &lt;= queryNum; ++i) std::cout &lt;&lt; ans[i] &lt;&lt; std::endl; return 0;&#125; Reference 2013年信息学奥林匹克中国国家队候选队员论文《浅谈数据结构题的几个非经典解法》，许昊然，南京外国语学校]]></content>
@@ -126,8 +178,8 @@
       </categories>
       <tags>
         <tag>贪心</tag>
-        <tag>二分</tag>
         <tag>数论</tag>
+        <tag>二分</tag>
         <tag>不等式</tag>
       </tags>
   </entry>
@@ -325,7 +377,7 @@
   <entry>
     <title><![CDATA[「TJOI2009」 猜数字]]></title>
     <url>%2F2018%2F11%2F16%2FTJOI2009-%E7%8C%9C%E6%95%B0%E5%AD%97%2F</url>
-    <content type="text"><![CDATA[Link洛谷 3868 Solution经典的Chinese Remainder Theorem例题然而我并不是被CRT卡的，细节较多考虑将方程组变形\begin{cases}x\equiv a_1(\mathrm{mod}\,b_1)\\x\equiv a_2(\mathrm{mod}\,b_2)\\\dots\\x\equiv a_k(\mathrm{mod}\,b_k)\end{cases}直接用CRT实现即可 Detail 1乘法会爆long long，须用快速龟速乘 Detail 2快读注意判负数 Detail 3$a_i$可能为负，为了方便实现，在使用时转为模$b_i$等价类的最小正元素 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include &lt;iostream&gt;#include &lt;cstdio&gt;using namespace std;inline void Read(long long &amp;x)&#123; x = 0; register char ch = getchar(); register int flag = 0; while (!isdigit(ch)) flag = (ch == '-'), ch = getchar(); while (isdigit(ch)) x = x * 10 + (ch ^ 48), ch = getchar(); if (flag) x = -x;&#125;long long mul(long long a, long long b, long long MOD)&#123; long long ret = 0; while (a) &#123; if (a &amp; 1) (ret += b) %= MOD; (b += b) %= MOD; a &gt;&gt;= 1; &#125; return ret;&#125;long long k, s = 1, n;long long a[110], b[110];void exgcd(long long a, long long b, long long &amp;x, long long &amp;y)&#123; if (!b) x = 1, y = 0; else exgcd(b, a % b, y, x), y -= a / b * x;&#125;int main()&#123; Read(k); for (int i = 1; i &lt;= k; ++i) Read(a[i]); for (int i = 1; i &lt;= k; ++i) Read(b[i]), s *= b[i]; for (int i = 1; i &lt;= k; ++i) &#123; register long long m = s / b[i], x, y; exgcd(m, b[i], x, y); (n += mul(mul((a[i] % b[i] + b[i]) % b[i], m, s), x, s)) %= s; &#125; cout &lt;&lt; (n + s) % s &lt;&lt; endl; return 0;&#125;]]></content>
+    <content type="text"><![CDATA[Solution经典的Chinese Remainder Theorem例题然而我并不是被CRT卡的，细节较多考虑将方程组变形\begin{cases}x\equiv a_1(\mathrm{mod}\,b_1)\\x\equiv a_2(\mathrm{mod}\,b_2)\\\dots\\x\equiv a_k(\mathrm{mod}\,b_k)\end{cases}直接用CRT实现即可 Detail 1乘法会爆long long，须用快速龟速乘 Detail 2快读注意判负数 Detail 3$a_i$可能为负，为了方便实现，在使用时转为模$b_i$等价类的最小正元素 Code1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859#include &lt;iostream&gt;#include &lt;cstdio&gt;using namespace std;inline void Read(long long &amp;x)&#123; x = 0; register char ch = getchar(); register int flag = 0; while (!isdigit(ch)) flag = (ch == '-'), ch = getchar(); while (isdigit(ch)) x = x * 10 + (ch ^ 48), ch = getchar(); if (flag) x = -x;&#125;long long mul(long long a, long long b, long long MOD)&#123; long long ret = 0; while (a) &#123; if (a &amp; 1) (ret += b) %= MOD; (b += b) %= MOD; a &gt;&gt;= 1; &#125; return ret;&#125;long long k, s = 1, n;long long a[110], b[110];void exgcd(long long a, long long b, long long &amp;x, long long &amp;y)&#123; if (!b) x = 1, y = 0; else exgcd(b, a % b, y, x), y -= a / b * x;&#125;int main()&#123; Read(k); for (int i = 1; i &lt;= k; ++i) Read(a[i]); for (int i = 1; i &lt;= k; ++i) Read(b[i]), s *= b[i]; for (int i = 1; i &lt;= k; ++i) &#123; register long long m = s / b[i], x, y; exgcd(m, b[i], x, y); (n += mul(mul((a[i] % b[i] + b[i]) % b[i], m, s), x, s)) %= s; &#125; cout &lt;&lt; (n + s) % s &lt;&lt; endl; return 0;&#125;]]></content>
       <categories>
         <category>OI</category>
       </categories>
@@ -400,23 +452,23 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[About]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"><![CDATA[世界、俯いちゃう前にキュッとしちゃった心の音をどうぞ。まだまだ忘れないわ。 The Cruel World TOUHOU、Arknights、Portal玩家 High School Grade 1 永远感谢Yirannn 我们所可以自慰的，想来想去，也还是所谓对于将来的希望。希望是附丽于存在的，有存在，便有希望，有希望，便是光明。 所以我时常害怕，愿中国青年都摆脱冷气，只是向上走，不必听自暴自弃者流的话。能做事的做事，能发声的发声。有一分热，发一分光，就令萤火一般，也可以在黑暗里发一点光，不必等候炬火。]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Categories]]></title>
     <url>%2Fcategories%2Findex.html</url>
     <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
+    <title><![CDATA[Friends]]></title>
+    <url>%2Ffriends%2Findex.html</url>
+    <content type="text"><![CDATA[按照字典序排序 Name Chhokmah FFjet FlyInTheSky LJC00118 Logey M_sea memset0 redbag SiriusRen Studying Father Yirannn]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Tags]]></title>
     <url>%2Ftags%2Findex.html</url>
     <content type="text"><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[Friends]]></title>
-    <url>%2Ffriends%2Findex.html</url>
-    <content type="text"><![CDATA[按照字典序排序 Name M_sea Chhokmah FFjet FlyInTheSky LJC00118 Logey memset0 redbag SiriusRen Studying Father Yirannn]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[About]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[The Cruel World TOUHOU、Arknights、Portal玩家 High School Grade 1 永远感谢Yirannn 我们所可以自慰的，想来想去，也还是所谓对于将来的希望。 希望是附丽于存在的，有存在，便有希望，有希望，便是光明。 所以我时常害怕，愿中国青年都摆脱冷气，只是向上走，不必听自暴自弃者流的话。能做事的做事，能发声的发声。有一分热，发一分光，就令萤火一般，也可以在黑暗里发一点光，不必等候炬火。]]></content>
   </entry>
 </search>
