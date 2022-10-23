@@ -4,6 +4,43 @@
   
   
   <entry>
+    <title>Codeforces Global Round 23</title>
+    <link href="/2022/10/22/Codeforces-Global-Round-23/"/>
+    <url>/2022/10/22/Codeforces-Global-Round-23/</url>
+    
+    <content type="html"><![CDATA[<p>Codeforces 下分计划 绝赞进行中</p><span id="more"></span><h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a href="https://codeforces.com/contest/1746">Codeforces Global Round 23</a></p><h1 id="A-Maxmina"><a href="#A-Maxmina" class="headerlink" title="A - Maxmina"></a>A - Maxmina</h1><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>构造</p><p>全 $0$ 则结论平凡 <del>你在哪学的这种数学教材风啊</del></p><p>若有一个 $1$，则一定可以通过不断执行操作 1，将 $n$ 个数减少到 $k$ 个。最后执行操作 2 即可</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1746/submission/176683270">1746 A</a></p><h1 id="B-Rebellion"><a href="#B-Rebellion" class="headerlink" title="B - Rebellion"></a>B - Rebellion</h1><h2 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h2><p>贪心</p><p>最后一定会成为 $0..01…1$，我们只需要将最后的 $0$ 与最前的 $1$ 不断对调即可</p><h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1746/submission/176763960">1746 B</a></p><h1 id="C-Permutation-Operations"><a href="#C-Permutation-Operations" class="headerlink" title="C - Permutation Operations"></a>C - Permutation Operations</h1><h2 id="Solution-2"><a href="#Solution-2" class="headerlink" title="Solution"></a>Solution</h2><p>差分，构造</p><p>区间修改、对于单调性的判断一定要往差分上面多想想 <del>别老惦记着你那 BIT   逆序对了</del></p><p>令 $d_i &#x3D; a_{i + 1} - a_i$</p><p>改造成递增序列意味着 $d_i$ 均非负，后缀 $[i, n]$ 全部增加 $x$ 意味着 $d_{i - 1}$ 加上 $x$ 且 $\lbrace d\rbrace$ 中其余元素不变</p><p>因此注意到，我们第 $i$ 次的操作就是给 $\lbrace d\rbrace$ 中 $n - 1$ 个元素中的某一个加上 $i$，由于 $\lbrace a\rbrace$ 是 $n$ 排列，最极端情况下 $\lbrace d\rbrace$ 是 $n - 1$ 排列，因此我们一定能构造出这样的一组解：</p><p>对于 $a_i$，有 $d_{i - 1} &#x3D; a_i - a_{i - 1} &gt; a_{i - 1}$，故在 $[i, n]$ 后缀加上 $a_{i - 1}$ 即可使得 $d_{i - 1} &gt; 0$</p><h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1746/submission/177013198">1746 C</a></p><h1 id="D-Paths-on-the-Tree"><a href="#D-Paths-on-the-Tree" class="headerlink" title="D - Paths on the Tree"></a>D - Paths on the Tree</h1><h2 id="Solution-3"><a href="#Solution-3" class="headerlink" title="Solution"></a>Solution</h2><p>树形 DP</p><p>由题意，一个具有 $s$ 个儿子、能够提供 $p$ 条 path 的结点，每个儿子分配到的 path 应该有 $\lfloor\dfrac{p}{s}\rfloor$ 或 $\lfloor\dfrac{p}{s}\rfloor + 1$ 条</p><p>考虑令 $f(u, p)$ 表示以 $u$ 为父结点的树、分配 $p$ 条 path 能获得的最大值，DP 即可</p><p>奇怪的是，我脑抽觉得一个 $(u, p)$ 只可能访问一次，没有返回记忆化的值。这种想当然的错误已经在 ICPC 里面犯过一次了（那次是觉得答案不可能超，没取模）</p><h2 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1746/submission/177467112">1746 D</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>ICPC</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Constructive Algorithms</tag>
+      
+      <tag>Greedy</tag>
+      
+      <tag>Two Pointers</tag>
+      
+      <tag>DP</tag>
+      
+      <tag>Tree</tag>
+      
+      <tag>Implementation</tag>
+      
+      <tag>Difference</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>GSS1</title>
     <link href="/2022/08/23/GSS1/"/>
     <url>/2022/08/23/GSS1/</url>
