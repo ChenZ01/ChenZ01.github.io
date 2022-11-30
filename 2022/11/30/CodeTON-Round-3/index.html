@@ -16,28 +16,25 @@
   <meta name="author" content="ChenZ01">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Codeforces 下分计划 绝赞进行中">
+    <meta name="description" content="最近太摆了，补题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces Global Round 23">
-<meta property="og:url" content="https://chenz01.github.io/2022/10/22/Codeforces-Global-Round-23/index.html">
+<meta property="og:title" content="CodeTON Round 3">
+<meta property="og:url" content="https://chenz01.github.io/2022/11/30/CodeTON-Round-3/index.html">
 <meta property="og:site_name" content="ChenZ01&#39;s Blog">
-<meta property="og:description" content="Codeforces 下分计划 绝赞进行中">
+<meta property="og:description" content="最近太摆了，补题">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-22T15:51:40.000Z">
-<meta property="article:modified_time" content="2022-11-05T11:46:48.402Z">
+<meta property="article:published_time" content="2022-11-30T07:38:34.000Z">
+<meta property="article:modified_time" content="2022-11-30T14:55:11.049Z">
 <meta property="article:author" content="ChenZ01">
 <meta property="article:tag" content="Constructive Algorithms">
 <meta property="article:tag" content="Greedy">
-<meta property="article:tag" content="Two Pointers">
-<meta property="article:tag" content="DP">
-<meta property="article:tag" content="Tree">
-<meta property="article:tag" content="Implementation">
-<meta property="article:tag" content="Difference">
+<meta property="article:tag" content="Number Theory">
+<meta property="article:tag" content="Combinatorics">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Codeforces Global Round 23 - ChenZ01&#39;s Blog</title>
+  <title>CodeTON Round 3 - ChenZ01&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Codeforces Global Round 23"></span>
+            <span id="subtitle" data-typed-text="CodeTON Round 3"></span>
           
         </div>
 
@@ -213,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-22 23:51" pubdate>
-          2022年10月22日 晚上
+        <time datetime="2022-11-30 15:38" pubdate>
+          2022年11月30日 下午
         </time>
       </span>
     
@@ -225,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          850 字
+          1.3k 字
         
       </span>
     
@@ -236,7 +233,7 @@
         
         
         
-          8 分钟
+          11 分钟
         
       </span>
     
@@ -274,34 +271,56 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Codeforces Global Round 23</h1>
+            <h1 style="display: none">CodeTON Round 3</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Codeforces 下分计划 绝赞进行中</p>
+                <p>最近太摆了，补题</p>
 <span id="more"></span>
 
-<h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1746">Codeforces Global Round 23</a></p>
-<h1 id="A-Maxmina"><a href="#A-Maxmina" class="headerlink" title="A - Maxmina"></a>A - Maxmina</h1><p>构造</p>
-<p>全 $0$ 则结论平凡 <del>你在哪学的这种数学教材风啊</del></p>
-<p>若有一个 $1$，则一定可以通过不断执行操作 1，将 $n$ 个数减少到 $k$ 个。最后执行操作 2 即可</p>
-<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1746/submission/176683270">1746 A</a></p>
-<h1 id="B-Rebellion"><a href="#B-Rebellion" class="headerlink" title="B - Rebellion"></a>B - Rebellion</h1><p>贪心</p>
-<p>最后一定会成为 $0..01…1$，我们只需要将最后的 $0$ 与最前的 $1$ 不断对调即可</p>
-<h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1746/submission/176763960">1746 B</a></p>
-<h1 id="C-Permutation-Operations"><a href="#C-Permutation-Operations" class="headerlink" title="C - Permutation Operations"></a>C - Permutation Operations</h1><p>差分，构造</p>
-<p>区间修改、对于单调性的判断一定要往差分上面多想想 <del>别老惦记着你那 BIT   逆序对了</del></p>
-<p>令 $d_i &#x3D; a_{i + 1} - a_i$</p>
-<p>改造成递增序列意味着 $d_i$ 均非负，后缀 $[i, n]$ 全部增加 $x$ 意味着 $d_{i - 1}$ 加上 $x$ 且 $\lbrace d\rbrace$ 中其余元素不变</p>
-<p>因此注意到，我们第 $i$ 次的操作就是给 $\lbrace d\rbrace$ 中 $n - 1$ 个元素中的某一个加上 $i$，由于 $\lbrace a\rbrace$ 是 $n$ 排列，最极端情况下 $\lbrace d\rbrace$ 是 $n - 1$ 排列，因此我们一定能构造出这样的一组解：</p>
-<p>对于 $a_i$，有 $d_{i - 1} &#x3D; a_i - a_{i - 1} &gt; a_{i - 1}$，故在 $[i, n]$ 后缀加上 $a_{i - 1}$ 即可使得 $d_{i - 1} &gt; 0$</p>
-<h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1746/submission/177013198">1746 C</a></p>
-<h1 id="D-Paths-on-the-Tree"><a href="#D-Paths-on-the-Tree" class="headerlink" title="D - Paths on the Tree"></a>D - Paths on the Tree</h1><p>树形 DP</p>
-<p>由题意，一个具有 $s$ 个儿子、能够提供 $p$ 条 path 的结点，每个儿子分配到的 path 应该有 $\lfloor\dfrac{p}{s}\rfloor$ 或 $\lfloor\dfrac{p}{s}\rfloor + 1$ 条</p>
-<p>考虑令 $f(u, p)$ 表示以 $u$ 为父结点的树、分配 $p$ 条 path 能获得的最大值，DP 即可</p>
-<p>奇怪的是，我脑抽觉得一个 $(u, p)$ 只可能访问一次，没有返回记忆化的值。这种想当然的错误已经在 ICPC 里面犯过一次了（那次是觉得答案不可能超，没取模）</p>
-<h2 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1746/submission/177467112">1746 D</a></p>
+<h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1750">CodeTON Round 3</a></p>
+<h1 id="A-Indirect-Sort"><a href="#A-Indirect-Sort" class="headerlink" title="A - Indirect Sort"></a>A - Indirect Sort</h1><p>我们发现，$a_1$ 是不会增大的。故若 $a_1$ 不是最小值，不可能将 $\lbrace a\rbrace$ 变成不降的</p>
+<p>而若 $a_1$ 是最小值，操作 2 就变成了交换 $a_j, a_k$，就是普通的 <code>swap</code> 操作，因而一定可以调整为不降的</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1750/submission/181368474">1750 A</a></p>
+<h1 id="B-Maximum-Substring"><a href="#B-Maximum-Substring" class="headerlink" title="B - Maximum Substring"></a>B - Maximum Substring</h1><p>模拟即可</p>
+<h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1750/submission/181369084">1750 B</a></p>
+<h1 id="C-Complementary-XOR"><a href="#C-Complementary-XOR" class="headerlink" title="C - Complementary XOR"></a>C - Complementary XOR</h1><p>注意到，每一次的操作会让全部的 $|a_i - b_i|$ 取反，这意味着如果初始状态 $|a_i - b_i|$ 不全都相等的话，不可能做到</p>
+<p>方便起见，如果 $|a_i - b_i| &#x3D; 1$，进行一次操作，使得 $a_i &#x3D; b_i$</p>
+<p>接下来进行 $n - 1$ 次操作让 $a_i$ 全部变得相等。此时会有四种情况：</p>
+<ul>
+<li>$a_i &#x3D; 1, b_i &#x3D; 0$</li>
+<li>$a_i &#x3D; 1, b_i &#x3D; 1$</li>
+<li>$a_i &#x3D; 0, b_i &#x3D; 0$</li>
+<li>$a_i &#x3D; 0, b_i &#x3D; 1$</li>
+</ul>
+<p>操作方法显然，讨论一下即可</p>
+<h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1750/submission/181390387">1750 C</a></p>
+<h1 id="D-Count-GCD"><a href="#D-Count-GCD" class="headerlink" title="D - Count GCD"></a>D - Count GCD</h1><p>显然 $b_1 &#x3D; a_1$</p>
+<p>令 $f(i)$ 表示 $i$ - 前缀的答案，有 $f(1) &#x3D; 1$ 及转移</p>
+<p>$$f(i) &#x3D; f(i - 1) \times g(i)\bmod p$$<br>其中 $g(i)$ 表示满足 $\gcd(x, a_{i - 1}) &#x3D; a_i$ 的 $x$ 的个数</p>
+<p>由于一定有 $a_i | a_{i - 1}$，取 $q &#x3D; a_{i - 1} &#x2F; a_i$</p>
+<ul>
+<li>若 $q &#x3D; 1$，$g(i) &#x3D; \lfloor\dfrac{m}{a_i}\rfloor$</li>
+<li>若 $q\neq 1$，则应满足 $x &#x3D; ka_i$，其中 $\gcd(k, q) &#x3D; 1, k\leq\lfloor\dfrac{m}{a_i}\rfloor$</li>
+</ul>
+<p>问题转化为求 $\left[1, \lfloor\dfrac{m}{a_i}\rfloor\right]$ 中与 $q$ 互质的数的个数</p>
+<p>考虑容斥原理。得到 $q$ 的质因数后，使用二进制来枚举因数，使用 <code>popcount()</code> 来计算系数正负。以前没用过，看到二进制枚举豁然开朗</p>
+<h2 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h2><p>WA + RE 了 8 发，写在 Warnings 里面了</p>
+<p><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1750/submission/182932701">1750 D</a></p>
+<h1 id="Warnings"><a href="#Warnings" class="headerlink" title="Warnings"></a>Warnings</h1><ul>
+<li>开 <code>long long</code></li>
+<li>注意自己在 <code>init()</code> 里到底写了啥，这次是疯狂重复 Euler 筛</li>
+<li>注意一些 Global Variable 的变化情况，这次是 <code>cntPrime</code> 疯狂变大导致 RE</li>
+<li>当发现把数组开大就能多过几个原先 RE 的点时，注意自己数组访问的问题</li>
+</ul>
+<h1 id="Postscript"><a href="#Postscript" class="headerlink" title="Postscript"></a>Postscript</h1><p>R.I.P.</p>
+<p>当我还是一名 OIer 的时候，玩的最多的就是膜蛤、续命、决赛圈的梗</p>
+<p>熬过了地图头、送走了英女王，长者终于停下了已迈入决赛圈中的脚步</p>
+<p>1926.08.17 - 2022.11.30</p>
+<p>是谁禁止了军队经商<br>是谁平治了洪水汤汤<br>是谁稳定了通货膨胀<br>是谁坚持了改革开放<br>是谁任命了铁血宰相<br>是谁摧毁了邪教道场<br>是谁收回了澳门香港<br>是谁平息了金融巨浪<br>是谁加入了世界商贸<br>是谁提出了科教兴邦</p>
+<p>苟利国家生死以，岂因祸福避趋之</p>
+<p>功名半纸，风雪千山</p>
 
                 
               </div>
@@ -339,15 +358,9 @@
       
         <a href="/tags/Greedy/">#Greedy</a>
       
-        <a href="/tags/Two-Pointers/">#Two Pointers</a>
+        <a href="/tags/Number-Theory/">#Number Theory</a>
       
-        <a href="/tags/DP/">#DP</a>
-      
-        <a href="/tags/Tree/">#Tree</a>
-      
-        <a href="/tags/Implementation/">#Implementation</a>
-      
-        <a href="/tags/Difference/">#Difference</a>
+        <a href="/tags/Combinatorics/">#Combinatorics</a>
       
     </div>
   
@@ -359,8 +372,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Codeforces Global Round 23</div>
-      <div>https://chenz01.github.io/2022/10/22/Codeforces-Global-Round-23/</div>
+      <div>CodeTON Round 3</div>
+      <div>https://chenz01.github.io/2022/11/30/CodeTON-Round-3/</div>
     </div>
     <div class="license-meta">
       
@@ -372,7 +385,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月22日</div>
+          <div>2022年11月30日</div>
         </div>
       
       
@@ -402,18 +415,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/29/Codeforces-Round-830/" title="Codeforces Round 830">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Codeforces Round 830</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/23/GSS1/" title="GSS1">
-                        <span class="hidden-mobile">GSS1</span>
+                      <a href="/2022/10/29/Codeforces-Round-830/" title="Codeforces Round 830">
+                        <span class="hidden-mobile">Codeforces Round 830</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
