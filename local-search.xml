@@ -4,11 +4,257 @@
   
   
   <entry>
+    <title>Educational Codeforces Round 147</title>
+    <link href="/2023/04/22/Educational-Codeforces-Round-147/"/>
+    <url>/2023/04/22/Educational-Codeforces-Round-147/</url>
+    
+    <content type="html"><![CDATA[<p>离校队选拔还不知道有多久，还是准备起来吧，之前太摆了</p><span id="more"></span><h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a href="https://codeforces.com/contest/1746">Codeforces Global Round 23</a></p><h1 id="A-Matching"><a href="#A-Matching" class="headerlink" title="A - Matching"></a>A - Matching</h1><p>朴实无华的组合题，但是第一发忘记删调试了，喜提 penalty</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1821/submission/202830144">1821 A</a></p><h1 id="B-Sort-the-Subarray"><a href="#B-Sort-the-Subarray" class="headerlink" title="B - Sort the Subarray"></a>B - Sort the Subarray</h1><p>我们找到第一处和最后一处 $a_i \neq a’_i$ 的位置 $l_0, r_0$，可知 $[l_0, r_0]$ 一定是符合要求的一个 subarray</p><p>接下来两边扩展即可</p><h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1821/submission/202836590">1821 B</a></p><h1 id="C-Tear-It-Apart"><a href="#C-Tear-It-Apart" class="headerlink" title="C - Tear It Apart"></a>C - Tear It Apart</h1><p>我们总能将一段长度为 $l$ 的区间每次砍掉一半的元素，因此将一个区间完全删掉所需最小次数为 $1+\log_2 l$</p><p>枚举保留哪种字母，该字母将原来的字符串分割为一些子串。保留该字母的答案即为 $1+\log_2 l_{\max}$，其中 $l_{\max}$ 为最长子串长度</p><h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1821/submission/202849484">1821 C</a></p><h1 id="D-Black-Cells"><a href="#D-Black-Cells" class="headerlink" title="D - Black Cells"></a>D - Black Cells</h1><p>注意到，只有长度为 1 的区间才可能不会被反转。区间长度大于 1 的我们一定会选择将其反转</p><p>打比赛时候的思路是先反转开头 $k$ 个，然后将已反转的长度为 1 的区间逐个取消反转，同时末端点向后拓展。但实现非常丑陋，根本不知道哪组数据出错，调到最后心态爆炸了</p><p>像 editorial 一样写成明了的数学表达式才是好文明</p><h2 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1821/submission/203062552">1821 D</a></p><h1 id="Warnings"><a href="#Warnings" class="headerlink" title="Warnings"></a>Warnings</h1><p>提交之前记得删掉调试语句！！！</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>ICPC</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Greedy</tag>
+      
+      <tag>Maths</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>AtCoder Beginner Contest 285</title>
+    <link href="/2023/01/19/AtCoder-Beginner-Contest-285/"/>
+    <url>/2023/01/19/AtCoder-Beginner-Contest-285/</url>
+    
+    <content type="html"><![CDATA[<p>ABC 一点也不娱乐</p><span id="more"></span><h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a href="https://atcoder.jp/contests/abc285">AtCoder Beginner Contest 285</a></p><h1 id="D-Change-Usernames"><a href="#D-Change-Usernames" class="headerlink" title="D - Change Usernames"></a>D - Change Usernames</h1><p>判环即可。由于本题的特殊性，可以直接用 DSU 判断。我采用 DFS 判环</p><p>由于本题图一定是由链、环、链 + 环组成的，我选择拿入度为 0 的点开始 DFS，但是在一整个环的情况下 WA 了</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://atcoder.jp/contests/abc285/submissions/38133735">ABC285 D</a></p><h1 id="E-Work-or-Rest"><a href="#E-Work-or-Rest" class="headerlink" title="E - Work or Rest"></a>E - Work or Rest</h1><p>化成多重背包问题</p><p>记 <code>0</code> 为 holiday，<code>1</code> 为 weekday。由周期性，不妨令第一天恒为 <code>0</code>。之后，我们把一串 holiday(s) + weekday 看作一个物体，填满空间为 $N$ 的背包（末尾多出来的 weekday 和第 $N + 1$ 天重合）</p><p>具体而言，我们有 $2N$ 种物体（虽然有些是不可能用上的），代表着 <code>11...110</code> 这样的一串。把这些物体合起来就成了长度为 $N + 1$ 的串 <code>01..101..101..10</code>，首尾的 <code>0</code> 为第一天和第 $N + 1$ 天</p><p>需要构造的物体形如：<code>10</code>，<code>110</code>，<code>1110</code>，<code>11110</code> 等，value 和 cost 显然</p><p>实际上我们有第 $2N + 1$ 种物体 <code>0</code>，也就是纯 holiday，因为我们要求一定要把背包塞满。而多重背包的方法做下来可能会有空余，默认空余由 holiday(s) 填充即可</p><p>注意是多重背包不是 01 背包</p><h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p><a href="https://atcoder.jp/contests/abc285/submissions/38136720">ABC285 E</a></p><h1 id="F-Substring-of-Sorted-String"><a href="#F-Substring-of-Sorted-String" class="headerlink" title="F - Substring of Sorted String"></a>F - Substring of Sorted String</h1><p>对于每个字母，建一棵线段树即可</p><h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><p><a href="https://atcoder.jp/contests/abc285/submissions/38151504">ABC285 F</a></p><h1 id="Warnings"><a href="#Warnings" class="headerlink" title="Warnings"></a>Warnings</h1><ul><li>submit 之前多试试边界情况</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>ICPC</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Codeforces Round 843</title>
+    <link href="/2023/01/14/Codeforces-Round-843/"/>
+    <url>/2023/01/14/Codeforces-Round-843/</url>
+    
+    <content type="html"><![CDATA[<p>这几天忙于通核 &amp; 宣讲事宜没能更新，明天就是 tourist 出的一场 Div. 1 + Div. 2 了，但是由于社会实践估计还是打不了</p><span id="more"></span><h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a href="https://codeforces.com/contest/1775">Codeforces Round 843</a></p><h1 id="A-Gardener-and-the-Capybaras"><a href="#A-Gardener-and-the-Capybaras" class="headerlink" title="A - Gardener and the Capybaras"></a>A - Gardener and the Capybaras</h1><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p>A1 直接暴力</p><p>A2 我的做法是大讨论，WA 了两发之后发现许多情况都能合并</p><p><a href="https://codeforces.com/contest/1775/submission/188716305">1775 A2</a></p><h1 id="B-Gardener-and-the-Array"><a href="#B-Gardener-and-the-Array" class="headerlink" title="B - Gardener and the Array"></a>B - Gardener and the Array</h1><p>「位」指二进制位</p><p>问题即寻找这样的 $c_k$：对于$c_k$ 的每一个为 1 的位，其它的数中至少有一个该位也为 1</p><p>模拟即可。我的做法是记录每个位为 1 的次数</p><h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1775/submission/188723524">1775 B</a></p><h1 id="C-Interesting-Sequence"><a href="#C-Interesting-Sequence" class="headerlink" title="C - Interesting Sequence"></a>C - Interesting Sequence</h1><p>「位」指二进制位</p><p>能对拍就对拍，中小范围数据基本上算全面了</p><p>首先，显然要有 $n \And x &#x3D; x$。再把 $n &#x3D; x, x &#x3D; 0, x &#x3D; 1$ 以及 $n, x$ 最高位不同的情况都特判了</p><p>接下来，找到首个 $n, x$ 不同的位，其实也就是首个 $n$ 为 1，$x$ 为 0 的位</p><ul><li>若其高于 $x$ 的最低的为 1 的位，则一定无解。因为该位变成 0 一定会使 $n\And (n + 1)\And\cdots\And m$ 中比其低的位全部变成 0</li><li>若更高一位上仍是 1，则一定无解。因为该位变成 0 一定会使 $n\And (n + 1)\And\cdots\And m$ 中的更高一位变成 0，而由约定，$x$ 的更高一位为 1</li><li>否则有解。将该位及更低位变成 0，更高一位变成 1 即可。实现可以用先右移后左移来完成</li></ul><h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1775/submission/188748810">1775 C</a></p><h1 id="D-Friendly-Spiders"><a href="#D-Friendly-Spiders" class="headerlink" title="D - Friendly Spiders"></a>D - Friendly Spiders</h1><p>OI 的一些做法还是得通过打比赛来回忆，本题难点在于建图。</p><p>考虑以质因子作为虚点。对于 $a_i$，建 $i\to d, \forall d$ 且边权为 0，建 $d\to i, \forall d$ 且边权为 1，其中 $d$ 为 $a_i$ 的质因子。跑 Dijkstra 即可</p><p>被连边坑惨了。先筛出 $3\times10^5$ 内的所有质数。对于 $a_i$，先用 $[2, \sqrt{a_i}]$ 的判一遍，这样可以获得 $a_i$ 大于 $\sqrt{a_i}$ 的质因子。接下来二分查找其编号即可（也可以开个 <code>map</code>）</p><p>当然，对于边权为 $0&#x2F;1$ 的图跑最短路，有一种叫做 01BFS 的东西，在此不表（STL 的堆优 Dijkstra 都能过）</p><h2 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1775/submission/189548569">1775 D</a></p><h1 id="E-The-Human-Equation"><a href="#E-The-Human-Equation" class="headerlink" title="E - The Human Equation"></a>E - The Human Equation</h1><p>又是这种奇妙的观察题</p><p>观察前缀和。每一次操作选出了 $i, j, \cdots$，相当于在 $[s_i, \cdots, s_{j - 1}], \cdots$ 上同时进行 $+1, 0, -1$ 其一的操作。由题，要么是 $+1, 0, +1, 0, \cdots$，要么是 $-1, 0, -1, 0, \cdots$，因此答案即为 $\max s_i - \min s_i$</p><h2 id="Code-4"><a href="#Code-4" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1775/submission/189552317">1775 E</a></p><h1 id="Warnings"><a href="#Warnings" class="headerlink" title="Warnings"></a>Warnings</h1><p>这场开头打的稀烂，好在情绪稳定下来了</p><ul><li>打比赛不能总是怀着「要上分」的想法，而应该专注于比赛</li><li>不放心的，可以对拍，别担心费时</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>ICPC</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Educational Codeforces Round 141</title>
+    <link href="/2023/01/10/Educational-Codeforces-Round-141/"/>
+    <url>/2023/01/10/Educational-Codeforces-Round-141/</url>
+    
+    <content type="html"><![CDATA[<p>D 设计的状态不太好，不然能 A。没想到能上这么多分，还是之前状态太差了吧</p><span id="more"></span><h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a href="https://codeforces.com/contest/1783">Educational Codeforces Round 141</a></p><h1 id="A-Make-it-Beautiful"><a href="#A-Make-it-Beautiful" class="headerlink" title="A - Make it Beautiful"></a>A - Make it Beautiful</h1><p>从大到小排序即可。排序后注意特判一下：</p><ul><li>若 $a_i &#x3D; a_n$，也就是 $a_i$ 全部相等，则不可能做到</li></ul><p>否则，把最小的 $a_n$ 拉到最前面即可</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1783/submission/188436875">1783 A</a></p><h1 id="B-Matrix-of-Differences"><a href="#B-Matrix-of-Differences" class="headerlink" title="B - Matrix of Differences"></a>B - Matrix of Differences</h1><p>我的构造纯属灵光一现<del>，懒得给证明了</del></p><p>$$<br>\begin{matrix}<br>    1 &amp; n^2-1 &amp; 4 &amp; n^2 - 5 &amp; \cdots\\<br>    n^2 &amp; 3 &amp; n^2 - 4 &amp; \cdots\\<br>    2 &amp; n^2-3 &amp; \cdots\\<br>    n^2-2&amp;\cdots\\<br>    \cdots<br>\end{matrix}<br>$$</p><p><del>交错 &amp; 斜上的蛇形有些邪魅</del></p><p>实际上，二维反而不是很好考虑。首先明确答案一定是 $n^2 - 1$。我们先考虑 $1\times n$ 的构造方式：</p><p>$$1, n^2, 2, n^2-1, 3, \cdots $$</p><ul><li>若 $n &#x3D; 2k$，则结尾是 $2k^2, 2k^2 + 1$</li><li>若 $n &#x3D; 2k + 1$，则结尾是 $2k^2 + 2k, 2k^2 + 2k + 2, 2k^2 + 2k + 1$</li></ul><p>两种情况下， $n^2-1$ 种差都有了。接下来只要把一维的蛇弯曲成二维的即可。具体做法是从左向右铺第 1 排，再从右向左铺第 2 排，如此直至结束</p><h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1783/submission/188453815">1783 B</a></p><h1 id="C-Yet-Another-Tournament"><a href="#C-Yet-Another-Tournament" class="headerlink" title="C - Yet Another Tournament"></a>C - Yet Another Tournament</h1><p>排序的想法显然</p><p>先将 $\lbrace a\rbrace$ 从小到大排序，计算出最多的获胜次数 $x$。现在能知道我们一定至少与编号为 $x$ 的人平起平坐，若我们准备了 $a_x$ 的话，则排名会高于 $x$，可能低于 $x + 1$</p><p>考虑什么情况下会与 $x + 1$ 排名相同：当且仅当我们战胜了 $x + 1$ 且获胜次数还是最多的</p><p>因此考虑调整已有的选择策略：</p><ul><li>若已经战胜了 $x + 1$，则与 $x + 1$ 排名相同，不可能再高了</li><li>若未战胜 $x + 1$，则尝试不准备 $a_x$ 时间（排序后的），转而为（原来的）第 $x + 1$ 人准备。若合法，则排名能与 $x + 1$ 相同，否则与 $x$ 相同</li></ul><p>这题也可以拿二分来做</p><h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1783/submission/188471525">1783 C</a></p><h1 id="D-Different-Arrays"><a href="#D-Different-Arrays" class="headerlink" title="D - Different Arrays"></a>D - Different Arrays</h1><p>观察数据范围，启发状态设计</p><p>令 $f(i, j)$ 表示 $2, \cdots, i - 1$ 进行操作后，$a_i &#x3D; j$ 的方案数。初始有 $f(2, a_2) &#x3D; 1$</p><p>对于负数下标，可以重载，也可以让原下标加上 $C &#x3D; 300\times300$。虽然取 $C &#x3D; \sum a_i$ 即可</p><p>最后答案即为 $\sum_{i &#x3D; -C}^{C} f(n, i)$</p><h2 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1783/submission/188563672">1783 D</a></p><h1 id="Warnings"><a href="#Warnings" class="headerlink" title="Warnings"></a>Warnings</h1><ul><li>二分是个好东西</li><li>当然能 $O(1)$ 解决的问题还是别用二分了</li><li>观察数据范围可以大致猜测 DP 的状态设计</li><li>DP 状态设计很重要。考场上 D 最终 WA on 18th case 的原因还是不太明白，部分因为状态是一拍脑袋决定的，科学性存疑</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>ICPC</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Constructive Algorithms</tag>
+      
+      <tag>Greedy</tag>
+      
+      <tag>DP</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>AtCoder Beginner Contest 284</title>
+    <link href="/2023/01/08/AtCoder-Beginner-Contest-284/"/>
+    <url>/2023/01/08/AtCoder-Beginner-Contest-284/</url>
+    
+    <content type="html"><![CDATA[<p>ABC 挺娱乐的，找找手感</p><span id="more"></span><h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a href="https://atcoder.jp/contests/abc284">AtCoder Beginner Contest 284</a></p><h1 id="D-Happy-New-Year-2023"><a href="#D-Happy-New-Year-2023" class="headerlink" title="D - Happy New Year 2023"></a>D - Happy New Year 2023</h1><p>$p, q$ 之中至少有一个小于等于 $^3\sqrt{9\times10^{18}}$，筛法即可</p><h1 id="E-Count-Simple-Paths"><a href="#E-Count-Simple-Paths" class="headerlink" title="E - Count Simple Paths"></a>E - Count Simple Paths</h1><p>直接暴力 DFS</p><h1 id="F-ABCBAC"><a href="#F-ABCBAC" class="headerlink" title="F - ABCBAC"></a>F - ABCBAC</h1><p>看到有用字符串哈希做的。这里使用 Z 算法（国内又称扩展 KMP）</p><p>对于长度为 $n$ 的串 $S[0\cdots n - 1]$，Z 函数定义为 $Z[i] :&#x3D; \text{LCP}(S[i\cdots n], S), Z[0] &#x3D; 0$</p><p>令 $S &#x3D; \rightarrow\Rightarrow$，其中 $\rightarrow, \Rightarrow$ 表示字符串。则 $T$ 应该能被表示为 $\rightarrow\Leftarrow\leftarrow\Rightarrow$</p><p>假设 $T$ 如此。令 $U &#x3D; \rightarrow\Leftarrow\Leftarrow\rightarrow, V &#x3D; \Leftarrow\rightarrow\rightarrow\Leftarrow$。只需求 $U, V$ 的 Z 函数，然后对 $[n, 2n - 1]$ 的每个位置判断一下即可</p><h1 id="Warnings"><a href="#Warnings" class="headerlink" title="Warnings"></a>Warnings</h1><ul><li>$\sqrt{9\times10^{18}}$ 取了 $2\times10^6$，无语了</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>ICPC</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Strings</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>String Algorithms</title>
+    <link href="/2023/01/08/String%20Algorithms/"/>
+    <url>/2023/01/08/String%20Algorithms/</url>
+    
+    <content type="html"><![CDATA[<p>字符串的大洞，迟早得补</p><span id="more"></span><h1 id="Notations"><a href="#Notations" class="headerlink" title="Notations"></a>Notations</h1><p>We say that patterm $P$ occurs with shift $s$ in text $T$ (or, equivalently, that pattern $P$ occurs beginning at position $s+1$ in text $T$) if $0\leq s\leq n - m$ and $T[s + 1, \cdots, s+m] &#x3D; P[1, \cdots m]$.</p><p>We demote by $\Sigma^*$ the set of all finite-length strings formed using characters from the alphabet $\Sigma$. The zero-length <strong>empty string</strong>, denoted $\epsilon$, also belongs to $\Sigma^*$. The <strong>concatenation</strong> of two strings $x$ and $y$, denoted $xy$, has length $|x| + |y|$ and consists of the characters from $x$ followed by the characters from $y$.</p><p>We say that a string $w$ is a <strong>prefix</strong> of a string $x$, denoted $w\sqsubset x$, if $x&#x3D;wy$ for some string $y\in\Sigma^*$.<br>Similarly, we say that a string $w$ is a <strong>suffix</strong> of a string $x$, denoted $w\sqsupset x$ if $x&#x3D;yw$ for som string $y\in\Sigma^*$.</p><h1 id="Finite-Automata-弃坑，等复习完-SAM-来补"><a href="#Finite-Automata-弃坑，等复习完-SAM-来补" class="headerlink" title="Finite Automata (弃坑，等复习完 SAM 来补)"></a>Finite Automata (弃坑，等复习完 SAM 来补)</h1><h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>A <strong>finite automaton</strong> $M$, is a 5-tuple $(Q, q_0, A, \Sigma, \delta)$, where</p><ul><li>$Q$ is a finite set of <strong>states</strong></li><li>$q_0\in Q$ is the <strong>start state</strong></li><li>$A\subseteq Q$ is a distinguished set of <strong>accepting states</strong></li><li>$\Sigma$ is a finite <strong>input alphabet</strong></li><li>$\delta$ is a function from $Q\times\Sigma$ into $Q$, called the <strong>transition function</strong> of $M$</li></ul><p>The finite automaton begins in state $q_0$ and reads the characters of its input string one at a time. If the automaton is in state $q$ and reads input character $a$, it moves (“makes a transition”) from state $q$ to state $\delta(q, a)$. Whenever its current state $q$ is a member of $A$, the machine $M$ has <strong>accepted</strong> the string read so far. An input that is not accepted is <strong>rejected</strong>.</p><p>A finite automaton $M$ includes a function $\phi$, called the <strong>final-state function</strong>, from $\Sigma^*$ to $Q$ such that $\phi(w)$ is the state $M$ ends up in after scanning the string $w$. We define the function $\phi$ recursively, using the transition function:</p><p>$$<br>\begin{aligned}<br>    \phi(\epsilon) &amp;&#x3D; q_0,\\<br>    \phi(wa) &amp;&#x3D; \delta(\phi(w), a)\quad\text{for}\thinspace w\in\Sigma^*, a\in\Sigma.<br>\end{aligned}<br>$$</p><h2 id="String-matching-automata"><a href="#String-matching-automata" class="headerlink" title="String-matching automata"></a>String-matching automata</h2><p>For a given oattern $P$, we construct a string-matching automaton in a preprocessing step brfore using it to search the text string.</p><p>We first define an auxiliary function $\sigma$, called the <strong>suffix function</strong> corresponding to $P$. The function $\sigma$ maps $\Sigma^*$ to $\lbrace 0, 1, \cdots, m\rbrace$ such that $\sigma(x)$ is the length of the longest prefix of $P$ that is also a suffix of $x$:</p><p>$$\sigma(x) &#x3D; \max\lbrace k:P[1..k]\sqsupset x\rbrace$$</p><h1 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h1><p><strong>Here, we assume $1$-based indexes.</strong></p><p>Given a pattern $P[1, \cdots, m]$, the <strong>prefix function</strong> for the pattern $P$ is the function $\pi:\lbrace1, 2, \cdots, m\rbrace\to\lbrace0, 1, \cdots, m - 1\rbrace$ such that</p><p>$$\pi(q) &#x3D; \max\lbrace k: k &lt; q \thinspace\text{and}\thinspace P[1\cdots k]\sqsupset P[1\cdots q]\rbrace$$</p><p>That is, $\pi(q)$ is the length of the longest prefix of $P$ that is a proper suffix of $P[1\cdots q]$.</p><p>Take <a href="https://loj.ac/p/103">LOJ 103</a> as an exmaple.</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// t = &#x27; &#x27; + t, p = &#x27; &#x27; + p</span><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">prefixFunction</span><span class="hljs-params">(std::string p)</span> <span class="hljs-comment">// match P against itself</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">memset</span>(pi, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span> pi);<br>    <span class="hljs-type">int</span> m = p.<span class="hljs-built_in">length</span>() - <span class="hljs-number">1</span>, k = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> q = <span class="hljs-number">2</span>; q &lt;= m; ++q)<br>    &#123;<br>        <span class="hljs-keyword">while</span> (k &amp;&amp; p[k + <span class="hljs-number">1</span>] != p[q])<br>            k = pi[k];<br>        <span class="hljs-keyword">if</span> (p[k + <span class="hljs-number">1</span>] == p[q])<br>            ++k;<br>        pi[q] = k;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">KMP</span><span class="hljs-params">(std::string t, std::string p)</span> <span class="hljs-comment">// match T against P</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> r = <span class="hljs-number">0</span>, n = t.<span class="hljs-built_in">length</span>() - <span class="hljs-number">1</span>, m = p.<span class="hljs-built_in">length</span>() - <span class="hljs-number">1</span>, q = <span class="hljs-number">0</span>; <span class="hljs-comment">// q: number of character matched</span><br>    <span class="hljs-built_in">prefixFunction</span>(p);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++i)<br>    &#123;<br>        <span class="hljs-keyword">while</span> (q &amp;&amp; p[q + <span class="hljs-number">1</span>] != t[i])<br>            q = pi[q]; <span class="hljs-comment">// next character does not match</span><br>        <span class="hljs-keyword">if</span> (p[q + <span class="hljs-number">1</span>] == t[i])<br>            ++q; <span class="hljs-comment">// next character matches</span><br>        <span class="hljs-keyword">if</span> (q == m) <span class="hljs-comment">// is all of P matched ?</span><br>        &#123;<br>            q = pi[q]; <span class="hljs-comment">// look for the next match</span><br>            ++r;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> r;<br>&#125;<br></code></pre></td></tr></table></figure><h1 id="Manacher"><a href="#Manacher" class="headerlink" title="Manacher"></a>Manacher</h1><p><a href="https://oi-wiki.org/string/manacher/">Manacher</a></p><h1 id="Z-algorithm"><a href="#Z-algorithm" class="headerlink" title="Z algorithm"></a>Z algorithm</h1><p><a href="https://oi-wiki.org/string/z-func/">Z algorithm</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>ICPC</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Codeforces Round 842</title>
+    <link href="/2023/01/06/Codeforces-Round-842/"/>
+    <url>/2023/01/06/Codeforces-Round-842/</url>
+    
+    <content type="html"><![CDATA[<p>C 题 FST 劲爆下分</p><span id="more"></span><h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a href="https://codeforces.com/contest/1768">Codeforces Round 838</a></p><h1 id="A-Greatest-Convex"><a href="#A-Greatest-Convex" class="headerlink" title="A - Greatest Convex"></a>A - Greatest Convex</h1><p>$x! + (x - 1)! &#x3D; (x + 1)\times(x - 1)!$</p><p>令 $x &#x3D; k - 1$ 即可，显然这也是最大的</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1768/submission/188057912">1768 A</a></p><h1 id="B-Quick-Sort"><a href="#B-Quick-Sort" class="headerlink" title="B - Quick Sort"></a>B - Quick Sort</h1><p>permutation forces</p><p>找出 $p$ 中是 $1, 2, \cdots, n$ 前缀的最长子序列。非该序列中的元素都要按照大小每 $k$ 个进行一次操作，不足 $k$ 个用已经排好的序列的后缀补上即可</p><h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1768/submission/188062426">1768 B</a></p><h1 id="C-Elemental-Decompress"><a href="#C-Elemental-Decompress" class="headerlink" title="C - Elemental Decompress"></a>C - Elemental Decompress</h1><p><del>permutation forces</del></p><p>尝试模拟</p><p>先尽量填 $p$，若 $a_i$ 已经出现过就填入 $q_i$，若已经出现过两次则显然不合法</p><p>一遍过后，$p_i, q_i$ 有且仅有一个不为 0</p><p>接下来，考场上做法是依次填上最大的没被用掉的，但是容易退化到 $O(n^2)$，最后 FST 了</p><p>考虑改进第二步填空。把 $p$ 中不在 $n$ 排列的数记录下来，同时记录 $p_i$ 为 0 时的 $q_i$。在没填的位置上，选择与 $q_i$ 相对大小一致的没填的数即可</p><p>注意每个 case 记得清空 $p, q$</p><h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1768/submission/188165145">1768 C</a></p><h1 id="D-Lucky-Permutation"><a href="#D-Lucky-Permutation" class="headerlink" title="D - Lucky Permutation"></a>D - Lucky Permutation</h1><p><del>permutation forces</del></p><p>考场上绕了半天，处理了一堆情况，总是差一点</p><p>这题想法很妙：对于排列 $p$，建边 $i\to p_i$，得到一张图</p><p>可以发现，这张图由形如 $i\to p_i\to p_{p_i}\to\cdots i$ 的环划分。将 $p$ 升序排序所需要的交换次数即为 $n - cycles$，其中 $cycles$ 表示图中环的个数</p><p>然后回到本题，易知最后要变成的排列有 $n - 1$ 种可能，其中第 $i$ 种为升序排列基础上交换 $(i, i + 1)$。讨论每种可能，找到最小的交换次数即可</p><p>设给出的 $p$ 中，$x\to i, y\to i + 1$。对于第 $i$ 种可能的排列，我们应该删去 $x\to i, y\to i + 1$，加上 $x\to i + 1, y\to i$。观察一下对 $cycles$ 的影响：</p><ul><li>若 $x, y$ 在同一个环中，这样会使该环分裂成两个，即 <code>cycles++</code></li><li>若 $x, y$ 不在同一个环中，这样会使两个环合并成一个，即 <code>cycles--</code></li></ul><p>这样，我们实际上无需真正删边，使用并查集维护即可</p><h2 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1768/submission/188171931">1768 D</a></p><h1 id="Warnings"><a href="#Warnings" class="headerlink" title="Warnings"></a>Warnings</h1><ul><li>边界情况有可能无需特判，特判前想想清楚</li><li>记得 <code>memset()</code>，能省下排查问题的时间</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>ICPC</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Greedy</tag>
+      
+      <tag>DSU</tag>
+      
+      <tag>Graphs</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Codeforces Round 838</title>
+    <link href="/2023/01/05/Codeforces-Round-838/"/>
+    <url>/2023/01/05/Codeforces-Round-838/</url>
+    
+    <content type="html"><![CDATA[<p>不！能！再！摆！了！</p><span id="more"></span><h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a href="https://codeforces.com/contest/1762">Codeforces Round 838</a></p><h1 id="A-Divide-and-Conquer"><a href="#A-Divide-and-Conquer" class="headerlink" title="A - Divide and Conquer"></a>A - Divide and Conquer</h1><p>对于每个数，计算一下如果一直对其进行右移一位的操作，奇偶性变化所需的最小次数。如果 $\sum a_i$ 为奇的话，取最小的即可</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1762/submission/188018972">1762 A</a></p><h1 id="B-Make-Array-Good"><a href="#B-Make-Array-Good" class="headerlink" title="B - Make Array Good"></a>B - Make Array Good</h1><p>审题！！！</p><p>题目中 $x\leq a_i$ 的条件暗示我们可以这样构造：每个数变为最小的不小于它的 2 的某次幂</p><h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1762/submission/188021832">1762 B</a></p><h1 id="C-Binary-Strings-are-Fun"><a href="#C-Binary-Strings-are-Fun" class="headerlink" title="C - Binary Strings are Fun"></a>C - Binary Strings are Fun</h1><p>首先观察序列中 $\mathtt{01}$ 的转折点 $s_i \neq s_{i - 1}, i&gt;1$。对于前缀 $s[1, i]$ 一定有 $\mathtt 0$ 的个数与 $\mathtt 1$ 的个数仅相差 1</p><p>这样一来，最后一个转折点之前的 extension 其实是确定的：</p><ul><li>非转折部分一定形如 $\mathtt{010101}$，否则不可能在之后产生转折</li><li>转折点部分一定形如 $\mathtt{101101}$，刚好仍使 $\mathtt 0$ 和 $\mathtt 1$ 个数相差 1</li></ul><p>这样，$f(s) &#x3D; 2^{l-1}$ ，其中 $l$ 指仅含相同元素的后缀长度</p><p>注意别直接左移，会爆</p><h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1762/submission/188179005">1762 C</a></p><h1 id="Warnings"><a href="#Warnings" class="headerlink" title="Warnings"></a>Warnings</h1><ul><li>别想当然，返回值在函数末尾还是要补一句的。没返回值在 Windows 下可能没问题，Linux 下直接爆炸</li><li>审题审题审题</li><li>注意位运算会爆 <code>long long</code>，还是老老实实用快速幂</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>ICPC</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Constructive Algorithms</tag>
+      
+      <tag>Greedy</tag>
+      
+      <tag>Combinatorics</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Educational Codeforces Round 139</title>
+    <link href="/2023/01/05/Educational-Codeforces-Round-139/"/>
+    <url>/2023/01/05/Educational-Codeforces-Round-139/</url>
+    
+    <content type="html"><![CDATA[<p>不！能！再！摆！了！</p><span id="more"></span><h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a href="https://codeforces.com/contest/1766">Educational Codeforces Round 139</a></p><h1 id="A-Extremely-Round"><a href="#A-Extremely-Round" class="headerlink" title="A - Extremely Round"></a>A - Extremely Round</h1><p>离线之后，暴力</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1766/submission/187993760">1766 A</a></p><h1 id="B-Notepad"><a href="#B-Notepad" class="headerlink" title="B - Notepad#"></a>B - Notepad#</h1><p>注意审题 </p><p>只要发现一处能够用第二种操作 copy 两个字符的就行</p><p>最多只有 $26^2$ 次 <code>string::find()</code>，直接暴力即可</p><h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1766/submission/186857691">1766 B</a></p><h1 id="C-Hamiltonian-Wall"><a href="#C-Hamiltonian-Wall" class="headerlink" title="C - Hamiltonian Wall"></a>C - Hamiltonian Wall</h1><p>一开始想 DP，发现很难设计状态，于是转为考虑从左向右扫</p><p>记录当前的 <code>side = 0 / 1</code> 表示在第几列。扫的时候，若两个皆为 <code>B</code>，则 <code>side</code> 取反。否则判断是否联通</p><p>实际上，当一处的 <code>side</code> 确定下来，之后的路径是唯一的。难点在于第一步怎么走</p><p>事实上，找到第一列不是元素皆为 <code>B</code> 的列即可，之前的 $2 \times k$ 的 <code>B</code> 矩阵一定可以以某种方式遍历并以想要的那一格结尾</p><h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1766/submission/186666476">1766 C</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>ICPC</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Implementation</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Codeforces Round 837</title>
+    <link href="/2022/12/25/Codeforces-Round-837/"/>
+    <url>/2022/12/25/Codeforces-Round-837/</url>
+    
+    <content type="html"><![CDATA[<p>补题</p><span id="more"></span><h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a href="https://codeforces.com/contest/1771">Codeforces Round 837</a></p><h1 id="A-Hossam-and-Combinatorics"><a href="#A-Hossam-and-Combinatorics" class="headerlink" title="A - Hossam and Combinatorics"></a>A - Hossam and Combinatorics</h1><p>记录最小与最大值个个数即可</p><p>注意特判最小值等于最大值的情况</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1771/submission/186122561">1771 A</a></p><h1 id="B-Hossam-and-Friends"><a href="#B-Hossam-and-Friends" class="headerlink" title="B - Hossam and Friends"></a>B - Hossam and Friends</h1><p>令 $a_i$ 表示 $i$ 不认识且编号大于 $i$ 的最小的编号</p><p>题目要求一个区间内所有人都互相认识。这样可得，以 $i$ 为左端点的好的 segment 即是 $[i, i], [i, i + 1], \cdots, [i, \min_{k &#x3D; i}^{n}a_k]$</p><p>从 $n$ 到 $1$ 统计即可</p><h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1771/submission/186175835">1771 B</a></p><h1 id="C-Hossam-and-Trainees"><a href="#C-Hossam-and-Trainees" class="headerlink" title="C - Hossam and Trainees"></a>C - Hossam and Trainees</h1><p>先筛出 $[1, \sqrt{10^9}]$ 内的所有质数。边读入便质因数分解即可</p><h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1771/submission/186652463">1771 C</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>ICPC</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Number Theory</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CodeTON Round 3</title>
     <link href="/2022/11/30/CodeTON-Round-3/"/>
     <url>/2022/11/30/CodeTON-Round-3/</url>
     
-    <content type="html"><![CDATA[<p>最近太摆了，补题</p><span id="more"></span><h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a href="https://codeforces.com/contest/1750">CodeTON Round 3</a></p><h1 id="A-Indirect-Sort"><a href="#A-Indirect-Sort" class="headerlink" title="A - Indirect Sort"></a>A - Indirect Sort</h1><p>我们发现，$a_1$ 是不会增大的。故若 $a_1$ 不是最小值，不可能将 $\lbrace a\rbrace$ 变成不降的</p><p>而若 $a_1$ 是最小值，操作 2 就变成了交换 $a_j, a_k$，就是普通的 <code>swap</code> 操作，因而一定可以调整为不降的</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1750/submission/181368474">1750 A</a></p><h1 id="B-Maximum-Substring"><a href="#B-Maximum-Substring" class="headerlink" title="B - Maximum Substring"></a>B - Maximum Substring</h1><p>模拟即可</p><h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1750/submission/181369084">1750 B</a></p><h1 id="C-Complementary-XOR"><a href="#C-Complementary-XOR" class="headerlink" title="C - Complementary XOR"></a>C - Complementary XOR</h1><p>注意到，每一次的操作会让全部的 $|a_i - b_i|$ 取反，这意味着如果初始状态 $|a_i - b_i|$ 不全都相等的话，不可能做到</p><p>方便起见，如果 $|a_i - b_i| &#x3D; 1$，进行一次操作，使得 $a_i &#x3D; b_i$</p><p>接下来进行 $n - 1$ 次操作让 $a_i$ 全部变得相等。此时会有四种情况：</p><ul><li>$a_i &#x3D; 1, b_i &#x3D; 0$</li><li>$a_i &#x3D; 1, b_i &#x3D; 1$</li><li>$a_i &#x3D; 0, b_i &#x3D; 0$</li><li>$a_i &#x3D; 0, b_i &#x3D; 1$</li></ul><p>操作方法显然，讨论一下即可</p><h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1750/submission/181390387">1750 C</a></p><h1 id="D-Count-GCD"><a href="#D-Count-GCD" class="headerlink" title="D - Count GCD"></a>D - Count GCD</h1><p>显然 $b_1 &#x3D; a_1$</p><p>令 $f(i)$ 表示 $i$ - 前缀的答案，有 $f(1) &#x3D; 1$ 及转移</p><p>$$f(i) &#x3D; f(i - 1) \times g(i)\bmod p$$<br>其中 $g(i)$ 表示满足 $\gcd(x, a_{i - 1}) &#x3D; a_i$ 的 $x$ 的个数</p><p>由于一定有 $a_i | a_{i - 1}$，取 $q &#x3D; a_{i - 1} &#x2F; a_i$</p><ul><li>若 $q &#x3D; 1$，$g(i) &#x3D; \lfloor\dfrac{m}{a_i}\rfloor$</li><li>若 $q\neq 1$，则应满足 $x &#x3D; ka_i$，其中 $\gcd(k, q) &#x3D; 1, k\leq\lfloor\dfrac{m}{a_i}\rfloor$</li></ul><p>问题转化为求 $\left[1, \lfloor\dfrac{m}{a_i}\rfloor\right]$ 中与 $q$ 互质的数的个数</p><p>考虑容斥原理。得到 $q$ 的质因数后，使用二进制来枚举因数，使用 <code>popcount()</code> 来计算系数正负。以前没用过，看到二进制枚举豁然开朗</p><h2 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h2><p>WA + RE 了 8 发，写在 Warnings 里面了</p><p><a href="https://codeforces.com/contest/1750/submission/182932701">1750 D</a></p><h1 id="Warnings"><a href="#Warnings" class="headerlink" title="Warnings"></a>Warnings</h1><ul><li>开 <code>long long</code></li><li>注意自己在 <code>init()</code> 里到底写了啥，这次是疯狂重复 Euler 筛</li><li>注意一些 Global Variable 的变化情况，这次是 <code>cntPrime</code> 疯狂变大导致 RE</li><li>当发现把数组开大就能多过几个原先 RE 的点时，注意自己数组访问的问题</li></ul><h1 id="Postscript"><a href="#Postscript" class="headerlink" title="Postscript"></a>Postscript</h1><p>R.I.P.</p><p>当我还是一名 OIer 的时候，玩的最多的就是膜蛤、续命、决赛圈的梗</p><p>熬过了地图头、送走了英女王，长者终于停下了已迈入决赛圈中的脚步</p><p>1926.08.17 - 2022.11.30</p><p>是谁禁止了军队经商<br>是谁平治了洪水汤汤<br>是谁稳定了通货膨胀<br>是谁坚持了改革开放<br>是谁任命了铁血宰相<br>是谁摧毁了邪教道场<br>是谁收回了澳门香港<br>是谁平息了金融巨浪<br>是谁加入了世界商贸<br>是谁提出了科教兴邦</p><p>苟利国家生死以，岂因祸福避趋之</p><p>功名半纸，风雪千山</p>]]></content>
+    <content type="html"><![CDATA[<p>最近太摆了，补题</p><span id="more"></span><h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a href="https://codeforces.com/contest/1750">CodeTON Round 3</a></p><h1 id="A-Indirect-Sort"><a href="#A-Indirect-Sort" class="headerlink" title="A - Indirect Sort"></a>A - Indirect Sort</h1><p>我们发现，$a_1$ 是不会增大的。故若 $a_1$ 不是最小值，不可能将 $\lbrace a\rbrace$ 变成不降的</p><p>而若 $a_1$ 是最小值，操作 2 就变成了交换 $a_j, a_k$，就是普通的 <code>swap()</code> 操作。按照排序的方法执行 <code>swap()</code>，一定可以调整为不降的</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1750/submission/181368474">1750 A</a></p><h1 id="B-Maximum-Substring"><a href="#B-Maximum-Substring" class="headerlink" title="B - Maximum Substring"></a>B - Maximum Substring</h1><p>模拟即可</p><h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1750/submission/181369084">1750 B</a></p><h1 id="C-Complementary-XOR"><a href="#C-Complementary-XOR" class="headerlink" title="C - Complementary XOR"></a>C - Complementary XOR</h1><p>注意到，每一次的操作会让全部的 $|a_i - b_i|$ 取反，这意味着如果初始状态 $|a_i - b_i|$ 不全都相等的话，不可能做到</p><p>方便起见，如果 $|a_i - b_i| &#x3D; 1$，进行一次操作，使得 $a_i &#x3D; b_i$</p><p>接下来进行 $n - 1$ 次操作让 $a_i$ 全部变得相等。此时会有四种情况：</p><ul><li>$a_i &#x3D; 1, b_i &#x3D; 0$</li><li>$a_i &#x3D; 1, b_i &#x3D; 1$</li><li>$a_i &#x3D; 0, b_i &#x3D; 0$</li><li>$a_i &#x3D; 0, b_i &#x3D; 1$</li></ul><p>操作方法显然，讨论一下即可</p><h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1750/submission/181390387">1750 C</a></p><h1 id="D-Count-GCD"><a href="#D-Count-GCD" class="headerlink" title="D - Count GCD"></a>D - Count GCD</h1><p>显然 $b_1 &#x3D; a_1$</p><p>令 $f(i)$ 表示 $i$ - 前缀的答案，有 $f(1) &#x3D; 1$ 及转移</p><p>$$f(i) &#x3D; f(i - 1) \times g(i)\bmod p$$<br>其中 $g(i)$ 表示满足 $\gcd(x, a_{i - 1}) &#x3D; a_i$ 的 $x$ 的个数</p><p>由于一定有 $a_i | a_{i - 1}$，取 $q &#x3D; a_{i - 1} &#x2F; a_i$</p><ul><li>若 $q &#x3D; 1$，$g(i) &#x3D; \lfloor\dfrac{m}{a_i}\rfloor$</li><li>若 $q\neq 1$，则应满足 $x &#x3D; ka_i$，其中 $\gcd(k, q) &#x3D; 1, k\leq\lfloor\dfrac{m}{a_i}\rfloor$</li></ul><p>问题转化为求 $\left[1, \lfloor\dfrac{m}{a_i}\rfloor\right]$ 中与 $q$ 互质的数的个数</p><p>考虑容斥原理。得到 $q$ 的质因数后，使用二进制来枚举因数，使用 <code>popcount()</code> 来计算系数正负。以前没用过，看到二进制枚举豁然开朗</p><h2 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h2><p>WA + RE 了 8 发，写在 Warnings 里面了</p><p><a href="https://codeforces.com/contest/1750/submission/182932701">1750 D</a></p><h1 id="Warnings"><a href="#Warnings" class="headerlink" title="Warnings"></a>Warnings</h1><ul><li>开 <code>long long</code></li><li>注意自己在 <code>init()</code> 里到底写了啥，这次是疯狂重复 Euler 筛</li><li>注意一些 Global Variable 的变化情况，这次是 <code>cntPrime</code> 疯狂变大导致 RE</li><li>当发现把数组开大就能多过几个原先 RE 的点时，注意自己数组访问的问题</li></ul><h1 id="Postscript"><a href="#Postscript" class="headerlink" title="Postscript"></a>Postscript</h1><p>R.I.P.</p><p>当我还是一名 OIer 的时候，玩的最多的就是膜蛤、续命、决赛圈的梗</p><p>熬过了地图头、送走了英女王，长者终于停下了已迈入决赛圈中的脚步</p><p>1926.08.17 - 2022.11.30</p><p>是谁禁止了军队经商<br>是谁平治了洪水汤汤<br>是谁稳定了通货膨胀<br>是谁坚持了改革开放<br>是谁任命了铁血宰相<br>是谁摧毁了邪教道场<br>是谁收回了澳门香港<br>是谁平息了金融巨浪<br>是谁加入了世界商贸<br>是谁提出了科教兴邦</p><p>苟利国家生死以，岂因祸福避趋之</p><p>功名半纸，风雪千山</p>]]></content>
     
     
     <categories>
@@ -39,7 +285,7 @@
     <link href="/2022/10/29/Codeforces-Round-830/"/>
     <url>/2022/10/29/Codeforces-Round-830/</url>
     
-    <content type="html"><![CDATA[<p>补题</p><span id="more"></span><h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a href="https://codeforces.com/contest/1732">Codeforces Round #830</a></p><h1 id="A-Bestie"><a href="#A-Bestie" class="headerlink" title="A - Bestie"></a>A - Bestie</h1><p>注意到 $\gcd(n, n + 1) &#x3D; 1, \forall n\in\mathbb{N}$，因此我们一定可以通过对第 $n - 1$ 项和第 $n$ 项进行操作从而使 $\gcd(a_{n - 1}, a_n) &#x3D; 1$</p><p>答案至多是 $1 + 2 &#x3D; 3$，需考虑仅对 $a_{n - 1}$ 或 $a_n$ 进行操作和初始 $\gcd_{i &#x3D; 1}^na_i &#x3D; 1$ 的情况</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1732/submission/177756987">1732 A</a></p><h1 id="B-Ugu"><a href="#B-Ugu" class="headerlink" title="B - Ugu"></a>B - Ugu</h1><p>从 B 开始，我的 Solution 和官方的 <a href="https://codeforces.com/blog/entry/108327">Tutorial</a> 就有很大差别了（</p><p>考虑 DP</p><p>注意到被反转偶数次等于未被反转，因而记录反转次数状态只需要记录 $0, 1$ 两种</p><p>令 $f(i, j, k)$ 表示前缀 $s_{1\dots i}$ 被改造为合法的，且以 $j &#x3D; 0, 1$ 为结尾、算上该次（可能没进行的）对后缀 $s_{i\dots n}$ 反转的反转次数为 $k &#x3D; 0, 1$ 的最小代价</p><p>转移显然，就是容易搞错情况，因为有些状态是不可能的<del>（为什么？）</del></p><h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1732/submission/178169630">1732 B</a></p><h1 id="C1-Sheikh-Easy-version"><a href="#C1-Sheikh-Easy-version" class="headerlink" title="C1 - Sheikh (Easy version)"></a>C1 - Sheikh (Easy version)</h1><p>记 $s$ 为异或和</p><p>注意到，任何正整数对和的贡献恒大于等于对异或和的贡献。形式化地，$x\geq |s - (s\oplus x)|$。因而我们只会去删掉那些贡献相等的数，否则一定会使 $f$ 变小。而 $f$ 值一定是 $\text{sum}(l, r) - \text{xor}(l, r)$</p><p>注意到丢掉的 $a_i$ 会对异或和有影响，因而 two-pointers 扫描</p><p>具体而言，先确定左边删去个数最多的情况，然后不断减少左边删去的个数从而使右边删去的个数相应增加。综合所有情况取最值</p><h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1732/submission/178635415">1732 C1</a></p><h1 id="C2-Sheikh-Hard-version"><a href="#C2-Sheikh-Hard-version" class="headerlink" title="C2 - Sheikh (Hard version)"></a>C2 - Sheikh (Hard version)</h1><p>记 $s$ 为异或和</p><p>回到异或运算的性质上来。我们发现，满足条件的 $x$，即满足 $x &#x3D; s - s\oplus x$ 的 $x$，其二进制表示中的位和 $s$ 相应的位一定相同</p><p>那么缩小 $[l, r]$ 的过程，可以视作将 $s$ 中为 $1$ 的位不断删去，且 $s$ 能删去某些 $1$ 的位当且仅当 $x$ 的二进制表示如此</p><p>最坏情况是待删除的 $x_{(2)}$ 为 $1, 10, 100, 1000, \cdots$ 且 $s_{(2)} &#x3D; 111\cdots$，而 $\log_2 10^9\le 31$，故复杂度实际上还是 $O(n)$ <del>只是常数 31 比较感人</del></p><p>不过 TLE 了，原因在于 $x &#x3D; 0$ 的情况。一堆 $0$ 会使复杂度变成 $O(n^2)$，去掉 $0$ 即可。这个过程与离散化微妙地相似</p><h2 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1732/submission/179390024">1732 C2</a></p><h1 id="D1-Balance-Easy-version"><a href="#D1-Balance-Easy-version" class="headerlink" title="D1 - Balance (Easy version)"></a>D1 - Balance (Easy version)</h1><p>大暴力，过的人比 C1 还多就离谱</p><p>记 $f(k)$ 为所求，将 $f$ 存下来，以后再求 $k$ 就能从 $f(k)$ 开始找了</p><h2 id="Code-4"><a href="#Code-4" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1732/submission/179424554">1732 D1</a></p>]]></content>
+    <content type="html"><![CDATA[<p>补题</p><span id="more"></span><h1 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h1><p><a href="https://codeforces.com/contest/1732">Codeforces Round 830</a></p><h1 id="A-Bestie"><a href="#A-Bestie" class="headerlink" title="A - Bestie"></a>A - Bestie</h1><p>注意到 $\gcd(n, n + 1) &#x3D; 1, \forall n\in\mathbb{N}$，因此我们一定可以通过对第 $n - 1$ 项和第 $n$ 项进行操作从而使 $\gcd(a_{n - 1}, a_n) &#x3D; 1$</p><p>答案至多是 $1 + 2 &#x3D; 3$，需考虑仅对 $a_{n - 1}$ 或 $a_n$ 进行操作和初始 $\gcd_{i &#x3D; 1}^na_i &#x3D; 1$ 的情况</p><h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1732/submission/177756987">1732 A</a></p><h1 id="B-Ugu"><a href="#B-Ugu" class="headerlink" title="B - Ugu"></a>B - Ugu</h1><p>从 B 开始，我的 Solution 和官方的 <a href="https://codeforces.com/blog/entry/108327">Tutorial</a> 就有很大差别了（</p><p>考虑 DP</p><p>注意到被反转偶数次等于未被反转，因而记录反转次数状态只需要记录 $0, 1$ 两种</p><p>令 $f(i, j, k)$ 表示前缀 $s_{1\dots i}$ 被改造为合法的，且以 $j &#x3D; 0, 1$ 为结尾、算上该次（可能没进行的）对后缀 $s_{i\dots n}$ 反转的反转次数为 $k &#x3D; 0, 1$ 的最小代价</p><p>转移显然，就是容易搞错情况，因为有些状态是不可能的<del>（为什么？）</del></p><h2 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1732/submission/178169630">1732 B</a></p><h1 id="C1-Sheikh-Easy-version"><a href="#C1-Sheikh-Easy-version" class="headerlink" title="C1 - Sheikh (Easy version)"></a>C1 - Sheikh (Easy version)</h1><p>记 $s$ 为异或和</p><p>注意到，任何正整数对和的贡献恒大于等于对异或和的贡献。形式化地，$x\geq |s - (s\oplus x)|$。因而我们只会去删掉那些贡献相等的数，否则一定会使 $f$ 变小。而 $f$ 值一定是 $\text{sum}(l, r) - \text{xor}(l, r)$</p><p>注意到丢掉的 $a_i$ 会对异或和有影响，因而 two-pointers 扫描</p><p>具体而言，先确定左边删去个数最多的情况，然后不断减少左边删去的个数从而使右边删去的个数相应增加。综合所有情况取最值</p><h2 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1732/submission/178635415">1732 C1</a></p><h1 id="C2-Sheikh-Hard-version"><a href="#C2-Sheikh-Hard-version" class="headerlink" title="C2 - Sheikh (Hard version)"></a>C2 - Sheikh (Hard version)</h1><p>记 $s$ 为异或和</p><p>回到异或运算的性质上来。我们发现，满足条件的 $x$，即满足 $x &#x3D; s - s\oplus x$ 的 $x$，其二进制表示中的位和 $s$ 相应的位一定相同</p><p>那么缩小 $[l, r]$ 的过程，可以视作将 $s$ 中为 $1$ 的位不断删去，且 $s$ 能删去某些 $1$ 的位当且仅当 $x$ 的二进制表示如此</p><p>最坏情况是待删除的 $x_{(2)}$ 为 $1, 10, 100, 1000, \cdots$ 且 $s_{(2)} &#x3D; 111\cdots$，而 $\log_2 10^9\le 31$，故复杂度实际上还是 $O(n)$ <del>只是常数 31 比较感人</del></p><p>不过 TLE 了，原因在于 $x &#x3D; 0$ 的情况。一堆 $0$ 会使复杂度变成 $O(n^2)$，去掉 $0$ 即可。这个过程与离散化微妙地相似</p><h2 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1732/submission/179390024">1732 C2</a></p><h1 id="D1-Balance-Easy-version"><a href="#D1-Balance-Easy-version" class="headerlink" title="D1 - Balance (Easy version)"></a>D1 - Balance (Easy version)</h1><p>大暴力，过的人比 C1 还多就离谱</p><p>记 $f(k)$ 为所求，将 $f$ 存下来，以后再求 $k$ 就能从 $f(k)$ 开始找了</p><h2 id="Code-4"><a href="#Code-4" class="headerlink" title="Code"></a>Code</h2><p><a href="https://codeforces.com/contest/1732/submission/179424554">1732 D1</a></p>]]></content>
     
     
     <categories>
@@ -48,6 +294,14 @@
       
     </categories>
     
+    
+    <tags>
+      
+      <tag>DP</tag>
+      
+      <tag>Bitmasks</tag>
+      
+    </tags>
     
   </entry>
   
@@ -81,8 +335,6 @@
       <tag>Tree</tag>
       
       <tag>Implementation</tag>
-      
-      <tag>Difference</tag>
       
     </tags>
     
